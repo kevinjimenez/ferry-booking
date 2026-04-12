@@ -10,11 +10,18 @@
       />
       <select
         class="block w-full py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-sm"
-        :class="prefixIcon ? 'pl-7' : 'px-3'"
+        :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]"
         @change="handleChange"
+        @blur="$emit('blur')"
       >
-        <option selected>{{ placeholder }}</option>
-        <option v-for="option in options" :key="option.id" :value="option.id">
+        <option value="" disabled :selected="!modelValue?.id">{{ placeholder }}</option>
+        <option
+          v-for="option in options"
+          :key="option.id"
+          :value="option.id"
+          :selected="option.id === modelValue?.id"
+          :disabled="option.id === disabledValue"
+        >
           {{ option.label }}
         </option>
       </select>
@@ -24,7 +31,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Component } from 'vue';
+import { type Component, computed } from 'vue';
 
 export interface SelectOption {
   id: string;
@@ -45,6 +52,7 @@ export interface Props {
   label?: string;
   prefixIcon?: Component;
   prefixIconClass?: string;
+  disabledValue?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -54,9 +62,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue', 'blur']);
 
+const inputErrorClass = computed(() => ({
+  'border-secondary border text-secondary': props.error,
+}));
+
 const handleChange = (event: Event) => {
   const target = event.target as HTMLSelectElement;
   const selected = props.options.find(option => option.id === target.value);
   emit('update:modelValue', selected);
+  // emit('blur');
 };
 </script>

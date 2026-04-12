@@ -4,7 +4,7 @@ import type { SearchFormValues } from '@/modules/ferry/types';
 import { TicketType } from '@/modules/ferry/enums';
 
 export const useSearchForm = () => {
-  const { handleSubmit, defineField, errors } = useForm<SearchFormValues>({
+  const { handleSubmit, defineField, errors, setFieldValue } = useForm<SearchFormValues>({
     validationSchema: searchFormSchema,
     initialValues: {
       ticketType: TicketType.ONE_WAY,
@@ -37,5 +37,6 @@ export const useSearchForm = () => {
     outboundDateAttrs,
     inboundDate,
     inboundDateAttrs,
+    setFieldValue,
   };
 };

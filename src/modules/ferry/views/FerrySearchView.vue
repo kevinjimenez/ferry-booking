@@ -19,7 +19,7 @@
     </header>
 
     <section class="flex items-center justify-center">
-      <div class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md">
+      <div class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5">
         <BaseButtonGroup class="w-full" v-model="ticketType" :options="TICKET_TYPE_OPTIONS" />
 
         <div class="w-full flex gap-5">
@@ -29,8 +29,9 @@
             label="Desde"
             :prefix-icon="MapPinIcon"
             prefix-icon-class="text-secondary"
-            :options="[{ label: 'string', value: 'string', id: 'id' }]"
+            :options="mock"
             :error="errors.origin"
+            :disabled-value="destination?.id"
           />
 
           <BaseButton
@@ -46,8 +47,9 @@
             label="Hasta"
             :prefix-icon="MapPinIcon"
             prefix-icon-class="text-secondary"
-            :options="[{ label: 'string', value: 'string', id: 'id' }]"
+            :options="mock"
             :error="errors.destination"
+            :disabled-value="origin?.id"
           />
         </div>
 
@@ -65,6 +67,8 @@
             label="Fecha de regreso"
             v-model="inboundDate"
             v-bind="inboundDateAttrs"
+            ahora
+            :error="errors.inboundDate"
           />
 
           <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10" />
@@ -92,6 +96,11 @@ import SwitchHorizontalIcon from '@/shared/icons/SwitchHorizontalIcon.vue';
 import BaseInput from '@/shared/components/base/BaseInput.vue';
 import BaseInputNumber from '@/shared/components/base/BaseInputNumber.vue';
 
+const mock = [
+  { label: 'label 1', value: 'value 1', id: '1' },
+  { label: 'string 2', value: 'value 2', id: '2' },
+];
+
 const {
   // properties
   ticketType,
@@ -106,10 +115,15 @@ const {
   outboundDateAttrs,
   inboundDate,
   inboundDateAttrs,
+  setFieldValue,
 } = useSearchForm();
 
 const swapOriginDestination = () => {
-  console.log('swapOriginDestination');
+  const prev = { origin: origin.value, destination: destination.value };
+  console.log('swapOriginDestination', prev);
+
+  setFieldValue('origin', prev.destination);
+  setFieldValue('destination', prev.origin);
 };
 
 const onSubmit = handleSubmit(values => {
