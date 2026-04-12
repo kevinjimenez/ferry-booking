@@ -18537,6 +18537,757 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "RULar",
+      "x": -2059,
+      "y": -708,
+      "name": "01a - Busqueda",
+      "width": 1440,
+      "height": 900,
+      "fill": "$--gray-50",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "mvLV0",
+          "name": "heroSection",
+          "width": "fill_container",
+          "height": 340,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#0E1327",
+                "position": 0
+              },
+              {
+                "color": "#162040",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            60,
+            40,
+            70,
+            40
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Lczrm",
+              "name": "heroTitle",
+              "fill": "$--text-white",
+              "content": "Explora las Islas Galápagos",
+              "fontFamily": "Poly",
+              "fontSize": 46,
+              "fontWeight": "normal",
+              "letterSpacing": 0.5
+            },
+            {
+              "type": "text",
+              "id": "156u0",
+              "name": "heroSubtitle",
+              "fill": "$--gray-400",
+              "textGrowth": "fixed-width",
+              "width": 560,
+              "content": "Reserva tu ferry entre Santa Cruz, San Cristóbal e Isabela de forma rápida y segura",
+              "textAlign": "center",
+              "fontFamily": "Poly",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "5TLgn",
+              "name": "trustRow",
+              "gap": 24,
+              "padding": [
+                24,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t1hz2",
+                  "name": "tr1Wrap",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "DKC9e",
+                      "name": "tr1Ic",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "compass",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--gray-400"
+                    },
+                    {
+                      "type": "text",
+                      "id": "3ULwy",
+                      "name": "tr1Tx",
+                      "fill": "$--gray-400",
+                      "content": "3 Islas Principales",
+                      "fontFamily": "Poly",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vIDvn",
+                  "name": "tr2Wrap",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "aGDsv",
+                      "name": "tr2Ic",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "ship",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--gray-400"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Bgun7",
+                      "name": "tr2Tx",
+                      "fill": "$--gray-400",
+                      "content": "Salidas Diarias",
+                      "fontFamily": "Poly",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3qeN3",
+                  "name": "tr3Wrap",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "WUFGr",
+                      "name": "tr3Ic",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "shield-check",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--gray-400"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MYrBs",
+                      "name": "tr3Tx",
+                      "fill": "$--gray-400",
+                      "content": "Cómodo y Seguro",
+                      "fontFamily": "Poly",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "blqHi",
+          "name": "formWrapper",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$--gray-50",
+          "layout": "vertical",
+          "padding": [
+            0,
+            40,
+            40,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "wB0yo",
+              "name": "formCard",
+              "width": 900,
+              "fill": "$--white",
+              "cornerRadius": 16,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0E132712",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 40
+              },
+              "layout": "vertical",
+              "gap": 28,
+              "padding": 40,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "G5wSj",
+                  "name": "tripToggle",
+                  "fill": "$--gray-50",
+                  "cornerRadius": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NmFLW",
+                      "name": "tabIda",
+                      "fill": "$--gray-50",
+                      "cornerRadius": "$--radius-md",
+                      "padding": [
+                        14,
+                        32
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TZnx4",
+                          "name": "tabIdaText",
+                          "fill": "$--gray-500",
+                          "content": "Solo ida",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 13,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qHFYf",
+                      "name": "tabIdaVuelta",
+                      "fill": "$--navy-900",
+                      "cornerRadius": 10,
+                      "padding": [
+                        14,
+                        32
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KxJul",
+                          "name": "tabIdaVueltaText",
+                          "fill": "$--text-white",
+                          "content": "Ida y vuelta",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 13,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3Gs1h",
+                  "name": "routeRow2",
+                  "width": "fill_container",
+                  "height": 70,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VWhNm",
+                      "x": 0,
+                      "y": 0,
+                      "name": "fromField2",
+                      "width": 370,
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "8QTcC",
+                          "name": "fromLbl2",
+                          "fill": "$--gray-500",
+                          "content": "Desde",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "frame",
+                          "id": "PeDF2",
+                          "name": "fromInp2",
+                          "width": "fill_container",
+                          "fill": "$--white",
+                          "cornerRadius": "$--radius-md",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "jiaEv",
+                              "name": "fromIc2",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "map-pin",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--accent-orange"
+                            },
+                            {
+                              "type": "text",
+                              "id": "bWR5B",
+                              "name": "fromTx2",
+                              "fill": "$--text-primary",
+                              "content": "Puerto Ayora (Santa Cruz)",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 15,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "VsVnh",
+                              "name": "fromCh2",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "chevron-down",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--gray-400"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nBvHX",
+                      "x": 386,
+                      "y": 32,
+                      "name": "swapBtn2",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "$--navy-900",
+                      "cornerRadius": 22,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "bx5Kr",
+                          "name": "swapIc2",
+                          "width": 20,
+                          "height": 20,
+                          "iconFontName": "arrow-left-right",
+                          "iconFontFamily": "lucide",
+                          "fill": "$--text-white"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yr5Yo",
+                      "x": 446,
+                      "y": 0,
+                      "name": "toField2",
+                      "width": 370,
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zgs6P",
+                          "name": "toLbl2",
+                          "fill": "$--gray-500",
+                          "content": "Hacia",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "frame",
+                          "id": "BsBzS",
+                          "name": "toInp2",
+                          "width": "fill_container",
+                          "fill": "$--white",
+                          "cornerRadius": "$--radius-md",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "jwrj5",
+                              "name": "toIc2",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "map-pin",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--accent-orange"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Lu0QW",
+                              "name": "toTx2",
+                              "fill": "$--text-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Puerto Baquerizo Moreno (San Cristóbal)",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 15,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "3mBOe",
+                              "name": "toChv2",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "chevron-down",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--gray-400"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "o8lzk",
+                  "name": "bottomRow",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "bKrBu",
+                      "name": "dateFieldIda",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PjxI8",
+                          "name": "dateLabel",
+                          "fill": "$--gray-500",
+                          "content": "Fecha de ida",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IB2PQ",
+                          "name": "dateInput",
+                          "width": "fill_container",
+                          "fill": "$--white",
+                          "cornerRadius": "$--radius-md",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "gap": 8,
+                          "padding": [
+                            14,
+                            16
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "uSqzq",
+                              "name": "dateIcon",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "calendar",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--accent-orange"
+                            },
+                            {
+                              "type": "text",
+                              "id": "8wP1i",
+                              "name": "dateText",
+                              "fill": "$--text-primary",
+                              "content": "Dom, 12 abril 2026",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 15,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NHTOx",
+                      "name": "dateFieldVuelta",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2YGEz",
+                          "name": "dateLabel",
+                          "fill": "$--gray-500",
+                          "content": "Fecha de regreso",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "frame",
+                          "id": "znvg3",
+                          "name": "dateInput",
+                          "width": "fill_container",
+                          "fill": "$--white",
+                          "cornerRadius": "$--radius-md",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "gap": 8,
+                          "padding": [
+                            14,
+                            16
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "wBnbC",
+                              "name": "dateIcon",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "calendar",
+                              "iconFontFamily": "lucide",
+                              "fill": "$--accent-orange"
+                            },
+                            {
+                              "type": "text",
+                              "id": "N6zB2",
+                              "name": "dateText",
+                              "fill": "$--text-primary",
+                              "content": "Lun, 13 abril 2026",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 15,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rYt7E",
+                      "name": "paxField",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cankL",
+                          "name": "paxLabel",
+                          "fill": "$--gray-500",
+                          "content": "Pasajeros",
+                          "fontFamily": "Avenir Next LT Pro",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Mq5BE",
+                          "name": "paxRow",
+                          "width": "fill_container",
+                          "fill": "$--white",
+                          "cornerRadius": "$--radius-md",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$--border"
+                          },
+                          "gap": 12,
+                          "padding": [
+                            8,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "J2mfi",
+                              "name": "paxTypeLabel",
+                              "fill": "$--text-primary",
+                              "content": "Adultos",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 15,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "blwAu",
+                              "name": "paxSpacer",
+                              "width": "fill_container",
+                              "height": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "VdoiC",
+                              "name": "minusBtn",
+                              "width": 32,
+                              "height": 32,
+                              "cornerRadius": 16,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "$--border"
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "vGTGz",
+                                  "name": "minusIcon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "minus",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-400"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "H38qn",
+                              "name": "paxCount",
+                              "fill": "$--text-primary",
+                              "content": "2",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Bt1or",
+                              "name": "plusBtn",
+                              "width": 32,
+                              "height": 32,
+                              "fill": "$--navy-900",
+                              "cornerRadius": 16,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "oYMTa",
+                                  "name": "plusIcon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "plus",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--text-white"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Fa652",
+                  "name": "searchBtn",
+                  "width": "fill_container",
+                  "fill": "$--navy-900",
+                  "cornerRadius": 12,
+                  "gap": 12,
+                  "padding": [
+                    18,
+                    32
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "TZKcG",
+                      "name": "searchIcon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "search",
+                      "iconFontFamily": "lucide",
+                      "fill": "$--text-white"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mloAA",
+                      "name": "searchText",
+                      "fill": "$--text-white",
+                      "content": "BUSCAR FERRYS",
+                      "fontFamily": "Avenir Next LT Pro",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                      "letterSpacing": 1.5
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
