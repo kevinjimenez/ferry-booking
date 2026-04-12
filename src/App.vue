@@ -30,9 +30,9 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
 // });
 
 // onMounted(() => {
-//   logger.log('asd');
+//   loggerServices.log('asd');
 //   ferryUIStore.setNavigating(false);
-//   logger.log(ferryBookingStore.hold, 'asd');
+//   loggerServices.log(ferryBookingStore.hold, 'asd');
 //   if (ferryBookingStore.hold) {
 //     shouldFetch.value = true;
 //     ferryUIStore.setNavigating(true);

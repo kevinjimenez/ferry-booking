@@ -1,13 +1,6 @@
 <template>
-  <main class="min-h-screen bg-light-gray">
-    layout
-    <div class="flex flex-col justify-center items-center pb-5 w-full">
-      <button class="btn-primary">button primary</button>
-      <button class="btn-secondary">button secondary</button>
-      <button class="btn-outline">button outline</button>
-      <span class="card">card</span>
-      <input class="input-field" />
-    </div>
+<!--bg-light-gray-->
+  <main class="min-h-screen bg-red-200">
     <router-view />
   </main>
 </template>

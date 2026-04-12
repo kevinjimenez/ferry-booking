@@ -1,1 +1,1 @@
-export * from './ticket-type.enum';
+export * from './ticket-type.enums.ts';

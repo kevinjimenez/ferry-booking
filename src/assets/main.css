@@ -146,36 +146,36 @@
 
 @layer components {
 
-  .btn-primary {
-    @apply btn;
-    background-color: var(--color-brand-navy);
-    color: white;
-    border-radius: var(--radius-md);
-  }
+  /*.btn-primary {*/
+  /*  @apply btn;*/
+  /*  background-color: var(--color-brand-navy);*/
+  /*  color: white;*/
+  /*  border-radius: var(--radius-md);*/
+  /*}*/
 
-  .btn-secondary {
-    @apply btn;
-    background-color: var(--color-brand-red);
-    color: white;
-    border-radius: var(--radius-md);
-  }
+  /*.btn-secondary {*/
+  /*  @apply btn;*/
+  /*  background-color: var(--color-brand-red);*/
+  /*  color: white;*/
+  /*  border-radius: var(--radius-md);*/
+  /*}*/
 
-  .btn-outline {
-    @apply btn btn-outline;
-    border-color: var(--color-border);
-    color: var(--color-brand-navy);
-  }
+  /*.btn-outline {*/
+  /*  @apply btn btn-outline;*/
+  /*  border-color: var(--color-border);*/
+  /*  color: var(--color-brand-navy);*/
+  /*}*/
 
-  .card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
+  /*.card {*/
+  /*  background-color: var(--color-surface);*/
+  /*  border: 1px solid var(--color-border);*/
+  /*  border-radius: var(--radius-lg);*/
+  /*}*/
 
-  .input-field {
-    @apply input;
-    border-color: var(--color-border);
-    border-radius: var(--radius-sm);
-  }
+  /*.input-field {*/
+  /*  @apply input;*/
+  /*  border-color: var(--color-border);*/
+  /*  border-radius: var(--radius-sm);*/
+  /*}*/
 
 }
