@@ -5,15 +5,15 @@
     :class="['btn shadow-none flex items-center justify-center', buttonClasses]"
     @click="$emit('click')"
   >
-    <slot name="prefix" />
+    <component v-if="prefixIcon" :is="prefixIcon" :class="iconClass" />
     <slot />
-    <slot name="suffix" />
+    <component v-if="suffixIcon" :is="suffixIcon" :class="iconClass" />
   </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { BaseButtonProps } from '@/shared/components/base-button.types.ts'
+import { computed } from 'vue';
+import type { BaseButtonProps } from '@/shared/components/base/base-button.types.ts';
 
 const props = withDefaults(defineProps<BaseButtonProps>(), {
   type: 'button',
@@ -22,33 +22,33 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
   size: 'md',
   circle: false,
   disabled: false,
-})
+});
 
-defineEmits(['click'])
+defineEmits(['click']);
 
 const buttonClasses = computed(() => {
-  const classes = []
+  const classes = [];
 
   // Circle
-  if (props.circle) classes.push('btn-circle')
+  if (props.circle) classes.push('btn-circle');
 
   // Size (solo si no es circle y no es md)
   if (!props.circle && props.size !== 'md') {
-    classes.push(`btn-${props.size}`)
+    classes.push(`btn-${props.size}`);
   }
 
   // Variant
-  if (props.variant === 'outline') classes.push('btn-outline')
-  if (props.variant === 'soft') classes.push('btn-soft')
-  if (props.variant === 'default') classes.push('btn-primary')
+  if (props.variant === 'outline') classes.push('btn-outline');
+  if (props.variant === 'soft') classes.push('btn-soft');
+  if (props.variant === 'default') classes.push('btn-primary');
 
   // Color (solo si no es default variant)
   if (props.variant !== 'default') {
-    classes.push(`btn-${props.color}`)
+    classes.push(`btn-${props.color}`);
   }
 
-  return classes
-})
+  return classes;
+});
 </script>
 
 <style scoped>

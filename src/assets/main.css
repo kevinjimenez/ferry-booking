@@ -99,15 +99,31 @@
   --font-primary: "Avenir Next LT Pro", "Avenir Next", "Avenir", system-ui, sans-serif;
   --font-secondary: "Poly", "Georgia", serif;
 
-  /* Font Sizes */
-  --text-h1: 34px;
-  --text-h2: 30px;
-  --text-h3: 26px;
-  --text-h4: 22px;
-  --text-h5: 20px;
-  --text-h6: 18px;
-  --text-body: 16px;
-  --text-small: 14px;
+  /* Font Sizes — mapped from design mockups */
+  --text-display: 46px;    /* Hero titles */
+  --text-h1: 36px;         /* Page headings */
+  --text-h2: 32px;         /* Section headings */
+  --text-h3: 28px;         /* Card headings */
+  --text-h4: 26px;         /* Sub-headings */
+  --text-h5: 24px;         /* Highlighted prices */
+  --text-h6: 22px;         /* Total prices */
+  --text-xl: 20px;         /* Large labels */
+  --text-lg: 18px;         /* Medium labels */
+  --text-body: 17px;       /* Body copy */
+  --text-base: 16px;       /* Default body */
+  --text-md: 15px;         /* Sidebar labels */
+  --text-sm: 14px;         /* Small text, buttons */
+  --text-xs: 13px;         /* Detail rows, meta */
+  --text-2xs: 12px;        /* Captions, badges */
+  --text-3xs: 11px;        /* Micro labels */
+  --text-4xs: 10px;        /* Fine print */
+  --text-5xs: 9px;         /* Badge text */
+  --text-6xs: 8px;         /* Smallest labels */
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
 }
 
 /* ========================================

@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { BaseButtonGroupProps } from '@/shared/components/base-button-group.types.ts'
+import type { BaseButtonGroupProps } from '@/shared/components/base/base-button-group.types.ts'
 
 const props = withDefaults(defineProps<BaseButtonGroupProps>(), {
   size: 'md',
