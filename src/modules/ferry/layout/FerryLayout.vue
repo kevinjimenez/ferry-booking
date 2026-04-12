@@ -1,6 +1,6 @@
 <template>
-<!--bg-light-gray-->
-  <main class="min-h-screen bg-red-200">
+  <!--bg-light-gray-->
+  <main class="min-h-screen bg-gray-50">
     <router-view />
   </main>
 </template>

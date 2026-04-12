@@ -2,6 +2,7 @@ import { useForm } from 'vee-validate';
 import { searchFormSchema } from '@/modules/ferry/schemas';
 import type { SearchFormValues } from '@/modules/ferry/types';
 import { TicketType } from '@/modules/ferry/enums';
+import { computed } from 'vue';
 
 export const useSearchForm = () => {
   const { handleSubmit, defineField, errors, setFieldValue } = useForm<SearchFormValues>({
@@ -23,7 +24,10 @@ export const useSearchForm = () => {
   const [inboundDate, inboundDateAttrs] = defineField('inboundDate');
   const [passengerCount] = defineField('passengerCount');
 
+  const isRoundTrip = computed(() => ticketType.value === TicketType.ROUND_TRIP);
+
   return {
+    isRoundTrip,
     // Form state
     errors,
     handleSubmit,

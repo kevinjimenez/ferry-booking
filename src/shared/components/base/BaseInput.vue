@@ -13,7 +13,7 @@
         :min="min"
         :value="modelValue"
         :class="[
-          'block w-full pe-3 py-2.5 border border-primary text-heading text-sm rounded-sm placeholder:text-body',
+          'block w-full pe-3 py-2.5 border-gray-300 border text-heading text-sm rounded-sm placeholder:text-body',
           prefixIcon ? 'ps-9' : 'ps-3',
           inputErrorClass,
         ]"

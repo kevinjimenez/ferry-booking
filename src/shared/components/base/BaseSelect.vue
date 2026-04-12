@@ -9,7 +9,7 @@
         :class="prefixIconClass"
       />
       <select
-        class="block w-full py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-sm"
+        class="block w-full py-2.5 border-gray-300 border text-heading text-sm rounded-sm"
         :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]"
         @change="handleChange"
         @blur="$emit('blur')"

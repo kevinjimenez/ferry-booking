@@ -19,7 +19,9 @@
     </header>
 
     <section class="flex items-center justify-center">
-      <div class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5">
+      <div
+        class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5 shadow-lg"
+      >
         <BaseButtonGroup class="w-full" v-model="ticketType" :options="TICKET_TYPE_OPTIONS" />
 
         <div class="w-full flex gap-5">
@@ -63,6 +65,7 @@
           />
 
           <BaseInput
+            v-if="isRoundTrip"
             type="date"
             label="Fecha de regreso"
             v-model="inboundDate"
@@ -116,6 +119,7 @@ const {
   inboundDate,
   inboundDateAttrs,
   setFieldValue,
+  isRoundTrip,
 } = useSearchForm();
 
 const swapOriginDestination = () => {
