@@ -3,18 +3,16 @@ import { searchFormSchema } from '@/modules/ferry/schemas';
 import type { SearchFormValues } from '@/modules/ferry/types';
 import { TicketType } from '@/modules/ferry/enums';
 import { computed } from 'vue';
+import { SEARCH_FORM_INITIAL_VALUES } from '@/modules/ferry/constants';
+import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
+import { SearchFerryMapper } from '@/modules/ferry/mappers';
 
 export const useSearchForm = () => {
+  const store = useFerrySearchStore();
+
   const { handleSubmit, defineField, errors, setFieldValue } = useForm<SearchFormValues>({
     validationSchema: searchFormSchema,
-    initialValues: {
-      ticketType: TicketType.ONE_WAY,
-      origin: Object.assign({}),
-      destination: Object.assign({}),
-      outboundDate: '',
-      inboundDate: '',
-      passengerCount: 1,
-    },
+    initialValues: store.values,
   });
 
   const [ticketType] = defineField('ticketType');
@@ -26,11 +24,17 @@ export const useSearchForm = () => {
 
   const isRoundTrip = computed(() => ticketType.value === TicketType.ROUND_TRIP);
 
+  const onSubmit = handleSubmit(values => {
+    console.log(values);
+    store.setFormValues(values); // ← persiste al hacer submit
+    SearchFerryMapper.toRequest();
+  });
+
   return {
     isRoundTrip,
     // Form state
     errors,
-    handleSubmit,
+    onSubmit,
     ticketType,
     origin,
     originAttrs,

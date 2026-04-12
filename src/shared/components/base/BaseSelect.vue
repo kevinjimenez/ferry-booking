@@ -11,16 +11,16 @@
       <select
         class="block w-full py-2.5 border-gray-300 border text-heading text-sm rounded-sm"
         :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]"
+        :value="modelValue?.value ?? ''"
         @change="handleChange"
         @blur="$emit('blur')"
       >
-        <option value="" disabled :selected="!modelValue?.id">{{ placeholder }}</option>
+        <option value="" disabled>{{ placeholder }}</option>
         <option
           v-for="option in options"
-          :key="option.id"
-          :value="option.id"
-          :selected="option.id === modelValue?.id"
-          :disabled="option.id === disabledValue"
+          :key="option.value"
+          :value="option.value"
+          :disabled="option.value === disabledValue"
         >
           {{ option.label }}
         </option>
@@ -34,17 +34,17 @@
 import { type Component, computed } from 'vue';
 
 export interface SelectOption {
-  id: string;
+  // id: string;
   label: string;
   value: string | number;
-  extra?: string;
+  extra?: string | Record<string, string | number | boolean>;
   disabled?: boolean;
 }
 
 export type SelectOptions = Array<SelectOption>;
 
 export interface Props {
-  modelValue?: SelectOption;
+  modelValue?: SelectOption | null;
   options: SelectOptions;
   placeholder?: string;
   error?: string;
@@ -52,7 +52,7 @@ export interface Props {
   label?: string;
   prefixIcon?: Component;
   prefixIconClass?: string;
-  disabledValue?: string;
+  disabledValue?: string | number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -68,7 +68,7 @@ const inputErrorClass = computed(() => ({
 
 const handleChange = (event: Event) => {
   const target = event.target as HTMLSelectElement;
-  const selected = props.options.find(option => option.id === target.value);
+  const selected = props.options.find(option => String(option.value) === target.value);
   emit('update:modelValue', selected);
   // emit('blur');
 };

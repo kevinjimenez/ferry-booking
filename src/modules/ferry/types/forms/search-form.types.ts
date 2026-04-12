@@ -3,8 +3,8 @@ import { TicketType } from '@/modules/ferry/enums';
 
 export interface SearchFormValues {
   ticketType: TicketType;
-  origin: SelectOption;
-  destination: SelectOption;
+  origin: SelectOption | null
+  destination: SelectOption | null;
   outboundDate: string;
   inboundDate?: string;
   passengerCount: number;
