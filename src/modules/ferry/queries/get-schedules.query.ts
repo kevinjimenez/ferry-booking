@@ -13,9 +13,9 @@ const getSchedulesQuery = async (params: GetSchedulesRequest) => {
   try {
     const response = await apiServices.get<ApiResponse<ScheduleResponse[]>>('/schedules', {
       params: {
-        departureDate: date,
-        from: origin,
-        to: destination,
+        date,
+        origin,
+        destination,
       },
     });
 

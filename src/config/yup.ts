@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 // Establecer el idioma de los mensajes de error en español
 yup.setLocale({
@@ -39,4 +39,4 @@ yup.setLocale({
     min: 'Debe tener al menos ${min} elementos',
     max: 'Debe tener como máximo ${max} elementos',
   },
-})
+});

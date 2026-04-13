@@ -26,6 +26,17 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
 
 defineEmits(['click']);
 
+const sizeMap: Record<string, string> = {
+  xs: 'btn-xs',
+  sm: 'btn-sm',
+  lg: 'btn-lg',
+};
+
+const colorMap: Record<string, string> = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+};
+
 const buttonClasses = computed(() => {
   const classes = [];
 
@@ -34,7 +45,7 @@ const buttonClasses = computed(() => {
 
   // Size (solo si no es circle y no es md)
   if (!props.circle && props.size !== 'md') {
-    classes.push(`btn-${props.size}`);
+    classes.push(sizeMap[props.size]);
   }
 
   // Variant
@@ -44,7 +55,7 @@ const buttonClasses = computed(() => {
 
   // Color (solo si no es default variant)
   if (props.variant !== 'default') {
-    classes.push(`btn-${props.color}`);
+    classes.push(colorMap[props.color]);
   }
 
   return classes;

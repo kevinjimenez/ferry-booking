@@ -30,6 +30,4 @@ import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import ShieldCheckIcon from '@/shared/icons/ShieldCheckIcon.vue';
 import BaseIconLabel from '@/shared/components/base/BaseIconLabel.vue';
 import FerrySearchForm from '@/modules/ferry/components/forms/FerrySearchForm.vue';
-
-
 </script>

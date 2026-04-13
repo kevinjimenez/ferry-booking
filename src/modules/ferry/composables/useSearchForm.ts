@@ -2,7 +2,6 @@ import { useForm } from 'vee-validate';
 import { searchFormSchema } from '@/modules/ferry/schemas';
 import type { SearchFormValues } from '@/modules/ferry/types';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
-import { SearchFerryMapper } from '@/modules/ferry/mappers';
 import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import { computed, watch } from 'vue';
 import { TicketType } from '@/modules/ferry/enums';
@@ -24,9 +23,7 @@ export const useSearchForm = () => {
   const [passengerCount] = defineField('passengerCount');
 
   const onSubmit = handleSubmit(async values => {
-    console.log({ values });
-    store.setFormValues(values); // ← persiste al hacer submit
-    SearchFerryMapper.toRequest();
+    store.setFormValues(values);
     await goToOutbound();
   });
 

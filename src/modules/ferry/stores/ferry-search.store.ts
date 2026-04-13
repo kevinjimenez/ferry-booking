@@ -19,13 +19,19 @@ export const useFerrySearchStore = defineStore(STORE_KEY.SEARCH, () => {
 
   // setter
   const setFormValues = (values: SearchFormValues) => {
-    console.log('setFormValues', values);
     formValues.value = values;
   };
 
   // getters
   const values = computed(() => formValues.value);
   const isRoundTrip = computed(() => values.value.ticketType === TicketType.ROUND_TRIP);
+  // const searchQueryParams = computed(() => {
+  //   return {
+  //     origin: values.value.origin?.value,
+  //     destination: values.value.destination?.value,
+  //     outboundDate: values.value.outboundDate,
+  //   };
+  // });
 
   // methods
   const reset = () => {

@@ -3,7 +3,7 @@
   <VueQueryDevtools />
 </template>
 <script setup lang="ts">
-import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+import { VueQueryDevtools } from '@tanstack/vue-query-devtools';
 // import { useCatalogStore } from './shared/stores/catalog.store'
 
 // const ferryBookingStore = useFerryBookingStore();

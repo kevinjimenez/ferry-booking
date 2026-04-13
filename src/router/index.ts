@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { ferryRoutes } from '@/modules/ferry/routes'
+import { createRouter, createWebHistory } from 'vue-router';
+import { ferryRoutes } from '@/modules/ferry/routes';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +18,6 @@ const router = createRouter({
     // },
     ferryRoutes,
   ],
-})
+});
 
-export default router
+export default router;
