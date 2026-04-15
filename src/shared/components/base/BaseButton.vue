@@ -51,12 +51,9 @@ const buttonClasses = computed(() => {
   // Variant
   if (props.variant === 'outline') classes.push('btn-outline');
   if (props.variant === 'soft') classes.push('btn-soft');
-  if (props.variant === 'default') classes.push('btn-primary');
 
-  // Color (solo si no es default variant)
-  if (props.variant !== 'default') {
-    classes.push(colorMap[props.color]);
-  }
+  // Color
+  classes.push(colorMap[props.color]);
 
   return classes;
 });

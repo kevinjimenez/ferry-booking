@@ -1,10 +1,17 @@
 <template>
   <div class="flex justify-between">
-    <span class="text-md text-text-muted">{{ label }}</span>
-    <span class="text-base font-semibold">{{ value }}</span>
+    <span :class="twMerge('text-md text-text-muted', props.customClass?.label)">{{ label }}</span>
+    <span :class="twMerge('text-base font-semibold', props.customClass?.value)">{{ value }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ label: string; value: string }>();
+import { twMerge } from 'tailwind-merge'
+
+export interface LabelValueClass {
+  label?: string;
+  value?: string;
+}
+
+const props = defineProps<{ label: string; value: string; customClass?: LabelValueClass }>();
 </script>

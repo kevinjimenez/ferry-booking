@@ -45,6 +45,15 @@
           button-label="Continuar"
           @continue="goToTripSummary"
         />
+        <TripIncludesCard
+          title="Incluido en tu viaje"
+          :icon="BoxIcon"
+          :items="[
+            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
+            { icon: CheckIcon, text: 'Chaleco salvavidas' },
+            { icon: CheckIcon, text: 'Equipaje según operador' },
+          ]"
+        />
       </div>
     </div>
   </section>
@@ -68,6 +77,9 @@ import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
+import BoxIcon from '@/shared/icons/BoxIcon.vue';
+import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 
 const router = useRouter();
 

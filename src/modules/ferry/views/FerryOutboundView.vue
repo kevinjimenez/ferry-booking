@@ -116,7 +116,6 @@ const searchSummaryCardProps = computed(() => ({
 }));
 
 const handleSelect = (schedule: Ferry) => {
-  console.log('Selected schedule:', schedule);
   storeFerrySelectionStore.setOutbound(schedule);
 };
 
