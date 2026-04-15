@@ -16,18 +16,8 @@
         <ScheduleCard
           v-for="schedule in schedulesData"
           :key="schedule.id"
-          :origin="{
-            time: schedule.origin.time,
-            port: schedule.origin.port,
-            island: schedule.origin.island,
-            address: schedule.origin.address,
-          }"
-          :destination="{
-            time: schedule.destination.time,
-            port: schedule.destination.port,
-            island: schedule.destination.island,
-            address: schedule.destination.address,
-          }"
+          :origin="schedule.origin"
+          :destination="schedule.destination"
           :duration="schedule.duration"
           :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
           :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
@@ -78,13 +68,14 @@ import { storeToRefs } from 'pinia';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { useRouter } from 'vue-router';
+import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
 
 const router = useRouter();
 
 const storeFerrySearchStore = useFerrySearchStore();
 const storeFerrySelectionStore = useFerrySelectionStore();
 
-const { values, isRoundTrip } = storeToRefs(storeFerrySearchStore);
+const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound } = storeToRefs(storeFerrySelectionStore);
 
 const { data: schedulesData, averageDuration } = useScheduleQuery();
@@ -94,26 +85,12 @@ const { grandTotal } = useTripPrice();
 
 const selectedOutbound = computed(() => {
   if (!outbound.value) return undefined;
-  return {
-    origin: outbound.value.origin.port,
-    destination: outbound.value.destination.port,
-    ferry: outbound.value.ferry.name,
-    departure: outbound.value.origin.time,
-    arrival: outbound.value.destination.time,
-    passengers: `${values.value.passengerCount} adultos`,
-    price: formatCurrency(outbound.value.price),
-  };
+  return BookingSummaryMapper.toFerryLegSummary(outbound.value, search.value.passengerCount);
 });
 
-const searchSummaryCardProps = computed(() => ({
-  originName: values.value.origin?.label ?? '',
-  originIsland: (values.value.origin?.extra as Record<string, string>)?.name ?? '',
-  destinationName: values.value.destination?.label ?? '',
-  destinationIsland: (values.value.destination?.extra as Record<string, string>)?.name ?? '',
-  date: values.value.outboundDate,
-  passengers: values.value.passengerCount,
-  duration: averageDuration.value,
-}));
+const searchSummaryCardProps = computed(() =>
+  BookingSummaryMapper.toSearchSummaryCardProps(search.value, averageDuration.value),
+);
 
 const handleSelect = (schedule: Ferry) => {
   storeFerrySelectionStore.setOutbound(schedule);

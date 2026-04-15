@@ -7,7 +7,7 @@
           :variant="type === 'outbound' ? 'secondary' : 'primary'"
           class="badge-md"
         />
-        <span class="text-white text-xs">{{ date }}</span>
+        <span class="text-white text-xs">{{ dateLabel }}</span>
       </div>
       <BaseButton
         :color="type === 'outbound' ? 'secondary' : 'primary'"
@@ -74,6 +74,9 @@ import SectionDetails from '@/shared/components/SectionDetails.vue';
 import LabelValue from '@/shared/components/LabelValue.vue';
 import ClockIcon from '@/shared/icons/ClockIcon.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
+import { formatDate } from '@/shared/utils/date.utils.ts';
+import { DATE_FORMATS } from '@/shared/constants/date-formats.constants.ts';
+import { computed } from 'vue';
 
 interface Stop {
   time: string;
@@ -86,7 +89,7 @@ interface DetailItem {
   value: string;
 }
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     type?: 'outbound' | 'inbound';
     date: string;
@@ -104,4 +107,6 @@ withDefaults(
 );
 
 defineEmits<{ change: [] }>();
+
+const dateLabel = computed(() => formatDate(props.date, DATE_FORMATS.DISPLAY_LONG));
 </script>

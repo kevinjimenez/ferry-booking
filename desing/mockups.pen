@@ -3255,7 +3255,7 @@
       "y": -961,
       "name": "03 - Confirma Viaje",
       "width": 1440,
-      "height": 900,
+      "height": 1200,
       "fill": "$--gray-50",
       "layout": "vertical",
       "children": [
@@ -3358,421 +3358,498 @@
           "children": [
             {
               "type": "frame",
-              "id": "yrpPP",
-              "name": "confirmCard",
-              "width": 620,
-              "fill": "$--white",
-              "cornerRadius": 16,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$--gray-200"
-              },
-              "effect": {
-                "type": "shadow",
-                "shadowType": "outer",
-                "color": "#0E132710",
-                "offset": {
-                  "x": 0,
-                  "y": 6
-                },
-                "blur": 32
-              },
-              "layout": "vertical",
+              "id": "4rtUk",
+              "name": "cardsRow",
+              "width": "fill_container",
+              "gap": 32,
+              "justifyContent": "center",
               "children": [
                 {
                   "type": "frame",
-                  "id": "s0BuH",
-                  "name": "cardHeader",
-                  "width": "fill_container",
-                  "fill": {
-                    "type": "gradient",
-                    "gradientType": "linear",
-                    "enabled": true,
-                    "rotation": 180,
-                    "size": {
-                      "height": 1
-                    },
-                    "colors": [
-                      {
-                        "color": "#0E1327",
-                        "position": 0
-                      },
-                      {
-                        "color": "#162040",
-                        "position": 1
-                      }
-                    ]
+                  "id": "WAa10",
+                  "name": "idaCard",
+                  "width": 560,
+                  "fill": "$--white",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--gray-200"
                   },
-                  "cornerRadius": [
-                    16,
-                    16,
-                    0,
-                    0
-                  ],
-                  "gap": 12,
-                  "padding": [
-                    18,
-                    28
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "5Gbrl",
-                      "name": "idaBadge",
-                      "fill": "$--brand-red",
-                      "cornerRadius": 14,
-                      "padding": [
-                        5,
-                        14
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "30Q0E",
-                          "name": "idaBadgeText",
-                          "fill": "$--text-white",
-                          "content": "Ida",
-                          "fontFamily": "Avenir Next LT Pro",
-                          "fontSize": 11,
-                          "fontWeight": "700",
-                          "letterSpacing": 0.5
-                        }
-                      ]
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E132710",
+                    "offset": {
+                      "x": 0,
+                      "y": 6
                     },
-                    {
-                      "type": "text",
-                      "id": "t88uD",
-                      "name": "headerDateText",
-                      "fill": "$--text-white",
-                      "content": "Domingo, 12 abr 2026",
-                      "fontFamily": "Poly",
-                      "fontSize": 13,
-                      "fontWeight": "500",
-                      "fontStyle": "italic"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "h9dh9",
-                      "name": "headerSpacer",
-                      "width": "fill_container",
-                      "height": 1
-                    },
-                    {
-                      "type": "frame",
-                      "id": "r1U5k",
-                      "name": "changeBtn",
-                      "fill": "$--brand-red",
-                      "cornerRadius": 8,
-                      "padding": [
-                        7,
-                        16
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "88uKV",
-                          "name": "changeBtnText",
-                          "fill": "$--text-white",
-                          "content": "Cambiar",
-                          "fontFamily": "Avenir Next LT Pro",
-                          "fontSize": 11,
-                          "fontWeight": "600",
-                          "letterSpacing": 0.5
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "sb650",
-                  "name": "cardBody",
-                  "width": "fill_container",
+                    "blur": 32
+                  },
                   "layout": "vertical",
-                  "gap": 28,
-                  "padding": [
-                    32,
-                    36
-                  ],
                   "children": [
                     {
                       "type": "frame",
-                      "id": "nUWoG",
-                      "name": "timeline",
+                      "id": "0Yvv3",
+                      "name": "idaHd",
                       "width": "fill_container",
-                      "gap": 20,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E1327",
+                            "position": 0
+                          },
+                          {
+                            "color": "#162040",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "cornerRadius": [
+                        16,
+                        16,
+                        0,
+                        0
+                      ],
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        24
+                      ],
+                      "alignItems": "center",
                       "children": [
                         {
                           "type": "frame",
-                          "id": "C90tj",
-                          "name": "departCol",
-                          "layout": "vertical",
-                          "gap": 2,
-                          "alignItems": "end",
+                          "id": "ngtj5",
+                          "name": "idaBdg",
+                          "fill": "$--brand-red",
+                          "cornerRadius": 12,
+                          "padding": [
+                            4,
+                            12
+                          ],
                           "children": [
                             {
                               "type": "text",
-                              "id": "8Hz6u",
-                              "name": "departTime",
-                              "fill": "$--text-primary",
-                              "content": "14:00",
+                              "id": "7Q8aZ",
+                              "name": "idaBdgT",
+                              "fill": "$--text-white",
+                              "content": "IDA",
                               "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 28,
-                              "fontWeight": "700"
-                            },
-                            {
-                              "type": "text",
-                              "id": "9Rmgx",
-                              "name": "departCity",
-                              "fill": "$--gray-500",
-                              "content": "Puerto Ayora",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 13,
-                              "fontWeight": "500"
-                            },
-                            {
-                              "type": "text",
-                              "id": "Nsm4g",
-                              "name": "departIsland",
-                              "fill": "$--gray-400",
-                              "content": "Santa Cruz",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
+                              "fontSize": 11,
+                              "fontWeight": "700",
+                              "letterSpacing": 1
                             }
                           ]
                         },
                         {
+                          "type": "text",
+                          "id": "FTzQK",
+                          "name": "idaDateT",
+                          "fill": "$--gray-400",
+                          "content": "Domingo, 12 abr 2026",
+                          "fontFamily": "Poly",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
                           "type": "frame",
-                          "id": "kFFGN",
-                          "name": "timelineCenter",
-                          "layout": "vertical",
-                          "gap": 4,
+                          "id": "sRK42",
+                          "name": "idaHdSp",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kt2TD",
+                          "name": "idaChgBtn",
+                          "fill": "$--brand-red",
+                          "cornerRadius": 8,
                           "padding": [
-                            8,
-                            0,
-                            0,
-                            0
+                            6,
+                            14
                           ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "0XyAk",
+                              "name": "idaChgT",
+                              "fill": "$--text-white",
+                              "content": "Cambiar",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 11,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.5
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lX7wT",
+                      "name": "idaBd",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        28,
+                        32
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "AKAe8",
+                          "name": "idaTimeRow",
+                          "width": "fill_container",
+                          "gap": 16,
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "ellipse",
-                              "id": "SlFRV",
-                              "name": "dotTop",
-                              "fill": "$--navy-900",
-                              "width": 12,
-                              "height": 12
+                              "type": "frame",
+                              "id": "5oXU3",
+                              "name": "idaDep",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "udzHD",
+                                  "name": "idaDepTime",
+                                  "fill": "$--text-primary",
+                                  "content": "07:00",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 28,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "2sNpA",
+                                  "name": "idaDepPort",
+                                  "fill": "$--gray-500",
+                                  "content": "Puerto Ayora",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "JteDj",
+                                  "name": "idaDepIsla",
+                                  "fill": "$--gray-400",
+                                  "content": "Santa Cruz",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal",
+                                  "fontStyle": "italic"
+                                }
+                              ]
                             },
                             {
                               "type": "frame",
-                              "id": "iI90r",
-                              "name": "tlLine",
-                              "width": 2,
-                              "height": 40,
-                              "fill": "$--gray-200"
+                              "id": "1dKFm",
+                              "name": "idaTl",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "dgYYo",
+                                  "name": "idaTlBdg",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--gray-300"
+                                  },
+                                  "padding": [
+                                    3,
+                                    10
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "gSGXj",
+                                      "name": "idaTlBdgT",
+                                      "fill": "$--text-primary",
+                                      "content": "DIRECTO",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 9,
+                                      "fontWeight": "700",
+                                      "letterSpacing": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "RBDM5",
+                                  "name": "idaTlLine",
+                                  "width": "fill_container",
+                                  "gap": 4,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "KDQ0K",
+                                      "name": "idaTlDot",
+                                      "fill": "$--brand-navy",
+                                      "width": 7,
+                                      "height": 7
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "llbXB",
+                                      "name": "idaTlDash",
+                                      "width": "fill_container",
+                                      "height": 2,
+                                      "fill": "$--gray-300",
+                                      "cornerRadius": 1
+                                    },
+                                    {
+                                      "type": "icon_font",
+                                      "id": "ekzKP",
+                                      "name": "idaTlArr",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "arrow-right",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--gray-400"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "LRxUq",
+                                  "name": "idaTlDur",
+                                  "fill": "$--gray-400",
+                                  "content": "02h 00min",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
                             },
                             {
-                              "type": "ellipse",
-                              "id": "ohsgV",
-                              "name": "dotBottom",
-                              "width": 12,
-                              "height": 12,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 2,
-                                "fill": "$--navy-900"
-                              }
+                              "type": "frame",
+                              "id": "FF900",
+                              "name": "idaArr2",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "szHsU",
+                                  "name": "idaArrTime",
+                                  "fill": "$--text-primary",
+                                  "content": "09:00",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 28,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "2n6ru",
+                                  "name": "idaArrPort",
+                                  "fill": "$--gray-500",
+                                  "content": "Pto. Villamil",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "ZsL7S",
+                                  "name": "idaArrIsla",
+                                  "fill": "$--gray-400",
+                                  "content": "Isabela",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal",
+                                  "fontStyle": "italic"
+                                }
+                              ]
                             }
                           ]
                         },
                         {
                           "type": "frame",
-                          "id": "Wd6Pq",
-                          "name": "arriveCol",
-                          "layout": "vertical",
-                          "gap": 2,
+                          "id": "zmVbf",
+                          "name": "idaTags",
+                          "width": "fill_container",
+                          "gap": 10,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "0K5Om",
-                              "name": "arriveTime",
-                              "fill": "$--text-primary",
-                              "content": "16:30",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 28,
-                              "fontWeight": "700"
+                              "type": "frame",
+                              "id": "QtLRv",
+                              "name": "idaDurTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "x4aPx",
+                                  "name": "idaDurIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "clock-3",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "24fdt",
+                                  "name": "idaDurTx",
+                                  "fill": "$--gray-500",
+                                  "content": "2h 00m",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
                             },
                             {
-                              "type": "text",
-                              "id": "ETxyo",
-                              "name": "arriveCity",
-                              "fill": "$--gray-500",
-                              "content": "Puerto Baquerizo Moreno",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 13,
-                              "fontWeight": "500"
+                              "type": "frame",
+                              "id": "grrxx",
+                              "name": "idaLugTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "DA5Je",
+                                  "name": "idaLugIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "luggage",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "C3ZKF",
+                                  "name": "idaLugTx",
+                                  "fill": "$--gray-500",
+                                  "content": "Equipaje 23kg",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
                             },
                             {
-                              "type": "text",
-                              "id": "YPCM9",
-                              "name": "arriveIsland",
-                              "fill": "$--gray-400",
-                              "content": "San Cristóbal",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "7PF7a",
-                      "name": "detailsTags",
-                      "width": "fill_container",
-                      "gap": 12,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "TpFMF",
-                          "name": "durationTag",
-                          "fill": "$--gray-100",
-                          "cornerRadius": 16,
-                          "gap": 6,
-                          "padding": [
-                            6,
-                            14
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "ZQDw0",
-                              "name": "durTagIcon",
-                              "width": 14,
-                              "height": 14,
-                              "iconFontName": "clock-3",
-                              "iconFontFamily": "lucide",
-                              "fill": "$--gray-500"
-                            },
-                            {
-                              "type": "text",
-                              "id": "5030v",
-                              "name": "durTagText",
-                              "fill": "$--gray-600",
-                              "content": "2h 30m",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 13,
-                              "fontWeight": "500"
+                              "type": "frame",
+                              "id": "oRjPP",
+                              "name": "idaFerryTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "YOXvW",
+                                  "name": "idaFerryIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "ship",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "GwVYc",
+                                  "name": "idaFerryTx",
+                                  "fill": "$--gray-500",
+                                  "content": "Paradeisos Premium",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
                             }
                           ]
                         },
                         {
                           "type": "frame",
-                          "id": "1YMJA",
-                          "name": "luggageTag",
-                          "fill": "$--gray-100",
-                          "cornerRadius": 16,
-                          "gap": 6,
-                          "padding": [
-                            6,
-                            14
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon_font",
-                              "id": "7sObC",
-                              "name": "lugTagIcon",
-                              "width": 14,
-                              "height": 14,
-                              "iconFontName": "luggage",
-                              "iconFontFamily": "lucide",
-                              "fill": "$--gray-500"
-                            },
-                            {
-                              "type": "text",
-                              "id": "oHGTq",
-                              "name": "lugTagText",
-                              "fill": "$--gray-600",
-                              "content": "Equipaje 20kg",
-                              "fontFamily": "Avenir Next LT Pro",
-                              "fontSize": 13,
-                              "fontWeight": "500"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "7qzTR",
-                      "name": "divider3",
-                      "width": "fill_container",
-                      "height": 1,
-                      "fill": "$--gray-100"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "fIvRT",
-                      "name": "ferryInfo",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": 12,
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "TNk7S",
-                          "name": "ferryInfoTitle",
-                          "fill": "$--gray-400",
-                          "content": "DETALLES DEL FERRY",
-                          "fontFamily": "Avenir Next LT Pro",
-                          "fontSize": 10,
-                          "fontWeight": "700",
-                          "letterSpacing": 1.5
+                          "id": "Ci8FD",
+                          "name": "idaDiv",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "$--gray-100"
                         },
                         {
                           "type": "frame",
-                          "id": "E1n0d",
-                          "name": "ferryRows",
+                          "id": "oD5ms",
+                          "name": "idaDetSec",
                           "width": "fill_container",
                           "layout": "vertical",
                           "gap": 8,
                           "children": [
                             {
+                              "type": "text",
+                              "id": "Qy8ye",
+                              "name": "idaDetTitle",
+                              "fill": "$--gray-400",
+                              "content": "DETALLES",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 1.5
+                            },
+                            {
                               "type": "frame",
-                              "id": "a2E2H",
-                              "name": "fRow1",
+                              "id": "0xl5k",
+                              "name": "detCodigo",
                               "width": "fill_container",
-                              "alignItems": "center",
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "k30kt",
-                                  "name": "fRow1L",
+                                  "id": "V5la4",
                                   "fill": "$--gray-500",
                                   "content": "Código",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
-                                  "fontWeight": "normal"
+                                  "fontWeight": "500"
                                 },
                                 {
                                   "type": "frame",
-                                  "id": "K9qc1",
-                                  "name": "fRow1S",
+                                  "id": "CD2Ha",
+                                  "name": "sp",
                                   "width": "fill_container",
                                   "height": 1
                                 },
                                 {
                                   "type": "text",
-                                  "id": "E0SdH",
-                                  "name": "fRow1V",
+                                  "id": "2G3bB",
                                   "fill": "$--text-primary",
-                                  "content": "MED-002",
+                                  "content": "PAR-SC-IS-0412",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
                                   "fontWeight": "600"
@@ -3781,32 +3858,29 @@
                             },
                             {
                               "type": "frame",
-                              "id": "qn9KB",
-                              "name": "fRow2",
+                              "id": "TOfxF",
+                              "name": "detEmb",
                               "width": "fill_container",
-                              "alignItems": "center",
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "bnnWd",
-                                  "name": "fRow2L",
+                                  "id": "8sscR",
                                   "fill": "$--gray-500",
                                   "content": "Embarcación",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
-                                  "fontWeight": "normal"
+                                  "fontWeight": "500"
                                 },
                                 {
                                   "type": "frame",
-                                  "id": "6AWdo",
-                                  "name": "fRow2S",
+                                  "id": "mm8jj",
+                                  "name": "sp",
                                   "width": "fill_container",
                                   "height": 1
                                 },
                                 {
                                   "type": "text",
-                                  "id": "xqjnU",
-                                  "name": "fRow2V",
+                                  "id": "9pHdp",
                                   "fill": "$--text-primary",
                                   "content": "Paradeisos Premium",
                                   "fontFamily": "Avenir Next LT Pro",
@@ -3817,34 +3891,31 @@
                             },
                             {
                               "type": "frame",
-                              "id": "PQ21F",
-                              "name": "fRow3",
+                              "id": "xL3wV",
+                              "name": "detClase",
                               "width": "fill_container",
-                              "alignItems": "center",
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "rwytl",
-                                  "name": "fRow3L",
+                                  "id": "CPDR0",
                                   "fill": "$--gray-500",
                                   "content": "Clase",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
-                                  "fontWeight": "normal"
+                                  "fontWeight": "500"
                                 },
                                 {
                                   "type": "frame",
-                                  "id": "6m9pS",
-                                  "name": "fRow3S",
+                                  "id": "zhIWY",
+                                  "name": "sp",
                                   "width": "fill_container",
                                   "height": 1
                                 },
                                 {
                                   "type": "text",
-                                  "id": "kKSwK",
-                                  "name": "fRow3V",
+                                  "id": "9kjuT",
                                   "fill": "$--text-primary",
-                                  "content": "Premium",
+                                  "content": "Estándar",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
                                   "fontWeight": "600"
@@ -3853,39 +3924,209 @@
                             },
                             {
                               "type": "frame",
-                              "id": "9cZSk",
-                              "name": "fRow4",
+                              "id": "ezAJ1",
+                              "name": "detPrecio",
                               "width": "fill_container",
-                              "alignItems": "center",
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "DekUZ",
-                                  "name": "fRow4L",
+                                  "id": "KuzMf",
                                   "fill": "$--gray-500",
                                   "content": "Precio",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
-                                  "fontWeight": "normal"
+                                  "fontWeight": "500"
                                 },
                                 {
                                   "type": "frame",
-                                  "id": "Bpn5K",
-                                  "name": "fRow4S",
+                                  "id": "0g7GJ",
+                                  "name": "sp",
                                   "width": "fill_container",
                                   "height": 1
                                 },
                                 {
                                   "type": "text",
-                                  "id": "E5bry",
-                                  "name": "fRow4V",
-                                  "fill": "$--navy-900",
-                                  "content": "$70 por persona",
+                                  "id": "57hEH",
+                                  "fill": "$--brand-red",
+                                  "content": "$35.00",
                                   "fontFamily": "Avenir Next LT Pro",
                                   "fontSize": 13,
-                                  "fontWeight": "600"
+                                  "fontWeight": "700"
                                 }
                               ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "1jVR0",
+                          "name": "idaDiv2",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "$--gray-100"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SSehq",
+                          "name": "idaSub",
+                          "width": "fill_container",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Aa7JL",
+                              "fill": "$--text-primary",
+                              "content": "Subtotal IDA",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "LFRAf",
+                              "name": "sp5",
+                              "width": "fill_container",
+                              "height": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "0jG9u",
+                              "fill": "$--text-primary",
+                              "content": "$35.00",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yfBpC",
+                  "name": "vueltaCard",
+                  "width": 560,
+                  "fill": "$--white",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$--gray-200"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E132710",
+                    "offset": {
+                      "x": 0,
+                      "y": 6
+                    },
+                    "blur": 32
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "9y1uI",
+                      "name": "vueltaHd",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E1327",
+                            "position": 0
+                          },
+                          {
+                            "color": "#162040",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "cornerRadius": [
+                        16,
+                        16,
+                        0,
+                        0
+                      ],
+                      "gap": 12,
+                      "padding": [
+                        16,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "vrFkq",
+                          "name": "idaBdg",
+                          "fill": "$--navy-600",
+                          "cornerRadius": 12,
+                          "padding": [
+                            4,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OB8gE",
+                              "name": "idaBdgT",
+                              "fill": "$--text-white",
+                              "content": "VUELTA",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 11,
+                              "fontWeight": "700",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "BnWVm",
+                          "name": "idaDateT",
+                          "fill": "$--gray-400",
+                          "content": "Lunes, 13 abr 2026",
+                          "fontFamily": "Poly",
+                          "fontSize": 13,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fvGb6",
+                          "name": "idaHdSp",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "U0ZMx",
+                          "name": "idaChgBtn",
+                          "fill": "$--navy-600",
+                          "cornerRadius": 8,
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "FSc9M",
+                              "name": "idaChgT",
+                              "fill": "$--text-white",
+                              "content": "Cambiar",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 11,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.5
                             }
                           ]
                         }
@@ -3893,87 +4134,585 @@
                     },
                     {
                       "type": "frame",
-                      "id": "xlADA",
-                      "name": "divider4",
+                      "id": "P8L30",
+                      "name": "vueltaBd",
                       "width": "fill_container",
-                      "height": 1,
-                      "fill": "$--gray-100"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "ZQD6q",
-                      "name": "totalRow",
-                      "width": "fill_container",
-                      "alignItems": "center",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        28,
+                        32
+                      ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "Sifz1",
-                          "name": "totalLabel",
-                          "fill": "$--text-primary",
-                          "content": "Total (2 pasajeros)",
-                          "fontFamily": "Poly",
-                          "fontSize": 15,
-                          "fontWeight": "600"
+                          "type": "frame",
+                          "id": "xxLO8",
+                          "name": "idaTimeRow",
+                          "width": "fill_container",
+                          "gap": 16,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "JG7D7",
+                              "name": "idaDep",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "O7oUh",
+                                  "name": "idaDepTime",
+                                  "fill": "$--text-primary",
+                                  "content": "09:30",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 28,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "nR8nI",
+                                  "name": "idaDepPort",
+                                  "fill": "$--gray-500",
+                                  "content": "Pto. Villamil",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "h8mDB",
+                                  "name": "idaDepIsla",
+                                  "fill": "$--gray-400",
+                                  "content": "Isabela",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal",
+                                  "fontStyle": "italic"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "5Pub5",
+                              "name": "idaTl",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "emEdj",
+                                  "name": "idaTlBdg",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--gray-300"
+                                  },
+                                  "padding": [
+                                    3,
+                                    10
+                                  ],
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "t1L6v",
+                                      "name": "idaTlBdgT",
+                                      "fill": "$--text-primary",
+                                      "content": "DIRECTO",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 9,
+                                      "fontWeight": "700",
+                                      "letterSpacing": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "rqlCN",
+                                  "name": "idaTlLine",
+                                  "width": "fill_container",
+                                  "gap": 4,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "ls976",
+                                      "name": "idaTlDot",
+                                      "fill": "$--brand-navy",
+                                      "width": 7,
+                                      "height": 7
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "UBNpq",
+                                      "name": "idaTlDash",
+                                      "width": "fill_container",
+                                      "height": 2,
+                                      "fill": "$--gray-300",
+                                      "cornerRadius": 1
+                                    },
+                                    {
+                                      "type": "icon_font",
+                                      "id": "Rgt5d",
+                                      "name": "idaTlArr",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "arrow-right",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--gray-400"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fOWjT",
+                                  "name": "idaTlDur",
+                                  "fill": "$--gray-400",
+                                  "content": "02h 00min",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "dFlzl",
+                              "name": "idaArr2",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "D4FDX",
+                                  "name": "idaArrTime",
+                                  "fill": "$--text-primary",
+                                  "content": "11:30",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 28,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "S7DvD",
+                                  "name": "idaArrPort",
+                                  "fill": "$--gray-500",
+                                  "content": "Puerto Ayora",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "TUvVz",
+                                  "name": "idaArrIsla",
+                                  "fill": "$--gray-400",
+                                  "content": "Santa Cruz",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal",
+                                  "fontStyle": "italic"
+                                }
+                              ]
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "XrFMm",
-                          "name": "totalSpacer",
+                          "id": "9THTv",
+                          "name": "idaTags",
                           "width": "fill_container",
-                          "height": 1
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "6iD6M",
+                              "name": "idaDurTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "Z5KYs",
+                                  "name": "idaDurIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "clock-3",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Re5pc",
+                                  "name": "idaDurTx",
+                                  "fill": "$--gray-500",
+                                  "content": "2h 00m",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "IfpSs",
+                              "name": "idaLugTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "6nDLF",
+                                  "name": "idaLugIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "luggage",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "RSnER",
+                                  "name": "idaLugTx",
+                                  "fill": "$--gray-500",
+                                  "content": "Equipaje 23kg",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "NocKl",
+                              "name": "idaFerryTag",
+                              "fill": "$--gray-100",
+                              "cornerRadius": 14,
+                              "gap": 4,
+                              "padding": [
+                                6,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "zBfVD",
+                                  "name": "idaFerryIc",
+                                  "width": 13,
+                                  "height": 13,
+                                  "iconFontName": "ship",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "KkzWg",
+                                  "name": "idaFerryTx",
+                                  "fill": "$--gray-500",
+                                  "content": "Paradeisos Premium",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
                         },
                         {
-                          "type": "text",
-                          "id": "IOcMB",
-                          "name": "totalPrice",
-                          "fill": "$--navy-900",
-                          "content": "$140",
-                          "fontFamily": "Avenir Next LT Pro",
-                          "fontSize": 28,
-                          "fontWeight": "700"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "StPoB",
-                      "name": "continueBtn",
-                      "width": "fill_container",
-                      "fill": "$--navy-900",
-                      "cornerRadius": 12,
-                      "gap": 8,
-                      "padding": [
-                        18,
-                        32
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "6PpV9",
-                          "name": "continueTxt",
-                          "fill": "$--text-white",
-                          "content": "Continuar",
-                          "fontFamily": "Avenir Next LT Pro",
-                          "fontSize": 15,
-                          "fontWeight": "700",
-                          "letterSpacing": 0.5
+                          "type": "frame",
+                          "id": "0T5tv",
+                          "name": "idaDiv",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "$--gray-100"
                         },
                         {
-                          "type": "icon_font",
-                          "id": "f36qQ",
-                          "name": "continueIcon",
-                          "width": 20,
-                          "height": 20,
-                          "iconFontName": "arrow-right",
-                          "iconFontFamily": "lucide",
-                          "fill": "$--text-white"
+                          "type": "frame",
+                          "id": "tDBnd",
+                          "name": "vueltaDetSec",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7LBmw",
+                              "name": "idaDetTitle",
+                              "fill": "$--gray-400",
+                              "content": "DETALLES",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 10,
+                              "fontWeight": "700",
+                              "letterSpacing": 1.5
+                            },
+                            {
+                              "type": "frame",
+                              "id": "8IvbV",
+                              "name": "detCodigo",
+                              "width": "fill_container",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "p7N5p",
+                                  "fill": "$--gray-500",
+                                  "content": "Código",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "rW3ig",
+                                  "name": "sp",
+                                  "width": "fill_container",
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "KCjXF",
+                                  "fill": "$--text-primary",
+                                  "content": "PAR-IS-SC-0413",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "3bkHi",
+                              "name": "detEmb",
+                              "width": "fill_container",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "87fZH",
+                                  "fill": "$--gray-500",
+                                  "content": "Embarcación",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "wrLps",
+                                  "name": "sp",
+                                  "width": "fill_container",
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "NhKyM",
+                                  "fill": "$--text-primary",
+                                  "content": "Paradeisos Premium",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "APZ7P",
+                              "name": "detClase",
+                              "width": "fill_container",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Qz00c",
+                                  "fill": "$--gray-500",
+                                  "content": "Clase",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Z4r0L",
+                                  "name": "sp",
+                                  "width": "fill_container",
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "1VB8e",
+                                  "fill": "$--text-primary",
+                                  "content": "Estándar",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "b9ZTb",
+                              "name": "detPrecio",
+                              "width": "fill_container",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "QgXmF",
+                                  "fill": "$--gray-500",
+                                  "content": "Precio",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "1K3vn",
+                                  "name": "sp",
+                                  "width": "fill_container",
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "hive5",
+                                  "fill": "$--brand-red",
+                                  "content": "$35.00",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UmS9f",
+                          "name": "idaDiv2",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "$--gray-100"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "OPC3o",
+                          "name": "idaSub",
+                          "width": "fill_container",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "4gFVR",
+                              "fill": "$--text-primary",
+                              "content": "Subtotal VUELTA",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "kURaU",
+                              "name": "sp5",
+                              "width": "fill_container",
+                              "height": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "Zksx9",
+                              "fill": "$--text-primary",
+                              "content": "$35.00",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 18,
+                              "fontWeight": "700"
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u8txk",
+              "name": "totalRow",
+              "width": 560,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Qgelk",
+                  "fill": "$--text-primary",
+                  "content": "Total Ida y Vuelta",
+                  "fontFamily": "Avenir Next LT Pro",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "73Bi8",
+                  "name": "tsp",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "C3ZQl",
+                  "fill": "$--brand-red",
+                  "content": "$70.00",
+                  "fontFamily": "Avenir Next LT Pro",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W0Qfx",
+              "name": "cta",
+              "width": 560,
+              "fill": "$--navy-900",
+              "cornerRadius": 12,
+              "gap": 8,
+              "padding": [
+                18,
+                32
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "47Vl0",
+                  "name": "ctaTxt",
+                  "fill": "$--text-white",
+                  "content": "Continuar",
+                  "fontFamily": "Avenir Next LT Pro",
+                  "fontSize": 15,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "icon_font",
+                  "id": "3FW1f",
+                  "name": "ctaIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "arrow-right",
+                  "iconFontFamily": "lucide",
+                  "fill": "$--text-white"
                 }
               ]
             }
@@ -10811,7 +11550,7 @@
     {
       "type": "frame",
       "id": "qBH87",
-      "x": 3053,
+      "x": 3057,
       "y": -2457,
       "name": "03b - Confirma Viaje (Ida y Vuelta)",
       "width": 1440,

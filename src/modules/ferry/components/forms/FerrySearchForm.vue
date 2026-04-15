@@ -94,7 +94,6 @@ const {
 
 const swapOriginDestination = () => {
   const prev = { origin: origin.value, destination: destination.value };
-  console.log('swapOriginDestination', prev);
 
   setFieldValue('origin', prev.destination);
   setFieldValue('destination', prev.origin);

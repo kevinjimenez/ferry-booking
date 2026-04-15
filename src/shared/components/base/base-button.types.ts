@@ -7,6 +7,7 @@ export interface BaseButtonProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   circle?: boolean;
   disabled?: boolean;
+  loading?: boolean;
   prefixIcon?: Component;
   suffixIcon?: Component;
   iconClass?: string;

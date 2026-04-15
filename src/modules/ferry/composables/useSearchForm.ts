@@ -35,7 +35,6 @@ export const useSearchForm = () => {
 
   return {
     isRoundTrip,
-    // Form state
     errors,
     onSubmit,
     ticketType,

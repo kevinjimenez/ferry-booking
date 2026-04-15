@@ -1,8 +1,8 @@
 <template>
   <button
     :type="type"
-    :disabled="disabled"
-    :class="['btn shadow-none flex items-center justify-center', buttonClasses]"
+    :disabled="disabled || loading"
+    :class="['btn shadow-none flex items-center justify-center', buttonClasses, { 'btn-disabled': loading }]"
     @click="$emit('click')"
   >
     <component v-if="prefixIcon" :is="prefixIcon" :class="iconClass" />
@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
   size: 'md',
   circle: false,
   disabled: false,
+  loading: false,
 });
 
 defineEmits(['click']);

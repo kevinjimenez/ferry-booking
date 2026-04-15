@@ -6,21 +6,13 @@
       <FerryTripCard
         :passenger-count="search.passengerCount"
         type="outbound"
-        :date="search?.outboundDate ?? ''"
-        :origin="{
-          time: outbound!.origin.time,
-          port: outbound!.origin.port,
-          island: outbound!.origin.island,
-        }"
-        :destination="{
-          time: outbound!.destination.time,
-          port: outbound!.destination.port,
-          island: outbound!.destination.island,
-        }"
+        :date="search.outboundDate"
+        :origin="outbound!.origin"
+        :destination="outbound!.destination"
         :duration="outbound!.duration"
         :badges="['2h 00m', 'Clase Premium', '20 pasajeros']"
         :details="[
-          { label: 'Codigo', value: 'PAR-SC-IS-0412' },
+          { label: 'Codigo', value: maskString(outbound!.id, 5) },
           { label: 'Embarcacion', value: outbound!.ferry.name },
           { label: 'Clase', value: outbound!.ferry.type },
           { label: 'Precio', value: formatCurrency(outbound!.price) },
@@ -32,21 +24,13 @@
         :passengerCount="search.passengerCount"
         v-if="inbound"
         type="inbound"
-        :date="search?.inboundDate ?? ''"
-        :origin="{
-          time: inbound!.origin.time,
-          port: inbound!.origin.port,
-          island: inbound!.origin.island,
-        }"
-        :destination="{
-          time: inbound!.destination.time,
-          port: inbound!.destination.port,
-          island: inbound!.destination.island,
-        }"
-        :duration="inbound!.duration"
+        :date="search.inboundDate!"
+        :origin="inbound.origin"
+        :destination="inbound.destination"
+        :duration="inbound.duration"
         :badges="['2h 00m', 'Clase Premium', '20 pasajeros']"
         :details="[
-          { label: 'Codigo', value: 'PAR-SC-IS-0412' },
+          { label: 'Codigo', value: maskString(inbound!.id, 5) },
           { label: 'Embarcacion', value: inbound!.ferry.name },
           { label: 'Clase', value: inbound!.ferry.type },
           { label: 'Precio', value: formatCurrency(inbound!.price) },
@@ -59,14 +43,14 @@
     <div class="flex flex-col w-1/3">
       <LabelValue
         class="my-8"
-        label="Total Ida y Vuelta"
+        :label="buttonLabel"
         :value="formatCurrency(grandTotal)"
         :custom-class="{
           label: 'text-lg text-primary font-semibold',
           value: 'text-2xl text-secondary font-semibold',
         }"
       />
-      <BaseButton @click="goToPassengerDetails" :suffix-icon="ArrowRightDashedIcon">
+      <BaseButton @click="handleContinue" :loading="isPending" :suffix-icon="ArrowRightDashedIcon">
         Continuar
       </BaseButton>
     </div>
@@ -87,19 +71,42 @@ import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import { storeToRefs } from 'pinia';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
+import { maskString } from '@/shared/utils/string.utils.ts';
+import { useCreateBooking } from '@/modules/ferry/actions/create-booking.action.ts';
+import { useBookingCheckout } from '@/modules/ferry/composables/useBookingCheckout.ts';
+import { useBookingStore } from '@/modules/ferry/stores/ferry-booking.store.ts';
 
 const storeFerrySearch = useFerrySearchStore();
 const storeFerrySelection = useFerrySelectionStore();
-const { values: search } = storeToRefs(storeFerrySearch);
+const { values: search, isRoundTrip } = storeToRefs(storeFerrySearch);
 const { inbound, outbound } = storeToRefs(storeFerrySelection);
 
+const { createBookingBody, isSameBooking } = useBookingCheckout();
+const bookingStore = useBookingStore();
+
 const title = computed(() =>
-  storeFerrySearch.isRoundTrip ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
+  isRoundTrip.value ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
 );
+
 const { goToPassengerDetails } = useFerryNavigation();
 const { grandTotal, inboundTotal, outboundTotal } = useTripPrice();
+const { mutateAsync: createBooking, isPending } = useCreateBooking();
 
 const handleChange = () => {
   loggerServices.log('handleChange');
+};
+
+const buttonLabel = computed(() => (isRoundTrip.value ? 'Total Ida y Vuelta' : 'Total Ida'));
+
+const handleContinue = async () => {
+  if (!isSameBooking.value) {
+    const result = await createBooking(createBookingBody.value);
+    bookingStore.setBooking(
+      result.id,
+      createBookingBody.value.outboundScheduleId,
+      createBookingBody.value.returnScheduleId,
+    );
+  }
+  await goToPassengerDetails(); // 2. navega
 };
 </script>
