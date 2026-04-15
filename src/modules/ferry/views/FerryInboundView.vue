@@ -1,7 +1,53 @@
 <template>
-  <FerryNavHeader title="Elige un ferry de vuelta" @back="$router.back()" />
-  <h1 class="text-h1">Ferry Inbound View</h1>
-  <BaseButton @click="goToTripSummary"> Go to Trip Summary </BaseButton>
+  <FerryNavHeader title="Elige un ferry de vuelta" @back="goToBack" />
+  <section class="flex w-full p-10 gap-x-10">
+    <div class="w-3/4 flex flex-col">
+      <SearchSummaryCard v-bind="searchSummaryCardProps" />
+      <TripTypeBadges class="mt-5" :is-round-trip="isRoundTrip" active="inbound" />
+
+      <div class="flex w-full justify-between items-center my-6">
+        <span class="text-sm">HORARIOS DISPONIBLES</span>
+        <BaseButton size="xs" :prefix-icon="SortIcon" icon-class="size-3.5" variant="soft">
+          Ordenar
+        </BaseButton>
+      </div>
+
+      <div class="flex flex-col gap-y-5">
+        <ScheduleCard
+          v-for="schedule in schedulesData"
+          :key="schedule.id"
+          :origin="{
+            time: schedule.origin.time,
+            port: schedule.origin.port,
+            island: schedule.origin.island,
+            address: schedule.origin.address,
+          }"
+          :destination="{
+            time: schedule.destination.time,
+            port: schedule.destination.port,
+            island: schedule.destination.island,
+            address: schedule.destination.address,
+          }"
+          :duration="schedule.duration"
+          :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
+          :selected="storeFerrySelectionStore.inbound?.id === schedule.id"
+          @select="handleSelect(schedule)"
+        />
+      </div>
+    </div>
+    <div class="w-1/4 sticky top-14 self-start">
+      <div class="flex flex-col gap-y-5">
+        <BookingSummaryCard
+          :outbound="selectedOutbound"
+          :inbound="selectedInbound"
+          :is-round-trip="true"
+          :total="formatCurrency(grandTotal)"
+          button-label="Continuar"
+          @continue="goToTripSummary"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -9,7 +55,75 @@ import BaseButton from '@/shared/components/base/BaseButton.vue';
 import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
+import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
+import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
+import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
+import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
+import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
+import { computed } from 'vue';
+import SortIcon from '@/shared/icons/SortIcon.vue';
+import type { Ferry } from '@/modules/ferry/types/ferry.types.ts';
+import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
+import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
+import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 
-const {} = useScheduleQuery('inbound');
+const router = useRouter();
+
+const storeFerrySearchStore = useFerrySearchStore();
+const storeFerrySelectionStore = useFerrySelectionStore();
+
+const { values, isRoundTrip } = storeToRefs(storeFerrySearchStore);
+const { outbound, inbound } = storeToRefs(storeFerrySelectionStore);
+
+const { data: schedulesData, averageDuration } = useScheduleQuery('inbound');
 const { goToTripSummary } = useFerryNavigation();
+const { grandTotal } = useTripPrice();
+
+const selectedOutbound = computed(() => {
+  if (!outbound.value) return undefined;
+  return {
+    origin: outbound.value.origin.port,
+    destination: outbound.value.destination.port,
+    ferry: outbound.value.ferry.name,
+    departure: outbound.value.origin.time,
+    arrival: outbound.value.destination.time,
+    passengers: `${values.value.passengerCount} adultos`,
+    price: formatCurrency(outbound.value.price),
+  };
+});
+
+const selectedInbound = computed(() => {
+  if (!inbound.value) return undefined;
+  return {
+    origin: inbound.value.origin.port,
+    destination: inbound.value.destination.port,
+    ferry: inbound.value.ferry.name,
+    departure: inbound.value.origin.time,
+    arrival: inbound.value.destination.time,
+    passengers: `${values.value.passengerCount} adultos`,
+    price: formatCurrency(inbound.value.price),
+  };
+});
+
+const searchSummaryCardProps = computed(() => ({
+  originName: values.value.destination?.label ?? '',
+  originIsland: (values.value.destination?.extra as Record<string, string>)?.name ?? '',
+  destinationName: values.value.origin?.label ?? '',
+  destinationIsland: (values.value.origin?.extra as Record<string, string>)?.name ?? '',
+  date: values.value.outboundDate,
+  passengers: values.value.passengerCount,
+  duration: averageDuration.value,
+}));
+
+const handleSelect = (schedule: Ferry) => {
+  storeFerrySelectionStore.setInbound(schedule);
+  console.log('Selected schedule:', schedule.id);
+};
+
+const goToBack = () => {
+  router.back();
+  storeFerrySelectionStore.reset();
+};
 </script>

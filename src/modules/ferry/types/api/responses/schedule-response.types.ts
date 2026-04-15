@@ -16,6 +16,19 @@ export interface ScheduleResponse {
   routes: RouteResponse;
 }
 
+export interface Island {
+  name: string;
+  code: string;
+  description: string;
+}
+
+export interface Port {
+  address: string;
+  code: string;
+  name: string;
+  islands: Island;
+}
+
 export interface RouteResponse {
   id: string;
   origin_port_id: string;
@@ -28,6 +41,8 @@ export interface RouteResponse {
   is_active: boolean;
   created_at: Date;
   updated_at: Date;
+  destination_ports: Port;
+  origin_ports: Port;
 }
 
 export interface FerryResponse {

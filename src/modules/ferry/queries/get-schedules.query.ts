@@ -9,14 +9,15 @@ import { ScheduleMapper } from '@/modules/ferry/mappers/schedule.mapper.ts';
 
 const getSchedulesQuery = async (params: GetSchedulesRequest) => {
   const { origin, destination, date } = params;
+  loggerServices.log({ origin, destination, date });
 
   try {
     const response = await apiServices.get<ApiResponse<ScheduleResponse[]>>('/schedules', {
-      params: {
-        date,
-        origin,
-        destination,
-      },
+      // params: {
+      //   date,
+      //   origin,
+      //   destination,
+      // },
     });
 
     if (!response.data) {

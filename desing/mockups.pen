@@ -1412,15 +1412,37 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "GK2KE",
+                                  "type": "frame",
+                                  "id": "kYL0f",
                                   "name": "c1Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "fill": "$--accent-blue-light",
+                                  "cornerRadius": 12,
+                                  "gap": 5,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "ykJ76",
+                                      "width": 13,
+                                      "height": 13,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--brand-navy"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "PBU0T",
+                                      "fill": "$--brand-navy",
+                                      "content": "8 asientos disp.",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -1795,15 +1817,37 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "vJlGI",
+                                  "type": "frame",
+                                  "id": "xC8P2",
                                   "name": "c2Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "fill": "$--accent-blue-light",
+                                  "cornerRadius": 12,
+                                  "gap": 5,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "8iCdZ",
+                                      "width": 13,
+                                      "height": 13,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--brand-navy"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "iezD1",
+                                      "fill": "$--brand-navy",
+                                      "content": "12 asientos disp.",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -2178,15 +2222,37 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "wLfdw",
+                                  "type": "frame",
+                                  "id": "lZVxf",
                                   "name": "c3Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "fill": "$--accent-blue-light",
+                                  "cornerRadius": 12,
+                                  "gap": 5,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "KSwaq",
+                                      "width": 13,
+                                      "height": 13,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--brand-navy"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "JtnRZ",
+                                      "fill": "$--brand-navy",
+                                      "content": "5 asientos disp.",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -2300,6 +2366,411 @@
                                   "type": "text",
                                   "id": "mSYfh",
                                   "name": "bag2T3",
+                                  "fill": "$--gray-500",
+                                  "content": "Maleta de 23kg",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fnuOz",
+                      "name": "card - Agotado",
+                      "opacity": 0.6,
+                      "width": "fill_container",
+                      "fill": "$--white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$--gray-200"
+                      },
+                      "layout": "vertical",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "rTVtE",
+                          "name": "topRow",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "padding": [
+                            28,
+                            32
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Vz3ey",
+                              "name": "c1Left",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "sP6XZ",
+                                  "name": "c1Depart",
+                                  "fill": "$--text-primary",
+                                  "content": "07:00",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 32,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "kenTp",
+                                  "name": "c1DepartLabel",
+                                  "fill": "$--brand-red",
+                                  "content": "ISLA SANTA CRUZ",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 12,
+                                  "fontWeight": "700",
+                                  "letterSpacing": 1.5
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "56PfY",
+                                  "name": "muelleFrom",
+                                  "fill": "$--text-primary",
+                                  "content": "Muelle Turístico Gus Angermeyer (SCX)",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 11,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "sh0SL",
+                                  "name": "locFrom",
+                                  "fill": "$--gray-500",
+                                  "content": "Puerto Ayora, Isla Santa Cruz, ECU",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "msmq9",
+                              "name": "c1Mid",
+                              "layout": "vertical",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "mtFdT",
+                                  "name": "directoBadge",
+                                  "cornerRadius": 4,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "$--gray-300"
+                                  },
+                                  "padding": [
+                                    3,
+                                    10
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "btBML",
+                                      "name": "directoTxt",
+                                      "fill": "$--text-primary",
+                                      "content": "DIRECTO",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 9,
+                                      "fontWeight": "700",
+                                      "letterSpacing": 1.2
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "nGxDk",
+                                  "name": "timelineRow",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "fndeo",
+                                      "name": "leftDot2",
+                                      "fill": "$--brand-navy",
+                                      "width": 7,
+                                      "height": 7
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "S7MwH",
+                                      "name": "c1Line",
+                                      "width": 100,
+                                      "height": 2,
+                                      "fill": "$--gray-300"
+                                    },
+                                    {
+                                      "type": "icon_font",
+                                      "id": "zU8AY",
+                                      "name": "rightArrow",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "arrow-right",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--gray-400"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "0RPiT",
+                                  "name": "c1Ferry",
+                                  "fill": "$--gray-400",
+                                  "content": "02h 00min",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "rvjiQ",
+                              "name": "c1Right",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "InY2C",
+                                  "name": "c1Arrive",
+                                  "fill": "$--text-primary",
+                                  "content": "09:30",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 32,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "qKkbS",
+                                  "name": "c1ArriveLabel",
+                                  "fill": "$--brand-red",
+                                  "content": "ISLA ISABELA",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 12,
+                                  "fontWeight": "700",
+                                  "letterSpacing": 1.5
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "3Ot9h",
+                                  "name": "muelleTo",
+                                  "fill": "$--text-primary",
+                                  "content": "Muelle de Puerto Villamil (ISA)",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 11,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "K42tS",
+                                  "name": "locTo",
+                                  "fill": "$--gray-500",
+                                  "content": "Puerto Villamil, Isla Isabela, ECU",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "7DhDp",
+                              "name": "spacerMid",
+                              "width": "fill_container",
+                              "height": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "VQPPh",
+                              "name": "c1PriceCol",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "KJmDf",
+                                  "name": "c1Price",
+                                  "fill": "$--gray-400",
+                                  "content": "37",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 36,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "PzNOJ",
+                                  "name": "c1PriceLabel",
+                                  "fill": "$--gray-400",
+                                  "content": "USD",
+                                  "fontFamily": "Avenir Next LT Pro",
+                                  "fontSize": 14,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "EwqKK",
+                                  "name": "c1Seats",
+                                  "fill": "#FEE2E2",
+                                  "cornerRadius": 12,
+                                  "gap": 5,
+                                  "padding": [
+                                    4,
+                                    10
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "hiDpw",
+                                      "width": 13,
+                                      "height": 13,
+                                      "iconFontName": "circle-x",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--brand-red"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "5vcFk",
+                                      "fill": "$--brand-red",
+                                      "content": "Agotado",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 11,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "aNwfU",
+                                  "name": "elegirBtn",
+                                  "width": 120,
+                                  "fill": "$--gray-300",
+                                  "cornerRadius": 8,
+                                  "padding": [
+                                    12,
+                                    32
+                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "RUknu",
+                                      "name": "elegirTxt",
+                                      "fill": "$--white",
+                                      "content": "No disponible",
+                                      "fontFamily": "Avenir Next LT Pro",
+                                      "fontSize": 14,
+                                      "fontWeight": "700",
+                                      "letterSpacing": 0.5
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "4FSS7",
+                          "name": "divLine",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "$--gray-200"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kqlFf",
+                          "name": "bottomInc",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "padding": [
+                            16,
+                            32
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7MnIp",
+                              "name": "inclLabel",
+                              "fill": "$--text-primary",
+                              "content": "Incluido en el precio:",
+                              "fontFamily": "Avenir Next LT Pro",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "fontStyle": "italic"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Y7XBf",
+                              "name": "bag1Group",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "fxmPu",
+                                  "name": "bag1Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "briefcase",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "zFbWQ",
+                                  "name": "bag1Text",
+                                  "fill": "$--gray-500",
+                                  "content": "Maleta de 5kg",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Udmyw",
+                              "name": "bag2Group",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "GK9Jm",
+                                  "name": "bag2Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "luggage",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "9tmZp",
+                                  "name": "bag2Text",
                                   "fill": "$--gray-500",
                                   "content": "Maleta de 23kg",
                                   "fontFamily": "Poly",
@@ -14595,15 +15066,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "C9zTH",
+                                  "type": "frame",
+                                  "id": "8Z9hG",
                                   "name": "c1Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "EJMpO",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-green"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "iEOsb",
+                                      "fill": "$--accent-green",
+                                      "content": "3",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -14649,7 +15136,7 @@
                           "id": "RGmFN",
                           "name": "bottomInc",
                           "width": "fill_container",
-                          "gap": 24,
+                          "gap": 16,
                           "padding": [
                             16,
                             32
@@ -14719,6 +15206,93 @@
                                   "name": "bag2Text",
                                   "fill": "$--gray-500",
                                   "content": "Maleta de 23kg",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "8gxhF",
+                              "name": "amenity-lifejacket",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "GxWQy",
+                                  "name": "amenity1Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "life-buoy",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "V0mzG",
+                                  "name": "amenity1Text",
+                                  "fill": "$--gray-500",
+                                  "content": "Chaleco",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "fLQiA",
+                              "name": "amenity-wifi",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "msnCn",
+                                  "name": "amenity2Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "wifi",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "wV0Ge",
+                                  "name": "amenity2Text",
+                                  "fill": "$--gray-500",
+                                  "content": "Wi-Fi",
+                                  "fontFamily": "Poly",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "JFaDD",
+                              "name": "amenity-snack",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "PgW0L",
+                                  "name": "amenity3Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "cup-soda",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$--gray-500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "dlihE",
+                                  "name": "amenity3Text",
+                                  "fill": "$--gray-500",
+                                  "content": "Snacks",
                                   "fontFamily": "Poly",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -14978,15 +15552,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "XvED1",
+                                  "type": "frame",
+                                  "id": "FCoW2",
                                   "name": "c2Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "BnzRB",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-green"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Ond0Z",
+                                      "fill": "$--accent-green",
+                                      "content": "10",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -15361,15 +15951,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "wqAzC",
+                                  "type": "frame",
+                                  "id": "h9YlZ",
                                   "name": "c3Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "bC5YX",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--brand-red"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "QBYiY",
+                                      "fill": "$--brand-red",
+                                      "content": "2",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -16133,7 +16739,7 @@
       "type": "frame",
       "id": "QJCG4",
       "x": -302,
-      "y": -961,
+      "y": -960,
       "name": "02 - Seleccion Ferry (Only ida)",
       "width": 1440,
       "height": 900,
@@ -16802,15 +17408,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "5xVQY",
+                                  "type": "frame",
+                                  "id": "1hw0j",
                                   "name": "c1Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "H3lME",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-green"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "fN3jO",
+                                      "fill": "$--accent-green",
+                                      "content": "6",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -17185,15 +17807,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "XRqA5",
+                                  "type": "frame",
+                                  "id": "MeOW4",
                                   "name": "c2Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "1XaYh",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-green"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "L8l0W",
+                                      "fill": "$--accent-green",
+                                      "content": "15",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",
@@ -17568,15 +18206,31 @@
                                   "fontWeight": "600"
                                 },
                                 {
-                                  "type": "text",
-                                  "id": "6v4XS",
+                                  "type": "frame",
+                                  "id": "ctFOP",
                                   "name": "c3Seats",
-                                  "fill": "$--gray-400",
-                                  "content": "Por pasajero, por ruta",
-                                  "fontFamily": "Poly",
-                                  "fontSize": 11,
-                                  "fontWeight": "normal",
-                                  "fontStyle": "italic"
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "Egj7R",
+                                      "width": 12,
+                                      "height": 12,
+                                      "iconFontName": "armchair",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$--accent-green"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Qe1Mw",
+                                      "fill": "$--accent-green",
+                                      "content": "4",
+                                      "fontFamily": "Poly",
+                                      "fontSize": 11,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "frame",

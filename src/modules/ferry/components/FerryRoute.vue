@@ -2,8 +2,8 @@
   <div class="flex gap-x-10 justify-center items-center">
     <FerryStopDetail
       :time="origin.time"
+      :port="origin.port"
       :island="origin.island"
-      :dock="origin.dock"
       :address="origin.address"
     />
 
@@ -11,8 +11,8 @@
 
     <FerryStopDetail
       :time="destination.time"
+      :port="destination.port"
       :island="destination.island"
-      :dock="destination.dock"
       :address="destination.address"
     />
   </div>
@@ -22,8 +22,8 @@ import ScheduleTimeline from '@/modules/ferry/components/ScheduleTimeline.vue';
 import FerryStopDetail from '@/modules/ferry/components/FerryStopDetail.vue';
 interface StopDetail {
   time: string;
+  port: string;
   island: string;
-  dock: string;
   address: string;
 }
 

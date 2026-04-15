@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-1.5">
+  <div class="inline-flex items-center gap-1.5">
     <component
       v-if="prefixIcon"
       :is="prefixIcon"

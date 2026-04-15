@@ -10,26 +10,27 @@
     />
     <div class="flex w-full justify-end items-center gap-x-5">
       <div class="flex">
-        <BaseIconLabel :prefix-icon="UserIcon" icon-class="size-4 text-text-muted">
+        <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-text-muted">
           <small class="text-text-muted text-2xs">{{ duration }}</small>
         </BaseIconLabel>
-        <!--            <UserIcon class="size-4 text-text-muted" />-->
-        <!--            <small class="text-text-muted text-2xs">~2h 30m</small>-->
       </div>
 
       <div class="flex flex-col items-end">
-        <small class="text-text-muted text-2xs">{{ date }}</small>
+        <small class="text-text-muted text-2xs">{{ dateLabel }}</small>
         <small class="text-text-muted text-2xs">{{ passengers }} pasajeros</small>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import UserIcon from '@/shared/icons/UserIcon.vue';
 import BaseIconLabel from '@/shared/components/base/BaseIconLabel.vue';
 import RouteDirection from '@/modules/ferry/components/RouteDirection.vue';
+import { computed } from 'vue';
+import { formatDate } from '@vueuse/core';
+import { DATE_FORMATS } from '@/shared/constants/date-formats.constants.ts';
+import ClockIcon from '@/shared/icons/ClockIcon.vue';
 
-defineProps<{
+export interface SearchSummaryCardProps {
   originName: string;
   originIsland: string;
   destinationName: string;
@@ -37,5 +38,9 @@ defineProps<{
   date: string;
   passengers: number;
   duration: string;
-}>();
+}
+
+const props = defineProps<SearchSummaryCardProps>();
+
+const dateLabel = computed(() => formatDate(new Date(props.date), DATE_FORMATS.DISPLAY_LONG));
 </script>
