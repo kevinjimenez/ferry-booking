@@ -3,5 +3,5 @@ export const ferryKeys = {
   ports: () => [...ferryKeys.all, 'ports'] as const,
   schedules: (params: { origin: string; destination: string; date: string }) =>
     [...ferryKeys.all, 'schedules', params] as const,
-  // bookingHistory: (holdId: string) => [...ferryKeys.all, 'history', holdId] as const,
+  booking: (id: string) => [...ferryKeys.all, 'booking', id] as const, // ← nuevo
 } as const;

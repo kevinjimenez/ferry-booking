@@ -1,12 +1,12 @@
 <template>
-  <div class="inline-flex items-center gap-1.5">
+  <div class="items-center gap-1.5 justify-center flex w-fit">
     <component
       v-if="prefixIcon"
       :is="prefixIcon"
       :class="twMerge('size-5 text-gray-400', iconClass)"
     />
     <slot>
-      <p class="text-gray-400 font-secondary-italic">{{ label }}</p>
+      <span class="text-gray-400 font-secondary-italic">{{ label }}</span>
     </slot>
     <component
       v-if="suffixIcon"

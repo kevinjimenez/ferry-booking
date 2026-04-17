@@ -1,5 +1,5 @@
 <template>
-  <FerryNavHeader :title="title" @back="$router.back()" />
+  <FerryNavHeader :title="title" @back="handleGotoBack" />
 
   <div class="flex flex-col w-full justify-center items-center">
     <div class="flex w-full justify-center items-center gap-x-10 mt-8">
@@ -18,7 +18,7 @@
           { label: 'Precio', value: formatCurrency(outbound!.price) },
         ]"
         :subtotal="outboundTotal"
-        @change="handleChange"
+        @change="handleChange('outbound')"
       />
       <FerryTripCard
         :passengerCount="search.passengerCount"
@@ -36,7 +36,7 @@
           { label: 'Precio', value: formatCurrency(inbound!.price) },
         ]"
         :subtotal="inboundTotal"
-        @change="handleChange"
+        @change="handleChange('inbound')"
       />
     </div>
 
@@ -63,7 +63,6 @@ import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
 import { computed } from 'vue';
 import BaseButton from '@/shared/components/base/BaseButton.vue';
-import { loggerServices } from '@/shared/services';
 import FerryTripCard from '@/modules/ferry/components/FerryTripCard.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import LabelValue from '@/shared/components/LabelValue.vue';
@@ -75,9 +74,15 @@ import { maskString } from '@/shared/utils/string.utils.ts';
 import { useCreateBooking } from '@/modules/ferry/actions/create-booking.action.ts';
 import { useBookingCheckout } from '@/modules/ferry/composables/useBookingCheckout.ts';
 import { useBookingStore } from '@/modules/ferry/stores/ferry-booking.store.ts';
+import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
+import { useFerryPassengersStore } from '@/modules/ferry/stores/ferry-passengers.store.ts';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const storeFerrySearch = useFerrySearchStore();
 const storeFerrySelection = useFerrySelectionStore();
+const ticketStore = useFerryTicketStore();
+const passengersStore = useFerryPassengersStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearch);
 const { inbound, outbound } = storeToRefs(storeFerrySelection);
 
@@ -88,12 +93,16 @@ const title = computed(() =>
   isRoundTrip.value ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
 );
 
-const { goToPassengerDetails } = useFerryNavigation();
+const { goToPassengerDetails, goToInbound, goToOutbound } = useFerryNavigation();
 const { grandTotal, inboundTotal, outboundTotal } = useTripPrice();
 const { mutateAsync: createBooking, isPending } = useCreateBooking();
 
-const handleChange = () => {
-  loggerServices.log('handleChange');
+const handleChange = async (type: 'outbound' | 'inbound') => {
+  bookingStore.reset(); // limpia bookingId de sessionStorage
+  ticketStore.reset(); // limpia ticketId de sessionStorage
+  passengersStore.reset();
+  if (type === 'inbound') await goToInbound();
+  await goToOutbound();
 };
 
 const buttonLabel = computed(() => (isRoundTrip.value ? 'Total Ida y Vuelta' : 'Total Ida'));
@@ -108,5 +117,12 @@ const handleContinue = async () => {
     );
   }
   await goToPassengerDetails(); // 2. navega
+};
+
+const handleGotoBack = () => {
+  bookingStore.reset(); // limpia bookingId de sessionStorage
+  ticketStore.reset(); // limpia ticketId de sessionStorage
+  passengersStore.reset();
+  router.back();
 };
 </script>
