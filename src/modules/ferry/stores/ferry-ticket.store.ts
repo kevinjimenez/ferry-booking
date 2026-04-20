@@ -14,6 +14,7 @@ export const useFerryTicketStore = defineStore(STORE_KEY.TICKET, () => {
   const setTicket = (id: string) => {
     ticketId.value = id;
   };
+
   const reset = () => {
     ticketId.value = null;
   };

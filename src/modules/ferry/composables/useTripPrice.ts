@@ -7,11 +7,21 @@ export const useTripPrice = () => {
   const { values } = storeToRefs(useFerrySearchStore());
   const { outbound, inbound } = storeToRefs(useFerrySelectionStore());
 
-  const outboundTotal = computed(() => (outbound.value?.price ?? 0) * values.value.passengerCount);
+  const outboundUnitPrice = computed(() => outbound.value?.price ?? 0);
+  const outboundTotal = computed(() => outboundUnitPrice.value * values.value.passengerCount);
 
-  const inboundTotal = computed(() => (inbound.value?.price ?? 0) * values.value.passengerCount);
+  const inboundUnitPrice = computed(() => inbound.value?.price ?? 0);
+  const inboundTotal = computed(() => inboundUnitPrice.value * values.value.passengerCount);
 
+  const unitPriceTotal = computed(() => outboundUnitPrice.value + inboundUnitPrice.value);
   const grandTotal = computed(() => outboundTotal.value + inboundTotal.value);
 
-  return { outboundTotal, inboundTotal, grandTotal };
+  return {
+    outboundTotal,
+    inboundTotal,
+    grandTotal,
+    outboundUnitPrice,
+    inboundUnitPrice,
+    unitPriceTotal,
+  };
 };

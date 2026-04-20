@@ -9,16 +9,9 @@ export class BookingMapper {
     booking: BookingResponse,
     contact: PersonFormValues,
     passengers: PersonFormValues[],
+    unitPrice: number,
     inbound?: string,
   ): CreateTicketRequest {
-    console.log({
-      tripType,
-      outbound,
-      booking,
-      contact,
-      passengers,
-      inbound,
-    });
     return {
       tripType,
       outboundSchedule: outbound,
@@ -32,7 +25,7 @@ export class BookingMapper {
       passenger: passengers.map(passenger => ({
         ...passenger,
         documentType: (contact.documentType!.value as string).toLowerCase(),
-        unitPrice: 100,
+        unitPrice, // suma de ida + vuelta si existiera
         isPrimary: true,
         checkedInOutbound: false,
         checkedInReturn: false,

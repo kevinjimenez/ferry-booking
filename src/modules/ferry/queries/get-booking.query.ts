@@ -6,12 +6,14 @@ import { apiServices } from '@/shared/services';
 import type { ApiResponse } from '@/shared/types';
 import type { BookingResponse } from '@/modules/ferry/types/api/responses/booking-response.types.ts';
 
-const getBookingQuery = async (id: string): Promise<ApiResponse<BookingResponse>> => {
-  const response = await apiServices.get(`/seat-holds-history/${id}`);
+const getBookingQuery = async (id: string) => {
+  const response = await apiServices.get<ApiResponse<BookingResponse>>(`/seat-holds-history/${id}`);
 
   if (!response.data) throw new Error(`Failed to fetch booking ${id}`);
 
-  return response.data;
+  const { data } = response.data;
+
+  return data;
 };
 
 export const useGetBookingQuery = (bookingId: Ref<string | null>) => {

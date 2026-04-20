@@ -11,7 +11,7 @@ export const useBookingQuery = () => {
   const { goToSearch } = useFerryNavigation();
 
   watchEffect(async () => {
-    if (!bookingStore.bookingId) {
+    if (!bookingId) {
       await goToSearch();
     }
   });
