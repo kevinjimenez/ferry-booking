@@ -1,12 +1,23 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { VueQueryPlugin } from '@tanstack/vue-query';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import './config/env';
+import './config/yup';
 
-import App from './App.vue'
+import dayjs from 'dayjs';
+import 'dayjs/locale/es';
+import router from './router';
+import App from './App.vue';
 
-const app = createApp(App)
+dayjs.locale('es');
 
-app.use(createPinia())
+const pinia = createPinia();
+const app = createApp(App);
 
-app.mount('#app')
+app.use(pinia);
+app.use(router);
+app.use(VueQueryPlugin);
+
+app.mount('#app');
