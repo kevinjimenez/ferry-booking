@@ -73,6 +73,7 @@ import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { maskString } from '@/shared/utils/string.utils.ts';
 import { useCreateBooking } from '@/modules/ferry/actions/create-booking.action.ts';
 import { useBookingCheckout } from '@/modules/ferry/composables/useBookingCheckout.ts';
+import { useLoadingStore } from '@/shared/stores/loading.store';
 import { useBookingStore } from '@/modules/ferry/stores/ferry-booking.store.ts';
 import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
 import { useFerryPassengersStore } from '@/modules/ferry/stores/ferry-passengers.store.ts';
@@ -88,6 +89,7 @@ const { inbound, outbound } = storeToRefs(storeFerrySelection);
 
 const { createBookingBody, isSameBooking } = useBookingCheckout();
 const bookingStore = useBookingStore();
+const loadingStore = useLoadingStore();
 
 const title = computed(() =>
   isRoundTrip.value ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
@@ -108,15 +110,20 @@ const handleChange = async (type: 'outbound' | 'inbound') => {
 const buttonLabel = computed(() => (isRoundTrip.value ? 'Total Ida y Vuelta' : 'Total Ida'));
 
 const handleContinue = async () => {
-  if (!isSameBooking.value) {
-    const result = await createBooking(createBookingBody.value);
-    bookingStore.setBooking(
-      result.id,
-      createBookingBody.value.outboundScheduleId,
-      createBookingBody.value.returnScheduleId,
-    );
+  try {
+    loadingStore.show();
+    if (!isSameBooking.value) {
+      const result = await createBooking(createBookingBody.value);
+      bookingStore.setBooking(
+        result.id,
+        createBookingBody.value.outboundScheduleId,
+        createBookingBody.value.returnScheduleId,
+      );
+    }
+    await goToPassengerDetails();
+  } finally {
+    loadingStore.hide();
   }
-  await goToPassengerDetails(); // 2. navega
 };
 
 const handleGotoBack = () => {

@@ -25,7 +25,7 @@ export const useBookingSuccess = () => {
   const router = useRouter();
   const { goToSearch } = useFerryNavigation();
   const { mutateAsync: updatePayment, isPending: updatePaymentPending } = useUpdatePayment();
-  const { mutate: downloadTicket, isPending } = useDownloadTicket();
+  const { mutate: downloadTicket, isPending: downloadTicketPending } = useDownloadTicket();
 
   const ferryTicketStore = useFerryTicketStore();
   const paymentStore = useFerryPaymentStore();
@@ -156,7 +156,7 @@ export const useBookingSuccess = () => {
   };
 
   return {
-    isPending,
+    downloadTicketPending,
     handleDownloader,
     goToSearch,
     updatePaymentPending,

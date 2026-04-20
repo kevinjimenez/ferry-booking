@@ -8,6 +8,7 @@ import { PORTS_STALE_TIME } from '@/modules/ferry/constants/ query.constants.ts'
 
 const getPortsQuery = async () => {
   try {
+    // await new Promise(resolve => setTimeout(resolve, 5000));
     const response = await apiServices.get<ApiResponse<PortResponse[]>>('/ports');
 
     if (!response.data) {

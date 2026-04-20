@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full justify-center items-center h-full">
-    <div v-if="updatePaymentPending">loading....</div>
+    <FerryBookingSuccessSkeleton v-if="updatePaymentPending" />
     <div v-else class="flex w-full justify-center items-center">
       <BaseCard container-class="w-[50rem] p-0 justify-center items-center gap-y-10">
         <BaseSuccessHeader
@@ -19,7 +19,7 @@
           <FerryBookingSuccessActions
             @back="goToSearch"
             @downloader="handleDownloader"
-            :is-pending="isPending"
+            :is-pending="downloadTicketPending"
           />
         </div>
       </BaseCard>
@@ -34,8 +34,14 @@ import BaseSuccessHeader from '@/shared/components/base/BaseSuccessHeader.vue';
 import FerryOrderSummaryCard from '@/modules/ferry/components/FerryOrderSummaryCard.vue';
 import FerryBookingSuccessActions from '@/modules/ferry/components/FerryBookingSuccessActions.vue';
 import BaseCard from '@/shared/components/base/BaseCard.vue';
+import { watch } from 'vue';
 import { useBookingSuccess } from '@/modules/ferry/composables/useBookingSuccess.ts';
+import FerryBookingSuccessSkeleton from '@/modules/ferry/components/FerryBookingSuccessSkeleton.vue';
+import { useLoadingStore } from '@/shared/stores/loading.store';
 
-const { isPending, handleDownloader, goToSearch, success, updatePaymentPending } =
+const { downloadTicketPending, handleDownloader, goToSearch, success, updatePaymentPending } =
   useBookingSuccess();
+
+const loadingStore = useLoadingStore();
+watch(downloadTicketPending, pending => (pending ? loadingStore.show() : loadingStore.hide()));
 </script>

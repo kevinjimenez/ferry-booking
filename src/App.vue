@@ -1,9 +1,27 @@
 <template>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="page" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+
+  <transition name="fade">
+    <div
+      v-if="isLoading"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+    >
+      <img src="@/assets/spinner.svg" class="size-56" alt="loading" />
+    </div>
+  </transition>
+
   <VueQueryDevtools />
 </template>
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { useLoadingStore } from '@/shared/stores/loading.store';
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools';
+
+const { isLoading } = storeToRefs(useLoadingStore());
 // import { useCatalogStore } from './shared/stores/catalog.store'
 
 // const ferryBookingStore = useFerryBookingStore();
@@ -39,3 +57,29 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools';
 //   }
 // });
 </script>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -2,62 +2,67 @@
   <div
     class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5 shadow-lg"
   >
-    <BaseButtonGroup class="w-full" v-model="ticketType" :options="TICKET_TYPE_OPTIONS" />
+    <template v-if="isPending">
+      <FerrySearchFormSkeleton />
+    </template>
 
-    <div class="w-full flex gap-5">
-      <BaseSelect
-        v-model="origin"
-        v-bind="originAttrs"
-        label="Desde"
-        :prefix-icon="MapPinIcon"
-        prefix-icon-class="text-secondary"
-        :options="portsResponse ?? []"
-        :error="errors.origin"
-        :disabled-value="destination?.value"
-      />
+    <template v-else>
+      <BaseButtonGroup class="w-full" v-model="ticketType" :options="TICKET_TYPE_OPTIONS" />
 
-      <BaseButton
-        circle
-        class="mt-6 size-12"
-        :prefix-icon="SwitchHorizontalIcon"
-        @click="swapOriginDestination"
-      />
+      <div class="w-full flex gap-5">
+        <BaseSelect
+          v-model="origin"
+          v-bind="originAttrs"
+          label="Desde"
+          :prefix-icon="MapPinIcon"
+          prefix-icon-class="text-secondary"
+          :options="portsResponse ?? []"
+          :error="errors.origin"
+          :disabled-value="destination?.value"
+        />
 
-      <BaseSelect
-        v-model="destination"
-        v-bind="destinationAttrs"
-        label="Hasta"
-        :prefix-icon="MapPinIcon"
-        prefix-icon-class="text-secondary"
-        :options="portsResponse ?? []"
-        :error="errors.destination"
-        :disabled-value="origin?.value"
-      />
-    </div>
+        <BaseButton
+          circle
+          class="mt-6 size-12"
+          :prefix-icon="SwitchHorizontalIcon"
+          @click="swapOriginDestination"
+        />
 
-    <div class="w-full flex gap-5">
-      <BaseInput
-        type="date"
-        label="Fecha de salida"
-        v-model="outboundDate"
-        v-bind="outboundDateAttrs"
-        :error="errors.outboundDate"
-      />
+        <BaseSelect
+          v-model="destination"
+          v-bind="destinationAttrs"
+          label="Hasta"
+          :prefix-icon="MapPinIcon"
+          prefix-icon-class="text-secondary"
+          :options="portsResponse ?? []"
+          :error="errors.destination"
+          :disabled-value="origin?.value"
+        />
+      </div>
 
-      <BaseInput
-        v-if="isRoundTrip"
-        type="date"
-        label="Fecha de regreso"
-        v-model="inboundDate"
-        v-bind="inboundDateAttrs"
-        ahora
-        :error="errors.inboundDate"
-      />
+      <div class="w-full flex gap-5">
+        <BaseInput
+          type="date"
+          label="Fecha de salida"
+          v-model="outboundDate"
+          v-bind="outboundDateAttrs"
+          :error="errors.outboundDate"
+        />
 
-      <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10" />
-    </div>
+        <BaseInput
+          v-if="isRoundTrip"
+          type="date"
+          label="Fecha de regreso"
+          v-model="inboundDate"
+          v-bind="inboundDateAttrs"
+          :error="errors.inboundDate"
+        />
 
-    <BaseButton @click="onSubmit" class="w-full"> Buscar Ferry </BaseButton>
+        <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10" />
+      </div>
+
+      <BaseButton @click="onSubmit" class="w-full"> Buscar Ferry </BaseButton>
+    </template>
   </div>
 </template>
 <script setup lang="ts">
@@ -71,8 +76,9 @@ import BaseInput from '@/shared/components/base/BaseInput.vue';
 import BaseInputNumber from '@/shared/components/base/BaseInputNumber.vue';
 import { useSearchForm } from '@/modules/ferry/composables';
 import { useGetPortsQuery } from '@/modules/ferry/queries';
+import FerrySearchFormSkeleton from '@/modules/ferry/components/FerrySearchFormSkeleton.vue';
 
-const { data: portsResponse } = useGetPortsQuery();
+const { data: portsResponse, isPending } = useGetPortsQuery();
 
 const {
   // properties

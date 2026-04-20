@@ -1,6 +1,9 @@
 <template>
   <FerryNavHeader title="Pago" @back="$router.back()" />
-  <div class="flex p-10 gap-x-10" v-if="!isPending">
+
+  <FerryPaymentSkeleton v-if="isPending" />
+
+  <div v-else class="flex p-10 gap-x-10">
     <div class="flex flex-col gap-y-6 w-1/2">
       <FerryPassengersSummaryCard :passengers="ferrySearchStore.values.passengerCount" />
 
@@ -48,6 +51,7 @@ import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { formatCurrency, toCents } from '@/shared/utils/currency.utils.ts';
 import { computed } from 'vue';
 import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.vue';
+import FerryPaymentSkeleton from '@/modules/ferry/components/FerryPaymentSkeleton.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
 
