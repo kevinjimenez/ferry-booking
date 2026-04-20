@@ -58,6 +58,12 @@ export const ferryRoutes: RouteRecordRaw = {
       path: 'payment',
       name: FERRY_ROUTE_NAMES.PAYMENT,
       component: () => import('@/modules/ferry/views/FerryPaymentView.vue'),
+      beforeEnter: () => {
+        if (sessionStorage.getItem('paymentCompleted') === 'true') {
+          sessionStorage.removeItem('paymentCompleted');
+          return { name: FERRY_ROUTE_NAMES.SEARCH };
+        }
+      },
       meta: {
         title: 'Salidas del Ferry',
         requiresAuth: false,

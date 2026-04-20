@@ -30,15 +30,14 @@ import FerryBookingSuccessActions from '@/modules/ferry/components/FerryBookingS
 import BaseCard from '@/shared/components/base/BaseCard.vue';
 import { useDownloadTicket } from '@/modules/ferry/queries/download-ticker.query.ts';
 import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
-import { useRoute } from 'vue-router';
-import { loggerServices } from '@/shared/services';
+import { useRoute, useRouter } from 'vue-router';
 import { useUpdatePayment } from '@/modules/ferry/actions/update-payment.action.ts';
 import { useFerryPaymentStore } from '@/modules/ferry/stores/ferry-payment.store.ts';
 import { onMounted } from 'vue';
+import { FERRY_ROUTE_NAMES } from '@/modules/ferry/constants';
 
 const route = useRoute();
-loggerServices.log(route.query.clientTransactionId);
-loggerServices.log(route.query.id);
+const router = useRouter();
 const { mutate } = useUpdatePayment();
 const ferryTicketStore = useFerryTicketStore();
 const paymentStore = useFerryPaymentStore();
@@ -46,13 +45,19 @@ const { goToSearch } = useFerryNavigation();
 const { mutate: downloadTicket, isPending } = useDownloadTicket();
 
 onMounted(() => {
-  const paymentId = paymentStore.paymentId;
   const clientTransactionId = route.query.clientTransactionId as string;
   const id = route.query.id as string;
 
-  loggerServices.log({ paymentId, id, clientTransactionId });
+  if (!clientTransactionId) {
+    router.replace({ name: FERRY_ROUTE_NAMES.SEARCH });
+    return;
+  }
 
-  if (paymentId && clientTransactionId && id) {
+  sessionStorage.setItem('paymentCompleted', 'true');
+
+  const paymentId = paymentStore.paymentId;
+
+  if (paymentId && id) {
     mutate({
       id: paymentId,
       body: {
@@ -69,3 +74,4 @@ const handleDownloader = () => {
   downloadTicket(ferryTicketStore.ticketId);
 };
 </script>
+sigueot

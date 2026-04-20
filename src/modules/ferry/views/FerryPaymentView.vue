@@ -53,7 +53,6 @@ import { computed } from 'vue';
 import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
-import { useBookingQuery } from '@/modules/ferry/composables/useBookingQuery.ts';
 
 const ferrySearchStore = useFerrySearchStore();
 const transactionId = crypto.randomUUID();
@@ -65,7 +64,6 @@ const payphoneToken = env.payphoneToken;
 const payphoneStoreId = env.payphoneStoreId;
 
 const { data: ticket, isPending } = useTicketQuery();
-const { data: booking } = useBookingQuery();
 // loggerServices.log(ticket.value);
 
 // const aa = computed(() => date.)
