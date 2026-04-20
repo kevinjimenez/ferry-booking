@@ -13,12 +13,14 @@ import { useTicketAction } from '@/modules/ferry/composables/useTicketAction.ts'
 import { useCreateTicketRequest } from '@/modules/ferry/composables/useCreateTicketRequest.ts';
 import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
 import { useFerryPaymentStore } from '@/modules/ferry/stores/ferry-payment.store.ts';
+import { useLoadingStore } from '@/shared/stores/loading.store.ts';
 
 export const usePassengerDetailsForm = () => {
   const store = useFerryPassengersStore();
   const searchStore = useFerrySearchStore();
   const ticketStore = useFerryTicketStore();
   const paymentStore = useFerryPaymentStore();
+  const loadingStore = useLoadingStore();
   const { createTicket } = useTicketAction();
   const { buildBody: createTicketBody } = useCreateTicketRequest();
   const { goToPayment } = useFerryNavigation();
@@ -36,14 +38,19 @@ export const usePassengerDetailsForm = () => {
   });
 
   const onSubmit = handleSubmit(async values => {
-    if (!ticketStore.ticketId) {
-      const request = createTicketBody(values);
-      const result = await createTicket(request);
-      ticketStore.setTicket(result.id);
-      paymentStore.setPayment(result.paymentId);
+    try {
+      loadingStore.show();
+      if (!ticketStore.ticketId) {
+        const request = createTicketBody(values);
+        const result = await createTicket(request);
+        ticketStore.setTicket(result.id);
+        paymentStore.setPayment(result.paymentId);
+      }
+      store.setFormValues(values);
+      await goToPayment();
+    } finally {
+      loadingStore.hide();
     }
-    store.setFormValues(values);
-    await goToPayment();
   });
 
   return { passengers, remove, errors, onSubmit };

@@ -6,6 +6,7 @@ const updatePaymentAction = async (
   body: { id: string; clientTransactionId: string },
 ) => {
   try {
+    // await new Promise(resolve => setTimeout(resolve, 5000));
     const response = await apiServices.patch(`/payments/${id}`, {
       clientTransactionId: body.clientTransactionId,
       transactionId: body.id,

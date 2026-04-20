@@ -7,6 +7,8 @@ import type { ApiResponse } from '@/shared/types';
 import type { BookingResponse } from '@/modules/ferry/types/api/responses/booking-response.types.ts';
 
 const getBookingQuery = async (id: string) => {
+  // await new Promise(resolve => setTimeout(resolve, 5000));
+
   const response = await apiServices.get<ApiResponse<BookingResponse>>(`/seat-holds-history/${id}`);
 
   if (!response.data) throw new Error(`Failed to fetch booking ${id}`);

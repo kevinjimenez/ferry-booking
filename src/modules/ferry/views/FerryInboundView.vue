@@ -1,5 +1,6 @@
 <template>
   <FerryNavHeader title="Elige un ferry de vuelta" @back="goToBack" />
+
   <section class="flex w-full p-10 gap-x-10">
     <div class="w-3/4 flex flex-col">
       <SearchSummaryCard v-bind="searchSummaryCardProps" />
@@ -13,19 +14,24 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <ScheduleCard
-          v-for="schedule in schedulesData"
-          :key="schedule.id"
-          :origin="schedule.origin"
-          :destination="schedule.destination"
-          :duration="schedule.duration"
-          :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
-          :selected="storeFerrySelectionStore.inbound?.id === schedule.id"
-          @select="handleSelect(schedule)"
-        />
+        <template v-if="isLoading">
+          <ScheduleCardSkeleton v-for="i in 4" :key="i" />
+        </template>
+        <template v-else>
+          <ScheduleCard
+            v-for="schedule in schedulesData"
+            :key="schedule.id"
+            :origin="schedule.origin"
+            :destination="schedule.destination"
+            :duration="schedule.duration"
+            :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
+            :selected="storeFerrySelectionStore.inbound?.id === schedule.id"
+            @select="handleSelect(schedule)"
+          />
+        </template>
       </div>
     </div>
-    <div class="w-1/4 sticky top-14 self-start">
+    <div class="w-1/4 sticky top-20 self-start">
       <div class="flex flex-col gap-y-5">
         <BookingSummaryCard
           :outbound="selectedOutbound"
@@ -58,6 +64,7 @@ import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
 import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
 import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
+import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
 import { computed } from 'vue';
 import SortIcon from '@/shared/icons/SortIcon.vue';
@@ -80,7 +87,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, inbound } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, averageDuration } = useScheduleQuery('inbound');
+const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery('inbound');
 const { goToTripSummary } = useFerryNavigation();
 const { grandTotal } = useTripPrice();
 

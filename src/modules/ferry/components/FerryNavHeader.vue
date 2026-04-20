@@ -1,6 +1,6 @@
 <template>
   <header
-    class="w-full h-12 flex bg-gray-50 items-center border-b border-b-gray-200 shadow-sm px-10"
+    class="w-full h-20 shrink-0 flex bg-gray-50 items-center border-b border-b-gray-200 shadow-sm px-10"
   >
     <div class="flex items-center flex-1 cursor-default" @click="emit('back')">
       <ArrowLeftIcon />

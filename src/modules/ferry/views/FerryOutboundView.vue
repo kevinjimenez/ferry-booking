@@ -13,19 +13,24 @@
       </div>
 
       <div class="flex flex-col gap-y-5">
-        <ScheduleCard
-          v-for="schedule in schedulesData"
-          :key="schedule.id"
-          :origin="schedule.origin"
-          :destination="schedule.destination"
-          :duration="schedule.duration"
-          :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
-          :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
-          @select="handleSelect(schedule)"
-        />
+        <template v-if="isLoading">
+          <ScheduleCardSkeleton v-for="i in 4" :key="i" />
+        </template>
+        <template v-else>
+          <ScheduleCard
+            v-for="schedule in schedulesData"
+            :key="schedule.id"
+            :origin="schedule.origin"
+            :destination="schedule.destination"
+            :duration="schedule.duration"
+            :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
+            :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
+            @select="handleSelect(schedule)"
+          />
+        </template>
       </div>
     </div>
-    <div class="w-1/4 sticky top-14 self-start">
+    <div class="w-1/4 sticky top-20 self-start">
       <div class="flex flex-col gap-y-5">
         <BookingSummaryCard
           :outbound="selectedOutbound"
@@ -57,6 +62,7 @@ import { computed } from 'vue';
 import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
 import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
+import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
 import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import BoxIcon from '@/shared/icons/BoxIcon.vue';
@@ -78,7 +84,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, averageDuration } = useScheduleQuery();
+const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery();
 const { goToInbound, goToTripSummary } = useFerryNavigation();
 
 const { grandTotal } = useTripPrice();

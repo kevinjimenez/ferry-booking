@@ -7,6 +7,7 @@ import type { ApiResponse } from '@/shared/types';
 import type { GetTicketResponse } from '@/modules/ferry/types/api/responses/ticket-response.types.ts';
 
 const getTicketQuery = async (id: string) => {
+  // await new Promise(resolve => setTimeout(resolve, 5000));
   const response = await apiServices.get<ApiResponse<GetTicketResponse>>(`/tickets/${id}`);
 
   if (!response.data) throw new Error(`Failed to fetch booking ${id}`);
@@ -20,7 +21,7 @@ const getTicketQuery = async (id: string) => {
 
 export const useGetTicketQuery = (ticketId: Ref<string | null>) => {
   return useQuery({
-    queryKey: computed(() => ferryKeys.booking(ticketId.value!)),
+    queryKey: computed(() => ferryKeys.ticket(ticketId.value!)),
     queryFn: () => getTicketQuery(ticketId.value!),
     enabled: computed(() => !!ticketId.value), // no fetcha si no hay id
     // staleTime: 1000 * 60 * 10, // 10 minutos
