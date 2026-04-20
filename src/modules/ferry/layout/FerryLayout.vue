@@ -1,7 +1,7 @@
 <template>
   <!--bg-light-gray-->
-  <main class="min-h-screen bg-gray-50">
-    <router-view />
+  <main class="min-h-screen h-screen bg-gray-50 flex flex-col">
+    <router-view class="flex-1" />
   </main>
 </template>
 

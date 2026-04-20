@@ -1,29 +1,29 @@
 <template>
-  <div v-if="updatePaymentPending">
-    loading....
-  </div>
-  <div v-else class="flex w-full justify-center items-center">
-    <BaseCard container-class="w-[50rem] p-0 justify-center items-center gap-y-10">
-      <BaseSuccessHeader
-        :icon="CheckIcon"
-        title="¡Pago Realizado con Éxito!"
-        subtitle="Su transacción ha sido procesada correctamente."
-      />
+  <div class="flex w-full justify-center items-center h-full">
+    <div v-if="updatePaymentPending">loading....</div>
+    <div v-else class="flex w-full justify-center items-center">
+      <BaseCard container-class="w-[50rem] p-0 justify-center items-center gap-y-10">
+        <BaseSuccessHeader
+          :icon="CheckIcon"
+          title="¡Pago Realizado con Éxito!"
+          subtitle="Su transacción ha sido procesada correctamente."
+        />
 
-      <div class="flex flex-col w-full px-16 pb-10">
-        <FerryOrderSummaryCard
-          :order-id="success.orderId"
-          :date="success.date"
-          :total="success.amount"
-        />
-        <BaseDivider class="w-full my-10" />
-        <FerryBookingSuccessActions
-          @back="goToSearch"
-          @downloader="handleDownloader"
-          :is-pending="isPending"
-        />
-      </div>
-    </BaseCard>
+        <div class="flex flex-col w-full px-16 pb-10">
+          <FerryOrderSummaryCard
+            :order-id="success.orderId"
+            :date="success.date"
+            :total="success.amount"
+          />
+          <BaseDivider class="w-full my-10" />
+          <FerryBookingSuccessActions
+            @back="goToSearch"
+            @downloader="handleDownloader"
+            :is-pending="isPending"
+          />
+        </div>
+      </BaseCard>
+    </div>
   </div>
 </template>
 
@@ -36,5 +36,6 @@ import FerryBookingSuccessActions from '@/modules/ferry/components/FerryBookingS
 import BaseCard from '@/shared/components/base/BaseCard.vue';
 import { useBookingSuccess } from '@/modules/ferry/composables/useBookingSuccess.ts';
 
-const { isPending, handleDownloader, goToSearch, success, updatePaymentPending } = useBookingSuccess();
+const { isPending, handleDownloader, goToSearch, success, updatePaymentPending } =
+  useBookingSuccess();
 </script>
