@@ -34,12 +34,9 @@
       />
     </div>
   </div>
-  <BaseButton @click="goToSearch"> de regreso a buscar </BaseButton>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
-import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import BoxIcon from '@/shared/icons/BoxIcon.vue';
 import CheckIcon from '@/shared/icons/CheckIcon.vue';
@@ -57,16 +54,12 @@ import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
 const ferrySearchStore = useFerrySearchStore();
 const transactionId = crypto.randomUUID();
 
-const { goToSearch } = useFerryNavigation();
 const { inboundTotal, outboundTotal, grandTotal } = useTripPrice();
 
 const payphoneToken = env.payphoneToken;
 const payphoneStoreId = env.payphoneStoreId;
 
 const { data: ticket, isPending } = useTicketQuery();
-// loggerServices.log(ticket.value);
-
-// const aa = computed(() => date.)
 
 const outboundLabel = computed(
   () => `${ferrySearchStore.values.passengerCount} x ${formatCurrency(outboundTotal.value)}`,
