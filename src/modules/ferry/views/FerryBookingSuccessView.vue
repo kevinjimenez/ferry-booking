@@ -10,7 +10,11 @@
       <div class="flex flex-col w-full px-16 pb-10">
         <FerryOrderSummaryCard order-id="##ORD-77215" date="12 de abril, 2026" total="$70.00" />
         <BaseDivider class="w-full my-10" />
-        <FerryBookingSuccessActions @back="goToSearch" @downloader="handleDownloader" :is-pending="isPending" />
+        <FerryBookingSuccessActions
+          @back="goToSearch"
+          @downloader="handleDownloader"
+          :is-pending="isPending"
+        />
       </div>
     </BaseCard>
   </div>
@@ -26,10 +30,38 @@ import FerryBookingSuccessActions from '@/modules/ferry/components/FerryBookingS
 import BaseCard from '@/shared/components/base/BaseCard.vue';
 import { useDownloadTicket } from '@/modules/ferry/queries/download-ticker.query.ts';
 import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
+import { useRoute } from 'vue-router';
+import { loggerServices } from '@/shared/services';
+import { useUpdatePayment } from '@/modules/ferry/actions/update-payment.action.ts';
+import { useFerryPaymentStore } from '@/modules/ferry/stores/ferry-payment.store.ts';
+import { onMounted } from 'vue';
 
+const route = useRoute();
+loggerServices.log(route.query.clientTransactionId);
+loggerServices.log(route.query.id);
+const { mutate } = useUpdatePayment();
 const ferryTicketStore = useFerryTicketStore();
+const paymentStore = useFerryPaymentStore();
 const { goToSearch } = useFerryNavigation();
 const { mutate: downloadTicket, isPending } = useDownloadTicket();
+
+onMounted(() => {
+  const paymentId = paymentStore.paymentId;
+  const clientTransactionId = route.query.clientTransactionId as string;
+  const id = route.query.id as string;
+
+  loggerServices.log({ paymentId, id, clientTransactionId });
+
+  if (paymentId && clientTransactionId && id) {
+    mutate({
+      id: paymentId,
+      body: {
+        id,
+        clientTransactionId,
+      },
+    });
+  }
+});
 
 const handleDownloader = () => {
   if (!ferryTicketStore.ticketId) return;

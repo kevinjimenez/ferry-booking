@@ -4,4 +4,5 @@ export const STORE_KEY = {
   BOOKING: 'ferry-booking',
   PASSENGERS: 'ferry-passengers',
   TICKET: 'ferry-ticket',
+  PAYMENT: 'ferry-payment',
 } as const;

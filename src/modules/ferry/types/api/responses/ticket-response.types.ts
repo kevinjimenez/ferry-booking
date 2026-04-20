@@ -1,5 +1,6 @@
 export interface TicketResponse {
   id: string;
+  paymentId: string;
   contact: string;
   passengers: string[];
   total: number;

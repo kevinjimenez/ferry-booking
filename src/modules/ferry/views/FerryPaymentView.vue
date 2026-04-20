@@ -22,13 +22,6 @@
       />
     </div>
 
-    <pre>
-      {{ ticket }}
-    </pre>
-    <pre>
-      {{ booking }}
-    </pre>
-
     <div class="flex flex-col gap-y-6 w-1/2">
       <FerryPayphoneButton
         :token="payphoneToken"

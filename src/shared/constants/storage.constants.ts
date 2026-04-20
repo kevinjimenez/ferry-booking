@@ -8,11 +8,5 @@ export const FERRY_STORAGE_KEYS = {
   BOOKING_RETURN_ID: 'ferry:booking:return',
   PASSENGERS: 'ferry:passengers',
   TICKET_ID: 'ferry:ticket:id',
-
-  // PASSENGER: 'ferry:passenger',
-  // BOOKING: 'ferry:booking',
-  // SCHEDULE: 'ferry:schedule',
-  // HOLD: 'ferry:hold',
-  // TICKET: 'ferry:ticket',
-  // PERSONAL_INFORMATION: 'ferry:personal_information',
+  PAYMENT_ID: 'ferry:payment:id',
 } as const;

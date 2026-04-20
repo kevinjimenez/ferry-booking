@@ -12,11 +12,13 @@ import { EMPTY_PERSON } from '@/modules/ferry/constants/passenger-details-form.c
 import { useTicketAction } from '@/modules/ferry/composables/useTicketAction.ts';
 import { useCreateTicketRequest } from '@/modules/ferry/composables/useCreateTicketRequest.ts';
 import { useFerryTicketStore } from '@/modules/ferry/stores/ferry-ticket.store.ts';
+import { useFerryPaymentStore } from '@/modules/ferry/stores/ferry-payment.store.ts';
 
 export const usePassengerDetailsForm = () => {
   const store = useFerryPassengersStore();
   const searchStore = useFerrySearchStore();
   const ticketStore = useFerryTicketStore();
+  const paymentStore = useFerryPaymentStore();
   const { createTicket } = useTicketAction();
   const { buildBody: createTicketBody } = useCreateTicketRequest();
   const { goToPayment } = useFerryNavigation();
@@ -38,6 +40,7 @@ export const usePassengerDetailsForm = () => {
       const request = createTicketBody(values);
       const result = await createTicket(request);
       ticketStore.setTicket(result.id);
+      paymentStore.setPayment(result.paymentId);
     }
     store.setFormValues(values);
     await goToPayment();
