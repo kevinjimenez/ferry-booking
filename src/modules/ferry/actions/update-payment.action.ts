@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/vue-query';
 
 const updatePaymentAction = async (
   id: string,
-  body: { id: string; clientTransactionId: string },
+  body: { id: string; clientTransactionId: string; status: string },
 ) => {
   try {
     // await new Promise(resolve => setTimeout(resolve, 5000));
@@ -28,7 +28,7 @@ const updatePaymentAction = async (
 
 export const useUpdatePayment = () => {
   return useMutation({
-    mutationFn: ({ id, body }: { id: string; body: { id: string; clientTransactionId: string } }) =>
+    mutationFn: ({ id, body }: { id: string; body: { id: string; clientTransactionId: string, status: string } }) =>
       updatePaymentAction(id, body),
     onSuccess: data => loggerServices.log('updatePaymentAction:', data),
     onError: () => {},

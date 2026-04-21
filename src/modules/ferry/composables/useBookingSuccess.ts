@@ -106,7 +106,7 @@ export const useBookingSuccess = () => {
     if (paymentId && id) {
       const response = await updatePayment({
         id: paymentId,
-        body: { id, clientTransactionId },
+        body: { id, clientTransactionId, status: 'completed' },
       });
 
       success.value.amount = formatCurrency(Number(response.amount));
