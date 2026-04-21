@@ -66,34 +66,6 @@ export const useBookingSuccess = () => {
     ferryTicketStore.reset();
   };
 
-  // onMounted(() => {
-  //   const clientTransactionId = route.query.clientTransactionId as string;
-  //   const id = route.query.id as string;
-  //
-  //   if (!clientTransactionId) {
-  //     router.replace({ name: FERRY_ROUTE_NAMES.SEARCH });
-  //     return;
-  //   }
-  //
-  //   const paymentId = success.value?.successPaymentId ?? paymentStore.paymentId;
-  //   const ticketId = success.value?.successTicketId ?? ferryTicketStore.ticketId;
-  //
-  //   paymentCompleted.value = true;
-  //
-  //   if (paymentId && ticketId) {
-  //     success.value = { successPaymentId: paymentId, successTicketId: ticketId };
-  //   }
-  //
-  //   resetAllStores();
-  //
-  //   if (paymentId && id) {
-  //     updatePayment({
-  //       id: paymentId,
-  //       body: { id, clientTransactionId },
-  //     });
-  //   }
-  // });
-
   onBeforeMount(async () => {
     const clientTransactionId = route.query.clientTransactionId as string;
     const id = route.query.id as string;
@@ -116,7 +88,6 @@ export const useBookingSuccess = () => {
         ? success.value.successTicketId
         : ferryTicketStore.ticketId;
 
-    loggerServices.log({ paymentId, ticketId });
 
     paymentCompleted.value = true;
 
