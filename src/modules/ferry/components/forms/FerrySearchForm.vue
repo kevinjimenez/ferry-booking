@@ -7,7 +7,12 @@
     </template>
 
     <template v-else>
-      <BaseButtonGroup class="w-full" v-model="ticketType" :options="TICKET_TYPE_OPTIONS" />
+      <BaseButtonGroup
+        class="w-full"
+        v-model="ticketType"
+        :options="TICKET_TYPE_OPTIONS"
+        font-size="sm"
+      />
 
       <div class="w-full flex gap-5">
         <BaseSelect
@@ -61,7 +66,9 @@
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10" />
       </div>
 
-      <BaseButton @click="onSubmit" class="w-full"> Buscar Ferry </BaseButton>
+      <BaseButton @click="onSubmit" class="w-full" height="h-[3.5rem]">
+        <span class="text-sm"> Buscar Ferry </span>
+      </BaseButton>
     </template>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full block">
-    <label for="countries" class="block mb-2.5 text-sm font-medium text-heading">{{ label }}</label>
+    <label for="countries" class="block text-2xs font-medium">{{ label }}</label>
     <div class="relative">
       <component
         v-if="prefixIcon"
@@ -9,7 +9,7 @@
         :class="prefixIconClass"
       />
       <select
-        class="block w-full py-2.5 border-gray-300 border text-heading text-sm rounded-sm"
+        class="block w-full py-2.5 border-gray-300 border text-heading text-2xs rounded-sm"
         :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]"
         :value="modelValue?.value ?? ''"
         @change="handleChange"

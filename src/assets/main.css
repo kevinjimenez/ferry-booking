@@ -1,30 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @plugin "daisyui" {
   themes: light --default;
 }
 
-/* ========================================
-   DaisyUI Theme - Paradeisos Ferries
-   ======================================== */
+/* ============================================================
+ * Paradeisos Ferries — Tailwind v4 + DaisyUI Theme
+ * Aligned with the redesign tokens (tokens.css)
+ *
+ * Fuentes: Manrope (display/UI) + Poly (serif editorial)
+ * Paleta: brand navy/red + escala "ink" cálida-fría
+ *         + washes "sea" y "sand" para fondos suaves
+ * ============================================================ */
+
+/* ============================================================
+ * DaisyUI Theme
+ * ============================================================ */
 
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
 
-  /* Brand Colors */
-  --color-primary: #0E1327;
-  --color-secondary: #BC1D36;
+  /* Brand */
+  --color-primary: #0E1327;       /* paradeisos-blue */
+  --color-secondary: #BC1D36;     /* paradeisos-red */
   --color-accent: #BC1D36;
   --color-neutral: #0E1327;
 
-  /* Base */
-  --color-base-100: #FFFFFF;
-  --color-base-200: #F8FAFC;
-  --color-base-300: #E2E8F0;
+  /* Base — usamos ink-050 como background suave del rediseño */
+  --color-base-100: #FFFFFF;      /* surface */
+  --color-base-200: #f8f9fc;      /* ink-050 — page background */
+  --color-base-300: #e4e7f0;      /* ink-200 — borders */
   --color-base-content: #0E1327;
 
-  /* Content */
+  /* Content sobre cada color */
   --color-primary-content: #FFFFFF;
   --color-secondary-content: #FFFFFF;
   --color-accent-content: #FFFFFF;
@@ -32,103 +42,158 @@
 
   /* Feedback */
   --color-info: #3B82F6;
-  --color-success: #16A34A;
-  --color-warning: #F59E0B;
+  --color-success: #1f7a5c;       /* ok-600 — armoniza con la marca */
+  --color-warning: #d4a017;
   --color-error: #BC1D36;
 
   --color-info-content: #FFFFFF;
   --color-success-content: #FFFFFF;
   --color-warning-content: #0E1327;
   --color-error-content: #FFFFFF;
+
+  /* Radios DaisyUI */
+  --radius-selector: 4px;        /* checkbox, toggle, badge */
+  --radius-field: 4px;            /* input, select, btn */
+  /*--radius-box: 4px;              !* card, modal *!*/
+
+  /* Tamaño base */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* Borde por defecto */
+  --border: 1px;
+
+  /* Efectos */
+  --depth: 0;
+  --noise: 0;
 }
 
-/* ========================================
-   Tailwind Theme Tokens
-   ======================================== */
+/* ============================================================
+ * Tailwind Theme Tokens
+ * ============================================================ */
 
 @theme {
 
-  /* Brand */
+  /* ---------- Brand ---------- */
   --color-brand-navy: #0E1327;
   --color-brand-red: #BC1D36;
   --color-brand-white: #FFFFFF;
 
-  /* Navy Scale */
-  --color-navy-600: #1E2D52;
-  --color-navy-700: #162040;
-  --color-navy-800: #0E1327;
-  --color-navy-900: #0E1327;
+  /* ---------- Navy / Ink scale (cálida-fría, derivada de la marca) ---------- */
+  --color-ink-50:  #f8f9fc;
+  --color-ink-100: #f1f3f9;
+  --color-ink-200: #e4e7f0;
+  --color-ink-300: #c7ccde;
+  --color-ink-400: #9ea4bd;
+  --color-ink-500: #6b7290;
+  --color-ink-600: #3b4260;
+  --color-ink-700: #222944;
+  --color-ink-800: #151B33;
+  --color-ink-900: #0E1327;
 
-  /* Gray Scale */
-  --color-gray-50: #F8FAFC;
-  --color-gray-100: #F1F5F9;
-  --color-gray-200: #E2E8F0;
-  --color-gray-300: #CBD5E1;
-  --color-gray-400: #94A3B8;
-  --color-gray-500: #64748B;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1E293B;
+  /* ---------- Sea (washes sutiles del azul de marca) ---------- */
+  --color-sea-50:  #f3f5fa;
+  --color-sea-100: #e4e9f3;
+  --color-sea-200: #c6d0e3;
 
-  /* Semantic */
-  --color-background: #F8FAFC;
+  /* ---------- Sand (warm support para empty states / éxito) ---------- */
+  --color-sand-50:  #faf7f1;
+  --color-sand-100: #f3ece0;
+  --color-sand-200: #e6dbc4;
+
+  /* ---------- Red scale ---------- */
+  --color-red-100: #fbe7ea;
+  --color-red-500: #d42c48;
+  --color-red-600: #BC1D36;
+  --color-red-700: #9a1730;
+
+  /* ---------- Success ---------- */
+  --color-ok-100: #e3f2ec;
+  --color-ok-600: #1f7a5c;
+
+  /* ---------- Semantic ---------- */
+  --color-background: #f8f9fc;    /* ink-50 */
   --color-surface: #FFFFFF;
-  --color-border: #E2E8F0;
-  --color-shadow: #0F172A14;
+  --color-border: #e4e7f0;        /* ink-200 */
+  --color-border-strong: #c7ccde; /* ink-300 */
+  --color-shadow: #0E132714;
 
-  /* Text */
+  /* ---------- Text ---------- */
   --color-text-primary: #0E1327;
-  --color-text-secondary: #64748B;
-  --color-text-muted: #94A3B8;
+  --color-text-secondary: #6b7290;  /* ink-500 */
+  --color-text-muted: #9ea4bd;      /* ink-400 */
   --color-text-white: #FFFFFF;
 
-  /* Spacing */
+  /* ---------- Spacing ---------- */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
 
-  /* Radius */
+  /* ---------- Radius ---------- */
+  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 999px;
 
-  /* Typography */
-  --font-primary: "Avenir Next LT Pro", "Avenir Next", "Avenir", system-ui, sans-serif;
-  --font-secondary: "Poly", "Georgia", serif;
+  /* ---------- Shadows (alineadas con tokens.css) ---------- */
+  --shadow-xs: 0 1px 2px rgba(14,19,39,0.06);
+  --shadow-sm: 0 2px 6px rgba(14,19,39,0.06), 0 1px 2px rgba(14,19,39,0.04);
+  --shadow-md: 0 6px 18px rgba(14,19,39,0.08), 0 2px 4px rgba(14,19,39,0.04);
+  --shadow-lg: 0 18px 40px rgba(14,19,39,0.14);
+  --shadow-xl: 0 28px 60px rgba(14,19,39,0.18);
 
-  /* Font Sizes — mapped from design mockups */
-  --text-display: 46px;    /* Hero titles */
-  --text-h1: 36px;         /* Page headings */
-  --text-h2: 32px;         /* Section headings */
-  --text-h3: 28px;         /* Card headings */
-  --text-h4: 26px;         /* Sub-headings */
-  --text-h5: 24px;         /* Highlighted prices */
-  --text-h6: 22px;         /* Total prices */
-  --text-xl: 20px;         /* Large labels */
-  --text-lg: 18px;         /* Medium labels */
-  --text-body: 17px;       /* Body copy */
-  --text-base: 16px;       /* Default body */
-  --text-md: 15px;         /* Sidebar labels */
-  --text-sm: 14px;         /* Small text, buttons */
-  --text-xs: 13px;         /* Detail rows, meta */
-  --text-2xs: 12px;        /* Captions, badges */
-  --text-3xs: 11px;        /* Micro labels */
-  --text-4xs: 10px;        /* Fine print */
-  --text-5xs: 9px;         /* Badge text */
-  --text-6xs: 8px;         /* Smallest labels */
-  /* Line Heights */
+  /* ---------- Typography ---------- */
+  --font-display:  "Manrope", "Avenir Next LT Pro", "Avenir Next", system-ui, sans-serif;
+  --font-primary:  "Manrope", "Avenir Next LT Pro", "Avenir Next", system-ui, sans-serif;
+  --font-secondary:"Poly", "Georgia", serif;
+  --font-mono:     ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ---------- Font sizes (mantengo tu escala numerada) ---------- */
+  --text-display: 46px;
+  --text-h1: 36px;
+  --text-h2: 32px;
+  --text-h3: 28px;
+  --text-h4: 26px;
+  --text-h5: 24px;
+  --text-h6: 22px;
+  --text-xl: 20px;
+  --text-lg: 18px;
+  --text-body: 17px;
+  --text-base: 16px;
+  --text-md: 15px;
+  --text-sm: 14px;
+  --text-xs: 13px;
+  --text-2xs: 12px;
+  --text-3xs: 11px;
+  --text-4xs: 10px;
+  --text-5xs: 9px;
+  --text-6xs: 8px;
+
+  /* ---------- Line heights ---------- */
   --leading-tight: 1.2;
+  --leading-snug: 1.35;
   --leading-normal: 1.5;
   --leading-relaxed: 1.625;
+
+  /* ---------- Letter spacing ---------- */
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-eyebrow: 0.22em;  /* el "eyebrow" UPPERCASE del brand book */
 }
 
-/* ========================================
-   Base Layer
-   ======================================== */
+/* ============================================================
+ * Base Layer
+ * ============================================================ */
 
 @layer base {
   html,
@@ -140,13 +205,17 @@
     font-family: var(--font-primary);
     color: var(--color-text-primary);
     background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .font-primary {
+  .font-primary,
+  .font-display {
     font-family: var(--font-primary);
   }
 
-  .font-secondary {
+  .font-secondary,
+  .font-serif {
     font-family: var(--font-secondary);
   }
 
@@ -154,40 +223,120 @@
     font-family: var(--font-secondary);
     font-style: italic;
   }
+
+  /* Headings serif por defecto, opt-in via .heading-serif */
+  .heading-serif {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    letter-spacing: var(--tracking-tight);
+  }
 }
 
-/* ========================================
-   Components
-   ======================================== */
+/* ============================================================
+ * Components — utilidades semánticas alineadas al rediseño
+ * ============================================================ */
 
-@layer components {
+/*@layer components {*/
 
-  /*.btn-primary {*/
-  /*  @apply btn;*/
-  /*  background-color: var(--color-brand-navy);*/
-  /*  color: white;*/
-  /*  border-radius: var(--radius-md);*/
-  /*}*/
-  /*.btn-secondary {*/
-  /*  @apply btn;*/
-  /*  background-color: var(--color-brand-red);*/
-  /*  color: white;*/
-  /*  border-radius: var(--radius-md);*/
-  /*}*/
-  /*.btn-outline {*/
-  /*  @apply btn btn-outline;*/
-  /*  border-color: var(--color-border);*/
-  /*  color: var(--color-brand-navy);*/
-  /*}*/
-  /*.card {*/
-  /*  background-color: var(--color-surface);*/
-  /*  border: 1px solid var(--color-border);*/
-  /*  border-radius: var(--radius-lg);*/
-  /*}*/
-  /*.input-field {*/
-  /*  @apply input;*/
-  /*  border-color: var(--color-border);*/
-  /*  border-radius: var(--radius-sm);*/
-  /*}*/
+/*  !* ---------- Eyebrow (UPPERCASE wide-tracked) ---------- *!*/
+/*  .eyebrow {*/
+/*    text-transform: uppercase;*/
+/*    letter-spacing: var(--tracking-eyebrow);*/
+/*    font-size: var(--text-3xs);*/
+/*    font-weight: 600;*/
+/*    color: var(--color-text-secondary);*/
+/*  }*/
 
-}
+/*  !* ---------- Buttons ---------- *!*/
+/*  .btn-primary-brand {*/
+/*    @apply btn;*/
+/*    background-color: var(--color-brand-navy);*/
+/*    color: var(--color-brand-white);*/
+/*    border-color: var(--color-brand-navy);*/
+/*    border-radius: var(--radius-md);*/
+/*    font-weight: 600;*/
+/*  }*/
+/*  .btn-primary-brand:hover {*/
+/*    background-color: var(--color-ink-800);*/
+/*    border-color: var(--color-ink-800);*/
+/*  }*/
+
+/*  .btn-secondary-brand {*/
+/*    @apply btn;*/
+/*    background-color: var(--color-brand-red);*/
+/*    color: var(--color-brand-white);*/
+/*    border-color: var(--color-brand-red);*/
+/*    border-radius: var(--radius-md);*/
+/*    font-weight: 600;*/
+/*  }*/
+/*  .btn-secondary-brand:hover {*/
+/*    background-color: var(--color-red-700);*/
+/*    border-color: var(--color-red-700);*/
+/*  }*/
+
+/*  .btn-outline-brand {*/
+/*    @apply btn btn-outline;*/
+/*    border-color: var(--color-border);*/
+/*    color: var(--color-brand-navy);*/
+/*    border-radius: var(--radius-md);*/
+/*    background-color: var(--color-surface);*/
+/*  }*/
+/*  .btn-outline-brand:hover {*/
+/*    border-color: var(--color-brand-navy);*/
+/*    background-color: var(--color-ink-50);*/
+/*    color: var(--color-brand-navy);*/
+/*  }*/
+
+/*  !* ---------- Cards ---------- *!*/
+/*  .card-brand {*/
+/*    background-color: var(--color-surface);*/
+/*    border: 1px solid var(--color-border);*/
+/*    border-radius: var(--radius-lg);*/
+/*    box-shadow: var(--shadow-sm);*/
+/*  }*/
+/*  .card-brand-flat {*/
+/*    background-color: var(--color-surface);*/
+/*    border: 1px solid var(--color-border);*/
+/*    border-radius: var(--radius-lg);*/
+/*  }*/
+
+/*  !* ---------- Inputs ---------- *!*/
+/*  .input-field {*/
+/*    @apply input;*/
+/*    border: 1px solid var(--color-border);*/
+/*    border-radius: var(--radius-md);*/
+/*    background-color: var(--color-surface);*/
+/*    color: var(--color-text-primary);*/
+/*    font-family: var(--font-primary);*/
+/*  }*/
+/*  .input-field:focus {*/
+/*    outline: none;*/
+/*    border-color: var(--color-brand-navy);*/
+/*    box-shadow: 0 0 0 3px rgba(14,19,39,0.08);*/
+/*  }*/
+
+/*  !* ---------- Pills / Badges ---------- *!*/
+/*  .pill {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    gap: 6px;*/
+/*    padding: 4px 10px;*/
+/*    border-radius: var(--radius-full);*/
+/*    font-size: var(--text-2xs);*/
+/*    font-weight: 600;*/
+/*    background-color: var(--color-ink-100);*/
+/*    color: var(--color-ink-700);*/
+/*  }*/
+/*  .pill-red {*/
+/*    background-color: var(--color-red-100);*/
+/*    color: var(--color-red-700);*/
+/*  }*/
+/*  .pill-success {*/
+/*    background-color: var(--color-ok-100);*/
+/*    color: var(--color-ok-600);*/
+/*  }*/
+/*  .pill-sand {*/
+/*    background-color: var(--color-sand-100);*/
+/*    color: var(--color-ink-800);*/
+/*  }*/
+/*}*/

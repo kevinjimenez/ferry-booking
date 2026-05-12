@@ -45,8 +45,12 @@ const buttonClasses = computed(() => {
   if (props.circle) classes.push('btn-circle');
 
   // Size (solo si no es circle y no es md)
-  if (!props.circle && props.size !== 'md') {
-    classes.push(sizeMap[props.size]);
+  if (props.size !== 'md') {
+    classes.push(sizeMap[props.size] ?? props.size);
+  }
+
+  if (!props.circle && props.height) {
+    classes.push(props.height);
   }
 
   // Variant
