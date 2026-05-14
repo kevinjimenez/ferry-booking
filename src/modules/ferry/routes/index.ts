@@ -42,6 +42,17 @@ export const ferryRoutes: RouteRecordRaw = {
       },
     },
     {
+      path: 'outbound-fare',
+      name: FERRY_ROUTE_NAMES.OUTBOUND_FARE,
+      component: () => import('@/modules/ferry/views/FerryFareView.vue'),
+      // beforeEnter: outboundGuard,
+      meta: {
+        title: 'Tarifa de ida',
+        requiresAuth: false,
+        direction: 'outbound',
+      },
+    },
+    {
       path: 'inbound',
       name: FERRY_ROUTE_NAMES.INBOUND,
       component: () => import('@/modules/ferry/views/FerryInboundView.vue'),
@@ -49,6 +60,17 @@ export const ferryRoutes: RouteRecordRaw = {
       meta: {
         title: 'Salidas del Ferry',
         requiresAuth: false,
+      },
+    },
+    {
+      path: 'inbound-fare',
+      name: FERRY_ROUTE_NAMES.INBOUND_FARE,
+      component: () => import('@/modules/ferry/views/FerryFareView.vue'),
+      // beforeEnter: inboundGuard,
+      meta: {
+        title: 'Tarifa de vuelta',
+        requiresAuth: false,
+        direction: 'inbound',
       },
     },
     {

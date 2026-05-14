@@ -1,5 +1,5 @@
 <template>
-  <div class="flex border-2 border-gray-200 rounded-md shadow-sm p-5 items-start gap-x-2">
+  <div class="flex border-2 border-gray-200 bg-white rounded-md shadow-sm p-5 items-start gap-x-2">
     <component :is="icon" class="size-5" />
     <div class="flex flex-col">
       <span class="text-base text-primary font-semibold">{{ title }}</span>

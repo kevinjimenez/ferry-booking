@@ -23,7 +23,7 @@
       />
     </div>
     <p v-if="helperText && !error" class="label">{{ helperText }}</p>
-    <span v-if="error" class="text-secondary text-input-error font-semibold">{{ error }}</span>
+    <span v-if="error" class="text-secondary text-2xs font-semibold">{{ error }}</span>
   </div>
 </template>
 

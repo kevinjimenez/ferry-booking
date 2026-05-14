@@ -29,6 +29,7 @@
         <BaseButton
           circle
           class="mt-6 size-12"
+          icon-class="size-7"
           :prefix-icon="SwitchHorizontalIcon"
           @click="swapOriginDestination"
         />

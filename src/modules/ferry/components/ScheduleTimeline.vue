@@ -3,7 +3,7 @@
   <div class="flex flex-col items-center gap-y-2">
     <TripTypeLabel :type="type" :stops="stops" />
     <BaseRouteBar :stops="stops" />
-    <span class="text-sm text-text-muted">{{ duration }}</span>
+    <span class="text-sm text-ink-500">{{ duration }}</span>
   </div>
 </template>
 

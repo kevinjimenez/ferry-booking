@@ -1,20 +1,18 @@
 <template>
-  <header
-    class="w-full h-20 shrink-0 flex bg-gray-50 items-center border-b border-b-gray-200 shadow-sm px-10"
-  >
-    <div class="flex items-center flex-1 cursor-default" @click="emit('back')">
-      <ArrowLeftIcon />
-      <span class="text-sm">Volver</span>
+  <header class="w-full flex flex-col px-10 gap-y-8 pt-10">
+    <div class="flex items-center flex-1 gap-x-1 cursor-default" @click="emit('back')">
+      <ArrowRightDashedIcon class="rotate-180 size-7" />
+      <span class="text-sm font-medium">Volver</span>
     </div>
-    <span class="text-base font-medium">{{ title }}</span>
-    <div class="flex-1" />
+    <h1 class="text-h1 font-extrabold">{{ title }}</h1>
+    <span v-if="subtitle" class="text-md text-ink-500 font-secondary-italic">{{ subtitle }}</span>
   </header>
 </template>
 
 <script setup lang="ts">
-import ArrowLeftIcon from '@/shared/icons/ArrowLeftIcon.vue';
+import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 
-defineProps<{ title: string }>();
+defineProps<{ title: string; subtitle?: string }>();
 const emit = defineEmits<{
   back: [];
 }>();

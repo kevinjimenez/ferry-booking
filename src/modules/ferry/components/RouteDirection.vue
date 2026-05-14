@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-x-3 w-full">
     <PortLabel :name="originName" :island="originIsland" />
-    <div class="divider text-gray-400 min-w-1/2 max-w-1/2">
+    <div class="divider divider-secondary">
       <ArrowRightDashedIcon class="size-14 text-primary" />
     </div>
     <PortLabel :name="destinationName" :island="destinationIsland" />
