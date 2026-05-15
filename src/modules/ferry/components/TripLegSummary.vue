@@ -1,29 +1,20 @@
 <template>
-  <div class="flex flex-col">
-    <div class="flex items-center gap-x-2">
-      <BaseBadge :label="badgeLabel" :variant="badgeVariant" label-class="text-3xs" />
-      <div class="flex text-text-muted items-center gap-x-1">
-        <small>{{ origin }}</small>
-        <ArrowRightDashedIcon class="size-5" />
-        <small>{{ destination }}</small>
-      </div>
+  <div :class="['flex flex-col gap-y-1 p-5', {'bg-primary/6': type === 'outbound', 'bg-secondary/6': type === 'inbound'}]">
+    <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" />
+    <div class="flex justify-between items-center">
+      <TimeRangeDisplay :departure="departure" :arrival="arrival" />
+      <span class="text-sm font-semibold text-secondary">{{ price }}</span>
     </div>
-    <div class="flex flex-col mt-2">
-      <LabelValue label="Ferry" :value="ferry" />
-      <LabelValue label="Salida" :value="departure" />
-      <LabelValue label="Llegada" :value="arrival" />
-      <LabelValue label="Pasajeros" :value="passengers" />
-      <LabelValue label="Precio" :value="price" />
+    <div class="flex justify-start items-center">
+      <span class="text-sm font-semibold text-text-muted">{{ ferry }}</span>
     </div>
-    <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
   </div>
 </template>
 
 <script setup lang="ts">
-import BaseBadge from '@/shared/components/base/BaseBadge.vue';
-import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
-import LabelValue from '@/shared/components/LabelValue.vue';
 import { computed } from 'vue';
+import TripRouteLabel from '@/modules/ferry/components/TripRouteLabel.vue';
+import TimeRangeDisplay from '@/shared/components/TimeRangeDisplay.vue';
 
 const props = withDefaults(
   defineProps<{

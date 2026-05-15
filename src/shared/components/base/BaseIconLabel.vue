@@ -6,7 +6,7 @@
       :class="twMerge('size-5 text-gray-400', iconClass)"
     />
     <slot>
-      <span class="text-gray-400 font-secondary-italic">{{ label }}</span>
+      <span :class="twMerge('text-gray-400 font-secondary-italic', labelClass)">{{ label }}</span>
     </slot>
     <component
       v-if="suffixIcon"
@@ -22,6 +22,7 @@ import { twMerge } from 'tailwind-merge';
 
 defineProps<{
   label?: string;
+  labelClass?: string;
   iconClass?: string;
   prefixIcon?: Component;
   suffixIcon?: Component;

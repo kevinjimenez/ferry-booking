@@ -2,6 +2,8 @@ export const FERRY_STORAGE_KEYS = {
   SEARCH: 'ferry:search',
   SCHEDULE_OUTBOUND: 'ferry:schedule:outbound',
   SCHEDULE_INBOUND: 'ferry:schedule:inbound',
+  FARE_OUTBOUND: 'ferry:fare:outbound',
+  FARE_INBOUND: 'ferry:fare:inbound',
   BOOKING_ID: 'ferry:booking:id',
   BOOKING_OUTBOUND_ID: 'ferry:booking:outbound',
   BOOKING_RETURN_ID: 'ferry:booking:return',

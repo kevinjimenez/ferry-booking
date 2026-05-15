@@ -1,11 +1,15 @@
 <template>
-  <FerryNavHeader title="Datos del contacto y pasajeros" @back="$router.back()" />
+  <div class="px-160">
+    <FerryNavHeader title="Datos del contacto y pasajeros" @back="$router.back()" />
   <div class="flex flex-col gap-y-10 px-20 py-10">
     <FerryContactSection name-prefix="contact" />
 
     <FerryPassengersSection :passengers="passengers" />
 
-    <BaseButton @click="onSubmit" :suffix-icon="ArrowRightDashedIcon">{{ buttonLabel }}</BaseButton>
+    <BaseButton @click="onSubmit" :suffix-icon="ArrowRightDashedIcon" height="h-[4.5rem]">
+    <span class="text-sm font-bold">{{ buttonLabel }}</span>
+  </BaseButton>
+  </div>
   </div>
 </template>
 

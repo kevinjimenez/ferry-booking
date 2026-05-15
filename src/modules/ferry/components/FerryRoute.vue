@@ -16,6 +16,7 @@
       :port="destination.port"
       :island="destination.island"
       :address="destination.address"
+
     />
   </div>
 </template>

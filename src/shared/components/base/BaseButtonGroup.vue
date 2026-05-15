@@ -5,7 +5,7 @@
       :key="option.value.toString()"
       type="button"
       class="join-item btn shadow-none"
-      :class="buttonClassesMap[option.value]"
+      :class="[buttonClassesMap[option.value],'text-2xs']"
       @click="emit('update:modelValue', option.value)"
       :disabled="disabled"
     >

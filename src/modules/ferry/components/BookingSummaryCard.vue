@@ -1,48 +1,51 @@
 <template>
-  <div class="flex flex-col">
-    <div class="flex flex-col border-2 rounded-t-md">
-      <span class="text-sm font-semibold text-white bg-primary h-12 flex items-center px-7">
-        TU SELECCION
-      </span>
-    </div>
+  <div class="flex flex-col shadow-sm rounded-md p-7 gap-y-5 border-2 border-gray-200 bg-white">
+    <span class="text-2sm font-bold text-text-secondary"> TU SELECCION </span>
 
-    <div class="flex flex-col border-2 border-gray-200 rounded-b-md shadow-sm gap-y-5 p-6">
+    <EmptyState
+      v-if="!outbound"
+      title="Tu selección"
+      :icon="FerryIcon"
+      description="Selecciona un ferry de ida para ver el resumen de tu viaje"
+    >
+      <BaseButton class="w-full" :prefix-icon="PlusIcon" icon-class="size-5" disabled>
+        Elige un horario
+      </BaseButton>
+    </EmptyState>
+    <TripLegSummary v-else v-bind="outbound" badge-label="Ida" />
+
+    <template v-if="isRoundTrip && outbound">
       <EmptyState
-        v-if="!outbound"
+        v-if="!inbound"
         title="Tu selección"
         :icon="FerryIcon"
-        description="Selecciona un ferry de ida para ver el resumen de tu viaje"
+        description="Selecciona un ferry de vuelta para completar tu viaje"
       >
         <BaseButton class="w-full" :prefix-icon="PlusIcon" icon-class="size-5" disabled>
           Elige un horario
         </BaseButton>
       </EmptyState>
-      <TripLegSummary v-else v-bind="outbound" badge-label="Ida" />
+      <TripLegSummary v-else v-bind="inbound" badge-label="Vuelta" type="inbound" />
+    </template>
 
-      <template v-if="isRoundTrip && outbound">
-        <EmptyState
-          v-if="!inbound"
-          title="Tu selección"
-          :icon="FerryIcon"
-          description="Selecciona un ferry de vuelta para completar tu viaje"
-        >
-          <BaseButton class="w-full" :prefix-icon="PlusIcon" icon-class="size-5" disabled>
-            Elige un horario
-          </BaseButton>
-        </EmptyState>
-        <TripLegSummary v-else v-bind="inbound" badge-label="Vuelta" type="inbound" />
-      </template>
-
-      <template v-if="outbound && (!isRoundTrip || inbound)">
-        <div class="flex justify-between">
-          <span class="text-xl font-semibold">Total</span>
-          <span class="text-3xl font-semibold">{{ total }}</span>
-        </div>
-        <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
-          buttonLabel
-        }}</BaseButton>
-      </template>
-    </div>
+    <template v-if="outbound && (!isRoundTrip || inbound)">
+      <LabelValue
+        label="Pasajeros"
+        :value="outbound?.passengers ?? '0'"
+        :custom-class="{
+          label: 'text-sm text-primary',
+          value: 'text-sm text-primary font-bold',
+        }"
+      />
+      <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
+      <div class="flex justify-between">
+        <span class="text-md font-bold">Total</span>
+        <span class="text-[30px] text-secondary font-bold">{{ total }}</span>
+      </div>
+      <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
+        buttonLabel
+      }}</BaseButton>
+    </template>
   </div>
 </template>
 
@@ -53,6 +56,7 @@ import PlusIcon from '@/shared/icons/PlusIcon.vue';
 import EmptyState from '@/shared/components/EmptyState.vue';
 import TripLegSummary from '@/modules/ferry/components/TripLegSummary.vue';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
+import LabelValue from '@/shared/components/LabelValue.vue';
 
 interface TripLeg {
   origin: string;

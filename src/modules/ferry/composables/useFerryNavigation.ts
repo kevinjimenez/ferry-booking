@@ -20,6 +20,16 @@ export const useFerryNavigation = () => {
       },
     });
 
+  const goToOutboundFare = () =>
+    router.push({
+      name: FERRY_ROUTE_NAMES.OUTBOUND_FARE,
+      query: {
+        origin: storeFerrySearch.values.origin?.value,
+        destination: storeFerrySearch.values.destination?.value,
+        outboundDate: storeFerrySearch.values.outboundDate,
+      },
+    });
+
   const goToInbound = () =>
     router.push({
       name: FERRY_ROUTE_NAMES.INBOUND,
@@ -30,6 +40,18 @@ export const useFerryNavigation = () => {
         inboundDate: storeFerrySearch.values.inboundDate,
       },
     });
+
+  const goToInboundFare = () =>
+    router.push({
+      name: FERRY_ROUTE_NAMES.INBOUND_FARE,
+      query: {
+        origin: storeFerrySearch.values.origin?.value,
+        destination: storeFerrySearch.values.destination?.value,
+        outboundDate: storeFerrySearch.values.outboundDate,
+        inboundDate: storeFerrySearch.values.inboundDate,
+      },
+    });
+
   const goToTripSummary = () => {
     const outbound = storeFerrySelection.outbound!;
     const inbound = storeFerrySelection.inbound;
@@ -43,12 +65,16 @@ export const useFerryNavigation = () => {
       query,
     });
   };
+
   const goToPassengerDetails = () => router.push({ name: FERRY_ROUTE_NAMES.PASSENGER_DETAILS });
+
   const goToPayment = () => router.push({ name: FERRY_ROUTE_NAMES.PAYMENT });
 
   return {
     goToOutbound,
+    goToOutboundFare,
     goToInbound,
+    goToInboundFare,
     goToSearch,
     goToTripSummary,
     goToPayment,
