@@ -5,24 +5,45 @@
     icon-class="size-5"
     title-class="text-base text-text-muted font-semibold"
   >
-    <LabelValue
-      label="Ferry de ida"
-      :value="outboundLabel"
-      :custom-class="{
-        label: 'text-md text-primary font-normal',
-        value: 'text-md text-primary font-normal',
-      }"
-    />
+    <div class="flex flex-col gap-y-1">
+      <LabelValue
+        label="Ferry de ida"
+        :value="outboundLabel"
+        :custom-class="{
+          label: 'text-md text-primary font-normal',
+          value: 'text-md text-primary font-normal',
+        }"
+      />
+      <LabelValue
+        v-if="outboundFareName"
+        :label="outboundFareName"
+        :value="outboundFarePrice ?? ''"
+        :custom-class="{
+          label: 'text-sm text-text-muted font-normal',
+          value: 'text-sm text-text-muted font-normal',
+        }"
+      />
+    </div>
 
-    <LabelValue
-      v-if="isRoundTrip"
-      label="Ferry de vuelta"
-      :value="inboundLabel"
-      :custom-class="{
-        label: 'text-md text-primary font-normal',
-        value: 'text-md text-primary font-normal',
-      }"
-    />
+    <div v-if="isRoundTrip" class="flex flex-col gap-y-1">
+      <LabelValue
+        label="Ferry de vuelta"
+        :value="inboundLabel"
+        :custom-class="{
+          label: 'text-md text-primary font-normal',
+          value: 'text-md text-primary font-normal',
+        }"
+      />
+      <LabelValue
+        v-if="inboundFareName"
+        :label="inboundFareName"
+        :value="inboundFarePrice ?? ''"
+        :custom-class="{
+          label: 'text-sm text-text-muted font-normal',
+          value: 'text-sm text-text-muted font-normal',
+        }"
+      />
+    </div>
 
     <BaseDivider />
 
@@ -43,5 +64,14 @@ import BaseDivider from '@/shared/components/base/BaseDivider.vue';
 import LabelValue from '@/shared/components/LabelValue.vue';
 import UsersIcon from '@/shared/icons/UsersIcon.vue';
 
-defineProps<{ isRoundTrip: boolean; total: string; outboundLabel: string; inboundLabel: string }>();
+defineProps<{
+  isRoundTrip: boolean;
+  total: string;
+  outboundLabel: string;
+  inboundLabel: string;
+  outboundFareName?: string;
+  outboundFarePrice?: string;
+  inboundFareName?: string;
+  inboundFarePrice?: string;
+}>();
 </script>
