@@ -65,6 +65,9 @@ interface TripLeg {
   departure: string;
   arrival: string;
   passengers: string;
+  fare?: string;
+  basePrice?: string;
+  farePrice?: string;
   price: string;
 }
 
