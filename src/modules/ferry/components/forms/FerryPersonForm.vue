@@ -1,14 +1,14 @@
 <template>
   <div class="w-full flex flex-col gap-y-5">
-    <div class="flex gap-x-5">
+    <div class="flex flex-col sm:flex-row gap-y-3 sm:gap-x-5">
       <BaseInput v-model="firstName" label="Nombres" :error="firstNameError" />
       <BaseInput v-model="lastName" label="Apellidos" :error="lastNameError" />
     </div>
-    <div class="flex gap-x-5">
+    <div class="flex flex-col sm:flex-row gap-y-3 sm:gap-x-5">
       <BaseInput v-model="email" label="Email" :error="emailError" />
       <BaseInput v-model="phone" label="Telefono" :error="phoneError" />
     </div>
-    <div class="flex gap-x-5">
+    <div class="flex flex-col sm:flex-row gap-y-3 sm:gap-x-5">
       <BaseSelect
         v-model="documentType"
         :options="[{ label: 'Cedula', value: 'DNI' }]"
