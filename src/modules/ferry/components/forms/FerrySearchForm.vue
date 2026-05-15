@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5 shadow-lg"
+    class="bg-white w-112 sm:w-220 lg:w-2/3 flex flex-col items-center justify-center p-10 rounded-md gap-y-5 shadow-lg"
   >
     <template v-if="isPending">
       <FerrySearchFormSkeleton />
@@ -14,7 +14,7 @@
         font-size="sm"
       />
 
-      <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
         <BaseSelect
           v-model="origin"
           v-bind="originAttrs"
@@ -28,7 +28,7 @@
 
         <BaseButton
           circle
-          class="mt-6 size-12"
+          class="sm:mt-6 size-12 self-center sm:self-auto"
           icon-class="size-7"
           :prefix-icon="SwitchHorizontalIcon"
           @click="swapOriginDestination"
@@ -46,7 +46,7 @@
         />
       </div>
 
-      <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
         <BaseInput
           type="date"
           label="Fecha de salida"
@@ -64,7 +64,13 @@
           :error="errors.inboundDate"
         />
 
-        <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10" />
+        <BaseInputNumber
+          label="No. Pasajeros"
+          v-model="passengerCount"
+          :min="1"
+          :max="10"
+          class="self-center sm:self-auto"
+        />
       </div>
 
       <BaseButton @click="onSubmit" class="w-full" height="h-[3.5rem]">

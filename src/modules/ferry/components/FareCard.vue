@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'w-fit flex flex-col shadow-sm p-7 gap-y-5 border border-t-4 bg-white',
+      'w-full sm:w-fit flex flex-col shadow-sm p-7 gap-y-5 border border-t-4 bg-white',
       variant === 'secondary' ? 'border-secondary' : 'border-primary',
     ]"
   >

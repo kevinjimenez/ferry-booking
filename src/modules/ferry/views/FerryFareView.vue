@@ -1,11 +1,11 @@
 <template>
-  <div class="px-160">
+  <div class="sm:w-full lg:px-160">
     <FerryNavHeader :title="headerTitle" :subtitle="headerSubtitle" @back="goToBack" />
 
-    <section class="flex flex-col w-full p-10 gap-10 items-center justify-center self-center">
+    <section class="flex flex-col w-full p-5 gap-5 sm:p-10 sm:gap-10 items-center justify-center self-center">
       <FareTripSummaryBar v-bind="fareTripSummaryBarProps" />
 
-      <div class="flex gap-x-2 justify-around items-center w-full">
+      <div class="flex flex-col sm:flex-row gap-y-5 sm:gap-x-2 sm:justify-around items-center w-full">
         <FareCard
           v-for="fare in faresResponse"
           :key="fare.id"
