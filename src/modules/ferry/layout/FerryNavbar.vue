@@ -3,7 +3,7 @@
     <img src="/paradeisos-icon.svg" class="size-2xl" alt="Logo" />
     <div class="flex flex-row gap-10">
       <span
-        v-for="lang in ['INICIO', 'RUTAS', 'CONTÁCTANOS']"
+        v-for="lang in ['INICIO']"
         :key="lang"
         class="text-sm font-semibold text-gray-600"
       >
