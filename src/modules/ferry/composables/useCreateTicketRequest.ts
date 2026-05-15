@@ -20,7 +20,9 @@ export const useCreateTicketRequest = () => {
       contact,
       passengers,
       unitPriceTotal.value,
+      selectionStore.outboundFare!.id,
       selectionStore.inbound?.id,
+      selectionStore.inboundFare?.id,
     );
   };
 

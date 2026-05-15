@@ -1,55 +1,62 @@
 <template>
-  <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
-  <section class="flex w-full p-10 gap-x-10">
-    <div class="w-3/4 flex flex-col">
-      <SearchSummaryCard v-bind="searchSummaryCardProps" />
-      <TripTypeBadges class="mt-5" :is-round-trip="storeFerrySearchStore.isRoundTrip" />
+  <div class="px-40">
+    <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
+    <section class="flex w-full p-10 gap-x-10">
+      <div class="w-3/4 flex flex-col">
+        <SearchSummaryCard v-bind="searchSummaryCardProps" />
+        <TripTypeBadges class="mt-5" :is-round-trip="storeFerrySearchStore.isRoundTrip" />
 
-      <div class="flex w-full justify-between items-center my-6">
-        <span class="text-sm">HORARIOS DISPONIBLES</span>
-        <BaseButton size="xs" :prefix-icon="SortIcon" icon-class="size-3.5" variant="soft">
-          Ordenar
-        </BaseButton>
+        <div class="flex w-full justify-between items-center my-6">
+          <span class="text-lg font-bold">HORARIOS DISPONIBLES</span>
+          <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
+            Ordenar
+          </BaseButton>
+        </div>
+
+        <div class="flex flex-col gap-y-5">
+          <template v-if="isLoading">
+            <ScheduleCardSkeleton v-for="i in 4" :key="i" />
+          </template>
+          <template v-else>
+            <ScheduleCard
+              v-for="schedule in schedulesData"
+              :key="schedule.id"
+              :origin="schedule.origin"
+              :destination="schedule.destination"
+              :duration="schedule.duration"
+              :price="{
+                amount: schedule.price,
+                currency: schedule.currency,
+                seats: schedule.seats,
+              }"
+              :ferry="schedule.ferry"
+              :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
+              @select="handleSelect(schedule)"
+            />
+          </template>
+        </div>
       </div>
-
-      <div class="flex flex-col gap-y-5">
-        <template v-if="isLoading">
-          <ScheduleCardSkeleton v-for="i in 4" :key="i" />
-        </template>
-        <template v-else>
-          <ScheduleCard
-            v-for="schedule in schedulesData"
-            :key="schedule.id"
-            :origin="schedule.origin"
-            :destination="schedule.destination"
-            :duration="schedule.duration"
-            :price="{ amount: schedule.price, currency: schedule.currency, seats: schedule.seats }"
-            :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
-            @select="handleSelect(schedule)"
+      <div class="w-1/4 sticky top-6 self-start">
+        <div class="flex flex-col gap-y-5">
+          <BookingSummaryCard
+            :outbound="selectedOutbound"
+            :total="formatCurrency(grandTotal)"
+            :button-label="buttonLabel"
+            @continue="goToOutboundFare"
           />
-        </template>
+          <TripIncludesCard
+            title="Incluido en tu viaje"
+            :icon="BoxIcon"
+            :items="[
+              { icon: CheckIcon, text: 'Traslado muelle a muelle' },
+              { icon: CheckIcon, text: 'Chaleco salvavidas' },
+              { icon: CheckIcon, text: 'Equipaje según operador' },
+            ]"
+          />
+        </div>
       </div>
-    </div>
-    <div class="w-1/4 sticky top-20 self-start">
-      <div class="flex flex-col gap-y-5">
-        <BookingSummaryCard
-          :outbound="selectedOutbound"
-          :total="formatCurrency(grandTotal)"
-          :button-label="buttonLabel"
-          @continue="goTo"
-        />
-        <TripIncludesCard
-          title="Incluido en tu viaje"
-          :icon="BoxIcon"
-          :items="[
-            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-            { icon: CheckIcon, text: 'Chaleco salvavidas' },
-            { icon: CheckIcon, text: 'Equipaje según operador' },
-          ]"
-        />
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -85,7 +92,7 @@ const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound } = storeToRefs(storeFerrySelectionStore);
 
 const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery();
-const { goToInbound, goToTripSummary } = useFerryNavigation();
+const { goToOutboundFare } = useFerryNavigation();
 
 const { grandTotal } = useTripPrice();
 
@@ -102,8 +109,8 @@ const handleSelect = (schedule: Ferry) => {
   storeFerrySelectionStore.setOutbound(schedule);
 };
 
-const buttonLabel = computed(() => (isRoundTrip.value ? 'Seleccionar Ferry' : 'Continuar'));
-const goTo = () => (isRoundTrip.value ? goToInbound() : goToTripSummary());
+const buttonLabel = computed(() => (isRoundTrip.value ? 'Seleccionar tarifa' : 'Continuar'));
+
 const goToBack = () => {
   router.back();
   storeFerrySelectionStore.reset();

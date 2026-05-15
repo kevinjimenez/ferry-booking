@@ -1,24 +1,21 @@
 <template>
   <div
-    class="w-full flex border border-gray-200 p-4 rounded-md shadow-sm items-center justify-between"
+    class="w-full flex border border-gray-200 p-10 rounded-sm shadow-sm items-center justify-between bg-white"
   >
-    <RouteDirection
-      :origin-name="originName"
-      :origin-island="originIsland"
-      :destination-name="destinationName"
-      :destination-island="destinationIsland"
-    />
+    <div class="flex flex-col w-full gap-y-3">
+      <small class="text-ink-500 text-2xs font-bold uppercase">{{ dateLabel }}</small>
+      <RouteDirection
+        :origin-name="originName"
+        :origin-island="originIsland"
+        :destination-name="destinationName"
+        :destination-island="destinationIsland"
+      />
+    </div>
     <div class="flex w-full justify-end items-center gap-x-5">
-      <div class="flex">
-        <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-text-muted">
-          <small class="text-text-muted text-2xs">{{ duration }}</small>
-        </BaseIconLabel>
-      </div>
-
-      <div class="flex flex-col items-end">
-        <small class="text-text-muted text-2xs">{{ dateLabel }}</small>
-        <small class="text-text-muted text-2xs">{{ passengers }} pasajeros</small>
-      </div>
+      <small class="text-ink-600 text-xs">{{ passengers }} pasajeros</small>
+      <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-ink-600">
+        <small class="text-ink-600 text-xs">{{ duration }}</small>
+      </BaseIconLabel>
     </div>
   </div>
 </template>

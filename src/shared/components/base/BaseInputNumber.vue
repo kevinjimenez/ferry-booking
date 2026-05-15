@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-full">
-    <label for="quantity-input" class="block mb-2.5 text-sm font-medium text-heading">{{
+    <label for="quantity-input" class="block text-2xs font-medium text-heading">{{
       label
     }}</label>
     <div class="relative flex items-center shadow-xs rounded-base">

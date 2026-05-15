@@ -15,7 +15,9 @@ export interface Person extends Omit<PersonFormValues, 'documentType'> {
 }
 
 export interface Passenger extends Person {
-  unitPrice: number;
+  outboundFareId: string;
+  returnFareId?: string | null;
+  basePrice: number;
   isPrimary: boolean;
   checkedInOutbound: boolean;
   checkedInReturn: boolean;
