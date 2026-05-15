@@ -12,6 +12,10 @@
         :total="formatCurrency(grandTotal)"
         :outbound-label="outboundLabel"
         :inbound-label="inboundLabel"
+        :outbound-fare-name="ferrySelectionStore.outboundFare?.name"
+        :outbound-fare-price="ferrySelectionStore.outboundFare ? formatCurrency(parseFloat(ferrySelectionStore.outboundFare.price)) : undefined"
+        :inbound-fare-name="ferrySelectionStore.inboundFare?.name"
+        :inbound-fare-price="ferrySelectionStore.inboundFare ? formatCurrency(parseFloat(ferrySelectionStore.inboundFare.price)) : undefined"
       />
 
       <TripIncludesCard
@@ -47,6 +51,7 @@ import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import FerryPassengersSummaryCard from '@/modules/ferry/components/FerryPassengersSummaryCard.vue';
 import FerryPaymentSummaryCard from '@/modules/ferry/components/FerryPaymentSummaryCard.vue';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
+import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { formatCurrency, toCents } from '@/shared/utils/currency.utils.ts';
 import { computed } from 'vue';
@@ -56,6 +61,7 @@ import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
 
 const ferrySearchStore = useFerrySearchStore();
+const ferrySelectionStore = useFerrySelectionStore();
 const transactionId = crypto.randomUUID();
 
 const { inboundTotal, outboundTotal, grandTotal } = useTripPrice();

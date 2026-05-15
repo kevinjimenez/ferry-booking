@@ -1,6 +1,6 @@
 <template>
   <!--bg-light-gray-->
-  <main class="min-h-screen h-screen bg-background flex flex-col">
+  <main class="min-h-screen h-screen flex flex-col">
     <FerryNavbar />
     <router-view class="flex-1" />
   </main>
