@@ -89,7 +89,7 @@ const storeFerrySearchStore = useFerrySearchStore();
 const storeFerrySelectionStore = useFerrySelectionStore();
 
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
-const { outbound, inbound } = storeToRefs(storeFerrySelectionStore);
+const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(storeFerrySelectionStore);
 
 const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery('inbound');
 const { goToInboundFare, goToOutbound } = useFerryNavigation();
@@ -97,12 +97,12 @@ const { grandTotal } = useTripPrice();
 
 const selectedOutbound = computed(() => {
   if (!outbound.value) return undefined;
-  return BookingSummaryMapper.toFerryLegSummary(outbound.value, search.value.passengerCount);
+  return BookingSummaryMapper.toFerryLegSummary(outbound.value, search.value.passengerCount, outboundFare.value);
 });
 
 const selectedInbound = computed(() => {
   if (!inbound.value) return undefined;
-  return BookingSummaryMapper.toFerryLegSummary(inbound.value, search.value.passengerCount);
+  return BookingSummaryMapper.toFerryLegSummary(inbound.value, search.value.passengerCount, inboundFare.value);
 });
 
 const searchSummaryCardProps = computed(() =>

@@ -3,10 +3,14 @@
     <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" />
     <div class="flex justify-between items-center">
       <TimeRangeDisplay :departure="departure" :arrival="arrival" />
-      <span class="text-sm font-semibold text-secondary">{{ price }}</span>
+      <div class="flex flex-col items-end">
+        <span class="text-sm font-semibold text-secondary">{{ price }}</span>
+        <span v-if="farePrice" class="text-xs text-text-muted">Ferry {{ basePrice }} + Tarifa {{ farePrice }}</span>
+      </div>
     </div>
-    <div class="flex justify-start items-center">
+    <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-text-muted">{{ ferry }}</span>
+      <span v-if="fare" class="text-xs font-medium text-text-muted">{{ fare }}</span>
     </div>
   </div>
 </template>
@@ -26,6 +30,9 @@ const props = withDefaults(
     departure: string;
     arrival: string;
     passengers: string;
+    fare?: string;
+    basePrice?: string;
+    farePrice?: string;
     price: string;
   }>(),
   {

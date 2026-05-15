@@ -2,48 +2,50 @@
   <div class="px-160">
     <FerryNavHeader :title="title" @back="handleGotoBack" />
 
-  <div class="flex flex-col w-full gap-y-4 mt-8 px-4 pb-8">
-    <FerryTripCard
-      type="outbound"
-      :date="search.outboundDate"
-      :origin="outbound!.origin"
-      :destination="outbound!.destination"
-      :duration="outbound!.duration"
-      :details="[
-        { label: 'Código', value: maskString(outbound!.id, 5) },
-        { label: 'Embarcación', value: outbound!.ferry.name },
-        { label: 'Clase', value: outbound!.ferry.type },
-        { label: 'Precio', value: formatCurrency(outbound!.price) },
-      ]"
-      @change="handleChange('outbound')"
-    />
-    <FerryTripCard
-      v-if="inbound"
-      type="inbound"
-      :date="search.inboundDate!"
-      :origin="inbound.origin"
-      :destination="inbound.destination"
-      :duration="inbound.duration"
-      :details="[
-        { label: 'Código', value: maskString(inbound!.id, 5) },
-        { label: 'Embarcación', value: inbound!.ferry.name },
-        { label: 'Clase', value: inbound!.ferry.type },
-        { label: 'Precio', value: formatCurrency(inbound!.price) },
-      ]"
-      @change="handleChange('inbound')"
-    />
+    <div class="flex flex-col w-full gap-y-4 mt-8 px-4 pb-8">
+      <FerryTripCard
+        type="outbound"
+        :date="search.outboundDate"
+        :origin="outbound!.origin"
+        :destination="outbound!.destination"
+        :duration="outbound!.duration"
+        :details="[
+          { label: 'Código', value: maskString(outbound!.id, 5) },
+          { label: 'Embarcación', value: outbound!.ferry.name },
+          { label: 'Clase', value: outbound!.ferry.type },
+          { label: 'Tarifa', value: outboundFare!.name },
+          { label: 'Precio', value: `Ferry ${formatCurrency(outbound!.price)} + Tarifa ${formatCurrency(parseFloat(outboundFare!.price))}` },
+        ]"
+        @change="handleChange('outbound')"
+      />
+      <FerryTripCard
+        v-if="inbound"
+        type="inbound"
+        :date="search.inboundDate!"
+        :origin="inbound.destination"
+        :destination="inbound.origin"
+        :duration="inbound.duration"
+        :details="[
+          { label: 'Código', value: maskString(inbound!.id, 5) },
+          { label: 'Embarcación', value: inbound!.ferry.name },
+          { label: 'Clase', value: inbound!.ferry.type },
+          { label: 'Tarifa', value: inboundFare!.name },
+          { label: 'Precio', value: `Ferry ${formatCurrency(inbound!.price)} + Tarifa ${formatCurrency(parseFloat(inboundFare!.price))}` },
+        ]"
+        @change="handleChange('inbound')"
+      />
 
-    <DeparturePlanCard :duration="outbound!.duration" :steps="departureSteps" />
+      <DeparturePlanCard :duration="outbound!.duration" :steps="departureSteps" />
 
-    <ComplementaryServicesCard :services="complementaryServices" @add="handleAddService" />
+      <ComplementaryServicesCard :services="complementaryServices" @add="handleAddService" />
 
-    <TripTotalFooter
-      :label="buttonLabel"
-      :total="grandTotal"
-      :loading="isPending"
-      @continue="handleContinue"
-    />
-  </div>
+      <TripTotalFooter
+        :label="buttonLabel"
+        :total="grandTotal"
+        :loading="isPending"
+        @continue="handleContinue"
+      />
+    </div>
   </div>
 </template>
 
@@ -51,13 +53,12 @@
 import { computed } from 'vue';
 import dayjs from 'dayjs';
 import { storeToRefs } from 'pinia';
-import { useRouter } from 'vue-router';
 
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import FerryTripCard from '@/modules/ferry/components/FerryTripCard.vue';
 import DeparturePlanCard from '@/modules/ferry/components/DeparturePlanCard.vue';
-import ComplementaryServicesCard from '@/modules/ferry/components/ComplementaryServicesCard.vue';
 import type { ServiceAddon } from '@/modules/ferry/components/ComplementaryServicesCard.vue';
+import ComplementaryServicesCard from '@/modules/ferry/components/ComplementaryServicesCard.vue';
 import TripTotalFooter from '@/modules/ferry/components/TripTotalFooter.vue';
 
 import MapPinIcon from '@/shared/icons/MapPinIcon.vue';
@@ -77,13 +78,12 @@ import { useFerryPassengersStore } from '@/modules/ferry/stores/ferry-passengers
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import { maskString } from '@/shared/utils/string.utils.ts';
 
-const router = useRouter();
 const storeFerrySearch = useFerrySearchStore();
 const storeFerrySelection = useFerrySelectionStore();
 const ticketStore = useFerryTicketStore();
 const passengersStore = useFerryPassengersStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearch);
-const { inbound, outbound } = storeToRefs(storeFerrySelection);
+const { inbound, outbound, outboundFare, inboundFare } = storeToRefs(storeFerrySelection);
 
 const { createBookingBody, isSameBooking } = useBookingCheckout();
 const bookingStore = useBookingStore();
@@ -102,8 +102,14 @@ const departureSteps = computed(() => {
   const dep = dayjs(`2000-01-01 ${outbound.value.origin.time}`);
   return [
     { time: dep.subtract(50, 'minute').format('HH:mm'), text: 'Chequeo en listado del ferry' },
-    { time: dep.subtract(45, 'minute').format('HH:mm'), text: 'Control de equipaje en ABG (Gobierno)' },
-    { time: dep.subtract(10, 'minute').format('HH:mm'), text: 'Abordar taxi acuático hacia el ferry' },
+    {
+      time: dep.subtract(45, 'minute').format('HH:mm'),
+      text: 'Control de equipaje en ABG (Gobierno)',
+    },
+    {
+      time: dep.subtract(10, 'minute').format('HH:mm'),
+      text: 'Abordar taxi acuático hacia el ferry',
+    },
     {
       time: outbound.value.origin.time,
       text: `Salida desde ${outbound.value.origin.port}`,

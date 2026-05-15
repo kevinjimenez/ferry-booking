@@ -1,16 +1,20 @@
 import type { Ferry } from '@/modules/ferry/types/ferry.types.ts';
+import type { FareResponse } from '@/modules/ferry/types/api/responses/fare-response.types.ts';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import type { SearchFormValues } from '@/modules/ferry/types';
 
 export class BookingSummaryMapper {
-  static toFerryLegSummary = (ferry: Ferry, passengerCount: number) => ({
+  static toFerryLegSummary = (ferry: Ferry, passengerCount: number, fare?: FareResponse | null) => ({
     origin: ferry.origin.port,
     destination: ferry.destination.port,
     ferry: ferry.ferry.name,
     departure: ferry.origin.time,
     arrival: ferry.destination.time,
     passengers: `${passengerCount} adultos`,
-    price: formatCurrency(ferry.price),
+    fare: fare?.name,
+    farePrice: fare ? formatCurrency(parseFloat(fare.price)) : undefined,
+    basePrice: formatCurrency(ferry.price),
+    price: formatCurrency(ferry.price + parseFloat(fare?.price ?? '0')),
   });
 
   static toSearchSummaryCardProps = (
