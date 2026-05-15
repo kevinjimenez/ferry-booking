@@ -5,12 +5,16 @@ import { computed } from 'vue';
 
 export const useTripPrice = () => {
   const { values } = storeToRefs(useFerrySearchStore());
-  const { outbound, inbound } = storeToRefs(useFerrySelectionStore());
+  const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(useFerrySelectionStore());
 
-  const outboundUnitPrice = computed(() => outbound.value?.price ?? 0);
+  const outboundUnitPrice = computed(
+    () => (outbound.value?.price ?? 0) + parseFloat(outboundFare.value?.price ?? '0'),
+  );
   const outboundTotal = computed(() => outboundUnitPrice.value * values.value.passengerCount);
 
-  const inboundUnitPrice = computed(() => inbound.value?.price ?? 0);
+  const inboundUnitPrice = computed(
+    () => (inbound.value?.price ?? 0) + parseFloat(inboundFare.value?.price ?? '0'),
+  );
   const inboundTotal = computed(() => inboundUnitPrice.value * values.value.passengerCount);
 
   const unitPriceTotal = computed(() => outboundUnitPrice.value + inboundUnitPrice.value);
