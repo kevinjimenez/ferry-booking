@@ -3,33 +3,24 @@
     <FerryNavHeader :title="headerTitle" :subtitle="headerSubtitle" @back="goToBack" />
 
     <section class="flex flex-col w-full p-10 gap-10 items-center justify-center self-center">
-      <FareTripSummaryBar
-        departure-time="09:00"
-        arrival-time="11:00"
-        origin="Santa Cruz"
-        destination="San Cristóbal"
-        pier="Muelle Turístico Gus Angermeyer"
-        route-type="DIRECTO"
-        duration="2H 00MIN"
-        :is-round-trip="false"
-      />
+      <FareTripSummaryBar v-bind="fareTripSummaryBarProps" />
 
       <div class="flex gap-x-2 justify-around items-center w-full">
         <FareCard
-          v-for="fare in fares"
-          :key="fare.name"
+          v-for="fare in faresResponse"
+          :key="fare.id"
           :name="fare.name"
-          :price="fare.price"
+          :price="Number(fare.price)"
           :description="fare.description"
           :features="fare.features"
           :variant="fare.variant"
-          @select="selectedFare = fare.name"
+          @select="setFare(fare)"
         />
       </div>
 
       <FareSelectionFooter
         :footer-label="footerLabel"
-        :selected-fare-name="selectedFare"
+        :selected-fare-name="selectedFare?.name ?? ''"
         :button-label="buttonLabel"
         @continue="handleContinue"
       />
@@ -38,35 +29,67 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import FareTripSummaryBar from '@/modules/ferry/components/FareTripSummaryBar.vue';
 import FareCard from '@/modules/ferry/components/FareCard.vue';
-import type { FareFeature } from '@/modules/ferry/components/FareCard.vue';
 import FareSelectionFooter from '@/modules/ferry/components/FareSelectionFooter.vue';
 import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
-
-interface Fare {
-  name: string;
-  price: number;
-  description: string;
-  features: FareFeature[];
-  variant: 'primary' | 'secondary';
-}
+import { useGetFaresQuery } from '@/modules/ferry/queries/get-fares.query.ts';
+import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
+import type { FareResponse } from '@/modules/ferry/types/api/responses/fare-response.types.ts';
 
 const route = useRoute();
 const router = useRouter();
 const { isRoundTrip } = storeToRefs(useFerrySearchStore());
+const selectionStore = useFerrySelectionStore();
+const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(selectionStore);
 const { goToInbound, goToTripSummary } = useFerryNavigation();
+const { data: faresResponse } = useGetFaresQuery();
 
 const isOutbound = computed(() => route.meta.direction === 'outbound');
+
+const selectedFare = computed({
+  get: () => (isOutbound.value ? outboundFare.value : inboundFare.value),
+  set: (fare: FareResponse) =>
+    isOutbound.value ? selectionStore.setOutboundFare(fare) : selectionStore.setInboundFare(fare),
+});
+
+const setFare = (fare: FareResponse) => {
+  selectedFare.value = fare;
+};
+
+watch(
+  faresResponse,
+  fares => {
+    if (fares && !selectedFare.value) {
+      const defaultFare = fares[1] ?? fares[0];
+      if (defaultFare) selectedFare.value = defaultFare;
+    }
+  },
+  { immediate: true },
+);
+
+const fareTripSummaryBarProps = computed(() => {
+  const trip = isOutbound.value ? outbound.value : inbound.value;
+  return {
+    departureTime: trip?.origin.time ?? '00:00',
+    arrivalTime: trip?.destination.time ?? '00:00',
+    origin: trip?.origin.port ?? '---',
+    destination: trip?.destination.port ?? '---',
+    routeType: 'DIRECTO' as const,
+    duration: trip?.duration ?? '00h 00m',
+    isRoundTrip: false,
+  };
+});
 
 const headerTitle = computed(() =>
   isOutbound.value ? 'Selecciona la tarifa para tu ida' : 'Selecciona la tarifa para tu vuelta',
 );
+
 const headerSubtitle =
   'Una vez hecha la reserva, no podrás cambiar la tarifa seleccionada para hacer cambios en tu ticket.';
 
@@ -85,39 +108,8 @@ const handleContinue = () => {
   }
 };
 
-const goToBack = () => router.back();
-
-const defaultFeatures: FareFeature[] = [
-  { text: 'Maleta de 5kg', included: true },
-  { text: 'Chaleco salvavidas', included: true },
-  { text: 'Traslado muelle a muelle', included: false },
-  { text: 'Snack a bordo', included: false },
-  { text: 'Seguro de viaje', included: false },
-];
-
-const fares: Fare[] = [
-  {
-    name: 'Basico',
-    price: 35,
-    description: 'Pago completo al reservar. Equipaje 5kg + 23kg. Sin cambios ni reembolso.',
-    features: defaultFeatures,
-    variant: 'primary',
-  },
-  {
-    name: 'Light',
-    price: 45,
-    description: 'Pago completo al reservar. Equipaje 5kg + 23kg. Sin cambios ni reembolso.',
-    features: defaultFeatures,
-    variant: 'secondary',
-  },
-  {
-    name: 'Plus',
-    price: 60,
-    description: 'Pago completo al reservar. Equipaje 5kg + 23kg. Sin cambios ni reembolso.',
-    features: defaultFeatures,
-    variant: 'primary',
-  },
-];
-
-const selectedFare = ref(fares[1]?.name ?? '');
+const goToBack = () => {
+  router.back();
+  // selectionStore.reset();
+};
 </script>

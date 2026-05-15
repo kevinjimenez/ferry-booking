@@ -1,9 +1,7 @@
 <template>
   <div class="flex gap-x-3 w-full">
     <PortLabel :name="originName" :island="originIsland" />
-    <div class="divider divider-secondary">
-      <ArrowRightDashedIcon class="size-14 text-primary" />
-    </div>
+      <ArrowRightDashedIcon class="mx-5 size-14 text-primary" />
     <PortLabel :name="destinationName" :island="destinationIsland" />
   </div>
 </template>

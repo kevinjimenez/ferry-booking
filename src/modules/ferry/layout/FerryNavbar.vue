@@ -14,7 +14,6 @@
       v-model="selectedLang"
       :options="[
         { value: 'ES', label: 'ES' },
-        { value: 'EN', label: 'EN' },
       ]"
     />
   </header>

@@ -2,7 +2,7 @@
   <div
     :class="
       twMerge(
-        'w-full border-gray-200 border-2 rounded-md shadow-md flex flex-col p-5 gap-y-8',
+        'w-full border-gray-200 border-2 rounded-sm shadow-md flex flex-col p-5 gap-y-8 bg-white',
         props.containerClass,
       )
     "

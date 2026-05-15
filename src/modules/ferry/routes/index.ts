@@ -3,7 +3,9 @@ import FerryLayout from '@/modules/ferry/layout/FerryLayout.vue';
 import { FERRY_ROUTE_NAMES } from '@/modules/ferry/constants';
 import {
   inboundGuard,
+  inboundFareGuard,
   outboundGuard,
+  outboundFareGuard,
   passengerDetailsGuard,
   paymentGuard,
   successGuard,
@@ -45,7 +47,7 @@ export const ferryRoutes: RouteRecordRaw = {
       path: 'outbound-fare',
       name: FERRY_ROUTE_NAMES.OUTBOUND_FARE,
       component: () => import('@/modules/ferry/views/FerryFareView.vue'),
-      // beforeEnter: outboundGuard,
+      beforeEnter: outboundFareGuard,
       meta: {
         title: 'Tarifa de ida',
         requiresAuth: false,
@@ -66,7 +68,7 @@ export const ferryRoutes: RouteRecordRaw = {
       path: 'inbound-fare',
       name: FERRY_ROUTE_NAMES.INBOUND_FARE,
       component: () => import('@/modules/ferry/views/FerryFareView.vue'),
-      // beforeEnter: inboundGuard,
+      beforeEnter: inboundFareGuard,
       meta: {
         title: 'Tarifa de vuelta',
         requiresAuth: false,

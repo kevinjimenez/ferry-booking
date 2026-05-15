@@ -77,7 +77,6 @@ import { computed } from 'vue';
 import SortIcon from '@/shared/icons/SortIcon.vue';
 import type { Ferry } from '@/modules/ferry/types/ferry.types.ts';
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
-import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
@@ -86,8 +85,6 @@ import CheckIcon from '@/shared/icons/CheckIcon.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
 
-const router = useRouter();
-
 const storeFerrySearchStore = useFerrySearchStore();
 const storeFerrySelectionStore = useFerrySelectionStore();
 
@@ -95,7 +92,7 @@ const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, inbound } = storeToRefs(storeFerrySelectionStore);
 
 const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery('inbound');
-const { goToInboundFare } = useFerryNavigation();
+const { goToInboundFare, goToOutbound } = useFerryNavigation();
 const { grandTotal } = useTripPrice();
 
 const selectedOutbound = computed(() => {
@@ -117,7 +114,7 @@ const handleSelect = (schedule: Ferry) => {
 };
 
 const goToBack = () => {
-  router.back();
+  goToOutbound();
   storeFerrySelectionStore.reset();
 };
 </script>

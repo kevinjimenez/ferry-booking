@@ -55,7 +55,7 @@ defineProps<{
   price: number;
   description: string;
   features: FareFeature[];
-  variant?: 'primary' | 'secondary';
+  variant?: string;
 }>();
 
 const emit = defineEmits<{ select: [] }>();

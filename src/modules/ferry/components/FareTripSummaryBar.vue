@@ -19,14 +19,14 @@
           <ArrowRightDashedIcon class="size-5" />
           <span class="text-xs font-semibold">{{ destination }}</span>
         </div>
-        <span class="text-2xs">{{ pier }}</span>
+        <span v-if="pier" class="text-2xs">{{ pier }}</span>
       </div>
     </div>
 
     <div class="flex">
       <span class="flex items-center text-xs font-bold text-heading me-3">
         <span class="flex w-2.5 h-2.5 bg-primary rounded-full me-1.5 shrink-0" />
-        {{ routeType }} - {{ duration }}
+        {{ routeType }} {{ duration }}
       </span>
     </div>
   </div>
@@ -42,7 +42,7 @@ defineProps<{
   arrivalTime: string;
   origin: string;
   destination: string;
-  pier: string;
+  pier?: string;
   routeType: string;
   duration: string;
   isRoundTrip: boolean;

@@ -27,22 +27,25 @@
       </EmptyState>
       <TripLegSummary v-else v-bind="inbound" badge-label="Vuelta" type="inbound" />
     </template>
-    <LabelValue
-      label="Pasajeros"
-      :value="outbound?.passengers ?? '0'"
-      :custom-class="{
-        label: 'text-sm text-primary',
-        value: 'text-sm text-primary font-bold',
-      }"
-    />
-    <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
-    <div class="flex justify-between">
-      <span class="text-md font-bold">Total</span>
-      <span class="text-[30px] text-secondary font-bold">{{ total }}</span>
-    </div>
-    <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
-      buttonLabel
-    }}</BaseButton>
+
+    <template v-if="outbound && (!isRoundTrip || inbound)">
+      <LabelValue
+        label="Pasajeros"
+        :value="outbound?.passengers ?? '0'"
+        :custom-class="{
+          label: 'text-sm text-primary',
+          value: 'text-sm text-primary font-bold',
+        }"
+      />
+      <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
+      <div class="flex justify-between">
+        <span class="text-md font-bold">Total</span>
+        <span class="text-[30px] text-secondary font-bold">{{ total }}</span>
+      </div>
+      <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
+        buttonLabel
+      }}</BaseButton>
+    </template>
   </div>
 </template>
 
