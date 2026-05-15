@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     <div v-if="showSplash" class="splash-overlay" :class="{ 'splash-out': splashLeaving }">
-      <img src="/paradeisos-icon.svg" class="splash-logo" alt="Logo" />
+      <img src="/paradeisos-full.svg" class="splash-logo" alt="Logo" />
     </div>
 
     <header class="flex flex-col items-center justify-center h-96 w-full gap-10">

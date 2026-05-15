@@ -22,8 +22,8 @@
         v-if="inbound"
         type="inbound"
         :date="search.inboundDate!"
-        :origin="inbound.destination"
-        :destination="inbound.origin"
+        :origin="inbound.origin"
+        :destination="inbound.destination"
         :duration="inbound.duration"
         :details="[
           { label: 'Código', value: maskString(inbound!.id, 5) },
