@@ -4,19 +4,21 @@
       <img src="/paradeisos-full.svg" class="splash-logo" alt="Logo" />
     </div>
 
-    <header class="flex flex-col items-center justify-center h-96 w-full gap-10">
+    <header class="flex flex-col items-center justify-center h-72 sm:h-96 w-full gap-10">
       <BaseDivider
         label="Galápagos"
         color="secondary"
-        class="w-1/11 self-center"
+        class="w-40 lg:w-1/11 self-center"
         size="sm"
         italic
       />
-      <h1 class="text-7xl font-extrabold min-h-[1.2em]">
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold min-h-[1.2em]">
         {{ displayedTitle }}<span class="cursor" :class="{ hidden: done }">|</span>
       </h1>
-      <BaseDivider size="lg" color="secondary" class="w-16" />
-      <h4 class="text-lg font-secondary-italic font-light w-160 text-center">
+      <BaseDivider color="secondary" class="w-16 sm:border-[0.15rem] lg:border-[0.2rem]" />
+      <h4
+        class="text-xs sm:text-base lg:text-lg font-secondary-italic font-light w-120 sm:w-140 lg:w-160 text-center"
+      >
         Reserva tu ferry entre Santa Cruz, San Cristóbal e Isabela de forma rápida y segura
       </h4>
     </header>
@@ -46,7 +48,9 @@ let typeStartTimer: ReturnType<typeof setTimeout>;
 onMounted(() => {
   splashTimer = setTimeout(() => {
     splashLeaving.value = true;
-    setTimeout(() => { showSplash.value = false; }, 500);
+    setTimeout(() => {
+      showSplash.value = false;
+    }, 500);
 
     typeStartTimer = setTimeout(() => {
       let i = 0;
@@ -85,9 +89,15 @@ onUnmounted(() => {
 }
 
 @keyframes bgSweep {
-  0%   { background-color: #0E1327; }
-  60%  { background-color: #6b1224; }
-  100% { background-color: #BC1D36; }
+  0% {
+    background-color: #0e1327;
+  }
+  60% {
+    background-color: #6b1224;
+  }
+  100% {
+    background-color: #bc1d36;
+  }
 }
 
 .splash-logo {
@@ -116,7 +126,12 @@ onUnmounted(() => {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 </style>

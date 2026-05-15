@@ -1,5 +1,5 @@
 <template>
-  <div class="px-160">
+  <div class="sm:w-full lg:px-160">
     <FerryNavHeader :title="title" @back="handleGotoBack" />
 
     <div class="flex flex-col w-full gap-y-4 mt-8 px-4 pb-8">
@@ -13,8 +13,8 @@
           { label: 'Código', value: maskString(outbound!.id, 5) },
           { label: 'Embarcación', value: outbound!.ferry.name },
           { label: 'Clase', value: outbound!.ferry.type },
-          { label: 'Tarifa', value: outboundFare!.name },
-          { label: 'Precio', value: `Ferry ${formatCurrency(outbound!.price)} + Tarifa ${formatCurrency(parseFloat(outboundFare!.price))}` },
+          { label: 'Tarifa', value: `${outboundFare!.name} — ${formatCurrency(parseFloat(outboundFare!.price))}` },
+          { label: 'Precio', value: formatCurrency(outbound!.price) },
         ]"
         @change="handleChange('outbound')"
       />
@@ -29,8 +29,8 @@
           { label: 'Código', value: maskString(inbound!.id, 5) },
           { label: 'Embarcación', value: inbound!.ferry.name },
           { label: 'Clase', value: inbound!.ferry.type },
-          { label: 'Tarifa', value: inboundFare!.name },
-          { label: 'Precio', value: `Ferry ${formatCurrency(inbound!.price)} + Tarifa ${formatCurrency(parseFloat(inboundFare!.price))}` },
+          { label: 'Tarifa', value: `${inboundFare!.name} — ${formatCurrency(parseFloat(inboundFare!.price))}` },
+          { label: 'Precio', value: formatCurrency(inbound!.price) },
         ]"
         @change="handleChange('inbound')"
       />

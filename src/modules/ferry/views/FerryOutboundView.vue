@@ -1,5 +1,5 @@
 <template>
-  <div class="px-40">
+  <div class="lg:px-40">
     <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
     <section class="flex w-full p-10 gap-x-10">
       <div class="w-3/4 flex flex-col">

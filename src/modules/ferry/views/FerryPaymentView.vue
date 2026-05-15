@@ -3,8 +3,8 @@
 
   <FerryPaymentSkeleton v-if="isPending" />
 
-  <div v-else class="flex p-10 gap-x-10">
-    <div class="flex flex-col gap-y-6 w-1/2">
+  <div v-else class="flex flex-col sm:flex-row p-5 sm:p-10 gap-y-5 sm:gap-x-10">
+    <div class="flex flex-col gap-y-6 sm:w-1/2">
       <FerryPassengersSummaryCard :passengers="ferrySearchStore.values.passengerCount" />
 
       <FerryPaymentSummaryCard
@@ -29,7 +29,7 @@
       />
     </div>
 
-    <div class="flex flex-col gap-y-6 w-1/2">
+    <div class="flex flex-col gap-y-6 sm:w-1/2">
       <FerryPayphoneButton
         :token="payphoneToken"
         :store-id="payphoneStoreId"
