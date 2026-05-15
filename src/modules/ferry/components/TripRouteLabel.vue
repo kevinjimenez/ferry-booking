@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-start justify-center gap-x-2">
-    <p class="text-sm text-text-muted font-bold">{{ badgeLabel }}</p>
+    <p class="sm:text-sm text-text-muted font-bold">{{ badgeLabel }}</p>
     <div class="flex text-primary items-center gap-x-1 w-full justify-between">
       <span class="text-base font-bold">{{ origin }}</span>
       <ArrowRightDashedIcon class="size-10" />

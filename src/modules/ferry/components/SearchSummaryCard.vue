@@ -1,9 +1,9 @@
 <template>
   <div
-    class="w-full flex border border-gray-200 p-10 rounded-sm shadow-sm items-center justify-between bg-white"
+    class="w-full flex flex-col lg:flex-row border border-gray-200 p-5 lg:p-10 rounded-sm shadow-sm items-center lg:justify-between bg-white"
   >
     <div class="flex flex-col w-full gap-y-3">
-      <small class="text-ink-500 text-2xs font-bold uppercase">{{ dateLabel }}</small>
+      <small class="text-ink-500 text-4xs sm:text-2xs font-bold uppercase">{{ dateLabel }}</small>
       <RouteDirection
         :origin-name="originName"
         :origin-island="originIsland"
@@ -11,10 +11,10 @@
         :destination-island="destinationIsland"
       />
     </div>
-    <div class="flex w-full justify-end items-center gap-x-5">
-      <small class="text-ink-600 text-xs">{{ passengers }} pasajeros</small>
+    <div class="flex w-full lg:justify-end items-center gap-x-5">
+      <small class="text-ink-600 text-3xs sm:text-xs">{{ passengers }} pasajeros</small>
       <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-ink-600">
-        <small class="text-ink-600 text-xs">{{ duration }}</small>
+        <small class="text-ink-600 text-3xs sm:text-xs">{{ duration }}</small>
       </BaseIconLabel>
     </div>
   </div>

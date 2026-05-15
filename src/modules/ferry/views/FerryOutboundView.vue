@@ -1,13 +1,13 @@
 <template>
-  <div class="lg:px-40">
+  <div class="lg:px-40 flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
     <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
-    <section class="flex w-full p-10 gap-x-10">
-      <div class="w-3/4 flex flex-col">
+    <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-y-0 lg:gap-x-10">
+      <div class="w-full lg:w-3/4 flex flex-col flex-1 min-h-0 overflow-y-auto lg:overflow-visible pb-4 lg:pb-0">
         <SearchSummaryCard v-bind="searchSummaryCardProps" />
         <TripTypeBadges class="mt-5" :is-round-trip="storeFerrySearchStore.isRoundTrip" />
 
         <div class="flex w-full justify-between items-center my-6">
-          <span class="text-lg font-bold">HORARIOS DISPONIBLES</span>
+          <span class="text-xs sm:text-sm lg:text-lg font-bold">HORARIOS DISPONIBLES</span>
           <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
             Ordenar
           </BaseButton>
@@ -36,8 +36,16 @@
           </template>
         </div>
       </div>
-      <div class="w-1/4 sticky top-6 self-start">
-        <div class="flex flex-col gap-y-5">
+      <div class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
+        <MobileBookingBar
+          class="lg:hidden"
+          :ferry-name="outbound?.ferry.name"
+          :route="outbound ? `${outbound.origin.port} → ${outbound.destination.port}` : undefined"
+          :total="formatCurrency(grandTotal)"
+          :button-label="buttonLabel"
+          @continue="goToOutboundFare"
+        />
+        <div class="hidden lg:flex flex-col gap-y-5">
           <BookingSummaryCard
             :outbound="selectedOutbound"
             :total="formatCurrency(grandTotal)"
@@ -71,6 +79,7 @@ import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
 import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
 import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
+import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import BoxIcon from '@/shared/icons/BoxIcon.vue';
 import CheckIcon from '@/shared/icons/CheckIcon.vue';
