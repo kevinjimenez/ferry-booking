@@ -26,7 +26,7 @@
           :max-date="inboundDate" :error="errors.outboundDate" placeholder="dd/mm/aaaa" />
 
         <BaseInputDate v-if="isRoundTrip" label="Fecha de regreso" v-model="inboundDate" v-bind="inboundDateAttrs"
-          :error="errors.inboundDate" :min-date="outboundDate" placeholder="dd/mm/aaaa" />
+          :error="errors.inboundDate" :min-date="dayjs(outboundDate).add(0, 'day').toDate()" placeholder="dd/mm/aaaa" />
 
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10"
           class="self-center sm:self-auto" />
