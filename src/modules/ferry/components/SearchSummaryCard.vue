@@ -6,10 +6,10 @@
       <RouteDirection :origin-name="originName" :origin-island="originIsland" :destination-name="destinationName"
         :destination-island="destinationIsland" />
     </div>
-    <div class="flex w-full lg:justify-end items-center gap-x-5">
-      <small class="text-ink-600 text-3xs sm:text-xs">{{ passengers }} pasajeros</small>
+    <div class="flex w-full lg:w-auto shrink-0 lg:justify-end items-center gap-x-5">
+      <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ passengers }} pasajeros</small>
       <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-ink-600">
-        <small class="text-ink-600 text-3xs sm:text-xs">{{ duration }}</small>
+        <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ duration }}</small>
       </BaseIconLabel>
     </div>
   </div>
