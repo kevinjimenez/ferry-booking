@@ -9,15 +9,15 @@ export class ScheduleMapper {
       id: schedule.id,
       origin: {
         time: formatTime(schedule.departure_time), // '09:30',
-        port: `${schedule.routes.origin_islands.name} (${schedule.routes.origin_islands.code})`, // store
-        island: schedule.routes.origin_islands.code, // store
-        address: schedule.routes.origin_islands.description, // strore
+        island: `${schedule.routes.origin_islands.name} (${schedule.routes.origin_islands.code})`, // store
+        description: schedule.routes.origin_islands.description, // store
+        code: schedule.routes.origin_islands.code,
       },
       destination: {
         time: formatTime(schedule.arrival_time), // '09:30',
-        port: `${schedule.routes.destination_islands.name} (${schedule.routes.destination_islands.code})`, // store
-        island: schedule.routes.destination_islands.code, // store
-        address: schedule.routes.destination_islands.description, // strore
+        island: `${schedule.routes.destination_islands.name} (${schedule.routes.destination_islands.code})`, // store
+        description: schedule.routes.destination_islands.description, // store
+        code: schedule.routes.destination_islands.code,
       },
       duration: `~${formatDuration(schedule.departure_time, schedule.arrival_time)}`, // departure - arrive | ~2h 30min
       price: Number(schedule.routes.base_price),

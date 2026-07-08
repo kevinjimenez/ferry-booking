@@ -9,8 +9,8 @@ export class BookingSummaryMapper {
     passengerCount: number,
     fare?: FareResponse | null,
   ) => ({
-    origin: ferry.origin.port,
-    destination: ferry.destination.port,
+    origin: ferry.origin.code,
+    destination: ferry.destination.code,
     ferry: ferry.ferry.name,
     departure: ferry.origin.time,
     arrival: ferry.destination.time,
@@ -30,9 +30,9 @@ export class BookingSummaryMapper {
     const destination = reversed ? values.origin : values.destination;
     return {
       originName: origin?.label ?? '',
-      originDescription: (origin?.extra as Record<string, string>)?.description ?? '',
+      originDescription: `${(origin?.extra as Record<string, string>)?.description} (${(origin?.extra as Record<string, string>)?.code})`,
       destinationName: destination?.label ?? '',
-      destinationDescription: (destination?.extra as Record<string, string>)?.description ?? '',
+      destinationDescription: `${(destination?.extra as Record<string, string>)?.description} (${(destination?.extra as Record<string, string>)?.code})`,
       date: values.outboundDate,
       passengers: values.passengerCount,
       duration: averageDuration,

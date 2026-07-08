@@ -31,7 +31,7 @@
       <div
         class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
         <MobileBookingBar class="lg:hidden" :ferry-name="outbound?.ferry.name"
-          :route="outbound ? `${outbound.origin.port} → ${outbound.destination.port}` : undefined"
+          :route="outbound ? `${outbound.origin.island} → ${outbound.destination.island}` : undefined"
           :total="formatCurrency(grandTotal)" :button-label="buttonLabel" @continue="goToOutboundFare" />
         <div class="hidden lg:flex flex-col gap-y-5">
           <BookingSummaryCard :outbound="selectedOutbound" :total="formatCurrency(grandTotal)"

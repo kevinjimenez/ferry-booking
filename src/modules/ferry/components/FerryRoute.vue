@@ -1,23 +1,12 @@
 <template>
   <div class="flex gap-x-10 justify-center items-center">
-    <FerryStopDetail
-      :customClass="originStopDetailClass"
-      :time="origin.time"
-      :port="origin.port"
-      :island="origin.island"
-      :address="origin.address"
-    />
+    <FerryStopDetail :customClass="originStopDetailClass" :time="origin.time" :island="origin.island"
+      :description="origin.description" />
 
     <ScheduleTimeline :duration="duration" :class="timelineClass" />
 
-    <FerryStopDetail
-      :customClass="destinationStopDetailClass"
-      :time="destination.time"
-      :port="destination.port"
-      :island="destination.island"
-      :address="destination.address"
-
-    />
+    <FerryStopDetail :customClass="destinationStopDetailClass" :time="destination.time" :island="destination.island"
+      :description="destination.description" />
   </div>
 </template>
 <script setup lang="ts">
@@ -28,9 +17,8 @@ import FerryStopDetail, {
 
 interface StopDetail {
   time: string;
-  port: string;
   island: string;
-  address?: string;
+  description?: string;
 }
 
 withDefaults(

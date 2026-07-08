@@ -1,9 +1,9 @@
 <template>
   <div :class="[
-    'w-full flex flex-col border-2 pt-4 pb-3 px-4 lg:pt-8 lg:pb-4 lg:px-8 rounded-md items-center justify-center cursor-pointer transition-all duration-200',
+    'w-full flex flex-col border-2 pt-4 pb-3 px-4 lg:pt-8 lg:pb-4 lg:px-8 rounded-md items-center justify-center cursor-default transition-all duration-200',
     selected
-      ? 'border-secondary bg-secondary/5 shadow-md'
-      : 'border-gray-200 shadow-sm hover:border-secondary/40 hover:shadow-md bg-white',
+      ? 'border-primary shadow-md'
+      : 'border-gray-200 shadow-sm hover:border-primary/40 hover:shadow-md bg-white',
   ]">
     <!-- Mobile layout -->
     <div class="flex w-full items-center gap-x-5 sm:gap-x-40 lg:hidden">
@@ -15,8 +15,8 @@
         </div>
         <div
           class="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between text-sm sm:text-base text-secondary font-semibold mt-0.5 gap-y-2">
-          <span class="truncate">{{ origin.port }}</span>
-          <span class="truncate text-right">{{ destination.port }}</span>
+          <span class="truncate">{{ origin.island }}</span>
+          <span class="truncate text-right">{{ destination.island }}</span>
         </div>
         <span class="text-xs sm:text-sm text-ink-500 mt-1 block">{{ ferry.name }}</span>
       </div>
@@ -31,7 +31,7 @@
 
     <!-- Desktop layout -->
     <div class="hidden lg:flex gap-y-5 w-full">
-      <div class="flex w-full">
+      <div class="flex w-auto">
         <FerryRoute :origin="origin" :destination="destination" :duration="duration"
           :origin-stop-detail-class="{ alignmentClass: 'items-start' }"
           :destination-stop-detail-class="{ alignmentClass: 'items-end' }" />
@@ -39,7 +39,7 @@
         <ScheduleFerryInfo :ferry-name="ferry.name" :seats="price.seats" />
       </div>
       <div class="flex-1" />
-      <div class="w-28 flex flex-col">
+      <div class="flex flex-col">
         <PriceDisplay :amount="price.amount" :currency="price.currency" :seats="price.seats" />
         <BaseButton v-if="!selected" @click="$emit('select')">Elegir</BaseButton>
         <div v-else class="flex items-center justify-center rounded-full bg-secondary size-12 self-center mx-auto">
@@ -49,27 +49,28 @@
     </div>
     <hr class="hidden lg:block border-gray-200 border-[0.1rem] w-full mt-8 mb-4" />
     <ScheduleAmenities class="hidden lg:flex" :items="[
-      { icon: UserIcon, text: 'Maleta de 5kg' },
-      { icon: UserIcon, text: 'Chaleco salvavidas' },
-      { icon: UserIcon, text: 'Traslado muelle a muelle' },
+      { icon: BriefcaseIcon, text: 'Maleta de 5kg' },
+      { icon: LifeJacketIcon, text: 'Chaleco salvavidas' },
+      { icon: CarIcon, text: 'Traslado muelle a muelle' },
     ]" />
   </div>
 </template>
 <script setup lang="ts">
-import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import FerryRoute from '@/modules/ferry/components/FerryRoute.vue';
-import PriceDisplay from '@/shared/components/PriceDisplay.vue';
-import UserIcon from '@/shared/icons/UserIcon.vue';
-import CheckIcon from '@/shared/icons/CheckIcon.vue';
 import ScheduleAmenities from '@/modules/ferry/components/ScheduleAmenities.vue';
 import ScheduleFerryInfo from '@/modules/ferry/components/ScheduleFerryInfo.vue';
+import PriceDisplay from '@/shared/components/PriceDisplay.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
+import BriefcaseIcon from '@/shared/icons/BriefcaseIcon.vue';
+import CarIcon from '@/shared/icons/CarIcon.vue';
+import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import LifeJacketIcon from '@/shared/icons/LifeJacketIcon.vue';
 
 interface StopDetail {
   time: string;
-  port: string;
   island: string;
-  address: string;
+  description: string;
 }
 
 interface Price {
