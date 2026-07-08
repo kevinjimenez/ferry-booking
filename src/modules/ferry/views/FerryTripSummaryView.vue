@@ -100,49 +100,6 @@ const departureSteps = computed(() => {
   ];
 });
 
-// const complementaryServices = computed((): ServiceAddon[] => [
-//   {
-//     icon: MapPinIcon,
-//     title: 'Asistencia Muelle / Hotel',
-//     subtitle: `Servicio compartido en ${outbound.value?.origin.island}, Isla ${outbound.value?.origin.island}.`,
-//     price: 15,
-//     items: [
-//       'Asistencia y transporte desde el hotel al muelle principal.',
-//       'O del muelle principal al hotel (zona urbana).',
-//     ],
-//   },
-//   {
-//     icon: BoxIcon,
-//     title: 'Custodio de equipaje',
-//     subtitle: 'Hasta 12 horas en oficina de Paradeisos.',
-//     price: 10,
-//     items: [
-//       '1 equipaje de 5kg · 1 de 10kg · 1 de 23kg.',
-//       'Registra tu equipaje en la oficina de Paradeisos Ferries.',
-//     ],
-//   },
-//   {
-//     icon: MapPinIcon,
-//     title: 'Asistencia Muelle / Hotel',
-//     subtitle: `Servicio compartido en ${outbound.value?.origin.island}, Isla ${outbound.value?.origin.island}.`,
-//     price: 15,
-//     items: [
-//       'Asistencia y transporte desde el hotel al muelle principal.',
-//       'O del muelle principal al hotel (zona urbana).',
-//     ],
-//   },
-//   {
-//     icon: BoxIcon,
-//     title: 'Custodio de equipaje',
-//     subtitle: 'Hasta 12 horas en oficina de Paradeisos.',
-//     price: 10,
-//     items: [
-//       '1 equipaje de 5kg · 1 de 10kg · 1 de 23kg.',
-//       'Registra tu equipaje en la oficina de Paradeisos Ferries.',
-//     ],
-//   },
-// ]);
-
 const buttonLabel = computed(() => (isRoundTrip.value ? 'Total Ida y Vuelta' : 'Total Ida'));
 
 const handleChange = async (type: 'outbound' | 'inbound') => {
