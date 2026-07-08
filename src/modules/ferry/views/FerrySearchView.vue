@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-col">
+  <div class="h-auto flex flex-col">
     <div v-if="showSplash" class="splash-overlay" :class="{ 'splash-out': splashLeaving }">
       <img src="/paradeisos-full.svg" class="splash-logo" alt="Logo" />
     </div>
