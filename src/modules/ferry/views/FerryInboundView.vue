@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:px-40 flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
+  <div class="flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
     <FerryNavHeader title="Elige un ferry de vuelta" @back="goToBack" />
 
     <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-x-10">
@@ -32,7 +32,7 @@
       <div
         class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
         <MobileBookingBar class="lg:hidden" :ferry-name="inbound?.ferry.name"
-          :route="inbound ? `${inbound.origin.port} → ${inbound.destination.port}` : undefined"
+          :route="inbound ? `${inbound.origin.island} → ${inbound.destination.island}` : undefined"
           :total="formatCurrency(grandTotal)" button-label="Continuar" @continue="goToInboundFare" />
         <div class="hidden lg:flex flex-col gap-y-5">
           <BookingSummaryCard :outbound="selectedOutbound" :inbound="selectedInbound" :is-round-trip="true"

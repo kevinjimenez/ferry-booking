@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
     <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
+
     <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-y-0 lg:gap-x-10">
       <div class="w-full lg:w-3/4 flex flex-col flex-1 min-h-0 overflow-y-auto lg:overflow-visible pb-4 lg:pb-0">
         <SearchSummaryCard v-bind="searchSummaryCardProps" />
