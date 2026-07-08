@@ -6,6 +6,9 @@ export class IslandMapper {
     // id: port.id,
     label: island.name,
     value: island.id,
-    // extra: port.islands,
+    extra: {
+      code: island.code,
+      description: island.description,
+    },
   });
 }

@@ -4,7 +4,11 @@ import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import type { SearchFormValues } from '@/modules/ferry/types';
 
 export class BookingSummaryMapper {
-  static toFerryLegSummary = (ferry: Ferry, passengerCount: number, fare?: FareResponse | null) => ({
+  static toFerryLegSummary = (
+    ferry: Ferry,
+    passengerCount: number,
+    fare?: FareResponse | null,
+  ) => ({
     origin: ferry.origin.port,
     destination: ferry.destination.port,
     ferry: ferry.ferry.name,
@@ -26,9 +30,9 @@ export class BookingSummaryMapper {
     const destination = reversed ? values.origin : values.destination;
     return {
       originName: origin?.label ?? '',
-      originIsland: (origin?.extra as Record<string, string>)?.name ?? '',
+      originDescription: (origin?.extra as Record<string, string>)?.description ?? '',
       destinationName: destination?.label ?? '',
-      destinationIsland: (destination?.extra as Record<string, string>)?.name ?? '',
+      destinationDescription: (destination?.extra as Record<string, string>)?.description ?? '',
       date: values.outboundDate,
       passengers: values.passengerCount,
       duration: averageDuration,
