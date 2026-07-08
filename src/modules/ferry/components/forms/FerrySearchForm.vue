@@ -10,15 +10,15 @@
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
         <BaseSelect v-model="origin" v-bind="originAttrs" label="Desde" :prefix-icon="MapPinIcon"
-          prefix-icon-class="text-secondary" :options="islandsResponse ?? []" :error="errors.origin"
-          :disabled-value="destination?.value" />
+          :options="islandsResponse ?? []" placeholder="Seleccione una isla" prefix-icon-class="text-secondary"
+          :error="errors.origin" :disabled-value="destination?.value" />
 
         <BaseButton circle class="sm:mt-6 size-12 self-center sm:self-auto" icon-class="size-7"
           :prefix-icon="SwitchHorizontalIcon" @click="swapOriginDestination" />
 
         <BaseSelect v-model="destination" v-bind="destinationAttrs" label="Hasta" :prefix-icon="MapPinIcon"
           prefix-icon-class="text-secondary" :options="islandsResponse ?? []" :error="errors.destination"
-          :disabled-value="origin?.value" />
+          placeholder="Seleccione una isla" :disabled-value="origin?.value" />
       </div>
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
@@ -26,7 +26,7 @@
           :error="errors.outboundDate" />
 
         <BaseInput v-if="isRoundTrip" type="date" label="Fecha de regreso" v-model="inboundDate"
-          v-bind="inboundDateAttrs" :error="errors.inboundDate" />
+          v-bind="inboundDateAttrs" :error="errors.inboundDate" min="2026-07-08" />
 
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10"
           class="self-center sm:self-auto" />

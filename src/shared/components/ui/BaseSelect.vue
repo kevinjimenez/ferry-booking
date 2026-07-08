@@ -2,26 +2,14 @@
   <div class="w-full block">
     <label for="countries" class="block text-2xs font-medium">{{ label }}</label>
     <div class="relative">
-      <component
-        v-if="prefixIcon"
-        :is="prefixIcon"
-        class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none"
-        :class="prefixIconClass"
-      />
-      <select
-        class="block w-full py-2.5 border-gray-300 border text-heading text-2xs rounded-sm"
-        :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]"
-        :value="modelValue?.value ?? ''"
-        @change="handleChange"
-        @blur="$emit('blur')"
-      >
+      <component v-if="prefixIcon" :is="prefixIcon"
+        class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" :class="prefixIconClass" />
+      <select class="block w-full py-2.5 border-gray-300 border text-heading text-2xs rounded-sm"
+        :class="[prefixIcon ? 'pl-7' : 'px-3', inputErrorClass]" :value="modelValue?.value ?? ''" @change="handleChange"
+        @blur="$emit('blur')">
         <option value="" disabled>{{ placeholder }}</option>
-        <option
-          v-for="option in options"
-          :key="option.value"
-          :value="option.value"
-          :disabled="option.value === disabledValue"
-        >
+        <option v-for="option in options" :key="option.value" :value="option.value"
+          :disabled="option.value === disabledValue">
           {{ option.label }}
         </option>
       </select>
