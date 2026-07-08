@@ -1,6 +1,6 @@
 <template>
   <div :class="[
-    'w-full sm:w-120 flex flex-col shadow-sm py-5 px-10 gap-y-5 border border-t-4 bg-white rounded-md cursor-default',
+    'w-full sm:w-120 flex flex-col shadow-sm py-5 px-10 gap-y-5 border border-t-4 bg-white rounded-md cursor-default relative',
     selected === id ? 'border-secondary' : 'hover:border-secondary hover:shadow-2xl'
   ]">
     <div class="flex flex-col items-start justify-center">
@@ -27,9 +27,18 @@
       </BaseIconLabel>
     </div>
 
-    <BaseButton class="w-full" height="h-[3.5rem]" @click="emit('select')">
-      <span class="text-sm font-bold uppercase">Elegir</span>
+    <BaseButton :class="['w-full', selected === id ? 'bg-secondary border-secondary' : '']" height="h-[3.5rem]"
+      @click="emit('select')">
+      <span class="text-sm font-bold uppercase">
+        {{ selected !== id ? 'Elegir' : 'Seleccionado' }}
+      </span>
     </BaseButton>
+
+    <template v-if="selected === id">
+      <div class="absolute rounded-full bg-secondary size-14 flex items-center justify-center right-10">
+        <CheckIcon class="size-10 font-bold text-white" />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -37,6 +46,7 @@
 import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
+import CheckIcon from '@/shared/icons/CheckIcon.vue';
 import CircleCheckIcon from '@/shared/icons/CircleCheckIcon.vue';
 import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
 
