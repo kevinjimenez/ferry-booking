@@ -22,11 +22,11 @@
       </div>
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
-        <BaseInput type="date" label="Fecha de salida" v-model="outboundDate" v-bind="outboundDateAttrs"
-          :error="errors.outboundDate" />
+        <BaseInputDate label="Fecha de salida" v-model="outboundDate" v-bind="outboundDateAttrs" :min-date="tomorrow"
+          :error="errors.outboundDate" placeholder="dd/mm/aaaa" />
 
-        <BaseInput v-if="isRoundTrip" type="date" label="Fecha de regreso" v-model="inboundDate"
-          v-bind="inboundDateAttrs" :error="errors.inboundDate" min="2026-07-08" />
+        <BaseInputDate v-if="isRoundTrip" label="Fecha de regreso" v-model="inboundDate" v-bind="inboundDateAttrs"
+          :error="errors.inboundDate" :min-date="outboundDate" />
 
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10"
           class="self-center sm:self-auto" />
@@ -45,13 +45,16 @@ import BaseSelect from '@/shared/components/ui/BaseSelect.vue';
 import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import MapPinIcon from '@/shared/icons/MapPinIcon.vue';
 import SwitchHorizontalIcon from '@/shared/icons/SwitchHorizontalIcon.vue';
-import BaseInput from '@/shared/components/ui/BaseInput.vue';
+import BaseInputDate from '@/shared/components/ui/BaseInputDate.vue';
 import BaseInputNumber from '@/shared/components/ui/BaseInputNumber.vue';
 import { useSearchForm } from '@/modules/ferry/composables';
 import FerrySearchFormSkeleton from '@/modules/ferry/components/FerrySearchFormSkeleton.vue';
 import { useGetIslandsQuery } from '../../queries';
+import dayjs from 'dayjs';
 
 const { data: islandsResponse, isPending } = useGetIslandsQuery();
+
+const tomorrow: Date = dayjs().add(1, 'day').toDate();
 
 const {
   // properties
