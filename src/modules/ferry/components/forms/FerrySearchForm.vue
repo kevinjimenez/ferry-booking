@@ -39,14 +39,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import BaseButtonGroup from '@/shared/components/base/BaseButtonGroup.vue';
+import BaseButtonGroup from '@/shared/components/ui/BaseButtonGroup.vue';
 import { TICKET_TYPE_OPTIONS } from '@/modules/ferry/constants';
-import BaseSelect from '@/shared/components/base/BaseSelect.vue';
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseSelect from '@/shared/components/ui/BaseSelect.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import MapPinIcon from '@/shared/icons/MapPinIcon.vue';
 import SwitchHorizontalIcon from '@/shared/icons/SwitchHorizontalIcon.vue';
-import BaseInput from '@/shared/components/base/BaseInput.vue';
-import BaseInputNumber from '@/shared/components/base/BaseInputNumber.vue';
+import BaseInput from '@/shared/components/ui/BaseInput.vue';
+import BaseInputNumber from '@/shared/components/ui/BaseInputNumber.vue';
 import { useSearchForm } from '@/modules/ferry/composables';
 import FerrySearchFormSkeleton from '@/modules/ferry/components/FerrySearchFormSkeleton.vue';
 import { useGetIslandsQuery } from '../../queries';

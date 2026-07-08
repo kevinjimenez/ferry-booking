@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import type { Component } from 'vue';
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 
 defineProps<{
   icon: Component;

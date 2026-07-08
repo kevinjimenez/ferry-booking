@@ -4,7 +4,7 @@
   </BaseCard>
 </template>
 <script setup lang="ts">
-import BaseCard from '@/shared/components/base/BaseCard.vue';
+import BaseCard from '@/shared/components/ui/BaseCard.vue';
 import FerryPersonForm from '@/modules/ferry/components/forms/FerryPersonForm.vue';
 import UserIcon from '@/shared/icons/UserIcon.vue';
 

@@ -3,24 +3,14 @@
     <FerryBookingSuccessSkeleton v-if="updatePaymentPending" />
     <div v-else class="flex w-full justify-center items-center">
       <BaseCard container-class="w-[50rem] p-0 justify-center items-center gap-y-10">
-        <BaseSuccessHeader
-          :icon="CheckIcon"
-          title="¡Pago Realizado con Éxito!"
-          subtitle="Su transacción ha sido procesada correctamente."
-        />
+        <BaseSuccessHeader :icon="CheckIcon" title="¡Pago Realizado con Éxito!"
+          subtitle="Su transacción ha sido procesada correctamente." />
 
         <div class="flex flex-col w-full px-16 pb-10">
-          <FerryOrderSummaryCard
-            :order-id="success.orderId"
-            :date="success.date"
-            :total="success.amount"
-          />
+          <FerryOrderSummaryCard :order-id="success.orderId" :date="success.date" :total="success.amount" />
           <BaseDivider class="w-full my-10" />
-          <FerryBookingSuccessActions
-            @back="goToSearch"
-            @downloader="handleDownloader"
-            :is-pending="downloadTicketPending"
-          />
+          <FerryBookingSuccessActions @back="goToSearch" @downloader="handleDownloader"
+            :is-pending="downloadTicketPending" />
         </div>
       </BaseCard>
     </div>
@@ -29,11 +19,11 @@
 
 <script setup lang="ts">
 import CheckIcon from '@/shared/icons/CheckIcon.vue';
-import BaseDivider from '@/shared/components/base/BaseDivider.vue';
-import BaseSuccessHeader from '@/shared/components/base/BaseSuccessHeader.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
+import BaseSuccessHeader from '@/shared/components/ui/BaseSuccessHeader.vue';
 import FerryOrderSummaryCard from '@/modules/ferry/components/FerryOrderSummaryCard.vue';
 import FerryBookingSuccessActions from '@/modules/ferry/components/FerryBookingSuccessActions.vue';
-import BaseCard from '@/shared/components/base/BaseCard.vue';
+import BaseCard from '@/shared/components/ui/BaseCard.vue';
 import { watch } from 'vue';
 import { useBookingSuccess } from '@/modules/ferry/composables/useBookingSuccess.ts';
 import FerryBookingSuccessSkeleton from '@/modules/ferry/components/FerryBookingSuccessSkeleton.vue';

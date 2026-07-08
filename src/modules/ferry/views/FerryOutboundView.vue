@@ -18,49 +18,29 @@
             <ScheduleCardSkeleton v-for="i in 4" :key="i" />
           </template>
           <template v-else>
-            <ScheduleCard
-              v-for="schedule in schedulesData"
-              :key="schedule.id"
-              :origin="schedule.origin"
-              :destination="schedule.destination"
-              :duration="schedule.duration"
-              :price="{
+            <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
+              :destination="schedule.destination" :duration="schedule.duration" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
-              }"
-              :ferry="schedule.ferry"
-              :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
-              @select="handleSelect(schedule)"
-            />
+              }" :ferry="schedule.ferry" :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
+              @select="handleSelect(schedule)" />
           </template>
         </div>
       </div>
-      <div class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
-        <MobileBookingBar
-          class="lg:hidden"
-          :ferry-name="outbound?.ferry.name"
+      <div
+        class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
+        <MobileBookingBar class="lg:hidden" :ferry-name="outbound?.ferry.name"
           :route="outbound ? `${outbound.origin.port} → ${outbound.destination.port}` : undefined"
-          :total="formatCurrency(grandTotal)"
-          :button-label="buttonLabel"
-          @continue="goToOutboundFare"
-        />
+          :total="formatCurrency(grandTotal)" :button-label="buttonLabel" @continue="goToOutboundFare" />
         <div class="hidden lg:flex flex-col gap-y-5">
-          <BookingSummaryCard
-            :outbound="selectedOutbound"
-            :total="formatCurrency(grandTotal)"
-            :button-label="buttonLabel"
-            @continue="goToOutboundFare"
-          />
-          <TripIncludesCard
-            title="Incluido en tu viaje"
-            :icon="BoxIcon"
-            :items="[
-              { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-              { icon: CheckIcon, text: 'Chaleco salvavidas' },
-              { icon: CheckIcon, text: 'Equipaje según operador' },
-            ]"
-          />
+          <BookingSummaryCard :outbound="selectedOutbound" :total="formatCurrency(grandTotal)"
+            :button-label="buttonLabel" @continue="goToOutboundFare" />
+          <TripIncludesCard title="Incluido en tu viaje" :icon="BoxIcon" :items="[
+            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
+            { icon: CheckIcon, text: 'Chaleco salvavidas' },
+            { icon: CheckIcon, text: 'Equipaje según operador' },
+          ]" />
         </div>
       </div>
     </section>
@@ -68,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';

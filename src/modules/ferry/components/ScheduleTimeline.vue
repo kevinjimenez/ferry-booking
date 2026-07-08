@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import TripTypeLabel from '@/modules/ferry/components/TripTypeLabel.vue';
-import BaseRouteBar from '@/shared/components/base/BaseRouteBar.vue';
+import BaseRouteBar from '@/shared/components/ui/BaseRouteBar.vue';
 
 withDefaults(
   defineProps<{

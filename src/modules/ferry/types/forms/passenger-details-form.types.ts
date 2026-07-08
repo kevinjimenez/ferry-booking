@@ -1,4 +1,4 @@
-import type { SelectOption } from '@/shared/components/base/BaseSelect.vue';
+import type { SelectOption } from '@/shared/components/ui/BaseSelect.vue';
 
 export interface PersonFormValues {
   firstName: string;

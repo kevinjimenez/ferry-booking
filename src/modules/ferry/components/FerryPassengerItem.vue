@@ -12,9 +12,9 @@
 
 <script setup lang="ts">
 import UserIcon from '@/shared/icons/UserIcon.vue';
-import BaseCollapse from '@/shared/components/base/BaseCollapse.vue';
-import BaseIconLabel from '@/shared/components/base/BaseIconLabel.vue';
-import BaseBadge from '@/shared/components/base/BaseBadge.vue';
+import BaseCollapse from '@/shared/components/ui/BaseCollapse.vue';
+import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
+import BaseBadge from '@/shared/components/ui/BaseBadge.vue';
 import FerryPersonForm from '@/modules/ferry/components/forms/FerryPersonForm.vue';
 import { useFormValues } from 'vee-validate';
 import type { PassengerDetailsFormValues } from '@/modules/ferry/types/forms/passenger-details-form.types.ts';

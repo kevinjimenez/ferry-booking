@@ -1,15 +1,10 @@
 <template>
   <div
-    class="w-full flex flex-col lg:flex-row border border-gray-200 p-5 lg:p-10 rounded-sm shadow-sm items-center lg:justify-between bg-white"
-  >
+    class="w-full flex flex-col lg:flex-row border border-gray-200 p-5 lg:p-10 rounded-sm shadow-sm items-center lg:justify-between bg-white">
     <div class="flex flex-col w-full gap-y-3">
       <small class="text-ink-500 text-4xs sm:text-2xs font-bold uppercase">{{ dateLabel }}</small>
-      <RouteDirection
-        :origin-name="originName"
-        :origin-island="originIsland"
-        :destination-name="destinationName"
-        :destination-island="destinationIsland"
-      />
+      <RouteDirection :origin-name="originName" :origin-island="originIsland" :destination-name="destinationName"
+        :destination-island="destinationIsland" />
     </div>
     <div class="flex w-full lg:justify-end items-center gap-x-5">
       <small class="text-ink-600 text-3xs sm:text-xs">{{ passengers }} pasajeros</small>
@@ -20,7 +15,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import BaseIconLabel from '@/shared/components/base/BaseIconLabel.vue';
+import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
 import RouteDirection from '@/modules/ferry/components/RouteDirection.vue';
 import { computed } from 'vue';
 import { formatDate } from '@vueuse/core';

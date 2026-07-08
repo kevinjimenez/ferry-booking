@@ -9,19 +9,15 @@
       <BaseInput v-model="phone" label="Telefono" :error="phoneError" />
     </div>
     <div class="flex flex-col sm:flex-row gap-y-3 sm:gap-x-5">
-      <BaseSelect
-        v-model="documentType"
-        :options="[{ label: 'Cedula', value: 'DNI' }]"
-        label="Tipo documento"
-        :error="documentTypeError"
-      />
+      <BaseSelect v-model="documentType" :options="[{ label: 'Cedula', value: 'DNI' }]" label="Tipo documento"
+        :error="documentTypeError" />
       <BaseInput v-model="documentNumber" label="No Documento" :error="documentNumberError" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import BaseInput from '@/shared/components/base/BaseInput.vue';
-import BaseSelect, { type SelectOption } from '@/shared/components/base/BaseSelect.vue';
+import BaseInput from '@/shared/components/ui/BaseInput.vue';
+import BaseSelect, { type SelectOption } from '@/shared/components/ui/BaseSelect.vue';
 import { useField } from 'vee-validate';
 
 const props = defineProps<{ namePrefix: string }>();

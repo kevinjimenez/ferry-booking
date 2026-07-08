@@ -3,11 +3,11 @@
     <div class="flex flex-col flex-1 min-w-0">
       <span v-if="ferryName" class="text-3xs sm:text-sm text-ink-500 truncate">{{
         ferryName
-      }}</span>
+        }}</span>
       <span v-else class="text-2xs text-sm text-ink-500">Selecciona un ferry</span>
       <span v-if="route" class="text-2xs sm:text-lg font-semibold text-primary">{{
         route
-      }}</span>
+        }}</span>
     </div>
 
     <div class="flex flex-col items-center justify-center shrink-0">
@@ -15,22 +15,15 @@
       <span class="text-lg sm:text-h5 font-extrabold text-secondary">{{ total }}</span>
     </div>
 
-    <BaseButton
-      :disabled="!ferryName"
-      :suffix-icon="ArrowRightDashedIcon"
-      icon-class="size-4"
-      size="sm"
-      class="shrink-0"
-      height="sm:h-[3rem]"
-      @click="$emit('continue')"
-    >
+    <BaseButton :disabled="!ferryName" :suffix-icon="ArrowRightDashedIcon" icon-class="size-4" size="sm"
+      class="shrink-0" height="sm:h-[3rem]" @click="$emit('continue')">
       <span class="sm:text-xs font-bold">{{ buttonLabel }}</span>
     </BaseButton>
   </div>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 
 withDefaults(

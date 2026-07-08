@@ -2,12 +2,8 @@
   <div class="flex flex-col shadow-sm rounded-md p-7 gap-y-5 border-2 border-gray-200 bg-white">
     <span class="text-2sm font-bold text-text-secondary"> TU SELECCION </span>
 
-    <EmptyState
-      v-if="!outbound"
-      title="Tu selección"
-      :icon="FerryIcon"
-      description="Selecciona un ferry de ida para ver el resumen de tu viaje"
-    >
+    <EmptyState v-if="!outbound" title="Tu selección" :icon="FerryIcon"
+      description="Selecciona un ferry de ida para ver el resumen de tu viaje">
       <BaseButton class="w-full" :prefix-icon="PlusIcon" icon-class="size-5" disabled>
         Elige un horario
       </BaseButton>
@@ -15,12 +11,8 @@
     <TripLegSummary v-else v-bind="outbound" badge-label="Ida" />
 
     <template v-if="isRoundTrip && outbound">
-      <EmptyState
-        v-if="!inbound"
-        title="Tu selección"
-        :icon="FerryIcon"
-        description="Selecciona un ferry de vuelta para completar tu viaje"
-      >
+      <EmptyState v-if="!inbound" title="Tu selección" :icon="FerryIcon"
+        description="Selecciona un ferry de vuelta para completar tu viaje">
         <BaseButton class="w-full" :prefix-icon="PlusIcon" icon-class="size-5" disabled>
           Elige un horario
         </BaseButton>
@@ -29,14 +21,10 @@
     </template>
 
     <template v-if="outbound && (!isRoundTrip || inbound)">
-      <LabelValue
-        label="Pasajeros"
-        :value="outbound?.passengers ?? '0'"
-        :custom-class="{
-          label: 'text-sm text-primary',
-          value: 'text-sm text-primary font-bold',
-        }"
-      />
+      <LabelValue label="Pasajeros" :value="outbound?.passengers ?? '0'" :custom-class="{
+        label: 'text-sm text-primary',
+        value: 'text-sm text-primary font-bold',
+      }" />
       <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
       <div class="flex justify-between">
         <span class="text-md font-bold">Total</span>
@@ -44,13 +32,13 @@
       </div>
       <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
         buttonLabel
-      }}</BaseButton>
+        }}</BaseButton>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import PlusIcon from '@/shared/icons/PlusIcon.vue';
 import EmptyState from '@/shared/components/EmptyState.vue';

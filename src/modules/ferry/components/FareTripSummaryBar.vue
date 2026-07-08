@@ -1,7 +1,6 @@
 <template>
   <div
-    class="w-full flex flex-col sm:flex-row shadow-sm rounded-sm p-5 sm:p-7 sm:gap-y-5 border-2 border-gray-200 justify-between items-center bg-white"
-  >
+    class="w-full flex flex-col sm:flex-row shadow-sm rounded-sm p-5 sm:p-7 sm:gap-y-5 border-2 border-gray-200 justify-between items-center bg-white">
     <div class="flex flex-col sm:flex-row justify-center items-center gap-y-3 sm:gap-x-5">
       <TripTypeBadges :is-round-trip="isRoundTrip" />
 
@@ -35,7 +34,7 @@
 <script setup lang="ts">
 import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
-import BaseDivider from '@/shared/components/base/BaseDivider.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 
 defineProps<{
   departureTime: string;

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseDivider from '@/shared/components/base/BaseDivider.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 import TripCardHeader from '@/modules/ferry/components/TripCardHeader.vue';
 import TripRouteStops from '@/modules/ferry/components/TripRouteStops.vue';
 import InfoGrid from '@/shared/components/InfoGrid.vue';

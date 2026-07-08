@@ -1,10 +1,7 @@
 <template>
-  <button
-    :type="type"
-    :disabled="disabled || loading"
+  <button :type="type" :disabled="disabled || loading"
     :class="['btn shadow-none flex items-center justify-center', buttonClasses, { 'btn-disabled': loading }]"
-    @click="$emit('click')"
-  >
+    @click="$emit('click')">
     <component v-if="prefixIcon" :is="prefixIcon" :class="iconClass" />
     <slot />
     <component v-if="suffixIcon" :is="suffixIcon" :class="iconClass" />
@@ -13,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { BaseButtonProps } from '@/shared/components/base/base-button.types.ts';
+import type { BaseButtonProps } from '@/shared/components/ui/base-button.types';
 
 const props = withDefaults(defineProps<BaseButtonProps>(), {
   type: 'button',

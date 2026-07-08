@@ -6,12 +6,12 @@
     </div>
   </div>
   <BaseButton :loading="loading" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')" height="h-[4.5rem]">
-      <span class="text-sm font-bold">{{ buttonLabel }}</span>
-    </BaseButton>
+    <span class="text-sm font-bold">{{ buttonLabel }}</span>
+  </BaseButton>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 
