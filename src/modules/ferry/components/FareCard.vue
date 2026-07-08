@@ -1,7 +1,7 @@
 <template>
   <div :class="[
-    'w-full sm:w-fit flex flex-col shadow-sm p-7 gap-y-5 border border-t-4 bg-white',
-    variant === 'secondary' ? 'border-secondary' : 'border-primary',
+    'w-full sm:w-120 flex flex-col shadow-sm py-5 px-10 gap-y-5 border border-t-4 bg-white rounded-md cursor-default',
+    selected === id ? 'border-secondary' : 'hover:border-secondary hover:shadow-2xl'
   ]">
     <div class="flex flex-col items-start justify-center">
       <span class="uppercase text-secondary text-3xs font-extrabold">Tarifa</span>
@@ -34,8 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 import BaseButton from '@/shared/components/ui/BaseButton.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
 import CircleCheckIcon from '@/shared/icons/CircleCheckIcon.vue';
 import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
@@ -46,11 +46,12 @@ export interface FareFeature {
 }
 
 defineProps<{
+  id: string;
   name: string;
   price: number;
   description: string;
   features: FareFeature[];
-  variant?: string;
+  selected?: string
 }>();
 
 const emit = defineEmits<{ select: [] }>();

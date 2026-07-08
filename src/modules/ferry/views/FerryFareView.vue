@@ -1,13 +1,15 @@
 <template>
-  <div class="sm:w-full lg:px-1">
-    <FerryNavHeader :title="headerTitle" :subtitle="headerSubtitle" @back="goToBack" />
+  <div>
+    <FerryNavHeader :title="headerTitle" :subtitle="headerSubtitle" @back="goToBack"
+      class-container="sm:px-8 sm:gap-y-5" />
 
     <section class="flex flex-col w-full p-5 gap-5 sm:p-10 sm:gap-10 items-center justify-center self-center">
       <FareTripSummaryBar v-bind="fareTripSummaryBarProps" />
 
       <div class="flex flex-col sm:flex-row gap-y-5 sm:gap-x-2 sm:justify-around items-center w-full">
-        <FareCard v-for="fare in faresResponse" :key="fare.id" :name="fare.name" :price="Number(fare.price)"
-          :description="fare.description" :features="fare.features" :variant="fare.variant" @select="setFare(fare)" />
+        <FareCard v-for="fare in faresResponse" :key="fare.id" :id="fare.id" :name="fare.name"
+          :price="Number(fare.price)" :description="fare.description" :features="fare.features" @select="setFare(fare)"
+          :selected="selectedFare?.id" />
       </div>
 
       <FareSelectionFooter :footer-label="footerLabel" :selected-fare-name="selectedFare?.name ?? ''"
@@ -54,7 +56,7 @@ watch(
   faresResponse,
   fares => {
     if (fares && !selectedFare.value) {
-      const defaultFare = fares[1] ?? fares[0];
+      const defaultFare = fares[0];
       if (defaultFare) selectedFare.value = defaultFare;
     }
   },
@@ -66,8 +68,8 @@ const fareTripSummaryBarProps = computed(() => {
   return {
     departureTime: trip?.origin.time ?? '00:00',
     arrivalTime: trip?.destination.time ?? '00:00',
-    origin: trip?.origin.port ?? '---',
-    destination: trip?.destination.port ?? '---',
+    origin: trip?.origin.island ?? '---',
+    destination: trip?.destination.island ?? '---',
     routeType: 'DIRECTO' as const,
     duration: trip?.duration ?? '00h 00m',
     isRoundTrip: false,
