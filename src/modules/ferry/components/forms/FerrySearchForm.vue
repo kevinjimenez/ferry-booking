@@ -23,10 +23,10 @@
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
         <BaseInputDate label="Fecha de salida" v-model="outboundDate" v-bind="outboundDateAttrs" :min-date="tomorrow"
-          :error="errors.outboundDate" placeholder="dd/mm/aaaa" />
+          :max-date="inboundDate" :error="errors.outboundDate" placeholder="dd/mm/aaaa" />
 
         <BaseInputDate v-if="isRoundTrip" label="Fecha de regreso" v-model="inboundDate" v-bind="inboundDateAttrs"
-          :error="errors.inboundDate" :min-date="outboundDate" />
+          :error="errors.inboundDate" :min-date="outboundDate" placeholder="dd/mm/aaaa" />
 
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10"
           class="self-center sm:self-auto" />
