@@ -1,3 +1,5 @@
+import type { IslandResponse } from './island-response.types';
+
 export interface ScheduleResponse {
   id: string;
   route_id: string;
@@ -22,27 +24,18 @@ export interface Island {
   description: string;
 }
 
-export interface Port {
-  address: string;
-  code: string;
-  name: string;
-  islands: Island;
-}
-
 export interface RouteResponse {
   id: string;
-  origin_port_id: string;
-  destination_port_id: string;
+  origin_island_id: string;
+  destination_island_id: string;
   distance_km: string;
   duration_minutes: number;
-  base_price_resident: string;
-  base_price_national: string;
-  base_price_foreign: string;
+  base_price: string;
   is_active: boolean;
   created_at: Date;
   updated_at: Date;
-  destination_ports: Port;
-  origin_ports: Port;
+  destination_islands: IslandResponse;
+  origin_islands: IslandResponse;
 }
 
 export interface FerryResponse {
