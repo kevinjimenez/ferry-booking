@@ -21,4 +21,10 @@ export interface Passenger extends Person {
   isPrimary: boolean;
   checkedInOutbound: boolean;
   checkedInReturn: boolean;
+  extras?: PassengerExtraRequest[];
+}
+
+export interface PassengerExtraRequest {
+  extraId: string;
+  quantity: number;
 }

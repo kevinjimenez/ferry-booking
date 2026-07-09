@@ -1,6 +1,7 @@
 import type { CreateTicketRequest } from '@/modules/ferry/types/api/requests/create-ticket-request.types.ts';
 import type { BookingResponse } from '@/modules/ferry/types/api/responses/booking-response.types.ts';
 import type { PersonFormValues } from '@/modules/ferry/types/forms/passenger-details-form.types.ts';
+import type { SelectedExtra } from '../stores/ferry-selection.store';
 
 export class BookingMapper {
   static toTicketRequest(
@@ -13,6 +14,7 @@ export class BookingMapper {
     outboundFareId: string,
     inbound?: string,
     returnFareId?: string,
+    selectedExtras: SelectedExtra[] = [],
   ): CreateTicketRequest {
     return {
       tripType,
@@ -33,6 +35,7 @@ export class BookingMapper {
         isPrimary: index === 0,
         checkedInOutbound: false,
         checkedInReturn: false,
+        extras: index === 0 ? selectedExtras.map(e => ({ extraId: e.id, quantity: 1 })) : undefined,
       })),
     };
   }

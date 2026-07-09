@@ -22,11 +22,11 @@
       </div>
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
-        <BaseInputDate label="Fecha de salida" v-model="outboundDate" v-bind="outboundDateAttrs" :min-date="tomorrow"
+        <BaseInputDate label="Fecha de salida" v-model="outboundDate" v-bind="outboundDateAttrs" :min-date="minDate"
           :max-date="inboundDate" :error="errors.outboundDate" placeholder="dd/mm/aaaa" />
 
         <BaseInputDate v-if="isRoundTrip" label="Fecha de regreso" v-model="inboundDate" v-bind="inboundDateAttrs"
-          :error="errors.inboundDate" :min-date="dayjs(outboundDate).add(0, 'day').toDate()" placeholder="dd/mm/aaaa" />
+          :error="errors.inboundDate" :min-date="maxDate" placeholder="dd/mm/aaaa" />
 
         <BaseInputNumber label="No. Pasajeros" v-model="passengerCount" :min="1" :max="10"
           class="self-center sm:self-auto" />
@@ -51,10 +51,13 @@ import { useSearchForm } from '@/modules/ferry/composables';
 import FerrySearchFormSkeleton from '@/modules/ferry/components/FerrySearchFormSkeleton.vue';
 import { useGetIslandsQuery } from '../../queries';
 import dayjs from 'dayjs';
+import { computed } from 'vue';
+import { env } from '@/config/env';
 
 const { data: islandsResponse, isPending } = useGetIslandsQuery();
 
-const tomorrow: Date = dayjs().add(1, 'day').toDate();
+const minDate = computed(() => dayjs().add(env.minDate, 'day').toDate())
+const maxDate = computed(() => dayjs(outboundDate.value).add(env.maxDate, 'day').toDate())
 
 const {
   // properties

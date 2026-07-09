@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['flex flex-col gap-y-1 p-5', { 'bg-primary/6': type === 'outbound', 'bg-secondary/6': type === 'inbound' }]">
+    :class="['flex flex-col gap-y-1 p-5 rounded-md', { 'bg-primary/6 border border-primary/10': type === 'outbound', 'bg-secondary/6 border border-secondary/10': type === 'inbound' }]">
     <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" />
     <div class="flex justify-between items-center">
       <TimeRangeDisplay :departure="departure" :arrival="arrival" />

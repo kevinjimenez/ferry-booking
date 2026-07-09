@@ -58,6 +58,7 @@ import { useLoadingStore } from '@/shared/stores/loading.store';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import { maskString } from '@/shared/utils/string.utils.ts';
 import { useGetFareExtrasQuery } from '../queries/get-fare-extras.query';
+import type { FareExtra } from '../types/fare-extra.types';
 
 const { data, isLoading } = useGetFareExtrasQuery()
 const storeFerrySearch = useFerrySearchStore();
@@ -70,6 +71,7 @@ const { inbound, outbound, outboundFare, inboundFare } = storeToRefs(storeFerryS
 const { createBookingBody, isSameBooking } = useBookingCheckout();
 const bookingStore = useBookingStore();
 const loadingStore = useLoadingStore();
+// const selectedService = ref<string>()
 
 const title = computed(() =>
   isRoundTrip.value ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
@@ -110,8 +112,9 @@ const handleChange = async (type: 'outbound' | 'inbound') => {
   else await goToOutbound();
 };
 
-const handleAddService = () => {
-  // TODO: implementar lógica de añadir servicio
+const handleAddService = ({ id, price, title }: FareExtra) => {
+  // selectedService.value = id
+  storeFerrySelection.toggleExtra({ id, price, title });
 };
 
 const handleContinue = async () => {

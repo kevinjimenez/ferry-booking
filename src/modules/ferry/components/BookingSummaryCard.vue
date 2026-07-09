@@ -22,7 +22,7 @@
 
     <template v-if="outbound && (!isRoundTrip || inbound)">
       <LabelValue label="Pasajeros" :value="outbound?.passengers ?? '0'" :custom-class="{
-        label: 'text-sm text-primary',
+        label: 'text-sm text-primary font-semibold',
         value: 'text-sm text-primary font-bold',
       }" />
       <hr class="border-gray-200 mt-2.5 border-[0.1rem]" />
@@ -32,7 +32,7 @@
       </div>
       <BaseButton size="lg" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')">{{
         buttonLabel
-        }}</BaseButton>
+      }}</BaseButton>
     </template>
   </div>
 </template>
