@@ -1,7 +1,7 @@
 <template>
-  <div :class="['flex flex-col w-fit', customClass?.alignmentClass]">
-    <h2 :class="twMerge('text-h2 font-extrabold mb-2', customClass?.timeClass)">{{ time }}</h2>
-    <p :class="twMerge('text-sm font-semibold text-secondary', customClass?.islandClass)">
+  <div :class="['flex flex-col w-full', customClass?.alignmentClass]">
+    <h2 :class="twMerge('text-h6 sm:text-h3 md:text-h2 font-extrabold mb-2', customClass?.timeClass)">{{ time }}</h2>
+    <p :class="twMerge('text-2xs md:text-sm font-semibold text-secondary', customClass?.islandClass)">
       {{ island }}
     </p>
     <small :class="twMerge('text-3xs font-normal text-ink-500', customClass?.descriptionClass)">{{

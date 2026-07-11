@@ -3,7 +3,7 @@
     <FerryNavHeader title="Elige un ferry de vuelta" @back="goToBack" />
 
     <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-x-10">
-      <div class="w-full lg:w-3/4 flex flex-col flex-1 min-h-0 overflow-y-auto lg:overflow-visible pb-4 lg:pb-0">
+      <div class="w-full lg:w-3/4 flex flex-col flex-1 min-h-0 overflow-y-auto lg:overflow-visible pb-24 lg:pb-0">
         <SearchSummaryCard v-bind="searchSummaryCardProps" />
         <TripTypeBadges class="mt-5" :is-round-trip="isRoundTrip" active="inbound" />
 
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div
-        class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
+        class="fixed bottom-0 left-0 right-0 z-10 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:z-auto lg:shrink-0 lg:w-1/4 lg:p-0 lg:shadow-none lg:bg-transparent lg:sticky lg:top-6 lg:self-start">
         <MobileBookingBar class="lg:hidden" :ferry-name="inbound?.ferry.name"
           :route="inbound ? `${inbound.origin.island} → ${inbound.destination.island}` : undefined"
           :total="formatCurrency(grandTotal)" button-label="Continuar" @continue="goToInboundFare" />

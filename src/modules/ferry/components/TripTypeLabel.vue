@@ -1,5 +1,6 @@
 <template>
-  <BaseBadge :label="label" class="badge-outline badge-sm uppercase tracking-widest font-semibold text-2xs" />
+  <BaseBadge :label="label"
+    class="badge-outline badge-sm uppercase tracking-widest font-semibold text-5xsxs md:text-2xs hidden sm:flex" />
 </template>
 
 <script setup lang="ts">

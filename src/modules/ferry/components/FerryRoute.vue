@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-10 justify-center items-center">
+  <div class="flex sm:gap-x-10 md:justify-center md:items-center">
     <FerryStopDetail :customClass="originStopDetailClass" :time="origin.time" :island="origin.island"
       :description="origin.description" />
 
