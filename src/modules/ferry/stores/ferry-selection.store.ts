@@ -57,10 +57,10 @@ export const useFerrySelectionStore = defineStore(STORE_KEY.SELECTION, () => {
   const setInbound = (schedule: Ferry) => {
     inbound.value = schedule;
   };
-  const setOutboundFare = (fare: FareResponse) => {
+  const setOutboundFare = (fare: FareResponse | null) => {
     outboundFare.value = fare;
   };
-  const setInboundFare = (fare: FareResponse) => {
+  const setInboundFare = (fare: FareResponse | null) => {
     inboundFare.value = fare;
   };
   const reset = () => {
@@ -68,7 +68,7 @@ export const useFerrySelectionStore = defineStore(STORE_KEY.SELECTION, () => {
     inbound.value = null;
     outboundFare.value = null;
     inboundFare.value = null;
-    selectedExtras.value = null;
+    selectedExtras.value = [];
   };
 
   const toggleExtra = (extra: SelectedExtra) => {

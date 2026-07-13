@@ -42,7 +42,6 @@
         <BaseDivider class="rotate-180 h-20 mx-5 self-center" />
         <ScheduleFerryInfo :ferry-name="ferry.name" :seats="price.seats" />
       </div>
-      <!-- <div class="flex-1" /> -->
       <div class="flex flex-col">
         <PriceDisplay :amount="price.amount" :currency="price.currency" :seats="price.seats" />
         <BaseButton v-if="!selected" size="md" @click="$emit('select')">Elegir</BaseButton>
