@@ -6,7 +6,7 @@
     <section class="flex flex-col w-full p-5 gap-5 sm:p-10 sm:gap-10 items-center justify-center self-center">
       <FareTripSummaryBar v-bind="fareTripSummaryBarProps" />
 
-      <div class="flex flex-col sm:flex-row gap-y-5 sm:gap-x-2 sm:justify-around items-center w-full">
+      <div class="flex flex-col md:flex-row gap-y-5 sm:gap-x-2 sm:justify-around items-center w-full pb-28 md:pb-0">
         <FareCard v-for="fare in faresResponse" :key="fare.id" :id="fare.id" :name="fare.name"
           :price="Number(fare.price)" :description="fare.description" :features="fare.features" @select="setFare(fare)"
           :selected="selectedFare?.id" />

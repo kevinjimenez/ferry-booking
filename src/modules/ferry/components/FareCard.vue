@@ -1,6 +1,6 @@
 <template>
   <div :class="[
-    'w-full sm:w-120 flex flex-col shadow-sm py-5 px-10 gap-y-5 border border-t-4 bg-white rounded-md cursor-default relative',
+    'w-full md:w-120 flex flex-col shadow-sm py-5 px-10 gap-y-5 border border-t-4 bg-white rounded-md cursor-default relative',
     selected === id ? 'border-secondary' : 'hover:border-secondary hover:shadow-2xl'
   ]">
     <div class="flex flex-col items-start justify-center">
