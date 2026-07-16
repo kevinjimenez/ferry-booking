@@ -18,7 +18,7 @@
 import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
 import RouteDirection from '@/modules/ferry/components/RouteDirection.vue';
 import { computed } from 'vue';
-import { formatDate } from '@vueuse/core';
+import dayjs from 'dayjs';
 import { DATE_FORMATS } from '@/shared/constants/date-formats.constants.ts';
 import ClockIcon from '@/shared/icons/ClockIcon.vue';
 
@@ -34,5 +34,5 @@ export interface SearchSummaryCardProps {
 
 const props = defineProps<SearchSummaryCardProps>();
 
-const dateLabel = computed(() => formatDate(new Date(props.date), DATE_FORMATS.DISPLAY_LONG));
+const dateLabel = computed(() => dayjs(props.date).format(DATE_FORMATS.DISPLAY_LONG));
 </script>

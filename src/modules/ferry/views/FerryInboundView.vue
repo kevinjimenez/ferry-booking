@@ -19,6 +19,10 @@
           <template v-if="isLoading">
             <ScheduleCardSkeleton v-for="i in 4" :key="i" />
           </template>
+          <template v-else-if="!schedulesData?.length">
+            <EmptyState :icon="FerryIcon" title="No hay ferries disponibles"
+              description="No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta." />
+          </template>
           <template v-else>
             <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
               :destination="schedule.destination" :duration="schedule.duration" :price="{
@@ -60,6 +64,8 @@ import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
 import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
 import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
+import EmptyState from '@/shared/components/EmptyState.vue';
+import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
 import { computed } from 'vue';
 import SortIcon from '@/shared/icons/SortIcon.vue';

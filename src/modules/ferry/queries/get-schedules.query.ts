@@ -12,11 +12,11 @@ const getSchedulesQuery = async (params: GetSchedulesRequest) => {
     // await new Promise(resolve => setTimeout(resolve, 5000));
     const { origin, destination, date } = params;
     const response = await apiServices.get<ApiResponse<ScheduleResponse[]>>('/schedules', {
-      // params: {
-      //   date,
-      //   origin,
-      //   destination,
-      // },
+      params: {
+        date,
+        origin,
+        destination,
+      },
     });
 
     if (!response.data) {
