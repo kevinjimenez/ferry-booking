@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col items-center my-1 w-full">
-    <span class="text-[20px] sm:text-[30px] font-extrabold text-secondary">
+  <div class="flex flex-col items-center my-5 sm:my-1">
+    <span class="text-[25px] md:text-[30px] font-extrabold text-secondary">
       {{ formatCurrency(amount) }}
     </span>
-    <span class="sm:text-3xs text-4xs text-ink-500"> {{ label }} </span>
+    <span class="sm:text-3xs text-4xs text-ink-500 text-center shrink-0"> {{ label }} </span>
   </div>
 </template>
 <script setup lang="ts">

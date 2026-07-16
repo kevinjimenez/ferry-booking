@@ -1,13 +1,11 @@
 <template>
-  <BaseBadge
-    :label="label"
-    class="badge-outline badge-sm uppercase tracking-widest font-semibold text-2xs"
-  />
+  <BaseBadge :label="label"
+    class="badge-outline badge-sm uppercase tracking-widest font-semibold text-5xsxs md:text-2xs hidden sm:flex" />
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import BaseBadge from '@/shared/components/base/BaseBadge.vue';
+import BaseBadge from '@/shared/components/ui/BaseBadge.vue';
 
 const props = withDefaults(
   defineProps<{

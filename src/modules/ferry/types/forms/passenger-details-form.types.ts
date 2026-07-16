@@ -1,8 +1,11 @@
-import type { SelectOption } from '@/shared/components/base/BaseSelect.vue';
+import type { SelectOption } from '@/shared/components/ui/BaseSelect.vue';
 
 export interface PersonFormValues {
   firstName: string;
   lastName: string;
+  country: SelectOption | null;
+  city: string;
+  legalName: string;
   email: string;
   phone: string;
   documentType: SelectOption | null;
@@ -10,6 +13,10 @@ export interface PersonFormValues {
 }
 
 export interface PassengerDetailsFormValues {
-  contact: PersonFormValues;
+  contact: ContactFormValues;
   passengers: PersonFormValues[];
+}
+
+export interface ContactFormValues extends PersonFormValues {
+  contactType?: string;
 }

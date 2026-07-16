@@ -9,14 +9,8 @@
     </SectionCardHeader>
 
     <div class="flex flex-col gap-y-4">
-      <TimelineStep
-        v-for="(step, index) in steps"
-        :key="index"
-        :time="step.time"
-        :text="step.text"
-        :subtitle="step.subtitle"
-        :active="index === steps.length - 1"
-      />
+      <TimelineStep v-for="(step, index) in steps" :key="index" :time="step.time" :text="step.text"
+        :subtitle="step.subtitle" :active="index === steps.length - 1" />
     </div>
   </div>
 </template>

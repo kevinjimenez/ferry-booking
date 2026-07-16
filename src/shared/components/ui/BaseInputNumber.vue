@@ -2,27 +2,17 @@
   <div class="max-w-full">
     <label for="quantity-input" class="block text-2xs font-medium text-heading">{{
       label
-    }}</label>
+      }}</label>
     <div class="relative flex items-center shadow-xs rounded-base">
-      <BaseButton
-        circle
-        :prefix-icon="MinusIcon"
-        @click="decrement()"
-        :disabled="modelValue <= min"
-      />
+      <BaseButton circle :prefix-icon="MinusIcon" @click="decrement()" :disabled="modelValue <= min" />
       <span class="text-base font-semibold min-w-8 text-center">{{ modelValue }}</span>
-      <BaseButton
-        circle
-        :prefix-icon="PlusIcon"
-        @click="increment()"
-        :disabled="modelValue >= max"
-      />
+      <BaseButton circle :prefix-icon="PlusIcon" @click="increment()" :disabled="modelValue >= max" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import MinusIcon from '@/shared/icons/MinusIcon.vue';
 import PlusIcon from '@/shared/icons/PlusIcon.vue';
 

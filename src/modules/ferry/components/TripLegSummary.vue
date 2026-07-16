@@ -1,26 +1,31 @@
 <template>
-  <div :class="['flex flex-col gap-y-1 p-5', {'bg-primary/6': type === 'outbound', 'bg-secondary/6': type === 'inbound'}]">
+  <div
+    :class="['flex flex-col gap-y-1 p-5 rounded-md', { 'bg-primary/6 border border-primary/10': type === 'outbound', 'bg-secondary/6 border border-secondary/10': type === 'inbound' }]">
     <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" />
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col justify-center">
       <TimeRangeDisplay :departure="departure" :arrival="arrival" />
-      <div class="flex flex-col items-end">
-        <span class="text-sm font-semibold text-secondary">{{ price }}</span>
-        <span v-if="farePrice" class="text-xs text-text-muted">Ferry {{ basePrice }} + Tarifa {{ farePrice }}</span>
+      <div class="flex justify-center">
+        <span v-if="farePrice" class="text-2xs text-text-muted font-medium">Ferry {{ basePrice }} + Tarifa {{
+          farePrice
+          }}</span>
+        <div class="flex-1" />
+        <span class="text-base font-semibold text-secondary">{{ price }}</span>
       </div>
     </div>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center gap-x-2">
       <span class="text-sm font-semibold text-text-muted">{{ ferry }}</span>
-      <span v-if="fare" class="text-xs font-medium text-text-muted">{{ fare }}</span>
+      <BaseBadge v-if="fare" :label="fare ?? ''" :variant="type === 'outbound' ? 'primary' : 'secondary'"
+        label-class="font-semibold" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import TripRouteLabel from '@/modules/ferry/components/TripRouteLabel.vue';
 import TimeRangeDisplay from '@/shared/components/TimeRangeDisplay.vue';
+import BaseBadge from '@/shared/components/ui/BaseBadge.vue';
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     type?: 'outbound' | 'inbound';
     badgeLabel: string;
@@ -40,5 +45,5 @@ const props = withDefaults(
   },
 );
 
-const badgeVariant = computed(() => (props.type === 'inbound' ? 'secondary' : 'primary'));
+// const badgeVariant = computed(() => (props.type === 'inbound' ? 'secondary' : 'primary'));
 </script>

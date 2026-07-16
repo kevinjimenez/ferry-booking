@@ -1,24 +1,16 @@
 <template>
-  <div class="h-full flex flex-col">
+  <div class="h-auto flex flex-col">
     <div v-if="showSplash" class="splash-overlay" :class="{ 'splash-out': splashLeaving }">
       <img src="/paradeisos-full.svg" class="splash-logo" alt="Logo" />
     </div>
 
     <header class="flex flex-col items-center justify-center h-72 sm:h-96 w-full gap-10">
-      <BaseDivider
-        label="Galápagos"
-        color="secondary"
-        class="w-40 lg:w-1/11 self-center"
-        size="sm"
-        italic
-      />
+      <BaseDivider label="Galápagos" color="secondary" class="w-40 lg:w-1/11 self-center" size="sm" italic />
       <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold min-h-[1.2em]">
         {{ displayedTitle }}<span class="cursor" :class="{ hidden: done }">|</span>
       </h1>
       <BaseDivider color="secondary" class="w-16 sm:border-[0.15rem] lg:border-[0.2rem]" />
-      <h4
-        class="text-xs sm:text-base lg:text-lg font-secondary-italic font-light w-120 sm:w-140 lg:w-160 text-center"
-      >
+      <h4 class="text-xs sm:text-base lg:text-lg font-secondary-italic font-light w-120 sm:w-140 lg:w-160 text-center">
         Reserva tu ferry entre Santa Cruz, San Cristóbal e Isabela de forma rápida y segura
       </h4>
     </header>
@@ -31,7 +23,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import FerrySearchForm from '@/modules/ferry/components/forms/FerrySearchForm.vue';
-import BaseDivider from '@/shared/components/base/BaseDivider.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 
 const TITLE = 'Explora las Islas Galápagos';
 const SPLASH_DURATION = 1600;
@@ -92,9 +84,11 @@ onUnmounted(() => {
   0% {
     background-color: #0e1327;
   }
+
   60% {
     background-color: #6b1224;
   }
+
   100% {
     background-color: #bc1d36;
   }
@@ -111,10 +105,12 @@ onUnmounted(() => {
     transform: scale(25);
     opacity: 1;
   }
+
   60% {
     transform: scale(5);
     opacity: 0.95;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0.3;
@@ -126,10 +122,12 @@ onUnmounted(() => {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }

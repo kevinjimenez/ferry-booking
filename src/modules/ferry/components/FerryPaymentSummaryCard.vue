@@ -1,68 +1,50 @@
 <template>
-  <BaseCard
-    :icon="UsersIcon"
-    title="Resumen de pago"
-    icon-class="size-5"
-    title-class="text-base text-text-muted font-semibold"
-  >
+  <BaseCard :icon="ReceiptIcon" title="Resumen de pago" icon-class="size-6"
+    title-class="text-base text-text-muted font-semibold">
     <div class="flex flex-col gap-y-1">
-      <LabelValue
-        label="Ferry de ida"
-        :value="outboundLabel"
-        :custom-class="{
-          label: 'text-md text-primary font-normal',
-          value: 'text-md text-primary font-normal',
-        }"
-      />
-      <LabelValue
-        v-if="outboundFareName"
-        :label="outboundFareName"
-        :value="outboundFarePrice ?? ''"
-        :custom-class="{
-          label: 'text-sm text-text-muted font-normal',
-          value: 'text-sm text-text-muted font-normal',
-        }"
-      />
+      <LabelValue label="Ferry de ida" :value="outboundLabel" :custom-class="{
+        label: 'text-md text-primary font-bold',
+        value: 'text-md text-primary font-bold',
+      }" />
+      <LabelValue v-if="outboundFareName" :label="outboundFareName" :value="outboundFarePrice ?? ''" :custom-class="{
+        label: 'text-sm text-text-muted font-semibold',
+        value: 'text-sm text-text-muted font-semibold',
+      }" />
     </div>
 
     <div v-if="isRoundTrip" class="flex flex-col gap-y-1">
-      <LabelValue
-        label="Ferry de vuelta"
-        :value="inboundLabel"
-        :custom-class="{
-          label: 'text-md text-primary font-normal',
-          value: 'text-md text-primary font-normal',
-        }"
-      />
-      <LabelValue
-        v-if="inboundFareName"
-        :label="inboundFareName"
-        :value="inboundFarePrice ?? ''"
-        :custom-class="{
-          label: 'text-sm text-text-muted font-normal',
-          value: 'text-sm text-text-muted font-normal',
-        }"
-      />
+      <LabelValue label="Ferry de vuelta" :value="inboundLabel" :custom-class="{
+        label: 'text-md text-primary font-bold',
+        value: 'text-md text-primary font-bold',
+      }" />
+      <LabelValue v-if="inboundFareName" :label="inboundFareName" :value="inboundFarePrice ?? ''" :custom-class="{
+        label: 'text-sm text-text-muted font-bold',
+        value: 'text-sm text-text-muted font-bold',
+      }" />
     </div>
+
+    <LabelValue v-for="extra in extras" :key="extra.id" :label="extra.title" :value="formatCurrency(extra.price)"
+      :custom-class="{
+        label: 'text-md text-primary font-semibold',
+        value: 'text-md text-primary font-semibold',
+      }" />
 
     <BaseDivider />
 
-    <LabelValue
-      label="Total"
-      :value="total"
-      :custom-class="{
-        label: 'text-lg text-primary font-semibold',
-        value: 'text-2xl text-primary font-semibold',
-      }"
-    />
+    <LabelValue label="Total" :value="total" :custom-class="{
+      label: 'text-lg text-primary font-extrabold',
+      value: 'text-2xl text-primary font-extrabold',
+    }" />
   </BaseCard>
 </template>
 
 <script setup lang="ts">
-import BaseCard from '@/shared/components/base/BaseCard.vue';
-import BaseDivider from '@/shared/components/base/BaseDivider.vue';
+import type { SelectedExtra } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import LabelValue from '@/shared/components/LabelValue.vue';
-import UsersIcon from '@/shared/icons/UsersIcon.vue';
+import BaseCard from '@/shared/components/ui/BaseCard.vue';
+import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
+import ReceiptIcon from '@/shared/icons/ReceiptIcon.vue';
+import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 
 defineProps<{
   isRoundTrip: boolean;
@@ -73,5 +55,6 @@ defineProps<{
   outboundFarePrice?: string;
   inboundFareName?: string;
   inboundFarePrice?: string;
+  extras?: SelectedExtra[];
 }>();
 </script>

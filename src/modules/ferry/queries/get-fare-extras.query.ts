@@ -1,19 +1,20 @@
-import { useQuery } from '@tanstack/vue-query';
 import { ferryKeys } from '@/modules/ferry/queries/keys/ferry.query-keys';
 import { apiServices } from '@/shared/services';
 import type { ApiResponse } from '@/shared/types';
-import type { FareResponse } from '@/modules/ferry/types/api/responses/fare-response.types.ts';
+import { useQuery } from '@tanstack/vue-query';
+import type { FareExtraResponse } from '../types/api/responses/fare-extra-response.types';
+import { FareExtraMapper } from '../mappers/fare-extra.mapper';
 
 const getFareExtrasQuery = async () => {
   // await new Promise(resolve => setTimeout(resolve, 5000));
 
-  const response = await apiServices.get<ApiResponse<FareResponse[]>>('/fare-extras');
+  const response = await apiServices.get<ApiResponse<FareExtraResponse[]>>('/fare-extras');
 
   if (!response.data) throw new Error('Failed to fetch fare extras');
 
   const { data } = response.data;
 
-  return data;
+  return data.map(FareExtraMapper.toFareExtraOption);
 };
 
 export const useGetFareExtrasQuery = () => {

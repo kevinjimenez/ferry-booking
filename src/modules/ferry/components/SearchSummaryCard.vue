@@ -1,37 +1,32 @@
 <template>
   <div
-    class="w-full flex flex-col lg:flex-row border border-gray-200 p-5 lg:p-10 rounded-sm shadow-sm items-center lg:justify-between bg-white"
-  >
+    class="w-full flex flex-col lg:flex-row border border-gray-200 p-5 lg:p-10 rounded-sm shadow-sm items-center lg:justify-between bg-white">
     <div class="flex flex-col w-full gap-y-3">
       <small class="text-ink-500 text-4xs sm:text-2xs font-bold uppercase">{{ dateLabel }}</small>
-      <RouteDirection
-        :origin-name="originName"
-        :origin-island="originIsland"
-        :destination-name="destinationName"
-        :destination-island="destinationIsland"
-      />
+      <RouteDirection :origin-name="originName" :origin-description="originDescription"
+        :destination-name="destinationName" :destination-description="destinationDescription" />
     </div>
-    <div class="flex w-full lg:justify-end items-center gap-x-5">
-      <small class="text-ink-600 text-3xs sm:text-xs">{{ passengers }} pasajeros</small>
+    <div class="flex w-full lg:w-auto shrink-0 lg:justify-end items-center gap-x-5">
+      <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ passengers }} pasajeros</small>
       <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-ink-600">
-        <small class="text-ink-600 text-3xs sm:text-xs">{{ duration }}</small>
+        <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ duration }}</small>
       </BaseIconLabel>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import BaseIconLabel from '@/shared/components/base/BaseIconLabel.vue';
+import BaseIconLabel from '@/shared/components/ui/BaseIconLabel.vue';
 import RouteDirection from '@/modules/ferry/components/RouteDirection.vue';
 import { computed } from 'vue';
-import { formatDate } from '@vueuse/core';
+import dayjs from 'dayjs';
 import { DATE_FORMATS } from '@/shared/constants/date-formats.constants.ts';
 import ClockIcon from '@/shared/icons/ClockIcon.vue';
 
 export interface SearchSummaryCardProps {
   originName: string;
-  originIsland: string;
+  originDescription: string;
   destinationName: string;
-  destinationIsland: string;
+  destinationDescription: string;
   date: string;
   passengers: number;
   duration: string;
@@ -39,5 +34,5 @@ export interface SearchSummaryCardProps {
 
 const props = defineProps<SearchSummaryCardProps>();
 
-const dateLabel = computed(() => formatDate(new Date(props.date), DATE_FORMATS.DISPLAY_LONG));
+const dateLabel = computed(() => dayjs(props.date).format(DATE_FORMATS.DISPLAY_LONG));
 </script>

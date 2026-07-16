@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full flex flex-col px-8 sm:px-10 gap-y-4 sm:gap-y-8 pt-6 sm:pt-10">
+  <header :class="twMerge('w-full flex flex-col px-8 sm:px-10 gap-y-4 sm:gap-y-8 pt-6', props.classContainer)">
     <div class="flex items-center flex-1 gap-x-1 cursor-default" @click="emit('back')">
       <ArrowRightDashedIcon class="rotate-180 size-7" />
       <span class="text-sm font-medium">Volver</span>
@@ -10,9 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import { twMerge } from 'tailwind-merge';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 
-defineProps<{ title: string; subtitle?: string }>();
+const props = defineProps<{ title: string; subtitle?: string; classContainer?: string }>();
 const emit = defineEmits<{
   back: [];
 }>();

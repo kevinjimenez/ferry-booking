@@ -1,9 +1,7 @@
 <template>
-  <div class="sm:w-full lg:px-160">
+  <div class="w-full">
     <FerryNavHeader title="Datos del contacto y pasajeros" @back="$router.back()" />
-    <div
-      class="flex flex-col gap-y-3 px-5 py-3 sm:gap-y-5 sm:px-10 sm:py-5 lg:gap-y-10 lg:px-20 lg:py-10"
-    >
+    <div class="flex flex-col gap-y-3 px-5 py-3 sm:gap-y-5 sm:px-10 sm:py-5 lg:gap-y-10 lg:px-20 lg:py-10">
       <FerryContactSection name-prefix="contact" />
 
       <FerryPassengersSection :passengers="passengers" />
@@ -16,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import FerryContactSection from '@/modules/ferry/components/FerryContactSection.vue';
 import FerryPassengersSection from '@/modules/ferry/components/FerryPassengersSection.vue';

@@ -1,14 +1,8 @@
 <template>
   <div class="join">
-    <button
-      v-for="option in options"
-      :key="option.value.toString()"
-      type="button"
-      class="join-item btn shadow-none"
-      :class="[buttonClassesMap[option.value],'text-2xs']"
-      @click="emit('update:modelValue', option.value)"
-      :disabled="disabled"
-    >
+    <button v-for="option in options" :key="option.value.toString()" type="button" class="join-item btn shadow-none"
+      :class="[buttonClassesMap[option.value], 'text-2xs']" @click="emit('update:modelValue', option.value)"
+      :disabled="disabled">
       {{ option.label }}
     </button>
   </div>
@@ -16,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { BaseButtonGroupProps } from '@/shared/components/base/base-button-group.types.ts';
+import type { BaseButtonGroupProps } from '@/shared/components/ui/base-button-group.types';
 
 const props = withDefaults(defineProps<BaseButtonGroupProps>(), {
   size: 'md',
