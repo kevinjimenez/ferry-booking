@@ -1,1 +1,1 @@
-export * from './get-ports.query';
+export * from './get-islands.query';

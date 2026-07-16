@@ -1,4 +1,4 @@
-import type { ButtonGroupOption } from '@/shared/components/base/base-button-group.types.ts';
+import type { ButtonGroupOption } from '@/shared/components/ui/base-button-group.types';
 import { TicketType } from '@/modules/ferry/enums';
 import type { SearchFormValues } from '@/modules/ferry/types';
 

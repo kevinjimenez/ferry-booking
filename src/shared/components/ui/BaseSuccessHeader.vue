@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseAvatar from '@/shared/components/base/BaseAvatar.vue';
+import BaseAvatar from '@/shared/components/ui/BaseAvatar.vue';
 import type { Component } from 'vue';
 
 defineProps<{ icon: Component; title: string; subtitle: string }>();

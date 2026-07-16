@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "daisyui" {
   themes: light --default;
@@ -19,41 +19,41 @@
  * ============================================================ */
 
 @plugin "daisyui/theme" {
-  name: "light";
+  name: 'light';
   default: true;
 
   /* Brand */
-  --color-primary: #0E1327;       /* paradeisos-blue */
-  --color-secondary: #BC1D36;     /* paradeisos-red */
-  --color-accent: #BC1D36;
-  --color-neutral: #0E1327;
+  --color-primary: #0e1327; /* paradeisos-blue */
+  --color-secondary: #bc1d36; /* paradeisos-red */
+  --color-accent: #bc1d36;
+  --color-neutral: #0e1327;
 
   /* Base — usamos ink-050 como background suave del rediseño */
-  --color-base-100: #FFFFFF;      /* surface */
-  --color-base-200: #f8f9fc;      /* ink-050 — page background */
-  --color-base-300: #e4e7f0;      /* ink-200 — borders */
-  --color-base-content: #0E1327;
+  --color-base-100: #ffffff; /* surface */
+  --color-base-200: #f8f9fc; /* ink-050 — page background */
+  --color-base-300: #e4e7f0; /* ink-200 — borders */
+  --color-base-content: #0e1327;
 
   /* Content sobre cada color */
-  --color-primary-content: #FFFFFF;
-  --color-secondary-content: #FFFFFF;
-  --color-accent-content: #FFFFFF;
-  --color-neutral-content: #FFFFFF;
+  --color-primary-content: #ffffff;
+  --color-secondary-content: #ffffff;
+  --color-accent-content: #ffffff;
+  --color-neutral-content: #ffffff;
 
   /* Feedback */
-  --color-info: #3B82F6;
-  --color-success: #1f7a5c;       /* ok-600 — armoniza con la marca */
+  --color-info: #3b82f6;
+  --color-success: #1f7a5c; /* ok-600 — armoniza con la marca */
   --color-warning: #d4a017;
-  --color-error: #BC1D36;
+  --color-error: #bc1d36;
 
-  --color-info-content: #FFFFFF;
-  --color-success-content: #FFFFFF;
-  --color-warning-content: #0E1327;
-  --color-error-content: #FFFFFF;
+  --color-info-content: #ffffff;
+  --color-success-content: #ffffff;
+  --color-warning-content: #0e1327;
+  --color-error-content: #ffffff;
 
   /* Radios DaisyUI */
-  --radius-selector: 4px;        /* checkbox, toggle, badge */
-  --radius-field: 4px;            /* input, select, btn */
+  --radius-selector: 4px; /* checkbox, toggle, badge */
+  --radius-field: 4px; /* input, select, btn */
   /*--radius-box: 4px;              !* card, modal *!*/
 
   /* Tamaño base */
@@ -73,14 +73,13 @@
  * ============================================================ */
 
 @theme {
-
   /* ---------- Brand ---------- */
-  --color-brand-navy: #0E1327;
-  --color-brand-red: #BC1D36;
-  --color-brand-white: #FFFFFF;
+  --color-brand-navy: #0e1327;
+  --color-brand-red: #bc1d36;
+  --color-brand-white: #ffffff;
 
   /* ---------- Navy / Ink scale (cálida-fría, derivada de la marca) ---------- */
-  --color-ink-50:  #f8f9fc;
+  --color-ink-50: #f8f9fc;
   --color-ink-100: #f1f3f9;
   --color-ink-200: #e4e7f0;
   --color-ink-300: #c7ccde;
@@ -88,23 +87,23 @@
   --color-ink-500: #6b7290;
   --color-ink-600: #3b4260;
   --color-ink-700: #222944;
-  --color-ink-800: #151B33;
-  --color-ink-900: #0E1327;
+  --color-ink-800: #151b33;
+  --color-ink-900: #0e1327;
 
   /* ---------- Sea (washes sutiles del azul de marca) ---------- */
-  --color-sea-50:  #f3f5fa;
+  --color-sea-50: #f3f5fa;
   --color-sea-100: #e4e9f3;
   --color-sea-200: #c6d0e3;
 
   /* ---------- Sand (warm support para empty states / éxito) ---------- */
-  --color-sand-50:  #faf7f1;
+  --color-sand-50: #faf7f1;
   --color-sand-100: #f3ece0;
   --color-sand-200: #e6dbc4;
 
   /* ---------- Red scale ---------- */
   --color-red-100: #fbe7ea;
   --color-red-500: #d42c48;
-  --color-red-600: #BC1D36;
+  --color-red-600: #bc1d36;
   --color-red-700: #9a1730;
 
   /* ---------- Success ---------- */
@@ -112,17 +111,17 @@
   --color-ok-600: #1f7a5c;
 
   /* ---------- Semantic ---------- */
-  --color-background: #f8f9fc;    /* ink-50 */
-  --color-surface: #FFFFFF;
-  --color-border: #e4e7f0;        /* ink-200 */
+  --color-background: #f8f9fc; /* ink-50 */
+  --color-surface: #ffffff;
+  --color-border: #e4e7f0; /* ink-200 */
   --color-border-strong: #c7ccde; /* ink-300 */
-  --color-shadow: #0E132714;
+  --color-shadow: #0e132714;
 
   /* ---------- Text ---------- */
-  --color-text-primary: #0E1327;
-  --color-text-secondary: #6b7290;  /* ink-500 */
-  --color-text-muted: #9ea4bd;      /* ink-400 */
-  --color-text-white: #FFFFFF;
+  --color-text-primary: #0e1327;
+  --color-text-secondary: #6b7290; /* ink-500 */
+  --color-text-muted: #9ea4bd; /* ink-400 */
+  --color-text-white: #ffffff;
 
   /* ---------- Spacing ---------- */
   --spacing-xs: 4px;
@@ -144,17 +143,17 @@
   --radius-full: 999px;
 
   /* ---------- Shadows (alineadas con tokens.css) ---------- */
-  --shadow-xs: 0 1px 2px rgba(14,19,39,0.06);
-  --shadow-sm: 0 2px 6px rgba(14,19,39,0.06), 0 1px 2px rgba(14,19,39,0.04);
-  --shadow-md: 0 6px 18px rgba(14,19,39,0.08), 0 2px 4px rgba(14,19,39,0.04);
-  --shadow-lg: 0 18px 40px rgba(14,19,39,0.14);
-  --shadow-xl: 0 28px 60px rgba(14,19,39,0.18);
+  --shadow-xs: 0 1px 2px rgba(14, 19, 39, 0.06);
+  --shadow-sm: 0 2px 6px rgba(14, 19, 39, 0.06), 0 1px 2px rgba(14, 19, 39, 0.04);
+  --shadow-md: 0 6px 18px rgba(14, 19, 39, 0.08), 0 2px 4px rgba(14, 19, 39, 0.04);
+  --shadow-lg: 0 18px 40px rgba(14, 19, 39, 0.14);
+  --shadow-xl: 0 28px 60px rgba(14, 19, 39, 0.18);
 
   /* ---------- Typography ---------- */
-  --font-display:  "Manrope", "Avenir Next LT Pro", "Avenir Next", system-ui, sans-serif;
-  --font-primary:  "Manrope", "Avenir Next LT Pro", "Avenir Next", system-ui, sans-serif;
-  --font-secondary:"Poly", "Georgia", serif;
-  --font-mono:     ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: 'Manrope', 'Avenir Next LT Pro', 'Avenir Next', system-ui, sans-serif;
+  --font-primary: 'Manrope', 'Avenir Next LT Pro', 'Avenir Next', system-ui, sans-serif;
+  --font-secondary: 'Poly', 'Georgia', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* ---------- Font sizes (mantengo tu escala numerada) ---------- */
   --text-display: 46px;
@@ -188,7 +187,7 @@
   --tracking-tight: -0.02em;
   --tracking-normal: 0;
   --tracking-wide: 0.08em;
-  --tracking-eyebrow: 0.22em;  /* el "eyebrow" UPPERCASE del brand book */
+  --tracking-eyebrow: 0.22em; /* el "eyebrow" UPPERCASE del brand book */
 }
 
 /* ============================================================
@@ -198,14 +197,8 @@
 @layer base {
   html,
   body {
-    height: 100%;
-    background: #f8f9fc;
-  }
-
-  body {
     font-family: var(--font-primary);
     color: var(--color-text-primary);
-    background-color: var(--color-background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

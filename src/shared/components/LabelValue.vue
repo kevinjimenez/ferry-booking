@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between sm:flex-row flex-col">
     <span :class="twMerge('text-md text-text-muted', props.customClass?.label)">{{ label }}</span>
     <span :class="twMerge('text-base font-semibold', props.customClass?.value)">{{ value }}</span>
   </div>

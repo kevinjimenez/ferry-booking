@@ -10,15 +10,22 @@ export interface CreateTicketRequest {
   passenger: Passenger[];
 }
 
-export interface Person extends Omit<PersonFormValues, 'documentType'> {
+export interface Person extends Omit<PersonFormValues, 'documentType' | 'country'> {
   documentType: string;
+  country: string;
 }
 
-export interface Passenger extends Person {
+export interface Passenger extends Omit<Person, 'legalName'> {
   outboundFareId: string;
   returnFareId?: string | null;
   basePrice: number;
   isPrimary: boolean;
   checkedInOutbound: boolean;
   checkedInReturn: boolean;
+  extras?: PassengerExtraRequest[];
+}
+
+export interface PassengerExtraRequest {
+  extraId: string;
+  quantity: number;
 }

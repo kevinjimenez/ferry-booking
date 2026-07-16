@@ -2,12 +2,8 @@
   <header class="bg-white shadow p-4 flex flex-row w-full justify-between items-center">
     <img src="/paradeisos.svg" class="h-12 w-auto" alt="Logo" />
     <div class="flex flex-row gap-10">
-      <span
-        v-for="lang in ['INICIO']"
-        :key="lang"
-        class="text-sm font-semibold text-gray-600 cursor-pointer"
-        @click="goHome"
-      >
+      <span v-for="lang in ['INICIO']" :key="lang" class="text-sm font-semibold text-gray-600 cursor-pointer"
+        @click="goHome">
         {{ lang }}
       </span>
     </div>
@@ -16,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButtonGroup from '@/shared/components/base/BaseButtonGroup.vue';
+import BaseButtonGroup from '@/shared/components/ui/BaseButtonGroup.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';

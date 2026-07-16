@@ -1,8 +1,9 @@
 <template>
-  <div class="lg:px-40 flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
+  <div class="flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
     <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
-    <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-y-0 lg:gap-x-10">
-      <div class="w-full lg:w-3/4 flex flex-col flex-1 min-h-0 overflow-y-auto lg:overflow-visible pb-4 lg:pb-0">
+
+    <section class="flex flex-col lg:flex-row w-full flex-1 p-4 lg:p-10 gap-y-0 lg:gap-y-0 lg:gap-x-10">
+      <div class="w-full lg:w-3/4 flex flex-col flex-1 overflow-y-auto lg:overflow-visible pb-36 sm:pb-44 lg:pb-0">
         <SearchSummaryCard v-bind="searchSummaryCardProps" />
         <TripTypeBadges class="mt-5" :is-round-trip="storeFerrySearchStore.isRoundTrip" />
 
@@ -17,50 +18,34 @@
           <template v-if="isLoading">
             <ScheduleCardSkeleton v-for="i in 4" :key="i" />
           </template>
+          <template v-else-if="!schedulesData?.length">
+            <EmptyState :icon="FerryIcon" title="No hay ferries disponibles"
+              description="No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta." />
+          </template>
           <template v-else>
-            <ScheduleCard
-              v-for="schedule in schedulesData"
-              :key="schedule.id"
-              :origin="schedule.origin"
-              :destination="schedule.destination"
-              :duration="schedule.duration"
-              :price="{
+            <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
+              :destination="schedule.destination" :duration="schedule.duration" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
-              }"
-              :ferry="schedule.ferry"
-              :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
-              @select="handleSelect(schedule)"
-            />
+              }" :ferry="schedule.ferry" :selected="storeFerrySelectionStore.outbound?.id === schedule.id"
+              @select="handleSelect(schedule)" />
           </template>
         </div>
       </div>
-      <div class="shrink-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:p-0 lg:shadow-none lg:bg-transparent lg:w-1/4 lg:sticky lg:top-6 lg:self-start">
-        <MobileBookingBar
-          class="lg:hidden"
-          :ferry-name="outbound?.ferry.name"
-          :route="outbound ? `${outbound.origin.port} → ${outbound.destination.port}` : undefined"
-          :total="formatCurrency(grandTotal)"
-          :button-label="buttonLabel"
-          @continue="goToOutboundFare"
-        />
+      <div
+        class="fixed bottom-0 left-0 right-0 z-10 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:z-auto lg:shrink-0 lg:w-1/4 lg:p-0 lg:shadow-none lg:bg-transparent lg:sticky lg:top-6 lg:self-start">
+        <MobileBookingBar class="lg:hidden" :ferry-name="outbound?.ferry.name" :origin="outbound?.origin.island"
+          :destination="outbound?.destination.island" :total="formatCurrency(grandTotal)" :button-label="buttonLabel"
+          @continue="goToOutboundFare" />
         <div class="hidden lg:flex flex-col gap-y-5">
-          <BookingSummaryCard
-            :outbound="selectedOutbound"
-            :total="formatCurrency(grandTotal)"
-            :button-label="buttonLabel"
-            @continue="goToOutboundFare"
-          />
-          <TripIncludesCard
-            title="Incluido en tu viaje"
-            :icon="BoxIcon"
-            :items="[
-              { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-              { icon: CheckIcon, text: 'Chaleco salvavidas' },
-              { icon: CheckIcon, text: 'Equipaje según operador' },
-            ]"
-          />
+          <BookingSummaryCard :outbound="selectedOutbound" :total="formatCurrency(grandTotal)"
+            :button-label="buttonLabel" @continue="goToOutboundFare" />
+          <TripIncludesCard title="Incluido en tu viaje" :icon="BoxIcon" :items="[
+            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
+            { icon: CheckIcon, text: 'Chaleco salvavidas' },
+            { icon: CheckIcon, text: 'Equipaje según operador' },
+          ]" />
         </div>
       </div>
     </section>
@@ -68,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/base/BaseButton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
@@ -78,6 +63,8 @@ import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue'
 import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
 import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
+import EmptyState from '@/shared/components/EmptyState.vue';
+import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
 import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';

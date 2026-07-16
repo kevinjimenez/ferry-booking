@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center w-full gap-x-1">
+  <div class="hidden sm:flex items-center sm:w-full sm:gap-x-1">
     <!-- Origen -->
     <span class="size-2.5 rounded-full bg-neutral shrink-0" />
 

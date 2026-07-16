@@ -6,15 +6,12 @@
   </router-view>
 
   <transition name="fade">
-    <div
-      v-if="isLoading"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-    >
+    <div v-if="isLoading" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
       <img src="@/assets/spinner.svg" class="size-56" alt="loading" />
     </div>
   </transition>
 
-  <VueQueryDevtools />
+  <!-- <VueQueryDevtools /> -->
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
@@ -65,10 +62,12 @@ const { isLoading } = storeToRefs(useLoadingStore());
     opacity 0.2s ease,
     transform 0.2s ease;
 }
+
 .page-enter-from {
   opacity: 0;
   transform: translateY(8px);
 }
+
 .page-leave-to {
   opacity: 0;
   transform: translateY(-8px);
@@ -78,6 +77,7 @@ const { isLoading } = storeToRefs(useLoadingStore());
 .fade-leave-active {
   transition: opacity 0.15s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

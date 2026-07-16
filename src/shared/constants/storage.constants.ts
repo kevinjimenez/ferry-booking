@@ -4,6 +4,7 @@ export const FERRY_STORAGE_KEYS = {
   SCHEDULE_INBOUND: 'ferry:schedule:inbound',
   FARE_OUTBOUND: 'ferry:fare:outbound',
   FARE_INBOUND: 'ferry:fare:inbound',
+  FARE_EXTRAS: 'ferry:fare:extras',
   BOOKING_ID: 'ferry:booking:id',
   BOOKING_OUTBOUND_ID: 'ferry:booking:outbound',
   BOOKING_RETURN_ID: 'ferry:booking:return',

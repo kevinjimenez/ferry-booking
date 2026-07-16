@@ -2,15 +2,17 @@ export interface Ferry {
   id: string;
   origin: {
     time: string;
-    port: string;
+    // port: string;
     island: string;
-    address: string;
+    description: string;
+    code: string;
   };
   destination: {
     time: string;
-    port: string;
+    // port: string;
     island: string;
-    address: string;
+    description: string;
+    code: string;
   };
   duration: string;
   durationMinutes: number;
@@ -18,8 +20,8 @@ export interface Ferry {
   currency: string;
   seats: number;
   ferry: {
-    name: string
-    type: string
-    amenities: string[]
+    name: string;
+    type: string;
+    amenities: string[];
   };
 }

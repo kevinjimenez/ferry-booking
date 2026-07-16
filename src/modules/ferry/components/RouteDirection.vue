@@ -1,8 +1,8 @@
 <template>
   <div class="flex gap-x-1 lg:gap-x-3 w-full">
-    <PortLabel :name="originName" :island="originIsland" />
-      <ArrowRightDashedIcon class="mx-2 lg:mx-5 size-7 sm:size-10 lg:size-14 text-primary" />
-    <PortLabel :name="destinationName" :island="destinationIsland" />
+    <PortLabel :name="originName" :description="originDescription" />
+    <ArrowRightDashedIcon class="mx-2 lg:mx-5 size-7 sm:size-10 lg:size-14 text-primary" />
+    <PortLabel :name="destinationName" :description="destinationDescription" />
   </div>
 </template>
 <script setup lang="ts">
@@ -11,8 +11,8 @@ import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 
 defineProps<{
   originName: string;
-  originIsland: string;
+  originDescription: string;
   destinationName: string;
-  destinationIsland: string;
+  destinationDescription: string;
 }>();
 </script>
