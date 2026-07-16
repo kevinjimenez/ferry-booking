@@ -4,11 +4,14 @@
     props.containerClass,
   )
     ">
-    <BaseIconLabel :prefix-icon="icon" :icon-class="twMerge('size-7 text-primary', props.iconClass)">
-      <span :class="twMerge('text-lg text-primary font-semibold', props.titleClass)">{{
-        title
+    <div class="flex flex-col">
+      <BaseIconLabel :prefix-icon="icon" :icon-class="twMerge('size-7 text-primary', props.iconClass)">
+        <span :class="twMerge('text-lg text-primary font-semibold', props.titleClass)">{{
+          title
         }}</span>
-    </BaseIconLabel>
+      </BaseIconLabel>
+      <span v-if="subtitle" class="text-text-muted font-semibold">{{ subtitle }}</span>
+    </div>
     <slot />
   </div>
 </template>
@@ -23,6 +26,7 @@ import type { Component } from 'vue';
 const props = defineProps<{
   icon?: Component;
   title?: string;
+  subtitle?: string;
   containerClass?: string;
   iconClass?: string;
   titleClass?: string;

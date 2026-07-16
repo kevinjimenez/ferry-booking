@@ -27,6 +27,7 @@ const formValues = useFormValues<PassengerDetailsFormValues>();
 const isComplete = computed(() => {
   const passenger = formValues.value.passengers?.[props.index - 1];
   if (!passenger) return false;
-  return Object.values(passenger).every(v => v !== '' && v !== null && v !== undefined);
+  const { legalName, ...rest } = passenger;
+  return Object.values(rest).every(v => v !== '' && v !== null && v !== undefined);
 });
 </script>

@@ -25,18 +25,23 @@ export class BookingMapper {
       contact: {
         ...contact,
         documentType: (contact.documentType!.value as string).toLowerCase(),
+        country: contact.country?.value as string,
       },
-      passenger: passengers.map((passenger, index) => ({
-        ...passenger,
-        documentType: (passenger.documentType!.value as string).toLowerCase(),
-        outboundFareId,
-        returnFareId,
-        basePrice,
-        isPrimary: index === 0,
-        checkedInOutbound: false,
-        checkedInReturn: false,
-        extras: index === 0 ? selectedExtras.map(e => ({ extraId: e.id, quantity: 1 })) : undefined,
-      })),
+      passenger: passengers.map((passenger, index) => {
+        const { legalName: _legalName, ...passengerFields } = passenger;
+        return {
+          ...passengerFields,
+          documentType: (passenger.documentType!.value as string).toLowerCase(),
+          country: passenger.country?.value as string,
+          outboundFareId,
+          returnFareId,
+          basePrice,
+          isPrimary: index === 0,
+          checkedInOutbound: false,
+          checkedInReturn: false,
+          extras: index === 0 ? selectedExtras.map(e => ({ extraId: e.id, quantity: 1 })) : undefined,
+        };
+      }),
     };
   }
 }
