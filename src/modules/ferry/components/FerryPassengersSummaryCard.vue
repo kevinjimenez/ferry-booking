@@ -6,8 +6,8 @@
         <UserIcon class="size-5" />
       </BaseAvatar>
       <div class="flex flex-col">
-        <span class="text-md font-semibold">{{ passengers }} Adulto</span>
-        <span class="text-sm text-text-secondary">Tarifa estándar</span>
+        <span class="text-md font-bold">{{ passengers }} Adulto</span>
+        <span class="text-sm text-text-secondary font-semibold">Tarifa estándar</span>
       </div>
     </div>
   </BaseCard>

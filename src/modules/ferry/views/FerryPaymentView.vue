@@ -16,6 +16,7 @@
         :outbound-fare-price="ferrySelectionStore.outboundFare ? formatCurrency(parseFloat(ferrySelectionStore.outboundFare.price)) : undefined"
         :inbound-fare-name="ferrySelectionStore.inboundFare?.name"
         :inbound-fare-price="ferrySelectionStore.inboundFare ? formatCurrency(parseFloat(ferrySelectionStore.inboundFare.price)) : undefined"
+        :extras="ferrySelectionStore.selectedExtras"
       />
 
       <TripIncludesCard
