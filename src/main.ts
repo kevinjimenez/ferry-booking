@@ -18,6 +18,14 @@ const app = createApp(App);
 
 app.use(pinia);
 app.use(router);
-app.use(VueQueryPlugin);
+app.use(VueQueryPlugin, {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000, // 1 minuto por defecto, overrideable por query
+      },
+    },
+  },
+});
 
 app.mount('#app');
