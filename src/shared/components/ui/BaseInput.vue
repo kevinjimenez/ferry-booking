@@ -32,7 +32,6 @@ const inputErrorClass = computed(() => ({
 
 const handleInput = (event: Event) => {
   const value = (event.target as HTMLInputElement)?.value ?? '';
-  console.log(value);
   emit('update:modelValue', value);
   emit('input', value);
 };
