@@ -53,7 +53,9 @@ export const useFerryNavigation = () => {
     });
 
   const goToTripSummary = () => {
-    const outbound = storeFerrySelection.outbound!;
+    const outbound = storeFerrySelection.outbound;
+    if (!outbound) return goToSearch();
+
     const inbound = storeFerrySelection.inbound;
     const query: { outbound: string; inbound?: string } = { outbound: outbound.id };
     if (inbound) {

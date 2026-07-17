@@ -13,6 +13,12 @@ import App from './App.vue';
 
 dayjs.locale('es');
 
+// Si el navegador tiene un bundle viejo cargado (deploy nuevo en el servidor),
+// los chunks lazy-loaded (rutas) ya no existen con ese hash: recargamos la página.
+window.addEventListener('vite:preloadError', () => {
+  window.location.reload();
+});
+
 const pinia = createPinia();
 const app = createApp(App);
 
