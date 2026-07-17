@@ -14,8 +14,6 @@ const getTicketQuery = async (id: string) => {
 
   const { data } = response.data;
 
-  console.log('data', data);
-
   return data;
 };
 
@@ -24,6 +22,6 @@ export const useGetTicketQuery = (ticketId: Ref<string | null>) => {
     queryKey: computed(() => ferryKeys.ticket(ticketId.value!)),
     queryFn: () => getTicketQuery(ticketId.value!),
     enabled: computed(() => !!ticketId.value), // no fetcha si no hay id
-    // staleTime: 1000 * 60 * 10, // 10 minutos
+    staleTime: 1000 * 60 * 10, // 10 minutos
   });
 };

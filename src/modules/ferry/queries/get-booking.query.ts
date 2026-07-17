@@ -23,6 +23,6 @@ export const useGetBookingQuery = (bookingId: Ref<string | null>) => {
     queryKey: computed(() => ferryKeys.booking(bookingId.value!)),
     queryFn: () => getBookingQuery(bookingId.value!),
     enabled: computed(() => !!bookingId.value), // no fetcha si no hay id
-    // staleTime: 1000 * 60 * 10, // 10 minutos
+    staleTime: 1000 * 60 * 10, // 10 minutos
   });
 };

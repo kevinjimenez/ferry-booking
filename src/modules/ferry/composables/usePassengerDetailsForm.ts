@@ -38,7 +38,6 @@ export const usePassengerDetailsForm = () => {
   });
 
   const onSubmit = handleSubmit(async values => {
-    console.log({ values });
     try {
       loadingStore.show();
       if (!ticketStore.ticketId) {
