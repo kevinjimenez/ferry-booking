@@ -6,7 +6,7 @@
 
     <div class="flex items-center gap-x-1 my-5 text-xs text-primary font-semibold">
       <span>●</span>
-      <span>DIRECTO · {{ duration }}</span>
+      <span>{{ $t('ferry.tripRouteStops.direct', { duration }) }}</span>
     </div>
 
     <h2 class="text-4xl font-bold text-gray-900">{{ destination.time }}</h2>

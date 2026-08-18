@@ -1,10 +1,10 @@
 <template>
   <div class="flex gap-x-5">
-    <BaseBadge label="Ida" label-class="text-sm" :prefix-icon="FerryIcon" icon-class="size-6" variant="secondary"
+    <BaseBadge :label="$t('ferry.tripTypeBadges.outbound')" label-class="text-sm" :prefix-icon="FerryIcon" icon-class="size-6" variant="secondary"
       :soft="active !== 'outbound'" class="w-auto h-8" />
     <template v-if="isRoundTrip">
       <ArrowRightDashedIcon class="text-text-muted" />
-      <BaseBadge label="Vuelta" :prefix-icon="FerryIcon" :icon-class="`size-6 ${inboundActiveClass}`"
+      <BaseBadge :label="$t('ferry.tripTypeBadges.inbound')" :prefix-icon="FerryIcon" :icon-class="`size-6 ${inboundActiveClass}`"
         :label-class="inboundActiveClass" :soft="active !== 'inbound'" class="w-auto h-8" />
     </template>
   </div>

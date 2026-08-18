@@ -7,7 +7,7 @@
         :destination-name="destinationName" :destination-description="destinationDescription" />
     </div>
     <div class="flex w-full lg:w-auto shrink-0 lg:justify-end items-center gap-x-5">
-      <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ passengers }} pasajeros</small>
+      <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ $t('ferry.searchSummaryCard.passengers', { count: passengers }) }}</small>
       <BaseIconLabel :prefix-icon="ClockIcon" icon-class="size-4 text-ink-600">
         <small class="text-ink-600 text-3xs sm:text-xs whitespace-nowrap">{{ duration }}</small>
       </BaseIconLabel>

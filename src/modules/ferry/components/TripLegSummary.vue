@@ -5,9 +5,7 @@
     <div class="flex flex-col justify-center">
       <TimeRangeDisplay :departure="departure" :arrival="arrival" />
       <div class="flex justify-center">
-        <span v-if="farePrice" class="text-2xs text-text-muted font-medium">Ferry {{ basePrice }} + Tarifa {{
-          farePrice
-          }}</span>
+        <span v-if="farePrice" class="text-2xs text-text-muted font-medium">{{ $t('ferry.tripLegSummary.ferryPlusFare', { basePrice, farePrice }) }}</span>
         <div class="flex-1" />
         <span class="text-base font-semibold text-secondary">{{ price }}</span>
       </div>

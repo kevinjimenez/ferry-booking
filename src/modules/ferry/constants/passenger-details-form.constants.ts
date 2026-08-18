@@ -4,15 +4,17 @@ import type {
   PersonFormValues,
 } from '@/modules/ferry/types/forms/passenger-details-form.types.ts';
 
+// `label` holds an i18n translation key (not display text). Consuming components
+// must resolve it through `t()` before handing the options to <BaseSelect>/<BaseRadio>.
 export const DOCUMENT_TYPES: SelectOptions = [
-  { label: 'Cédula', value: 'dni' },
-  { label: 'Pasaporte', value: 'passport' },
-  { label: 'RUC', value: 'ruc' },
+  { label: 'ferry.passengerDetailsFormConstants.documentTypes.dni', value: 'dni' },
+  { label: 'ferry.passengerDetailsFormConstants.documentTypes.passport', value: 'passport' },
+  { label: 'ferry.passengerDetailsFormConstants.documentTypes.ruc', value: 'ruc' },
 ];
 
 export const CONTACT_TYPES: SelectOptions = [
-  { label: 'Persona Natural', value: 'natural_person' },
-  { label: 'Persona Juridica', value: 'juridical_person' },
+  { label: 'ferry.passengerDetailsFormConstants.contactTypes.naturalPerson', value: 'natural_person' },
+  { label: 'ferry.passengerDetailsFormConstants.contactTypes.juridicalPerson', value: 'juridical_person' },
 ];
 
 export const EMPTY_PERSON: PersonFormValues = {

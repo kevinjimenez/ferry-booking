@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col w-full border border-gray-200 rounded-sm shadow-sm bg-white p-5 gap-y-5">
-    <SectionCardHeader label="ANTES DE ZARPAR" title="Tu plan de embarque">
+    <SectionCardHeader :label="$t('ferry.departurePlanCard.label')" :title="$t('ferry.departurePlanCard.title')">
       <template #right>
         <span class="text-2xs text-ink-500 font-semibold shrink-0">
-          Duración total: <span class="font-semibold text-primary">{{ duration }}</span>
+          {{ $t('ferry.departurePlanCard.totalDuration') }} <span class="font-semibold text-primary">{{ duration }}</span>
         </span>
       </template>
     </SectionCardHeader>

@@ -2,9 +2,9 @@
   <BaseCollapse :default-open="index === 1">
     <template #title>
       <BaseIconLabel :prefix-icon="UserIcon" icon-class="size-5 text-primary">
-        <span class="text-base text-primary font-semibold">Pasajero {{ index }}</span>
+        <span class="text-base text-primary font-semibold">{{ $t('ferry.ferryPassengerItem.passenger', { index }) }}</span>
       </BaseIconLabel>
-      <BaseBadge :label="isComplete ? 'Completado' : 'Sin completar'" />
+      <BaseBadge :label="isComplete ? $t('ferry.ferryPassengerItem.completed') : $t('ferry.ferryPassengerItem.incomplete')" />
     </template>
     <FerryPersonForm :name-prefix="namePrefix" />
   </BaseCollapse>

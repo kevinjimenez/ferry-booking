@@ -15,13 +15,18 @@ import BriefcaseIcon from '@/shared/icons/BriefcaseIcon.vue';
 import LifeJacketIcon from '@/shared/icons/LifeJacketIcon.vue';
 import WifiIcon from '@/shared/icons/WifiIcon.vue';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   ferryName: string;
   seats: number;
 }>();
 
+const { t } = useI18n();
+
 const seatLabel = computed(() =>
-  props.seats > 0 ? `${props.seats} asientos disp.` : 'Agotado',
+  props.seats > 0
+    ? t('ferry.scheduleFerryInfo.seatsAvailable', { count: props.seats })
+    : t('ferry.scheduleFerryInfo.soldOut'),
 );
 </script>

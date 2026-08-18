@@ -1,8 +1,8 @@
 <template>
-  <BaseCard :icon="ReceiptIcon" title="Resumen de pago" icon-class="size-6"
+  <BaseCard :icon="ReceiptIcon" :title="$t('ferry.ferryPaymentSummaryCard.title')" icon-class="size-6"
     title-class="text-base text-text-muted font-semibold">
     <div class="flex flex-col gap-y-1">
-      <LabelValue label="Ferry de ida" :value="outboundLabel" :custom-class="{
+      <LabelValue :label="$t('ferry.ferryPaymentSummaryCard.outboundFerry')" :value="outboundLabel" :custom-class="{
         label: 'text-md text-primary font-bold',
         value: 'text-md text-primary font-bold',
       }" />
@@ -13,7 +13,7 @@
     </div>
 
     <div v-if="isRoundTrip" class="flex flex-col gap-y-1">
-      <LabelValue label="Ferry de vuelta" :value="inboundLabel" :custom-class="{
+      <LabelValue :label="$t('ferry.ferryPaymentSummaryCard.inboundFerry')" :value="inboundLabel" :custom-class="{
         label: 'text-md text-primary font-bold',
         value: 'text-md text-primary font-bold',
       }" />
@@ -31,7 +31,7 @@
 
     <BaseDivider />
 
-    <LabelValue label="Total" :value="total" :custom-class="{
+    <LabelValue :label="$t('ferry.ferryPaymentSummaryCard.total')" :value="total" :custom-class="{
       label: 'text-lg text-primary font-extrabold',
       value: 'text-2xl text-primary font-extrabold',
     }" />
