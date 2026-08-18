@@ -1,0 +1,161 @@
+{
+  "bookingSummaryCard": {
+    "yourSelection": "YOUR SELECTION",
+    "emptyState": {
+      "title": "Your selection",
+      "outboundDescription": "Select an outbound ferry to see your trip summary",
+      "inboundDescription": "Select a return ferry to complete your trip",
+      "chooseSchedule": "Choose a schedule"
+    },
+    "passengers": "Passengers",
+    "total": "Total"
+  },
+  "complementaryServicesCard": {
+    "label": "LAST-MINUTE SERVICES",
+    "title": "Complementary services"
+  },
+  "departurePlanCard": {
+    "label": "BEFORE SETTING SAIL",
+    "title": "Your boarding plan",
+    "totalDuration": "Total duration:"
+  },
+  "fareCard": {
+    "fareLabel": "Fare",
+    "perPassengerRoute": "/ passenger · route",
+    "choose": "Choose",
+    "selected": "Selected"
+  },
+  "ferryBookingSuccessActions": {
+    "downloadReceipt": "Download Receipt",
+    "backHome": "Back to home"
+  },
+  "ferryContactSection": {
+    "title": "Contact Information",
+    "subtitle": "Details for issuing the invoice",
+    "useForFirstPassenger": "Use this information for the first passenger"
+  },
+  "ferryNavHeader": {
+    "back": "Back"
+  },
+  "ferryOrderSummaryCard": {
+    "orderId": "Order ID",
+    "date": "Date",
+    "totalAmount": "Total Amount"
+  },
+  "ferryPassengerItem": {
+    "passenger": "Passenger {index}",
+    "completed": "Completed",
+    "incomplete": "Incomplete"
+  },
+  "ferryPassengersSection": {
+    "title": "Passenger Information"
+  },
+  "ferryPassengersSummaryCard": {
+    "title": "Passengers",
+    "adultCount": "{count} Adult | {count} Adults",
+    "standardFare": "Standard fare"
+  },
+  "ferryPaymentSummaryCard": {
+    "title": "Payment summary",
+    "outboundFerry": "Outbound ferry",
+    "inboundFerry": "Return ferry",
+    "total": "Total"
+  },
+  "ferryPersonForm": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "legalName": "Legal name",
+    "country": "Country",
+    "countryPlaceholder": "Select a country",
+    "city": "City",
+    "email": "Email",
+    "phone": "Phone",
+    "documentType": "Document type",
+    "documentTypePlaceholder": "Select the document type",
+    "documentNumber": "Document No."
+  },
+  "ferrySearchForm": {
+    "from": "From",
+    "fromPlaceholder": "Select an island",
+    "to": "To",
+    "toPlaceholder": "Select an island",
+    "departureDate": "Departure date",
+    "returnDate": "Return date",
+    "datePlaceholder": "dd/mm/yyyy",
+    "passengerCount": "No. Passengers",
+    "searchButton": "Search Ferry"
+  },
+  "ferryTripCard": {
+    "fareLabel": "Fare {fare}",
+    "ferryLabel": "Ferry",
+    "totalPrice": "TOTAL PRICE"
+  },
+  "mobileBookingBar": {
+    "selectFerry": "Select a ferry",
+    "departure": "Departure",
+    "arrival": "Arrival",
+    "total": "Total",
+    "continueButton": "Continue"
+  },
+  "scheduleAmenities": {
+    "includedInPrice": "Included in the price:"
+  },
+  "scheduleCard": {
+    "choose": "Choose",
+    "amenities": {
+      "luggage": "5kg bag",
+      "lifeVest": "Life vest",
+      "pierTransfer": "Pier-to-pier transfer"
+    }
+  },
+  "scheduleFerryInfo": {
+    "seatsAvailable": "{count} seat available | {count} seats available",
+    "soldOut": "Sold out"
+  },
+  "searchSummaryCard": {
+    "passengers": "{count} passenger | {count} passengers"
+  },
+  "serviceAddonCard": {
+    "remove": "Remove",
+    "add": "+ Add"
+  },
+  "tripCardHeader": {
+    "outbound": "OUTBOUND",
+    "inbound": "RETURN",
+    "change": "Change"
+  },
+  "tripLegSummary": {
+    "ferryPlusFare": "Ferry {basePrice} + Fare {farePrice}"
+  },
+  "tripRouteStops": {
+    "direct": "DIRECT · {duration}"
+  },
+  "tripTotalFooter": {
+    "continueButton": "Continue"
+  },
+  "tripTypeBadges": {
+    "outbound": "Outbound",
+    "inbound": "Return"
+  },
+  "tripTypeLabel": {
+    "direct": "Direct",
+    "stops": "{count} stop | {count} stops"
+  },
+  "passengerDetailsFormConstants": {
+    "documentTypes": {
+      "dni": "National ID",
+      "passport": "Passport",
+      "ruc": "Tax ID (RUC)"
+    },
+    "contactTypes": {
+      "naturalPerson": "Individual",
+      "juridicalPerson": "Legal Entity"
+    }
+  },
+  "searchFormConstants": {
+    "ticketType": {
+      "oneWay": "One way",
+      "roundTrip": "Round trip"
+    }
+  }
+}
