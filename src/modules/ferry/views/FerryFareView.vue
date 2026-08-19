@@ -73,7 +73,6 @@ const fareTripSummaryBarProps = computed(() => {
     origin: trip?.origin.island ?? '---',
     destination: trip?.destination.island ?? '---',
     routeType: t('ferry.fare.routeTypeDirect'),
-    duration: trip?.duration ?? '00h 00m',
     isRoundTrip: false,
   };
 });

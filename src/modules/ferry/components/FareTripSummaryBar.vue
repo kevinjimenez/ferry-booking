@@ -25,7 +25,7 @@
     <div class="flex flex-col sm:flex-row">
       <span class="flex items-center text-3xs sm:text-xs font-bold text-heading me-3">
         <span class="flex w-2.5 h-2.5 bg-primary rounded-full me-1.5 shrink-0" />
-        {{ routeType }} {{ duration }}
+        {{ routeType }} {{ $t('ferry.scheduleTimeline.averageDuration') }}
       </span>
     </div>
   </div>
@@ -43,7 +43,6 @@ defineProps<{
   destination: string;
   pier?: string;
   routeType: string;
-  duration: string;
   isRoundTrip: boolean;
 }>();
 </script>
