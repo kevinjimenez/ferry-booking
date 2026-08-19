@@ -65,8 +65,9 @@
       "fare": "Fare"
     },
     "steps": {
-      "checkIn": "Check-in on the ferry list",
-      "luggageControl": "Luggage control at ABG (Government)",
+      "checkIn": "Passenger check-in by the Ferry Captain",
+      "luggageControl": "Luggage control by ABG",
+      "portAuthorityControl": "Passenger control by the Port Authority",
       "waterTaxi": "Board water taxi to the ferry",
       "departureFrom": "Departure from {island}"
     },

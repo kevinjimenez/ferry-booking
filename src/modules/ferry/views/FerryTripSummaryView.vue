@@ -91,8 +91,12 @@ const departureSteps = computed(() => {
   return [
     { time: dep.subtract(50, 'minute').format('HH:mm'), text: t('ferry.tripSummary.steps.checkIn') },
     {
-      time: dep.subtract(45, 'minute').format('HH:mm'),
+      time: dep.subtract(30, 'minute').format('HH:mm'),
       text: t('ferry.tripSummary.steps.luggageControl'),
+    },
+    {
+      time: dep.subtract(20, 'minute').format('HH:mm'),
+      text: t('ferry.tripSummary.steps.portAuthorityControl'),
     },
     {
       time: dep.subtract(10, 'minute').format('HH:mm'),
