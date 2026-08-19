@@ -65,8 +65,9 @@
       "fare": "Tarifa"
     },
     "steps": {
-      "checkIn": "Chequeo en listado del ferry",
-      "luggageControl": "Control de equipaje en ABG (Gobierno)",
+      "checkIn": "Control de pasajero(s) por Capitán del Ferry",
+      "luggageControl": "Control del equipaje por ABG",
+      "portAuthorityControl": "Control de pasajero(s) por Capitanía de Puerto",
       "waterTaxi": "Abordar taxi acuático hacia el ferry",
       "departureFrom": "Salida desde {island}"
     },
