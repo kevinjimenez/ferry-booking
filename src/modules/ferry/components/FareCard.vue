@@ -21,9 +21,14 @@
       <BaseIconLabel v-for="(feature, i) in features" :key="`${feature.text}-${i}`"
         :prefix-icon="feature.included ? CircleCheckIcon : CircleXIcon"
         :icon-class="`size-7 ${feature.included ? 'text-primary' : 'text-text-muted'}`">
-        <p :class="['text-xs leading-none', { 'line-through text-text-muted': !feature.included }]">
-          {{ feature.text }}
-        </p>
+        <div class="flex flex-col my-2">
+          <p :class="['text-xs leading-none', { 'line-through text-text-muted': !feature.included }]">
+            {{ feature.text }}
+          </p>
+          <p v-if="feature.description" class="text-3xs italic text-text-muted mt-1">
+            {{ feature.description }}
+          </p>
+        </div>
       </BaseIconLabel>
     </div>
 
@@ -53,6 +58,7 @@ import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
 export interface FareFeature {
   text: string;
   included: boolean;
+  description?: string;
 }
 
 defineProps<{
