@@ -10,6 +10,7 @@ export interface PersonFormValues {
   phone: string;
   documentType: SelectOption | null;
   documentNumber: string;
+  dateOfBirth: string | null;
 }
 
 export interface PassengerDetailsFormValues {

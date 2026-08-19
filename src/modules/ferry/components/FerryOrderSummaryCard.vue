@@ -1,10 +1,10 @@
 <template>
   <div class="w-full flex flex-col bg-gray-100 rounded-md gap-y-5 p-8">
-    <LabelValue label="ID de Orden" :value="orderId" :custom-class="{ label: 'text-md text-text-secondary' }" />
+    <LabelValue :label="$t('ferry.ferryOrderSummaryCard.orderId')" :value="orderId" :custom-class="{ label: 'text-md text-text-secondary' }" />
     <BaseDivider />
-    <LabelValue label="Fecha" :value="date" :custom-class="{ label: 'text-md text-text-secondary' }" />
+    <LabelValue :label="$t('ferry.ferryOrderSummaryCard.date')" :value="date" :custom-class="{ label: 'text-md text-text-secondary' }" />
     <BaseDivider />
-    <LabelValue label="Monto Total" :value="total" :custom-class="{
+    <LabelValue :label="$t('ferry.ferryOrderSummaryCard.totalAmount')" :value="total" :custom-class="{
       label: 'text-lg text-primary font-bold',
       value: 'text-3xl text-primary font-bold',
     }" />

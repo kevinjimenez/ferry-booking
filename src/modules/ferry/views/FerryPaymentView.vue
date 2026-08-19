@@ -1,5 +1,5 @@
 <template>
-  <FerryNavHeader title="Pago" @back="$router.back()" />
+  <FerryNavHeader :title="$t('ferry.payment.headerTitle')" @back="$router.back()" />
 
   <FerryPaymentSkeleton v-if="isPending" />
 
@@ -20,12 +20,12 @@
       />
 
       <TripIncludesCard
-        title="Incluido en tu viaje"
+        :title="$t('ferry.payment.tripIncludes.title')"
         :icon="BoxIcon"
         :items="[
-          { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-          { icon: CheckIcon, text: 'Chaleco salvavidas' },
-          { icon: CheckIcon, text: 'Equipaje según operador' },
+          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.pierTransfer') },
+          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.lifeVest') },
+          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.luggage') },
         ]"
       />
     </div>
@@ -60,10 +60,12 @@ import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.
 import FerryPaymentSkeleton from '@/modules/ferry/components/FerryPaymentSkeleton.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
+import { useI18n } from 'vue-i18n';
 
 const ferrySearchStore = useFerrySearchStore();
 const ferrySelectionStore = useFerrySelectionStore();
 const transactionId = crypto.randomUUID();
+const { t } = useI18n();
 
 const { inboundTotal, outboundTotal, grandTotal } = useTripPrice();
 
@@ -72,10 +74,16 @@ const payphoneStoreId = env.payphoneStoreId;
 
 const { data: ticket, isPending } = useTicketQuery();
 
-const outboundLabel = computed(
-  () => `${ferrySearchStore.values.passengerCount} x ${formatCurrency(outboundTotal.value)}`,
+const outboundLabel = computed(() =>
+  t('ferry.payment.passengerRateLabel', {
+    count: ferrySearchStore.values.passengerCount,
+    amount: formatCurrency(outboundTotal.value),
+  }),
 );
-const inboundLabel = computed(
-  () => `${ferrySearchStore.values.passengerCount} x ${formatCurrency(inboundTotal.value)}`,
+const inboundLabel = computed(() =>
+  t('ferry.payment.passengerRateLabel', {
+    count: ferrySearchStore.values.passengerCount,
+    amount: formatCurrency(inboundTotal.value),
+  }),
 );
 </script>

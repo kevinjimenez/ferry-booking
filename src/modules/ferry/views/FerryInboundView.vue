@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
-    <FerryNavHeader title="Elige un ferry de vuelta" @back="goToBack" />
+    <FerryNavHeader :title="$t('ferry.inbound.headerTitle')" @back="goToBack" />
 
     <section class="flex flex-col lg:flex-row w-full flex-1 min-h-0 p-4 lg:p-10 gap-y-0 lg:gap-x-10">
       <div
@@ -9,9 +9,9 @@
         <TripTypeBadges class="mt-5" :is-round-trip="isRoundTrip" active="inbound" />
 
         <div class="flex w-full justify-between items-center my-6">
-          <span class="text-lg font-bold">HORARIOS DISPONIBLES</span>
+          <span class="text-lg font-bold">{{ $t('ferry.inbound.availableSchedules') }}</span>
           <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
-            Ordenar
+            {{ $t('ferry.inbound.sortButton') }}
           </BaseButton>
         </div>
 
@@ -20,12 +20,12 @@
             <ScheduleCardSkeleton v-for="i in 4" :key="i" />
           </template>
           <template v-else-if="!schedulesData?.length">
-            <EmptyState :icon="FerryIcon" title="No hay ferries disponibles"
-              description="No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta." />
+            <EmptyState :icon="FerryIcon" :title="$t('ferry.inbound.emptyState.title')"
+              :description="$t('ferry.inbound.emptyState.description')" />
           </template>
           <template v-else>
             <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
-              :destination="schedule.destination" :duration="schedule.duration" :price="{
+              :destination="schedule.destination" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
@@ -37,15 +37,16 @@
       <div
         class="fixed bottom-0 left-0 right-0 z-10 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.08)] p-4 lg:z-auto lg:shrink-0 lg:w-1/4 lg:p-0 lg:shadow-none lg:bg-transparent lg:sticky lg:top-6 lg:self-start">
         <MobileBookingBar class="lg:hidden" :ferry-name="inbound?.ferry.name" :origin="outbound?.origin.island"
-          :destination="outbound?.destination.island" :total="formatCurrency(grandTotal)" button-label="Continuar"
-          @continue="goToInboundFare" />
+          :destination="outbound?.destination.island" :total="formatCurrency(grandTotal)"
+          :button-label="$t('ferry.inbound.continueButton')" @continue="goToInboundFare" />
         <div class="hidden lg:flex flex-col gap-y-5">
           <BookingSummaryCard :outbound="selectedOutbound" :inbound="selectedInbound" :is-round-trip="true"
-            :total="formatCurrency(grandTotal)" button-label="Continuar" @continue="goToInboundFare" />
-          <TripIncludesCard title="Incluido en tu viaje" :icon="BoxIcon" :items="[
-            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-            { icon: CheckIcon, text: 'Chaleco salvavidas' },
-            { icon: CheckIcon, text: 'Equipaje según operador' },
+            :total="formatCurrency(grandTotal)" :button-label="$t('ferry.inbound.continueButton')"
+            @continue="goToInboundFare" />
+          <TripIncludesCard :title="$t('ferry.inbound.tripIncludes.title')" :icon="BoxIcon" :items="[
+            { icon: CheckIcon, text: $t('ferry.inbound.tripIncludes.items.pierTransfer') },
+            { icon: CheckIcon, text: $t('ferry.inbound.tripIncludes.items.lifeVest') },
+            { icon: CheckIcon, text: $t('ferry.inbound.tripIncludes.items.luggage') },
           ]" />
         </div>
       </div>
@@ -85,7 +86,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery('inbound');
+const { data: schedulesData, isLoading } = useScheduleQuery('inbound');
 const { goToInboundFare, goToOutbound } = useFerryNavigation();
 const { grandTotal } = useTripPrice();
 
@@ -100,7 +101,7 @@ const selectedInbound = computed(() => {
 });
 
 const searchSummaryCardProps = computed(() =>
-  BookingSummaryMapper.toSearchSummaryCardProps(search.value, averageDuration.value, true),
+  BookingSummaryMapper.toSearchSummaryCardProps(search.value, true),
 );
 
 const handleSelect = (schedule: Ferry) => {

@@ -2,9 +2,10 @@ import type { ButtonGroupOption } from '@/shared/components/ui/base-button-group
 import { TicketType } from '@/modules/ferry/enums';
 import type { SearchFormValues } from '@/modules/ferry/types';
 
+// `label` holds an i18n key (see `ferry.searchFormConstants.ticketType`), resolved via `t()` where consumed.
 export const TICKET_TYPE_OPTIONS: ButtonGroupOption[] = [
-  { label: 'Sola ida', value: TicketType.ONE_WAY },
-  { label: 'Ida y vuelta', value: TicketType.ROUND_TRIP },
+  { label: 'ferry.searchFormConstants.ticketType.oneWay', value: TicketType.ONE_WAY },
+  { label: 'ferry.searchFormConstants.ticketType.roundTrip', value: TicketType.ROUND_TRIP },
 ];
 
 export const SEARCH_FORM_INITIAL_VALUES: SearchFormValues = {

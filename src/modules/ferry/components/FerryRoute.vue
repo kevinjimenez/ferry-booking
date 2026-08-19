@@ -1,12 +1,12 @@
 <template>
   <div class="flex sm:gap-x-10 md:justify-center md:items-center">
     <FerryStopDetail :customClass="originStopDetailClass" :time="origin.time" :island="origin.island"
-      :description="origin.description" />
+      :pier-name="origin.pierName" :port-address="origin.portAddress" />
 
-    <ScheduleTimeline :duration="duration" :class="timelineClass" />
+    <ScheduleTimeline :class="timelineClass" />
 
     <FerryStopDetail :customClass="destinationStopDetailClass" :time="destination.time" :island="destination.island"
-      :description="destination.description" />
+      :pier-name="destination.pierName" :port-address="destination.portAddress" />
   </div>
 </template>
 <script setup lang="ts">
@@ -18,14 +18,14 @@ import FerryStopDetail, {
 interface StopDetail {
   time: string;
   island: string;
-  description?: string;
+  pierName?: string;
+  portAddress?: string;
 }
 
 withDefaults(
   defineProps<{
     origin: StopDetail;
     destination: StopDetail;
-    duration: string;
     originStopDetailClass?: StopDetailCustomClass;
     destinationStopDetailClass?: StopDetailCustomClass;
     timelineClass?: string;

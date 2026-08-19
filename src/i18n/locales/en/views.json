@@ -1,0 +1,92 @@
+{
+  "search": {
+    "logoAlt": "Logo",
+    "title": "Explore the Galápagos Islands",
+    "subtitle": "Plan your trip ahead by ferry to the four inhabited islands of the Archipelago, connecting you with the best tourist spots"
+  },
+  "outbound": {
+    "headerTitle": "Choose an outbound ferry",
+    "availableSchedules": "AVAILABLE SCHEDULES",
+    "sortButton": "Sort",
+    "emptyState": {
+      "title": "No ferries available",
+      "description": "We couldn't find schedules for this route on the selected date. Try another date or route."
+    },
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Pier-to-pier transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator"
+      }
+    },
+    "selectFareButton": "Select fare",
+    "continueButton": "Continue"
+  },
+  "inbound": {
+    "headerTitle": "Choose a return ferry",
+    "availableSchedules": "AVAILABLE SCHEDULES",
+    "sortButton": "Sort",
+    "emptyState": {
+      "title": "No ferries available",
+      "description": "We couldn't find schedules for this route on the selected date. Try another date or route."
+    },
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Pier-to-pier transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator"
+      }
+    },
+    "continueButton": "Continue"
+  },
+  "fare": {
+    "headerTitleOutbound": "Select the fare for your outbound trip",
+    "headerTitleInbound": "Select the fare for your return trip",
+    "headerSubtitle": "Once the booking is made, you won't be able to change the selected fare to make changes to your ticket.",
+    "routeTypeDirect": "DIRECT",
+    "footerLabelOutbound": "Outbound fare",
+    "footerLabelInbound": "Return fare",
+    "selectFerryButton": "Select Ferry",
+    "continueButton": "Continue"
+  },
+  "passengerDetails": {
+    "headerTitle": "Contact and passenger details",
+    "processPaymentButton": "Process payment ({amount})"
+  },
+  "tripSummary": {
+    "titleRoundTrip": "Confirm your trip — Round Trip",
+    "titleOneWay": "Confirm your trip — One Way",
+    "details": {
+      "code": "Code",
+      "vessel": "Vessel",
+      "class": "Class",
+      "fare": "Fare"
+    },
+    "steps": {
+      "checkIn": "Check-in on the ferry list",
+      "luggageControl": "Luggage control at ABG (Government)",
+      "waterTaxi": "Board water taxi to the ferry",
+      "departureFrom": "Departure from {island}"
+    },
+    "totalRoundTrip": "Round Trip Total",
+    "totalOneWay": "One Way Total"
+  },
+  "payment": {
+    "headerTitle": "Payment",
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Pier-to-pier transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator"
+      }
+    },
+    "passengerRateLabel": "{count} x {amount}"
+  },
+  "bookingSuccess": {
+    "title": "Payment Successful!",
+    "subtitle": "Your transaction has been processed successfully."
+  }
+}

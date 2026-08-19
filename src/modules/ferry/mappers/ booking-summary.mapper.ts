@@ -21,21 +21,20 @@ export class BookingSummaryMapper {
     price: formatCurrency(ferry.price + parseFloat(fare?.price ?? '0')),
   });
 
-  static toSearchSummaryCardProps = (
-    values: SearchFormValues,
-    averageDuration: string,
-    reversed = false,
-  ) => {
+  static toSearchSummaryCardProps = (values: SearchFormValues, reversed = false) => {
     const origin = reversed ? values.destination : values.origin;
     const destination = reversed ? values.origin : values.destination;
+    const originExtra = origin?.extra as Record<string, string> | undefined;
+    const destinationExtra = destination?.extra as Record<string, string> | undefined;
     return {
-      originName: origin?.label ?? '',
-      originDescription: `${(origin?.extra as Record<string, string>)?.description} (${(origin?.extra as Record<string, string>)?.code})`,
-      destinationName: destination?.label ?? '',
-      destinationDescription: `${(destination?.extra as Record<string, string>)?.description} (${(destination?.extra as Record<string, string>)?.code})`,
+      originName: `${origin?.label ?? ''} (${originExtra?.code ?? ''})`,
+      originPierName: originExtra?.pier_name,
+      originPortAddress: originExtra?.port_address,
+      destinationName: `${destination?.label ?? ''} (${destinationExtra?.code ?? ''})`,
+      destinationPierName: destinationExtra?.pier_name,
+      destinationPortAddress: destinationExtra?.port_address,
       date: values.outboundDate,
       passengers: values.passengerCount,
-      duration: averageDuration,
     };
   };
 }

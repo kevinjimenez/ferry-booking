@@ -1,7 +1,7 @@
 <template>
   <div class="h-auto flex flex-col">
     <div v-if="showSplash" class="splash-overlay" :class="{ 'splash-out': splashLeaving }">
-      <img src="/paradeisos-full.svg" class="splash-logo" alt="Logo" />
+      <img src="/paradeisos-full.svg" class="splash-logo" :alt="$t('ferry.search.logoAlt')" />
     </div>
 
     <header class="flex flex-col items-center justify-center h-72 sm:h-96 w-full gap-10">
@@ -11,7 +11,7 @@
       </h1>
       <BaseDivider color="secondary" class="w-16 sm:border-[0.15rem] lg:border-[0.2rem]" />
       <h4 class="text-xs sm:text-base lg:text-lg font-secondary-italic font-light w-120 sm:w-140 lg:w-160 text-center">
-        Reserva tu ferry entre Santa Cruz, San Cristóbal e Isabela de forma rápida y segura
+        {{ $t('ferry.search.subtitle') }}
       </h4>
     </header>
     <section class="flex items-center justify-center">
@@ -21,12 +21,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import FerrySearchForm from '@/modules/ferry/components/forms/FerrySearchForm.vue';
 import BaseDivider from '@/shared/components/ui/BaseDivider.vue';
 
-const TITLE = 'Explora las Islas Galápagos';
 const SPLASH_DURATION = 1600;
+
+const { t, locale } = useI18n();
+const title = computed(() => t('ferry.search.title'));
 
 const showSplash = ref(true);
 const splashLeaving = ref(false);
@@ -47,14 +50,22 @@ onMounted(() => {
     typeStartTimer = setTimeout(() => {
       let i = 0;
       typeTimer = setInterval(() => {
-        displayedTitle.value = TITLE.slice(0, ++i);
-        if (i >= TITLE.length) {
+        displayedTitle.value = title.value.slice(0, ++i);
+        if (i >= title.value.length) {
           clearInterval(typeTimer);
           done.value = true;
         }
       }, 60);
     }, 500);
   }, SPLASH_DURATION);
+});
+
+// If the locale changes after the typing animation has finished, just show
+// the fully translated title instead of re-running the typewriter effect.
+watch(locale, () => {
+  if (done.value) {
+    displayedTitle.value = title.value;
+  }
 });
 
 onUnmounted(() => {
