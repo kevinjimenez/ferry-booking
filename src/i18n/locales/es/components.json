@@ -72,7 +72,9 @@
     "phone": "Teléfono",
     "documentType": "Tipo documento",
     "documentTypePlaceholder": "Seleccione el tipo de documento",
-    "documentNumber": "No. Documento"
+    "documentNumber": "No. Documento",
+    "dateOfBirth": "Fecha de nacimiento",
+    "dateOfBirthPlaceholder": "dd/mm/aaaa"
   },
   "ferrySearchForm": {
     "from": "Desde",

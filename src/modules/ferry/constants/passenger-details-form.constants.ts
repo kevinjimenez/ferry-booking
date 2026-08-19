@@ -27,6 +27,7 @@ export const EMPTY_PERSON: PersonFormValues = {
   phone: '',
   documentType: null,
   documentNumber: '',
+  dateOfBirth: null,
 };
 
 export const PASSENGER_DETAILS_INITIAL_VALUES: PassengerDetailsFormValues = {
@@ -41,6 +42,7 @@ export const PASSENGER_DETAILS_INITIAL_VALUES: PassengerDetailsFormValues = {
     phone: '',
     documentType: null,
     documentNumber: '',
+    dateOfBirth: null,
   },
   passengers: [],
 };

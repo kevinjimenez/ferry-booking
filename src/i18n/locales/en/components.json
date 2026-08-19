@@ -72,7 +72,9 @@
     "phone": "Phone",
     "documentType": "Document type",
     "documentTypePlaceholder": "Select the document type",
-    "documentNumber": "Document No."
+    "documentNumber": "Document No.",
+    "dateOfBirth": "Date of birth",
+    "dateOfBirthPlaceholder": "dd/mm/yyyy"
   },
   "ferrySearchForm": {
     "from": "From",

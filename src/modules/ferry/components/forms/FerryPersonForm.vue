@@ -21,10 +21,15 @@
         :placeholder="$t('ferry.ferryPersonForm.documentTypePlaceholder')" :error="documentTypeError" />
       <BaseInput v-model="documentNumber" :label="$t('ferry.ferryPersonForm.documentNumber')" :error="documentNumberError" />
     </div>
+    <div class="flex flex-col sm:flex-row gap-y-3 sm:gap-x-5">
+      <BaseInputDate v-model="dateOfBirth" :label="$t('ferry.ferryPersonForm.dateOfBirth')" :max-date="new Date()"
+        :placeholder="$t('ferry.ferryPersonForm.dateOfBirthPlaceholder')" :error="dateOfBirthError" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import BaseInput from '@/shared/components/ui/BaseInput.vue';
+import BaseInputDate from '@/shared/components/ui/BaseInputDate.vue';
 import BaseSelect, { type SelectOption } from '@/shared/components/ui/BaseSelect.vue';
 import { useField } from 'vee-validate';
 import { computed } from 'vue';
@@ -83,4 +88,8 @@ const {
   errorMessage: documentTypeError,
   // handleChange: documentTypeChange,
 } = useField<SelectOption | null>(`${props.namePrefix}.documentType`);
+const {
+  value: dateOfBirth,
+  errorMessage: dateOfBirthError,
+} = useField<string | null>(`${props.namePrefix}.dateOfBirth`);
 </script>

@@ -17,6 +17,15 @@ const createPersonSchema = (t: ComposerTranslation) =>
       .string()
       .required()
       .matches(/^(\+\d{1,4}\s?\d{6,12}|0\d{9})$/, t('schemas.passengerDetails.invalidPhone')),
+    dateOfBirth: yup
+      .string()
+      .required()
+      .test('valid-date-of-birth', t('schemas.passengerDetails.invalidDateOfBirth'), value => {
+        if (!value) return true;
+
+        const date = new Date(value);
+        return !Number.isNaN(date.getTime()) && date <= new Date();
+      }),
     documentType: yup.object().shape({ value: yup.string().required() }).required(),
     documentNumber: yup
       .string()
@@ -62,6 +71,7 @@ const createContactSchema = (t: ComposerTranslation) =>
       then: schema => schema.required(),
       otherwise: schema => schema.notRequired(),
     }),
+    dateOfBirth: yup.string().notRequired(),
   });
 
 export const createPassengerDetailsSchema = (t: ComposerTranslation) =>

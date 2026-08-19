@@ -25,3 +25,9 @@ export const formatDuration = (start: string | Date, end: string | Date): string
   const minutes = totalMinutes % 60;
   return `${hours}h ${minutes}m`;
 };
+
+export const getAge = (dateOfBirth: string | Date, referenceDate: string | Date = new Date()): number =>
+  dayjs(referenceDate).diff(dayjs(dateOfBirth), 'year');
+
+export const isChildUnderFive = (dateOfBirth: string | Date, referenceDate: string | Date = new Date()): boolean =>
+  getAge(dateOfBirth, referenceDate) < 5;

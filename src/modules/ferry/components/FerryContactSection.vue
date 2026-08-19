@@ -57,6 +57,7 @@ watch(
     form.setFieldValue('passengers[0].documentNumber', contact.documentNumber);
     form.setFieldValue('passengers[0].country', contact.country);
     form.setFieldValue('passengers[0].city', contact.city);
+    form.setFieldValue('passengers[0].dateOfBirth', contact.dateOfBirth);
   },
   { deep: true },
 );
