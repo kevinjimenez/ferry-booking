@@ -9,6 +9,8 @@ export class IslandMapper {
     extra: {
       code: island.code,
       description: island.description,
+      pier_name: island.pier_name,
+      port_address: island.port_address,
     },
   });
 }
