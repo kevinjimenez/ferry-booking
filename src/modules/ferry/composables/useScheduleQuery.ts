@@ -1,8 +1,6 @@
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
 import { useGetScheduleQuery } from '@/modules/ferry/queries/get-schedules.query.ts';
-import dayjs from 'dayjs';
-import { formatDuration } from '@/shared/utils/date.utils.ts';
 
 export const useScheduleQuery = (dateKey: 'outbound' | 'inbound' = 'outbound') => {
   const route = useRoute();
@@ -19,20 +17,11 @@ export const useScheduleQuery = (dateKey: 'outbound' | 'inbound' = 'outbound') =
       : (route.query.inboundDate as string),
   );
 
-  const averageDuration = computed(() => {
-    const schedules = data.value;
-    if (!schedules?.length) return '';
-    const total = schedules.reduce((sum, s) => sum + s.durationMinutes, 0);
-    const avg = Math.round(total / schedules.length);
-    const base = dayjs();
-    return `~${formatDuration(base.toDate(), base.add(avg, 'minute').toDate())}`;
-  });
-
   const { data, isLoading, error } = useGetScheduleQuery({
     origin: origin.value,
     destination: destination.value,
     date: date.value,
   });
 
-  return { origin, destination, date, data, isLoading, error, averageDuration };
+  return { origin, destination, date, data, isLoading, error };
 };

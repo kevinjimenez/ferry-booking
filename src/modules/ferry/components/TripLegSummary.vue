@@ -1,9 +1,9 @@
 <template>
   <div
     :class="['flex flex-col gap-y-1 p-5 rounded-md', { 'bg-primary/6 border border-primary/10': type === 'outbound', 'bg-secondary/6 border border-secondary/10': type === 'inbound' }]">
-    <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" />
+    <TripRouteLabel :badge-label="badgeLabel" :origin="origin" :destination="destination" :departure="departure"
+      :arrival="arrival" />
     <div class="flex flex-col justify-center">
-      <TimeRangeDisplay :departure="departure" :arrival="arrival" />
       <div class="flex justify-center">
         <span v-if="farePrice" class="text-2xs text-text-muted font-medium">{{ $t('ferry.tripLegSummary.ferryPlusFare', { basePrice, farePrice }) }}</span>
         <div class="flex-1" />
@@ -20,7 +20,6 @@
 
 <script setup lang="ts">
 import TripRouteLabel from '@/modules/ferry/components/TripRouteLabel.vue';
-import TimeRangeDisplay from '@/shared/components/TimeRangeDisplay.vue';
 import BaseBadge from '@/shared/components/ui/BaseBadge.vue';
 
 withDefaults(

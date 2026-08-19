@@ -106,6 +106,7 @@
     "choose": "Elegir",
     "amenities": {
       "luggage": "Maleta de 5kg",
+      "checkedLuggage": "Maleta de 23kg",
       "lifeVest": "Chaleco salvavidas",
       "pierTransfer": "Traslado muelle a muelle"
     }
@@ -113,6 +114,9 @@
   "scheduleFerryInfo": {
     "seatsAvailable": "{count} asiento disp. | {count} asientos disp.",
     "soldOut": "Agotado"
+  },
+  "scheduleTimeline": {
+    "averageDuration": "~ 2h 00m"
   },
   "searchSummaryCard": {
     "passengers": "{count} pasajero | {count} pasajeros"

@@ -24,7 +24,7 @@
           </template>
           <template v-else>
             <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
-              :destination="schedule.destination" :duration="schedule.duration" :price="{
+              :destination="schedule.destination" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
@@ -42,9 +42,10 @@
           <BookingSummaryCard :outbound="selectedOutbound" :total="formatCurrency(grandTotal)"
             :button-label="buttonLabel" @continue="goToOutboundFare" />
           <TripIncludesCard :title="$t('ferry.outbound.tripIncludes.title')" :icon="BoxIcon" :items="[
+            { icon: CheckIcon, text: $t('ferry.scheduleCard.amenities.luggage') },
+            { icon: CheckIcon, text: $t('ferry.scheduleCard.amenities.checkedLuggage') },
             { icon: CheckIcon, text: $t('ferry.outbound.tripIncludes.items.pierTransfer') },
             { icon: CheckIcon, text: $t('ferry.outbound.tripIncludes.items.lifeVest') },
-            { icon: CheckIcon, text: $t('ferry.outbound.tripIncludes.items.luggage') },
           ]" />
         </div>
       </div>
@@ -89,7 +90,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, outboundFare } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery();
+const { data: schedulesData, isLoading } = useScheduleQuery();
 const { goToOutboundFare } = useFerryNavigation();
 
 const { grandTotal } = useTripPrice();
@@ -100,7 +101,7 @@ const selectedOutbound = computed(() => {
 });
 
 const searchSummaryCardProps = computed(() =>
-  BookingSummaryMapper.toSearchSummaryCardProps(search.value, averageDuration.value),
+  BookingSummaryMapper.toSearchSummaryCardProps(search.value),
 );
 
 const handleSelect = (schedule: Ferry) => {

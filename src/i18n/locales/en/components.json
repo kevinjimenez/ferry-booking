@@ -106,6 +106,7 @@
     "choose": "Choose",
     "amenities": {
       "luggage": "5kg bag",
+      "checkedLuggage": "23kg bag",
       "lifeVest": "Life vest",
       "pierTransfer": "Pier-to-pier transfer"
     }
@@ -113,6 +114,9 @@
   "scheduleFerryInfo": {
     "seatsAvailable": "{count} seat available | {count} seats available",
     "soldOut": "Sold out"
+  },
+  "scheduleTimeline": {
+    "averageDuration": "~ 2h 00m"
   },
   "searchSummaryCard": {
     "passengers": "{count} passenger | {count} passengers"

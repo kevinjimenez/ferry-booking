@@ -25,7 +25,7 @@
           </template>
           <template v-else>
             <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
-              :destination="schedule.destination" :duration="schedule.duration" :price="{
+              :destination="schedule.destination" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
@@ -86,7 +86,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery('inbound');
+const { data: schedulesData, isLoading } = useScheduleQuery('inbound');
 const { goToInboundFare, goToOutbound } = useFerryNavigation();
 const { grandTotal } = useTripPrice();
 
@@ -101,7 +101,7 @@ const selectedInbound = computed(() => {
 });
 
 const searchSummaryCardProps = computed(() =>
-  BookingSummaryMapper.toSearchSummaryCardProps(search.value, averageDuration.value, true),
+  BookingSummaryMapper.toSearchSummaryCardProps(search.value, true),
 );
 
 const handleSelect = (schedule: Ferry) => {
