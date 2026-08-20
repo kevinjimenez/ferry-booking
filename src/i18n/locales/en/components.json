@@ -59,6 +59,7 @@
     "title": "Payment summary",
     "outboundFerry": "Outbound ferry",
     "inboundFerry": "Return ferry",
+    "discount": "Discount applied",
     "total": "Total"
   },
   "ferryPersonForm": {

@@ -9,7 +9,8 @@
 
       <FerryPaymentSummaryCard
         :is-round-trip="ferrySearchStore.isRoundTrip"
-        :total="formatCurrency(grandTotal)"
+        :total="ticket ? formatCurrency(Number(ticket.total)) : formatCurrency(grandTotal)"
+        :discount="ticket && Number(ticket.discount) > 0 ? formatCurrency(Number(ticket.discount)) : undefined"
         :outbound-label="outboundLabel"
         :inbound-label="inboundLabel"
         :outbound-fare-name="ferrySelectionStore.outboundFare?.name"
