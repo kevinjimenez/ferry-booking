@@ -36,7 +36,7 @@
         :token="payphoneToken"
         :store-id="payphoneStoreId"
         :client-transaction-id="transactionId"
-        :amount="toCents(Number(ticket!.subtotal))"
+        :amount="toCents(Number(ticket!.total))"
         :amount-without-tax="toCents(Number(ticket!.total))"
         :amount-with-tax="toCents(0)"
         reference=""
