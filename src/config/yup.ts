@@ -10,7 +10,7 @@ const MESSAGES: Record<Locale, Parameters<typeof yup.setLocale>[0]> = {
       notOneOf: 'No debe ser uno de los siguientes valores: ${values}',
       defined: 'Debe estar definido',
       notNull: 'No puede ser nulo',
-      notType: 'Debe ser de tipo ${type}',
+      notType: 'Debe ser un valor válido',
     },
     string: {
       length: 'Debe tener exactamente ${length} caracteres',
@@ -49,7 +49,7 @@ const MESSAGES: Record<Locale, Parameters<typeof yup.setLocale>[0]> = {
       notOneOf: 'Must not be one of the following values: ${values}',
       defined: 'Must be defined',
       notNull: 'Cannot be null',
-      notType: 'Must be of type ${type}',
+      notType: 'Must be a valid value',
     },
     string: {
       length: 'Must be exactly ${length} characters',
