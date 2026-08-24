@@ -15,7 +15,7 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
         "luggage": "Luggage according to operator"
       }
@@ -34,7 +34,7 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
         "luggage": "Luggage according to operator"
       }
@@ -79,7 +79,7 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
         "luggage": "Luggage according to operator"
       }
