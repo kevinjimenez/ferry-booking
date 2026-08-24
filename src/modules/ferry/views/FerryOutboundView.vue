@@ -9,9 +9,9 @@
 
         <div class="flex w-full justify-between items-center my-6">
           <span class="text-xs sm:text-sm lg:text-lg font-bold">{{ $t('ferry.outbound.availableSchedules') }}</span>
-          <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
+          <!-- <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
             {{ $t('ferry.outbound.sortButton') }}
-          </BaseButton>
+          </BaseButton> -->
         </div>
 
         <div class="flex flex-col gap-y-5">
@@ -54,32 +54,30 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/ui/BaseButton.vue';
-import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
+import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
-import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
-import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
-import { computed } from 'vue';
-import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
-import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
+import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
 import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
-import EmptyState from '@/shared/components/EmptyState.vue';
-import FerryIcon from '@/shared/icons/FerryIcon.vue';
-import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
-import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
+import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
-import BoxIcon from '@/shared/icons/BoxIcon.vue';
-import CheckIcon from '@/shared/icons/CheckIcon.vue';
-import SortIcon from '@/shared/icons/SortIcon.vue';
+import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
+import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
+import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
+import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
+import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
+import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import type { Ferry } from '@/modules/ferry/types/ferry.types.ts';
-import { storeToRefs } from 'pinia';
+import EmptyState from '@/shared/components/EmptyState.vue';
+import BoxIcon from '@/shared/icons/BoxIcon.vue';
+import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
-import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
-import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { t } = useI18n();
