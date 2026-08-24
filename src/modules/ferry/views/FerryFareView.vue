@@ -31,9 +31,11 @@ import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.t
 import { useGetFaresQuery } from '@/modules/ferry/queries/get-fares.query.ts';
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import type { FareResponse } from '@/modules/ferry/types/api/responses/fare-response.types.ts';
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 const router = useRouter();
+const { t } = useI18n();
 const { isRoundTrip } = storeToRefs(useFerrySearchStore());
 const selectionStore = useFerrySelectionStore();
 const { outbound, inbound, outboundFare, inboundFare } = storeToRefs(selectionStore);
@@ -70,24 +72,24 @@ const fareTripSummaryBarProps = computed(() => {
     arrivalTime: trip?.destination.time ?? '00:00',
     origin: trip?.origin.island ?? '---',
     destination: trip?.destination.island ?? '---',
-    routeType: 'DIRECTO' as const,
-    duration: trip?.duration ?? '00h 00m',
+    routeType: t('ferry.fare.routeTypeDirect'),
     isRoundTrip: false,
   };
 });
 
 const headerTitle = computed(() =>
-  isOutbound.value ? 'Selecciona la tarifa para tu ida' : 'Selecciona la tarifa para tu vuelta',
+  isOutbound.value ? t('ferry.fare.headerTitleOutbound') : t('ferry.fare.headerTitleInbound'),
 );
 
-const headerSubtitle =
-  'Una vez hecha la reserva, no podrás cambiar la tarifa seleccionada para hacer cambios en tu ticket.';
+const headerSubtitle = computed(() => t('ferry.fare.headerSubtitle'));
 
-const footerLabel = computed(() => (isOutbound.value ? 'Tarifa de ida' : 'Tarifa de vuelta'));
+const footerLabel = computed(() =>
+  isOutbound.value ? t('ferry.fare.footerLabelOutbound') : t('ferry.fare.footerLabelInbound'),
+);
 
 const buttonLabel = computed(() => {
-  if (isOutbound.value && isRoundTrip.value) return 'Seleccionar Ferry';
-  return 'Continuar';
+  if (isOutbound.value && isRoundTrip.value) return t('ferry.fare.selectFerryButton');
+  return t('ferry.fare.continueButton');
 });
 
 const handleContinue = () => {

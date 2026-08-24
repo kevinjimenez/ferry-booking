@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-dvh overflow-hidden lg:h-auto lg:overflow-visible">
-    <FerryNavHeader title="Elige un ferry de ida" @back="goToBack" />
+    <FerryNavHeader :title="$t('ferry.outbound.headerTitle')" @back="goToBack" />
 
     <section class="flex flex-col lg:flex-row w-full flex-1 p-4 lg:p-10 gap-y-0 lg:gap-y-0 lg:gap-x-10">
       <div class="w-full lg:w-3/4 flex flex-col flex-1 overflow-y-auto lg:overflow-visible pb-36 sm:pb-44 lg:pb-0">
@@ -8,10 +8,10 @@
         <TripTypeBadges class="mt-5" :is-round-trip="storeFerrySearchStore.isRoundTrip" />
 
         <div class="flex w-full justify-between items-center my-6">
-          <span class="text-xs sm:text-sm lg:text-lg font-bold">HORARIOS DISPONIBLES</span>
-          <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
-            Ordenar
-          </BaseButton>
+          <span class="text-xs sm:text-sm lg:text-lg font-bold">{{ $t('ferry.outbound.availableSchedules') }}</span>
+          <!-- <BaseButton size="lg" :suffix-icon="SortIcon" icon-class="size-6" variant="soft">
+            {{ $t('ferry.outbound.sortButton') }}
+          </BaseButton> -->
         </div>
 
         <div class="flex flex-col gap-y-5">
@@ -19,12 +19,12 @@
             <ScheduleCardSkeleton v-for="i in 4" :key="i" />
           </template>
           <template v-else-if="!schedulesData?.length">
-            <EmptyState :icon="FerryIcon" title="No hay ferries disponibles"
-              description="No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta." />
+            <EmptyState :icon="FerryIcon" :title="$t('ferry.outbound.emptyState.title')"
+              :description="$t('ferry.outbound.emptyState.description')" />
           </template>
           <template v-else>
             <ScheduleCard v-for="schedule in schedulesData" :key="schedule.id" :origin="schedule.origin"
-              :destination="schedule.destination" :duration="schedule.duration" :price="{
+              :destination="schedule.destination" :price="{
                 amount: schedule.price,
                 currency: schedule.currency,
                 seats: schedule.seats,
@@ -41,10 +41,11 @@
         <div class="hidden lg:flex flex-col gap-y-5">
           <BookingSummaryCard :outbound="selectedOutbound" :total="formatCurrency(grandTotal)"
             :button-label="buttonLabel" @continue="goToOutboundFare" />
-          <TripIncludesCard title="Incluido en tu viaje" :icon="BoxIcon" :items="[
-            { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-            { icon: CheckIcon, text: 'Chaleco salvavidas' },
-            { icon: CheckIcon, text: 'Equipaje según operador' },
+          <TripIncludesCard :title="$t('ferry.outbound.tripIncludes.title')" :icon="BoxIcon" :items="[
+            { icon: CheckIcon, text: $t('ferry.scheduleCard.amenities.luggage') },
+            { icon: CheckIcon, text: $t('ferry.scheduleCard.amenities.checkedLuggage') },
+            { icon: CheckIcon, text: $t('ferry.outbound.tripIncludes.items.pierTransfer') },
+            { icon: CheckIcon, text: $t('ferry.outbound.tripIncludes.items.lifeVest') },
           ]" />
         </div>
       </div>
@@ -53,33 +54,33 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/shared/components/ui/BaseButton.vue';
-import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
+import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
-import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
-import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
-import { computed } from 'vue';
-import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
-import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
+import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
 import ScheduleCard from '@/modules/ferry/components/ScheduleCard.vue';
 import ScheduleCardSkeleton from '@/modules/ferry/components/ScheduleCardSkeleton.vue';
-import EmptyState from '@/shared/components/EmptyState.vue';
-import FerryIcon from '@/shared/icons/FerryIcon.vue';
-import BookingSummaryCard from '@/modules/ferry/components/BookingSummaryCard.vue';
-import MobileBookingBar from '@/modules/ferry/components/MobileBookingBar.vue';
+import SearchSummaryCard from '@/modules/ferry/components/SearchSummaryCard.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
-import BoxIcon from '@/shared/icons/BoxIcon.vue';
-import CheckIcon from '@/shared/icons/CheckIcon.vue';
-import SortIcon from '@/shared/icons/SortIcon.vue';
+import TripTypeBadges from '@/modules/ferry/components/TripTypeBadges.vue';
+import { useFerryNavigation } from '@/modules/ferry/composables/useFerryNavigation.ts';
+import { useScheduleQuery } from '@/modules/ferry/composables/useScheduleQuery.ts';
+import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
+import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
+import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.ts';
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import type { Ferry } from '@/modules/ferry/types/ferry.types.ts';
-import { storeToRefs } from 'pinia';
+import EmptyState from '@/shared/components/EmptyState.vue';
+import BoxIcon from '@/shared/icons/BoxIcon.vue';
+import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import FerryIcon from '@/shared/icons/FerryIcon.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
-import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import { BookingSummaryMapper } from '@/modules/ferry/mappers/ booking-summary.mapper.ts';
 
 const router = useRouter();
+const { t } = useI18n();
 
 const storeFerrySearchStore = useFerrySearchStore();
 const storeFerrySelectionStore = useFerrySelectionStore();
@@ -87,7 +88,7 @@ const storeFerrySelectionStore = useFerrySelectionStore();
 const { values: search, isRoundTrip } = storeToRefs(storeFerrySearchStore);
 const { outbound, outboundFare } = storeToRefs(storeFerrySelectionStore);
 
-const { data: schedulesData, isLoading, averageDuration } = useScheduleQuery();
+const { data: schedulesData, isLoading } = useScheduleQuery();
 const { goToOutboundFare } = useFerryNavigation();
 
 const { grandTotal } = useTripPrice();
@@ -98,14 +99,16 @@ const selectedOutbound = computed(() => {
 });
 
 const searchSummaryCardProps = computed(() =>
-  BookingSummaryMapper.toSearchSummaryCardProps(search.value, averageDuration.value),
+  BookingSummaryMapper.toSearchSummaryCardProps(search.value),
 );
 
 const handleSelect = (schedule: Ferry) => {
   storeFerrySelectionStore.setOutbound(schedule);
 };
 
-const buttonLabel = computed(() => (isRoundTrip.value ? 'Seleccionar tarifa' : 'Continuar'));
+const buttonLabel = computed(() =>
+  isRoundTrip.value ? t('ferry.outbound.selectFareButton') : t('ferry.outbound.continueButton'),
+);
 
 const goToBack = () => {
   router.back();

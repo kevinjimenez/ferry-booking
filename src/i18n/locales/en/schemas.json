@@ -1,0 +1,7 @@
+{
+  "passengerDetails": {
+    "invalidPhone": "Invalid format. E.g: +593 998047440 or 0998047440",
+    "invalidDocumentNumber": "Invalid document number",
+    "invalidDateOfBirth": "Invalid date of birth"
+  }
+}

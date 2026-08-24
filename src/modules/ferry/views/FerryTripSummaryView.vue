@@ -7,19 +7,19 @@
         :destination="outbound!.destination" :duration="outbound!.duration" :fare="outboundFare?.name ?? '—'"
         :priceFare="formatCurrency(parseFloat(outboundFare?.price ?? '0'))" :passangers="search.passengerCount"
         :price="formatCurrency(outbound?.price ?? 0)" :total="outboundTotal" :details="[
-          { label: 'Código', value: maskString(outbound!.id, 5) },
-          { label: 'Embarcación', value: outbound!.ferry.name },
-          { label: 'Clase', value: outbound!.ferry.type },
-          { label: 'Tarifa', value: outboundFare ? `${outboundFare.name}` : '—' },
+          { label: $t('ferry.tripSummary.details.code'), value: maskString(outbound!.id, 5) },
+          { label: $t('ferry.tripSummary.details.vessel'), value: outbound!.ferry.name },
+          { label: $t('ferry.tripSummary.details.class'), value: outbound!.ferry.type },
+          { label: $t('ferry.tripSummary.details.fare'), value: outboundFare ? `${outboundFare.name}` : '—' },
         ]" @change="handleChange('outbound')" />
       <FerryTripCard v-if="inbound" type="inbound" :date="search.inboundDate!" :origin="inbound.origin"
         :destination="inbound.destination" :duration="inbound.duration" :fare="inboundFare?.name ?? '—'"
         :priceFare="formatCurrency(parseFloat(inboundFare?.price ?? '0'))" :passangers="search.passengerCount"
         :price="formatCurrency(inbound?.price ?? 0)" :total="inboundTotal" :details="[
-          { label: 'Código', value: maskString(inbound!.id, 5) },
-          { label: 'Embarcación', value: inbound!.ferry.name },
-          { label: 'Clase', value: inbound!.ferry.type },
-          { label: 'Tarifa', value: inboundFare ? `${inboundFare.name}` : '—' },
+          { label: $t('ferry.tripSummary.details.code'), value: maskString(inbound!.id, 5) },
+          { label: $t('ferry.tripSummary.details.vessel'), value: inbound!.ferry.name },
+          { label: $t('ferry.tripSummary.details.class'), value: inbound!.ferry.type },
+          { label: $t('ferry.tripSummary.details.fare'), value: inboundFare ? `${inboundFare.name}` : '—' },
         ]" @change="handleChange('inbound')" />
 
       <DeparturePlanCard :duration="outbound!.duration" :steps="departureSteps" />
@@ -61,7 +61,9 @@ import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 import { maskString } from '@/shared/utils/string.utils.ts';
 import { useGetFareExtrasQuery } from '../queries/get-fare-extras.query';
 import type { FareExtra } from '../types/fare-extra.types';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const { data, isLoading } = useGetFareExtrasQuery()
 const storeFerrySearch = useFerrySearchStore();
 const storeFerrySelection = useFerrySelectionStore();
@@ -76,7 +78,7 @@ const loadingStore = useLoadingStore();
 // const selectedService = ref<string>()
 
 const title = computed(() =>
-  isRoundTrip.value ? 'Confirma tu viaje — Ida y Vuelta' : 'Confirma tu viaje — Ida',
+  isRoundTrip.value ? t('ferry.tripSummary.titleRoundTrip') : t('ferry.tripSummary.titleOneWay'),
 );
 
 const { goToPassengerDetails, goToInbound, goToOutbound } = useFerryNavigation();
@@ -87,24 +89,30 @@ const departureSteps = computed(() => {
   if (!outbound.value) return [];
   const dep = dayjs(`2000-01-01 ${outbound.value.origin.time}`);
   return [
-    { time: dep.subtract(50, 'minute').format('HH:mm'), text: 'Chequeo en listado del ferry' },
+    { time: dep.subtract(50, 'minute').format('HH:mm'), text: t('ferry.tripSummary.steps.checkIn') },
     {
-      time: dep.subtract(45, 'minute').format('HH:mm'),
-      text: 'Control de equipaje en ABG (Gobierno)',
+      time: dep.subtract(30, 'minute').format('HH:mm'),
+      text: t('ferry.tripSummary.steps.luggageControl'),
+    },
+    {
+      time: dep.subtract(20, 'minute').format('HH:mm'),
+      text: t('ferry.tripSummary.steps.portAuthorityControl'),
     },
     {
       time: dep.subtract(10, 'minute').format('HH:mm'),
-      text: 'Abordar taxi acuático hacia el ferry',
+      text: t('ferry.tripSummary.steps.waterTaxi'),
     },
     {
       time: outbound.value.origin.time,
-      text: `Salida desde ${outbound.value.origin.island}`,
+      text: t('ferry.tripSummary.steps.departureFrom', { island: outbound.value.origin.island }),
       subtitle: outbound.value.origin.description,
     },
   ];
 });
 
-const buttonLabel = computed(() => (isRoundTrip.value ? 'Total Ida y Vuelta' : 'Total Ida'));
+const buttonLabel = computed(() =>
+  isRoundTrip.value ? t('ferry.tripSummary.totalRoundTrip') : t('ferry.tripSummary.totalOneWay'),
+);
 
 const handleChange = async (type: 'outbound' | 'inbound') => {
   bookingStore.reset();

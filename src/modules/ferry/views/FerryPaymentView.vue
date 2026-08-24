@@ -1,5 +1,5 @@
 <template>
-  <FerryNavHeader title="Pago" @back="$router.back()" />
+  <FerryNavHeader :title="$t('ferry.payment.headerTitle')" @back="$router.back()" />
 
   <FerryPaymentSkeleton v-if="isPending" />
 
@@ -7,39 +7,33 @@
     <div class="flex flex-col gap-y-6 sm:w-1/2">
       <FerryPassengersSummaryCard :passengers="ferrySearchStore.values.passengerCount" />
 
-      <FerryPaymentSummaryCard
-        :is-round-trip="ferrySearchStore.isRoundTrip"
-        :total="formatCurrency(grandTotal)"
-        :outbound-label="outboundLabel"
-        :inbound-label="inboundLabel"
+      <FerryPaymentSummaryCard :is-round-trip="ferrySearchStore.isRoundTrip"
+        :total="ticket ? formatCurrency(Number(ticket.total)) : formatCurrency(grandTotal)"
+        :discount="ticket && Number(ticket.discount) > 0 ? formatCurrency(Number(ticket.discount)) : undefined"
+        :outbound-label="outboundLabel" :inbound-label="inboundLabel"
         :outbound-fare-name="ferrySelectionStore.outboundFare?.name"
         :outbound-fare-price="ferrySelectionStore.outboundFare ? formatCurrency(parseFloat(ferrySelectionStore.outboundFare.price)) : undefined"
         :inbound-fare-name="ferrySelectionStore.inboundFare?.name"
         :inbound-fare-price="ferrySelectionStore.inboundFare ? formatCurrency(parseFloat(ferrySelectionStore.inboundFare.price)) : undefined"
-        :extras="ferrySelectionStore.selectedExtras"
-      />
+        :extras="ferrySelectionStore.selectedExtras" />
 
-      <TripIncludesCard
-        title="Incluido en tu viaje"
-        :icon="BoxIcon"
-        :items="[
-          { icon: CheckIcon, text: 'Traslado muelle a muelle' },
-          { icon: CheckIcon, text: 'Chaleco salvavidas' },
-          { icon: CheckIcon, text: 'Equipaje según operador' },
-        ]"
-      />
+      <TripIncludesCard :title="$t('ferry.payment.tripIncludes.title')" :icon="BoxIcon" :items="[
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.pierTransfer') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.lifeVest') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.luggage') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.wifi') },
+      ]" />
+
+      <TripIncludesCard :title="$t('ferry.payment.tripNotIncluded.title')" :icon="CircleXIcon" :items="[
+        { icon: CircleXIcon, text: $t('ferry.payment.tripNotIncluded.items.waterTaxi') },
+        { icon: CircleXIcon, text: $t('ferry.payment.tripNotIncluded.items.isabelaPierFee') },
+      ]" />
     </div>
 
     <div class="flex flex-col gap-y-6 sm:w-1/2">
-      <FerryPayphoneButton
-        :token="payphoneToken"
-        :store-id="payphoneStoreId"
-        :client-transaction-id="transactionId"
-        :amount="toCents(Number(ticket!.subtotal))"
-        :amount-without-tax="toCents(Number(ticket!.total))"
-        :amount-with-tax="toCents(0)"
-        reference=""
-      />
+      <FerryPayphoneButton :token="payphoneToken" :store-id="payphoneStoreId" :client-transaction-id="transactionId"
+        :amount="toCents(Number(ticket!.total))" :amount-without-tax="toCents(Number(ticket!.total))"
+        :amount-with-tax="toCents(0)" reference="" />
     </div>
   </div>
 </template>
@@ -48,6 +42,7 @@
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import BoxIcon from '@/shared/icons/BoxIcon.vue';
 import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import FerryPassengersSummaryCard from '@/modules/ferry/components/FerryPassengersSummaryCard.vue';
 import FerryPaymentSummaryCard from '@/modules/ferry/components/FerryPaymentSummaryCard.vue';
@@ -60,10 +55,12 @@ import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.
 import FerryPaymentSkeleton from '@/modules/ferry/components/FerryPaymentSkeleton.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
+import { useI18n } from 'vue-i18n';
 
 const ferrySearchStore = useFerrySearchStore();
 const ferrySelectionStore = useFerrySelectionStore();
 const transactionId = crypto.randomUUID();
+const { t } = useI18n();
 
 const { inboundTotal, outboundTotal, grandTotal } = useTripPrice();
 
@@ -72,10 +69,16 @@ const payphoneStoreId = env.payphoneStoreId;
 
 const { data: ticket, isPending } = useTicketQuery();
 
-const outboundLabel = computed(
-  () => `${ferrySearchStore.values.passengerCount} x ${formatCurrency(outboundTotal.value)}`,
+const outboundLabel = computed(() =>
+  t('ferry.payment.passengerRateLabel', {
+    count: ferrySearchStore.values.passengerCount,
+    amount: formatCurrency(outboundTotal.value),
+  }),
 );
-const inboundLabel = computed(
-  () => `${ferrySearchStore.values.passengerCount} x ${formatCurrency(inboundTotal.value)}`,
+const inboundLabel = computed(() =>
+  t('ferry.payment.passengerRateLabel', {
+    count: ferrySearchStore.values.passengerCount,
+    amount: formatCurrency(inboundTotal.value),
+  }),
 );
 </script>

@@ -6,7 +6,7 @@
     </div>
   </div>
   <BaseButton :loading="loading" :suffix-icon="ArrowRightDashedIcon" @click="$emit('continue')" height="h-[4.5rem]">
-    <span class="text-sm font-bold">{{ buttonLabel }}</span>
+    <span class="text-sm font-bold">{{ buttonLabel ?? $t('ferry.tripTotalFooter.continueButton') }}</span>
   </BaseButton>
 </template>
 
@@ -23,7 +23,6 @@ withDefaults(
     loading?: boolean;
   }>(),
   {
-    buttonLabel: 'Continuar',
     loading: false,
   },
 );

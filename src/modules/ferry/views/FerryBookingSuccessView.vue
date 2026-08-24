@@ -3,8 +3,8 @@
     <FerryBookingSuccessSkeleton v-if="updatePaymentPending" />
     <div v-else class="flex w-full justify-center items-center">
       <BaseCard container-class="w-[50rem] p-0 justify-center items-center gap-y-10">
-        <BaseSuccessHeader :icon="CheckIcon" title="¡Pago Realizado con Éxito!"
-          subtitle="Su transacción ha sido procesada correctamente." />
+        <BaseSuccessHeader :icon="CheckIcon" :title="$t('ferry.bookingSuccess.title')"
+          :subtitle="$t('ferry.bookingSuccess.subtitle')" />
 
         <div class="flex flex-col w-full px-16 pb-10">
           <FerryOrderSummaryCard :order-id="success.orderId" :date="success.date" :total="success.amount" />

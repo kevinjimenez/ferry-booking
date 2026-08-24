@@ -11,12 +11,12 @@
         <BaseDivider class="w-full" />
         <div class="flex flex-col gap-y-5">
           <div class="flex flex-col">
-            <LabelValue :label='`Tarifa ${fare}`' :value='priceFare'
+            <LabelValue :label='$t("ferry.ferryTripCard.fareLabel", { fare })' :value='priceFare'
               :customClass="{ label: 'font-semibold text-xs text-text-secondary', value: 'font-bold text-xs sm:text-base' }" />
-            <LabelValue label='Ferry' :value='`(x ${passangers}) ${price}`'
+            <LabelValue :label='$t("ferry.ferryTripCard.ferryLabel")' :value='`(x ${passangers}) ${price}`'
               :customClass="{ label: 'font-semibold text-xs text-text-secondary', value: 'font-bold text-xs sm:text-base' }" />
           </div>
-          <LabelValue label='PRECIO TOTAL' :value='formatCurrency(total)'
+          <LabelValue :label='$t("ferry.ferryTripCard.totalPrice")' :value='formatCurrency(total)'
             :customClass="{ label: 'font-bold sm:text-xs text-text-secondary', value: 'font-bold text-xl sm:text-3xl' }" />
         </div>
       </div>
