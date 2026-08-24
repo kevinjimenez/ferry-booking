@@ -17,7 +17,8 @@
       "items": {
         "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
       }
     },
     "selectFareButton": "Select fare",
@@ -36,7 +37,8 @@
       "items": {
         "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
       }
     },
     "continueButton": "Continue"
@@ -81,7 +83,8 @@
       "items": {
         "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
       }
     },
     "tripNotIncluded": {

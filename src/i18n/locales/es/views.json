@@ -17,7 +17,8 @@
       "items": {
         "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
       }
     },
     "selectFareButton": "Seleccionar tarifa",
@@ -36,7 +37,8 @@
       "items": {
         "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
       }
     },
     "continueButton": "Continuar"
@@ -81,7 +83,8 @@
       "items": {
         "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
       }
     },
     "tripNotIncluded": {

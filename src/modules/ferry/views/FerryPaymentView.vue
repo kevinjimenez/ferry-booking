@@ -21,6 +21,7 @@
         { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.pierTransfer') },
         { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.lifeVest') },
         { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.luggage') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.wifi') },
       ]" />
 
       <TripIncludesCard :title="$t('ferry.payment.tripNotIncluded.title')" :icon="CircleXIcon" :items="[
