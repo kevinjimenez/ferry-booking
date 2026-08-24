@@ -75,7 +75,7 @@
     "documentTypePlaceholder": "Select the document type",
     "documentNumber": "Document No.",
     "dateOfBirth": "Date of birth",
-    "dateOfBirthPlaceholder": "dd/mm/yyyy"
+    "dateOfBirthPlaceholder": "mm/dd/yyyy"
   },
   "ferrySearchForm": {
     "from": "From",
@@ -84,7 +84,7 @@
     "toPlaceholder": "Select an island",
     "departureDate": "Departure date",
     "returnDate": "Return date",
-    "datePlaceholder": "dd/mm/yyyy",
+    "datePlaceholder": "mm/dd/yyyy",
     "passengerCount": "No. Passengers",
     "searchButton": "Search Ferry"
   },
