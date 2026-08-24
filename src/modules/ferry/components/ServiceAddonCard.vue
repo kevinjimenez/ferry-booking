@@ -31,10 +31,10 @@
 
     <!-- Action -->
     <template v-if="isSelected">
-      <BaseButton color="secondary" size="sm" @click="$emit('add')">Eliminar</BaseButton>
+      <BaseButton color="secondary" size="sm" @click="$emit('add')">{{ $t('ferry.serviceAddonCard.remove') }}</BaseButton>
     </template>
 
-    <BaseButton v-else variant="outline" size="sm" @click="$emit('add')">+ Añadir</BaseButton>
+    <BaseButton v-else variant="outline" size="sm" @click="$emit('add')">{{ $t('ferry.serviceAddonCard.add') }}</BaseButton>
   </div>
 </template>
 

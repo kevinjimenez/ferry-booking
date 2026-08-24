@@ -1,0 +1,103 @@
+{
+  "search": {
+    "logoAlt": "Logo",
+    "title": "Explore the Galápagos Islands",
+    "subtitle": "Plan your trip ahead by ferry to the four inhabited islands of the Archipelago, connecting you with the best tourist spots"
+  },
+  "outbound": {
+    "headerTitle": "Choose an outbound ferry",
+    "availableSchedules": "AVAILABLE SCHEDULES",
+    "sortButton": "Sort",
+    "emptyState": {
+      "title": "No ferries available",
+      "description": "We couldn't find schedules for this route on the selected date. Try another date or route."
+    },
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Port-to-port transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
+      }
+    },
+    "selectFareButton": "Select fare",
+    "continueButton": "Continue"
+  },
+  "inbound": {
+    "headerTitle": "Choose a return ferry",
+    "availableSchedules": "AVAILABLE SCHEDULES",
+    "sortButton": "Sort",
+    "emptyState": {
+      "title": "No ferries available",
+      "description": "We couldn't find schedules for this route on the selected date. Try another date or route."
+    },
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Port-to-port transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
+      }
+    },
+    "continueButton": "Continue"
+  },
+  "fare": {
+    "headerTitleOutbound": "Select the fare for your outbound trip",
+    "headerTitleInbound": "Select the fare for your return trip",
+    "headerSubtitle": "Once the booking is made, you won't be able to change the selected fare to make changes to your ticket.",
+    "routeTypeDirect": "DIRECT",
+    "footerLabelOutbound": "Outbound fare",
+    "footerLabelInbound": "Return fare",
+    "selectFerryButton": "Select Ferry",
+    "continueButton": "Continue"
+  },
+  "passengerDetails": {
+    "headerTitle": "Contact and passenger details",
+    "processPaymentButton": "Process payment ({amount})"
+  },
+  "tripSummary": {
+    "titleRoundTrip": "Confirm your trip — Round Trip",
+    "titleOneWay": "Confirm your trip — One Way",
+    "details": {
+      "code": "Code",
+      "vessel": "Vessel",
+      "class": "Class",
+      "fare": "Fare"
+    },
+    "steps": {
+      "checkIn": "Passenger check-in by the Ferry Captain",
+      "luggageControl": "Luggage control by ABG",
+      "portAuthorityControl": "Passenger control by the Port Authority",
+      "waterTaxi": "Board water taxi to the ferry",
+      "departureFrom": "Departure from {island}"
+    },
+    "totalRoundTrip": "Round Trip Total",
+    "totalOneWay": "One Way Total"
+  },
+  "payment": {
+    "headerTitle": "Payment",
+    "tripIncludes": {
+      "title": "Included in your trip",
+      "items": {
+        "pierTransfer": "Port-to-port transfer",
+        "lifeVest": "Life vest",
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
+      }
+    },
+    "tripNotIncluded": {
+      "title": "Not included",
+      "items": {
+        "waterTaxi": "Water taxis: $1 per person per route (applies in Santa Cruz, San Cristóbal, Isabela and Floreana)",
+        "isabelaPierFee": "Isabela Island pier usage fee: $5 national tourists / $10 foreign tourists"
+      }
+    },
+    "passengerRateLabel": "{count} x {amount}"
+  },
+  "bookingSuccess": {
+    "title": "Payment Successful!",
+    "subtitle": "Your transaction has been processed successfully."
+  }
+}

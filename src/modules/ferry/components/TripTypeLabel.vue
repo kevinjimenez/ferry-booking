@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import BaseBadge from '@/shared/components/ui/BaseBadge.vue';
 
 const props = withDefaults(
@@ -15,7 +16,11 @@ const props = withDefaults(
   { type: 'direct', stops: 0 },
 );
 
+const { t } = useI18n();
+
 const label = computed(() =>
-  props.type === 'direct' ? 'Directo' : `${props.stops} parada${props.stops !== 1 ? 's' : ''}`,
+  props.type === 'direct'
+    ? t('ferry.tripTypeLabel.direct')
+    : t('ferry.tripTypeLabel.stops', { count: props.stops }),
 );
 </script>

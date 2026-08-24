@@ -4,12 +4,12 @@
     selected === id ? 'border-secondary' : 'hover:border-secondary hover:shadow-2xl'
   ]">
     <div class="flex flex-col items-start justify-center">
-      <span class="uppercase text-secondary text-3xs font-extrabold">Tarifa</span>
+      <span class="uppercase text-secondary text-3xs font-extrabold">{{ $t('ferry.fareCard.fareLabel') }}</span>
       <h3 class="text-h3 font-extrabold">{{ name }}</h3>
       <div class="mt-8">
         <span class="text-ink-500 text-xs font-semibold">USD</span>
         <span class="text-secondary font-extrabold text-[44px]">{{ price }}</span>
-        <span class="text-ink-500 text-2xs">/ pasajero · ruta</span>
+        <span class="text-ink-500 text-2xs">{{ $t('ferry.fareCard.perPassengerRoute') }}</span>
       </div>
     </div>
 
@@ -21,16 +21,21 @@
       <BaseIconLabel v-for="(feature, i) in features" :key="`${feature.text}-${i}`"
         :prefix-icon="feature.included ? CircleCheckIcon : CircleXIcon"
         :icon-class="`size-7 ${feature.included ? 'text-primary' : 'text-text-muted'}`">
-        <p :class="['text-xs leading-none', { 'line-through text-text-muted': !feature.included }]">
-          {{ feature.text }}
-        </p>
+        <div class="flex flex-col my-2">
+          <p :class="['text-xs leading-none', { 'line-through text-text-muted': !feature.included }]">
+            {{ feature.text }}
+          </p>
+          <p v-if="feature.description" class="text-3xs italic text-text-muted mt-1">
+            {{ feature.description }}
+          </p>
+        </div>
       </BaseIconLabel>
     </div>
 
     <BaseButton :class="['w-full', selected === id ? 'bg-secondary border-secondary' : '']" height="h-[3.5rem]"
       @click="emit('select')">
       <span class="text-sm font-bold uppercase">
-        {{ selected !== id ? 'Elegir' : 'Seleccionado' }}
+        {{ selected !== id ? $t('ferry.fareCard.choose') : $t('ferry.fareCard.selected') }}
       </span>
     </BaseButton>
 
@@ -53,6 +58,7 @@ import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
 export interface FareFeature {
   text: string;
   included: boolean;
+  description?: string;
 }
 
 defineProps<{

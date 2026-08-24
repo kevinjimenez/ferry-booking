@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col w-full gap-y-2">
     <BaseButton size="lg" :loading="isPending" :prefix-icon="DownloadIcon" icon-class="size-6"
-      @click="emit('downloader')">Descargar Comprobante</BaseButton>
-    <BaseButton size="lg" color="secondary" @click="emit('back')">Volver al inicio</BaseButton>
+      @click="emit('downloader')">{{ $t('ferry.ferryBookingSuccessActions.downloadReceipt') }}</BaseButton>
+    <BaseButton size="lg" color="secondary" @click="emit('back')">{{ $t('ferry.ferryBookingSuccessActions.backHome') }}</BaseButton>
   </div>
 </template>
 

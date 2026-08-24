@@ -1,0 +1,168 @@
+{
+  "bookingSummaryCard": {
+    "yourSelection": "TU SELECCIÓN",
+    "emptyState": {
+      "title": "Tu selección",
+      "outboundDescription": "Selecciona un ferry de ida para ver el resumen de tu viaje",
+      "inboundDescription": "Selecciona un ferry de vuelta para completar tu viaje",
+      "chooseSchedule": "Elige un horario"
+    },
+    "passengers": "Pasajeros",
+    "total": "Total"
+  },
+  "complementaryServicesCard": {
+    "label": "SERVICIOS DE ÚLTIMO MINUTO",
+    "title": "Servicios complementarios"
+  },
+  "departurePlanCard": {
+    "label": "ANTES DE ZARPAR",
+    "title": "Tu plan de embarque",
+    "totalDuration": "Duración total:"
+  },
+  "fareCard": {
+    "fareLabel": "Tarifa",
+    "perPassengerRoute": "/ pasajero · ruta",
+    "choose": "Elegir",
+    "selected": "Seleccionado"
+  },
+  "ferryBookingSuccessActions": {
+    "downloadReceipt": "Descargar Comprobante",
+    "backHome": "Volver al inicio"
+  },
+  "ferryContactSection": {
+    "title": "Información de Contacto",
+    "subtitle": "Datos para la emisión de la factura",
+    "useForFirstPassenger": "Usar estos datos para el primer pasajero"
+  },
+  "ferryNavHeader": {
+    "back": "Volver"
+  },
+  "ferryOrderSummaryCard": {
+    "orderId": "ID de Orden",
+    "date": "Fecha",
+    "totalAmount": "Monto Total"
+  },
+  "ferryPassengerItem": {
+    "passenger": "Pasajero {index}",
+    "completed": "Completado",
+    "incomplete": "Sin completar"
+  },
+  "ferryPassengersSection": {
+    "title": "Información de Pasajeros"
+  },
+  "ferryPassengersSummaryCard": {
+    "title": "Pasajeros",
+    "adultCount": "{count} Adulto | {count} Adultos",
+    "standardFare": "Tarifa estándar"
+  },
+  "ferryPaymentSummaryCard": {
+    "title": "Resumen de pago",
+    "outboundFerry": "Ferry de ida",
+    "inboundFerry": "Ferry de vuelta",
+    "discount": "Descuento aplicado",
+    "total": "Total"
+  },
+  "ferryPersonForm": {
+    "firstName": "Nombres",
+    "lastName": "Apellidos",
+    "legalName": "Razón social",
+    "country": "País",
+    "countryPlaceholder": "Seleccione un país",
+    "city": "Ciudad",
+    "email": "Email",
+    "phone": "Teléfono",
+    "documentType": "Tipo documento",
+    "documentTypePlaceholder": "Seleccione el tipo de documento",
+    "documentNumber": "No. Documento",
+    "dateOfBirth": "Fecha de nacimiento",
+    "dateOfBirthPlaceholder": "mm/dd/aaaa"
+  },
+  "ferrySearchForm": {
+    "from": "Desde",
+    "fromPlaceholder": "Seleccione una isla",
+    "to": "Hasta",
+    "toPlaceholder": "Seleccione una isla",
+    "departureDate": "Fecha de salida",
+    "returnDate": "Fecha de regreso",
+    "datePlaceholder": "mm/dd/aaaa",
+    "passengerCount": "No. Pasajeros",
+    "searchButton": "Buscar Ferry"
+  },
+  "ferryTripCard": {
+    "fareLabel": "Tarifa {fare}",
+    "ferryLabel": "Ferry",
+    "totalPrice": "PRECIO TOTAL"
+  },
+  "mobileBookingBar": {
+    "selectFerry": "Selecciona un ferry",
+    "departure": "Salida",
+    "arrival": "Llegada",
+    "total": "Total",
+    "continueButton": "Continuar"
+  },
+  "scheduleAmenities": {
+    "includedInPrice": "Incluido en el precio:"
+  },
+  "scheduleCard": {
+    "choose": "Elegir",
+    "amenities": {
+      "luggage": "Maleta de 5kg",
+      "checkedLuggage": "Maleta de 23kg",
+      "lifeVest": "Chaleco salvavidas",
+      "pierTransfer": "Traslado puerto a puerto"
+    }
+  },
+  "scheduleFerryInfo": {
+    "seatsAvailable": "{count} asiento disp. | {count} asientos disp.",
+    "soldOut": "Agotado"
+  },
+  "scheduleTimeline": {
+    "averageDuration": "~ 2h 00m"
+  },
+  "searchSummaryCard": {
+    "passengers": "{count} pasajero | {count} pasajeros"
+  },
+  "serviceAddonCard": {
+    "remove": "Eliminar",
+    "add": "+ Añadir"
+  },
+  "tripCardHeader": {
+    "outbound": "IDA",
+    "inbound": "VUELTA",
+    "change": "Cambiar"
+  },
+  "tripLegSummary": {
+    "ferryPlusFare": "Ferry {basePrice} + Tarifa {farePrice}"
+  },
+  "tripRouteStops": {
+    "direct": "DIRECTO · {duration}"
+  },
+  "tripTotalFooter": {
+    "continueButton": "Continuar"
+  },
+  "tripTypeBadges": {
+    "outbound": "Ida",
+    "inbound": "Vuelta"
+  },
+  "tripTypeLabel": {
+    "direct": "Directo",
+    "stops": "{count} parada | {count} paradas"
+  },
+  "passengerDetailsFormConstants": {
+    "documentTypes": {
+      "dni": "Cédula",
+      "passport": "Pasaporte",
+      "ruc": "RUC"
+    },
+    "contactTypes": {
+      "naturalPerson": "Persona Natural",
+      "juridicalPerson": "Persona Jurídica"
+    }
+  },
+  "searchFormConstants": {
+    "ticketType": {
+      "oneWay": "Sola ida",
+      "roundTrip": "Ida y vuelta"
+    }
+  }
+}

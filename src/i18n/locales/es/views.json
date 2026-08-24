@@ -1,0 +1,103 @@
+{
+  "search": {
+    "logoAlt": "Logo",
+    "title": "Explora las Islas Galápagos",
+    "subtitle": "Planifique su viaje con tiempo en ferry a las cuatro islas pobladas del Archipiélago que le conectarán con los mejores lugares turísticos"
+  },
+  "outbound": {
+    "headerTitle": "Elige un ferry de ida",
+    "availableSchedules": "HORARIOS DISPONIBLES",
+    "sortButton": "Ordenar",
+    "emptyState": {
+      "title": "No hay ferries disponibles",
+      "description": "No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta."
+    },
+    "tripIncludes": {
+      "title": "Incluido en tu viaje",
+      "items": {
+        "pierTransfer": "Traslado puerto a puerto",
+        "lifeVest": "Chaleco salvavidas",
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
+      }
+    },
+    "selectFareButton": "Seleccionar tarifa",
+    "continueButton": "Continuar"
+  },
+  "inbound": {
+    "headerTitle": "Elige un ferry de vuelta",
+    "availableSchedules": "HORARIOS DISPONIBLES",
+    "sortButton": "Ordenar",
+    "emptyState": {
+      "title": "No hay ferries disponibles",
+      "description": "No encontramos horarios para esta ruta en la fecha seleccionada. Probá con otra fecha u otra ruta."
+    },
+    "tripIncludes": {
+      "title": "Incluido en tu viaje",
+      "items": {
+        "pierTransfer": "Traslado puerto a puerto",
+        "lifeVest": "Chaleco salvavidas",
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
+      }
+    },
+    "continueButton": "Continuar"
+  },
+  "fare": {
+    "headerTitleOutbound": "Selecciona la tarifa para tu ida",
+    "headerTitleInbound": "Selecciona la tarifa para tu vuelta",
+    "headerSubtitle": "Una vez hecha la reserva, no podrás cambiar la tarifa seleccionada para hacer cambios en tu ticket.",
+    "routeTypeDirect": "DIRECTO",
+    "footerLabelOutbound": "Tarifa de ida",
+    "footerLabelInbound": "Tarifa de vuelta",
+    "selectFerryButton": "Seleccionar Ferry",
+    "continueButton": "Continuar"
+  },
+  "passengerDetails": {
+    "headerTitle": "Datos del contacto y pasajeros",
+    "processPaymentButton": "Procesar el pago ({amount})"
+  },
+  "tripSummary": {
+    "titleRoundTrip": "Confirma tu viaje — Ida y Vuelta",
+    "titleOneWay": "Confirma tu viaje — Ida",
+    "details": {
+      "code": "Código",
+      "vessel": "Embarcación",
+      "class": "Clase",
+      "fare": "Tarifa"
+    },
+    "steps": {
+      "checkIn": "Control de pasajero(s) por Capitán del Ferry",
+      "luggageControl": "Control del equipaje por ABG",
+      "portAuthorityControl": "Control de pasajero(s) por Capitanía de Puerto",
+      "waterTaxi": "Abordar taxi acuático hacia el ferry",
+      "departureFrom": "Salida desde {island}"
+    },
+    "totalRoundTrip": "Total Ida y Vuelta",
+    "totalOneWay": "Total Ida"
+  },
+  "payment": {
+    "headerTitle": "Pago",
+    "tripIncludes": {
+      "title": "Incluido en tu viaje",
+      "items": {
+        "pierTransfer": "Traslado puerto a puerto",
+        "lifeVest": "Chaleco salvavidas",
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
+      }
+    },
+    "tripNotIncluded": {
+      "title": "No incluye",
+      "items": {
+        "waterTaxi": "Taxis acuáticos: $1 por persona por ruta (aplica en Santa Cruz, San Cristóbal, Isabela y Floreana)",
+        "isabelaPierFee": "Tasa por uso de muelle en Isla Isabela: $5 turistas nacionales / $10 turistas extranjeros"
+      }
+    },
+    "passengerRateLabel": "{count} x {amount}"
+  },
+  "bookingSuccess": {
+    "title": "¡Pago Realizado con Éxito!",
+    "subtitle": "Su transacción ha sido procesada correctamente."
+  }
+}

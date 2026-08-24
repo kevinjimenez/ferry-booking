@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col w-full border border-gray-200 rounded-sm shadow-sm bg-white p-5 gap-y-5">
-    <SectionCardHeader label="SERVICIOS DE ÚLTIMO MINUTO" title="Servicios complementarios" />
+    <SectionCardHeader :label="$t('ferry.complementaryServicesCard.label')"
+      :title="$t('ferry.complementaryServicesCard.title')" />
 
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
       <ServiceAddonCard v-for="service in services" :key="service.id" :id="service.id" :icon="service.icon"

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <FerryNavHeader title="Datos del contacto y pasajeros" @back="$router.back()" />
+    <FerryNavHeader :title="$t('ferry.passengerDetails.headerTitle')" @back="$router.back()" />
     <div class="flex flex-col gap-y-3 px-5 py-3 sm:gap-y-5 sm:px-10 sm:py-5 lg:gap-y-10 lg:px-20 lg:py-10">
       <FerryContactSection name-prefix="contact" />
 
@@ -21,11 +21,15 @@ import FerryPassengersSection from '@/modules/ferry/components/FerryPassengersSe
 import { usePassengerDetailsForm } from '@/modules/ferry/composables/usePassengerDetailsForm.ts';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ArrowRightDashedIcon from '@/shared/icons/ArrowRightDashedIcon.vue';
 import { formatCurrency } from '@/shared/utils/currency.utils.ts';
 
 const { onSubmit, passengers } = usePassengerDetailsForm();
 const { grandTotal } = useTripPrice();
+const { t } = useI18n();
 
-const buttonLabel = computed(() => `Procesar el pago (${formatCurrency(grandTotal.value)})`);
+const buttonLabel = computed(() =>
+  t('ferry.passengerDetails.processPaymentButton', { amount: formatCurrency(grandTotal.value) }),
+);
 </script>

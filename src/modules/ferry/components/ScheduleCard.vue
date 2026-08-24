@@ -8,16 +8,17 @@
     <!-- Mobile layout -->
     <div class="flex flex-col sm:flex-row w-full sm:items-center gap-x-5 md:hidden">
       <div class="flex-1">
-        <FerryRoute :origin="origin" :destination="destination" :duration="duration"
+        <FerryRoute :origin="origin" :destination="destination"
           :origin-stop-detail-class="{ alignmentClass: 'items-start', descriptionClass: 'hidden' }"
           :destination-stop-detail-class="{ alignmentClass: 'items-end', descriptionClass: 'hidden' }" />
         <hr class="block border-gray-200 border-[0.1rem] w-full mt-4 mb-1" />
         <div class="flex flex-col gap-y-2">
           <ScheduleFerryInfo :ferry-name="ferry.name" :seats="price.seats" />
           <ScheduleAmenities :show-title='false' class="flex flex-wrap gap-y-1" :items="[
-            { icon: BriefcaseIcon, text: 'Maleta de 5kg' },
-            { icon: LifeJacketIcon, text: 'Chaleco salvavidas' },
-            { icon: CarIcon, text: 'Traslado muelle a muelle' },
+            { icon: BriefcaseIcon, text: $t('ferry.scheduleCard.amenities.luggage') },
+            { icon: BriefcaseIcon, text: $t('ferry.scheduleCard.amenities.checkedLuggage') },
+            { icon: LifeJacketIcon, text: $t('ferry.scheduleCard.amenities.lifeVest') },
+            { icon: CarIcon, text: $t('ferry.scheduleCard.amenities.pierTransfer') },
           ]" />
         </div>
       </div>
@@ -25,7 +26,7 @@
         class="flex flex-row sm:flex-col items-center sm:shrink-0 gap-y-1 sm:justify-center justify-between w-full sm:w-auto">
         <PriceDisplay :amount="price.amount" :currency="price.currency" :seats="price.seats" />
         <BaseButton v-if="!selected" size="lg" @click="$emit('select')">
-          Elegir
+          {{ $t('ferry.scheduleCard.choose') }}
         </BaseButton>
         <div v-else class="flex items-center justify-center rounded-full bg-secondary size-10 self-center">
           <CheckIcon class="size-6 text-white" />
@@ -36,7 +37,7 @@
     <!-- Desktop layout -->
     <div class="hidden md:flex gap-y-5 gap-x-2 w-full justify-between">
       <div class="flex w-full">
-        <FerryRoute :origin="origin" :destination="destination" :duration="duration"
+        <FerryRoute :origin="origin" :destination="destination"
           :origin-stop-detail-class="{ alignmentClass: 'items-start' }"
           :destination-stop-detail-class="{ alignmentClass: 'items-end' }" class="w-full" />
         <BaseDivider class="rotate-180 h-20 mx-5 self-center" />
@@ -44,7 +45,8 @@
       </div>
       <div class="flex flex-col">
         <PriceDisplay :amount="price.amount" :currency="price.currency" :seats="price.seats" />
-        <BaseButton v-if="!selected" size="md" @click="$emit('select')">Elegir</BaseButton>
+        <BaseButton v-if="!selected" size="md" @click="$emit('select')">{{ $t('ferry.scheduleCard.choose') }}
+        </BaseButton>
         <div v-else class="flex items-center justify-center rounded-full bg-secondary size-12 self-center mx-auto">
           <CheckIcon class="size-6 text-white" />
         </div>
@@ -52,9 +54,10 @@
     </div>
     <hr class="hidden md:block border-gray-200 border-[0.1rem] w-full mt-8 mb-4" />
     <ScheduleAmenities class="hidden md:flex" :items="[
-      { icon: BriefcaseIcon, text: 'Maleta de 5kg' },
-      { icon: LifeJacketIcon, text: 'Chaleco salvavidas' },
-      { icon: CarIcon, text: 'Traslado muelle a muelle' },
+      { icon: BriefcaseIcon, text: $t('ferry.scheduleCard.amenities.luggage') },
+      { icon: BriefcaseIcon, text: $t('ferry.scheduleCard.amenities.checkedLuggage') },
+      { icon: LifeJacketIcon, text: $t('ferry.scheduleCard.amenities.lifeVest') },
+      { icon: CarIcon, text: $t('ferry.scheduleCard.amenities.pierTransfer') },
     ]" />
   </div>
 </template>
@@ -73,7 +76,8 @@ import LifeJacketIcon from '@/shared/icons/LifeJacketIcon.vue';
 interface StopDetail {
   time: string;
   island: string;
-  description: string;
+  pierName?: string;
+  portAddress?: string;
 }
 
 interface Price {
@@ -85,7 +89,6 @@ interface Price {
 defineProps<{
   origin: StopDetail;
   destination: StopDetail;
-  duration: string;
   price: Price;
   ferry: { name: string };
   selected?: boolean;

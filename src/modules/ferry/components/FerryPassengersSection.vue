@@ -1,5 +1,5 @@
 <template>
-  <BaseCard :icon="UsersIcon" title="Información de Pasajeros">
+  <BaseCard :icon="UsersIcon" :title="$t('ferry.ferryPassengersSection.title')">
     <FerryPassengerItem v-for="(passenger, index) in passengers" :key="passenger.key" :index="index + 1"
       :name-prefix="`passengers[${index}]`" />
   </BaseCard>

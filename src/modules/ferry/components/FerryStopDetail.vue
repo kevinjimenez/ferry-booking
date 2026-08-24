@@ -4,8 +4,11 @@
     <p :class="twMerge('text-2xs md:text-sm font-semibold text-secondary', customClass?.islandClass)">
       {{ island }}
     </p>
-    <small :class="twMerge('text-3xs font-normal text-ink-500', customClass?.descriptionClass)">{{
-      description
+    <small v-if="pierName" :class="twMerge('text-3xs font-semibold text-ink-500', customClass?.descriptionClass)">{{
+      pierName
+    }}</small>
+    <small v-if="portAddress" :class="twMerge('text-3xs font-normal text-ink-500', customClass?.descriptionClass)">{{
+      portAddress
     }}</small>
   </div>
 </template>
@@ -22,7 +25,8 @@ export interface StopDetailCustomClass {
 defineProps<{
   time: string;
   island: string;
-  description?: string;
+  pierName?: string;
+  portAddress?: string;
   customClass?: StopDetailCustomClass;
 }>();
 </script>

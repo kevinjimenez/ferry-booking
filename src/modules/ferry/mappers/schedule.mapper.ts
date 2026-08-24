@@ -12,12 +12,16 @@ export class ScheduleMapper {
         island: `${schedule.routes.origin_islands.name} (${schedule.routes.origin_islands.code})`, // store
         description: schedule.routes.origin_islands.description, // store
         code: schedule.routes.origin_islands.code,
+        pierName: schedule.routes.origin_islands.pier_name,
+        portAddress: schedule.routes.origin_islands.port_address,
       },
       destination: {
         time: formatTime(schedule.arrival_time), // '09:30',
         island: `${schedule.routes.destination_islands.name} (${schedule.routes.destination_islands.code})`, // store
         description: schedule.routes.destination_islands.description, // store
         code: schedule.routes.destination_islands.code,
+        pierName: schedule.routes.destination_islands.pier_name,
+        portAddress: schedule.routes.destination_islands.port_address,
       },
       duration: `~${formatDuration(schedule.departure_time, schedule.arrival_time)}`, // departure - arrive | ~2h 30min
       price: Number(schedule.routes.base_price),
