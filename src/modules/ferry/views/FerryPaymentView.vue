@@ -7,40 +7,32 @@
     <div class="flex flex-col gap-y-6 sm:w-1/2">
       <FerryPassengersSummaryCard :passengers="ferrySearchStore.values.passengerCount" />
 
-      <FerryPaymentSummaryCard
-        :is-round-trip="ferrySearchStore.isRoundTrip"
+      <FerryPaymentSummaryCard :is-round-trip="ferrySearchStore.isRoundTrip"
         :total="ticket ? formatCurrency(Number(ticket.total)) : formatCurrency(grandTotal)"
         :discount="ticket && Number(ticket.discount) > 0 ? formatCurrency(Number(ticket.discount)) : undefined"
-        :outbound-label="outboundLabel"
-        :inbound-label="inboundLabel"
+        :outbound-label="outboundLabel" :inbound-label="inboundLabel"
         :outbound-fare-name="ferrySelectionStore.outboundFare?.name"
         :outbound-fare-price="ferrySelectionStore.outboundFare ? formatCurrency(parseFloat(ferrySelectionStore.outboundFare.price)) : undefined"
         :inbound-fare-name="ferrySelectionStore.inboundFare?.name"
         :inbound-fare-price="ferrySelectionStore.inboundFare ? formatCurrency(parseFloat(ferrySelectionStore.inboundFare.price)) : undefined"
-        :extras="ferrySelectionStore.selectedExtras"
-      />
+        :extras="ferrySelectionStore.selectedExtras" />
 
-      <TripIncludesCard
-        :title="$t('ferry.payment.tripIncludes.title')"
-        :icon="BoxIcon"
-        :items="[
-          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.pierTransfer') },
-          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.lifeVest') },
-          { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.luggage') },
-        ]"
-      />
+      <TripIncludesCard :title="$t('ferry.payment.tripIncludes.title')" :icon="BoxIcon" :items="[
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.pierTransfer') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.lifeVest') },
+        { icon: CheckIcon, text: $t('ferry.payment.tripIncludes.items.luggage') },
+      ]" />
+
+      <TripIncludesCard :title="$t('ferry.payment.tripNotIncluded.title')" :icon="CircleXIcon" :items="[
+        { icon: CircleXIcon, text: $t('ferry.payment.tripNotIncluded.items.waterTaxi') },
+        { icon: CircleXIcon, text: $t('ferry.payment.tripNotIncluded.items.isabelaPierFee') },
+      ]" />
     </div>
 
     <div class="flex flex-col gap-y-6 sm:w-1/2">
-      <FerryPayphoneButton
-        :token="payphoneToken"
-        :store-id="payphoneStoreId"
-        :client-transaction-id="transactionId"
-        :amount="toCents(Number(ticket!.total))"
-        :amount-without-tax="toCents(Number(ticket!.total))"
-        :amount-with-tax="toCents(0)"
-        reference=""
-      />
+      <FerryPayphoneButton :token="payphoneToken" :store-id="payphoneStoreId" :client-transaction-id="transactionId"
+        :amount="toCents(Number(ticket!.total))" :amount-without-tax="toCents(Number(ticket!.total))"
+        :amount-with-tax="toCents(0)" reference="" />
     </div>
   </div>
 </template>
@@ -49,6 +41,7 @@
 import FerryNavHeader from '@/modules/ferry/components/FerryNavHeader.vue';
 import BoxIcon from '@/shared/icons/BoxIcon.vue';
 import CheckIcon from '@/shared/icons/CheckIcon.vue';
+import CircleXIcon from '@/shared/icons/CircleXIcon.vue';
 import TripIncludesCard from '@/modules/ferry/components/TripIncludesCard.vue';
 import FerryPassengersSummaryCard from '@/modules/ferry/components/FerryPassengersSummaryCard.vue';
 import FerryPaymentSummaryCard from '@/modules/ferry/components/FerryPaymentSummaryCard.vue';

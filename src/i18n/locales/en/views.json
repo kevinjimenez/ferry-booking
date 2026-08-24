@@ -84,6 +84,13 @@
         "luggage": "Luggage according to operator"
       }
     },
+    "tripNotIncluded": {
+      "title": "Not included",
+      "items": {
+        "waterTaxi": "Water taxis: $1 per person per route (applies in Santa Cruz, San Cristóbal, Isabela and Floreana)",
+        "isabelaPierFee": "Isabela Island pier usage fee: $5 national tourists / $10 foreign tourists"
+      }
+    },
     "passengerRateLabel": "{count} x {amount}"
   },
   "bookingSuccess": {
