@@ -59,6 +59,7 @@
     "title": "Resumen de pago",
     "outboundFerry": "Ferry de ida",
     "inboundFerry": "Ferry de vuelta",
+    "discount": "Descuento aplicado",
     "total": "Total"
   },
   "ferryPersonForm": {
@@ -74,7 +75,7 @@
     "documentTypePlaceholder": "Seleccione el tipo de documento",
     "documentNumber": "No. Documento",
     "dateOfBirth": "Fecha de nacimiento",
-    "dateOfBirthPlaceholder": "dd/mm/aaaa"
+    "dateOfBirthPlaceholder": "mm/dd/aaaa"
   },
   "ferrySearchForm": {
     "from": "Desde",
@@ -83,7 +84,7 @@
     "toPlaceholder": "Seleccione una isla",
     "departureDate": "Fecha de salida",
     "returnDate": "Fecha de regreso",
-    "datePlaceholder": "dd/mm/aaaa",
+    "datePlaceholder": "mm/dd/aaaa",
     "passengerCount": "No. Pasajeros",
     "searchButton": "Buscar Ferry"
   },
@@ -108,7 +109,7 @@
       "luggage": "Maleta de 5kg",
       "checkedLuggage": "Maleta de 23kg",
       "lifeVest": "Chaleco salvavidas",
-      "pierTransfer": "Traslado muelle a muelle"
+      "pierTransfer": "Traslado puerto a puerto"
     }
   },
   "scheduleFerryInfo": {

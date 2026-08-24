@@ -15,9 +15,10 @@
     "tripIncludes": {
       "title": "Incluido en tu viaje",
       "items": {
-        "pierTransfer": "Traslado muelle a muelle",
+        "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
       }
     },
     "selectFareButton": "Seleccionar tarifa",
@@ -34,9 +35,10 @@
     "tripIncludes": {
       "title": "Incluido en tu viaje",
       "items": {
-        "pierTransfer": "Traslado muelle a muelle",
+        "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
       }
     },
     "continueButton": "Continuar"
@@ -79,9 +81,17 @@
     "tripIncludes": {
       "title": "Incluido en tu viaje",
       "items": {
-        "pierTransfer": "Traslado muelle a muelle",
+        "pierTransfer": "Traslado puerto a puerto",
         "lifeVest": "Chaleco salvavidas",
-        "luggage": "Equipaje según operador"
+        "luggage": "Equipaje según operador",
+        "wifi": "Internet según operador"
+      }
+    },
+    "tripNotIncluded": {
+      "title": "No incluye",
+      "items": {
+        "waterTaxi": "Taxis acuáticos: $1 por persona por ruta (aplica en Santa Cruz, San Cristóbal, Isabela y Floreana)",
+        "isabelaPierFee": "Tasa por uso de muelle en Isla Isabela: $5 turistas nacionales / $10 turistas extranjeros"
       }
     },
     "passengerRateLabel": "{count} x {amount}"

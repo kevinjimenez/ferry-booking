@@ -15,9 +15,10 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
       }
     },
     "selectFareButton": "Select fare",
@@ -34,9 +35,10 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
       }
     },
     "continueButton": "Continue"
@@ -79,9 +81,17 @@
     "tripIncludes": {
       "title": "Included in your trip",
       "items": {
-        "pierTransfer": "Pier-to-pier transfer",
+        "pierTransfer": "Port-to-port transfer",
         "lifeVest": "Life vest",
-        "luggage": "Luggage according to operator"
+        "luggage": "Luggage according to operator",
+        "wifi": "Wifi according to operator"
+      }
+    },
+    "tripNotIncluded": {
+      "title": "Not included",
+      "items": {
+        "waterTaxi": "Water taxis: $1 per person per route (applies in Santa Cruz, San Cristóbal, Isabela and Floreana)",
+        "isabelaPierFee": "Isabela Island pier usage fee: $5 national tourists / $10 foreign tourists"
       }
     },
     "passengerRateLabel": "{count} x {amount}"

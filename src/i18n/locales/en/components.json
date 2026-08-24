@@ -59,6 +59,7 @@
     "title": "Payment summary",
     "outboundFerry": "Outbound ferry",
     "inboundFerry": "Return ferry",
+    "discount": "Discount applied",
     "total": "Total"
   },
   "ferryPersonForm": {
@@ -74,7 +75,7 @@
     "documentTypePlaceholder": "Select the document type",
     "documentNumber": "Document No.",
     "dateOfBirth": "Date of birth",
-    "dateOfBirthPlaceholder": "dd/mm/yyyy"
+    "dateOfBirthPlaceholder": "mm/dd/yyyy"
   },
   "ferrySearchForm": {
     "from": "From",
@@ -83,7 +84,7 @@
     "toPlaceholder": "Select an island",
     "departureDate": "Departure date",
     "returnDate": "Return date",
-    "datePlaceholder": "dd/mm/yyyy",
+    "datePlaceholder": "mm/dd/yyyy",
     "passengerCount": "No. Passengers",
     "searchButton": "Search Ferry"
   },
@@ -108,7 +109,7 @@
       "luggage": "5kg bag",
       "checkedLuggage": "23kg bag",
       "lifeVest": "Life vest",
-      "pierTransfer": "Pier-to-pier transfer"
+      "pierTransfer": "Port-to-port transfer"
     }
   },
   "scheduleFerryInfo": {

@@ -29,6 +29,12 @@
         value: 'text-md text-primary font-semibold',
       }" />
 
+    <LabelValue v-if="discount" :label="$t('ferry.ferryPaymentSummaryCard.discount')" :value="`- ${discount}`"
+      :custom-class="{
+        label: 'text-md text-success font-semibold',
+        value: 'text-md text-success font-semibold',
+      }" />
+
     <BaseDivider />
 
     <LabelValue :label="$t('ferry.ferryPaymentSummaryCard.total')" :value="total" :custom-class="{
@@ -56,5 +62,6 @@ defineProps<{
   inboundFareName?: string;
   inboundFarePrice?: string;
   extras?: SelectedExtra[];
+  discount?: string;
 }>();
 </script>
