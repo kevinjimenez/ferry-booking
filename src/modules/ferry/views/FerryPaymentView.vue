@@ -38,12 +38,15 @@
         <BaseCheckbox v-model="hasAcceptedContract" :label="$t('ferry.payment.contract.acceptLabel')" />
       </div>
 
-      <FerryPayphoneButton v-if="hasAcceptedContract" :token="payphoneToken" :store-id="payphoneStoreId"
-        :client-transaction-id="transactionId" :amount="toCents(Number(ticket!.total))"
-        :amount-without-tax="toCents(Number(ticket!.total))" :amount-with-tax="toCents(0)" reference="" />
-      <BaseButton v-else disabled class="w-full" height="h-[3.5rem]">
-        <span class="text-sm">{{ $t('ferry.payment.contract.acceptLabel') }}</span>
-      </BaseButton>
+      <div class="relative">
+        <FerryPayphoneButton :token="payphoneToken" :store-id="payphoneStoreId" :client-transaction-id="transactionId"
+          :amount="toCents(Number(ticket!.total))" :amount-without-tax="toCents(Number(ticket!.total))"
+          :amount-with-tax="toCents(0)" reference="" />
+        <div v-if="!hasAcceptedContract"
+          class="absolute inset-0 z-10 flex items-center justify-center rounded-md bg-white/80 text-center px-4">
+          <span class="text-sm font-semibold">{{ $t('ferry.payment.contract.acceptLabel') }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,7 +66,6 @@ import { formatCurrency, toCents } from '@/shared/utils/currency.utils.ts';
 import { computed, ref } from 'vue';
 import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.vue';
 import FerryPaymentSkeleton from '@/modules/ferry/components/FerryPaymentSkeleton.vue';
-import BaseButton from '@/shared/components/ui/BaseButton.vue';
 import BaseCheckbox from '@/shared/components/ui/BaseCheckbox.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
