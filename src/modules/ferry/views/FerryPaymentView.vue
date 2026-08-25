@@ -31,9 +31,19 @@
     </div>
 
     <div class="flex flex-col gap-y-6 sm:w-1/2">
-      <FerryPayphoneButton :token="payphoneToken" :store-id="payphoneStoreId" :client-transaction-id="transactionId"
-        :amount="toCents(Number(ticket!.total))" :amount-without-tax="toCents(Number(ticket!.total))"
-        :amount-with-tax="toCents(0)" reference="" />
+      <div class="flex flex-col gap-y-2">
+        <a :href="contractPdfUrl" target="_blank" rel="noopener" class="text-2xs font-semibold text-primary underline">
+          {{ $t('ferry.payment.contract.viewLink') }}
+        </a>
+        <BaseCheckbox v-model="hasAcceptedContract" :label="$t('ferry.payment.contract.acceptLabel')" />
+      </div>
+
+      <FerryPayphoneButton v-if="hasAcceptedContract" :token="payphoneToken" :store-id="payphoneStoreId"
+        :client-transaction-id="transactionId" :amount="toCents(Number(ticket!.total))"
+        :amount-without-tax="toCents(Number(ticket!.total))" :amount-with-tax="toCents(0)" reference="" />
+      <BaseButton v-else disabled class="w-full" height="h-[3.5rem]">
+        <span class="text-sm">{{ $t('ferry.payment.contract.acceptLabel') }}</span>
+      </BaseButton>
     </div>
   </div>
 </template>
@@ -50,9 +60,11 @@ import { useFerrySearchStore } from '@/modules/ferry/stores/ferry-search.store.t
 import { useFerrySelectionStore } from '@/modules/ferry/stores/ferry-selection.store.ts';
 import { useTripPrice } from '@/modules/ferry/composables/useTripPrice.ts';
 import { formatCurrency, toCents } from '@/shared/utils/currency.utils.ts';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import FerryPayphoneButton from '@/modules/ferry/components/FerryPayphoneButton.vue';
 import FerryPaymentSkeleton from '@/modules/ferry/components/FerryPaymentSkeleton.vue';
+import BaseButton from '@/shared/components/ui/BaseButton.vue';
+import BaseCheckbox from '@/shared/components/ui/BaseCheckbox.vue';
 import { env } from '@/config/env.ts';
 import { useTicketQuery } from '@/modules/ferry/composables/useTicketQuery.ts';
 import { useI18n } from 'vue-i18n';
@@ -61,6 +73,9 @@ const ferrySearchStore = useFerrySearchStore();
 const ferrySelectionStore = useFerrySelectionStore();
 const transactionId = crypto.randomUUID();
 const { t } = useI18n();
+
+const hasAcceptedContract = ref(false);
+const contractPdfUrl = '/contrato_paradeisos_2020.pdf';
 
 const { inboundTotal, outboundTotal, grandTotal } = useTripPrice();
 

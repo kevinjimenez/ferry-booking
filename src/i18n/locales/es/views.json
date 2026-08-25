@@ -94,7 +94,11 @@
         "isabelaPierFee": "Tasa por uso de muelle en Isla Isabela: $5 turistas nacionales / $10 turistas extranjeros"
       }
     },
-    "passengerRateLabel": "{count} x {amount}"
+    "passengerRateLabel": "{count} x {amount}",
+    "contract": {
+      "viewLink": "Ver contrato de servicio (PDF)",
+      "acceptLabel": "He leído y acepto el contrato de servicio"
+    }
   },
   "bookingSuccess": {
     "title": "¡Pago Realizado con Éxito!",
