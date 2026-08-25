@@ -94,7 +94,11 @@
         "isabelaPierFee": "Isabela Island pier usage fee: $5 national tourists / $10 foreign tourists"
       }
     },
-    "passengerRateLabel": "{count} x {amount}"
+    "passengerRateLabel": "{count} x {amount}",
+    "contract": {
+      "viewLink": "View service contract (PDF)",
+      "acceptLabel": "I have read and accept the service contract"
+    }
   },
   "bookingSuccess": {
     "title": "Payment Successful!",
