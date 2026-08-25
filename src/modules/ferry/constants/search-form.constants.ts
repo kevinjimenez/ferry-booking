@@ -8,6 +8,9 @@ export const TICKET_TYPE_OPTIONS: ButtonGroupOption[] = [
   { label: 'ferry.searchFormConstants.ticketType.roundTrip', value: TicketType.ROUND_TRIP },
 ];
 
+// Isla Santa Cruz opera como hub: el resto de islas solo tienen ruta directa hacia/desde ella.
+export const HUB_ISLAND_CODE = 'SCX';
+
 export const SEARCH_FORM_INITIAL_VALUES: SearchFormValues = {
   ticketType: TicketType.ONE_WAY,
   origin: null,
