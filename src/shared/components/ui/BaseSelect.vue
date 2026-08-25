@@ -9,7 +9,7 @@
         @blur="$emit('blur')">
         <option value="" disabled>{{ placeholder }}</option>
         <option v-for="option in options" :key="option.value" :value="option.value"
-          :disabled="option.value === disabledValue">
+          :disabled="isOptionDisabled(option.value)">
           {{ option.label }}
         </option>
       </select>
@@ -40,7 +40,7 @@ export interface Props {
   label?: string;
   prefixIcon?: Component;
   prefixIconClass?: string;
-  disabledValue?: string | number;
+  disabledValue?: string | number | Array<string | number>;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -53,6 +53,9 @@ const emit = defineEmits(['update:modelValue', 'blur']);
 const inputErrorClass = computed(() => ({
   'border-secondary border text-secondary': props.error,
 }));
+
+const isOptionDisabled = (value: string | number) =>
+  Array.isArray(props.disabledValue) ? props.disabledValue.includes(value) : value === props.disabledValue;
 
 const handleChange = (event: Event) => {
   const target = event.target as HTMLSelectElement;
