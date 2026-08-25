@@ -11,14 +11,14 @@
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
         <BaseSelect v-model="origin" v-bind="originAttrs" :label="$t('ferry.ferrySearchForm.from')" :prefix-icon="MapPinIcon"
           :options="islandsResponse ?? []" :placeholder="$t('ferry.ferrySearchForm.fromPlaceholder')" prefix-icon-class="text-secondary"
-          :error="errors.origin" :disabled-value="destination?.value" />
+          :error="errors.origin" :disabled-value="originDisabledValues" />
 
         <BaseButton circle class="sm:mt-6 size-12 self-center sm:self-auto" icon-class="size-7"
           :prefix-icon="SwitchHorizontalIcon" @click="swapOriginDestination" />
 
         <BaseSelect v-model="destination" v-bind="destinationAttrs" :label="$t('ferry.ferrySearchForm.to')" :prefix-icon="MapPinIcon"
           prefix-icon-class="text-secondary" :options="islandsResponse ?? []" :error="errors.destination"
-          :placeholder="$t('ferry.ferrySearchForm.toPlaceholder')" :disabled-value="origin?.value" />
+          :placeholder="$t('ferry.ferrySearchForm.toPlaceholder')" :disabled-value="destinationDisabledValues" />
       </div>
 
       <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-5">
@@ -70,8 +70,10 @@ const {
   ticketType,
   originAttrs,
   origin,
+  originDisabledValues,
   destination,
   destinationAttrs,
+  destinationDisabledValues,
   errors,
   onSubmit,
   passengerCount,
@@ -81,7 +83,7 @@ const {
   inboundDateAttrs,
   setFieldValue,
   isRoundTrip,
-} = useSearchForm();
+} = useSearchForm(islandsResponse);
 
 const swapOriginDestination = () => {
   const prev = { origin: origin.value, destination: destination.value };
