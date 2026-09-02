@@ -8,6 +8,7 @@ export interface TicketsReportFilter {
   endDate: string;
   format: ReportFormat;
   status?: string;
+  paymentStatus?: string;
 }
 
 const FILE_EXTENSION_BY_FORMAT: Record<ReportFormat, string> = {
