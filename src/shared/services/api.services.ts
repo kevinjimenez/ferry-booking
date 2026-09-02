@@ -7,9 +7,28 @@ const apiServices = axios.create({
 
 apiServices.interceptors.response.use(
   response => response,
-  error => {
+  async error => {
     const status = error.response?.status;
-    const message = error.response?.data?.message ?? error.message;
+    let data = error.response?.data;
+
+    // Cuando responseType es 'blob' (descargas), el body de error llega como
+    // Blob o como string sin parsear en vez de JSON ya parseado.
+    if (data instanceof Blob) {
+      try {
+        data = JSON.parse(await data.text());
+      } catch {
+        data = undefined;
+      }
+    } else if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch {
+        // no era JSON, se deja el string tal cual
+      }
+    }
+
+    // El filtro de excepciones del backend anida el mensaje bajo `error.message`.
+    const message = data?.error?.message ?? data?.message ?? error.message;
     return Promise.reject(new Error(`[${status}] ${message}`));
   },
 );
