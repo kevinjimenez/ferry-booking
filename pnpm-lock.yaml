@@ -57,6 +57,9 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
+      '@netlify/edge-functions':
+        specifier: ^4.0.0
+        version: 4.0.0
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
@@ -361,6 +364,14 @@ packages:
     peerDependencies:
       '@emnapi/core': ^1.7.1
       '@emnapi/runtime': ^1.7.1
+
+  '@netlify/edge-functions@4.0.0':
+    resolution: {integrity: sha512-0jerPQQ5mLczl7jwCRfTJsLcaiXbvPOC+Whtxxk7IHdz24OvZGjUtVHAxhppjT8wcX48I7C6oAff04QdQDMTfw==}
+    engines: {node: '>=22.12.0'}
+
+  '@netlify/types@3.0.0':
+    resolution: {integrity: sha512-zRCidsQgI4CZWrZB/kmwdPf0QbSNljakfNSLizFvrsSA3UcUrTWSBNMVKmZnob92/8ESeUN0ewXLOlffJU+ATQ==}
+    engines: {node: '>=22.12.0'}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2320,6 +2331,12 @@ snapshots:
       '@emnapi/runtime': 1.9.2
       '@tybys/wasm-util': 0.10.1
     optional: true
+
+  '@netlify/edge-functions@4.0.0':
+    dependencies:
+      '@netlify/types': 3.0.0
+
+  '@netlify/types@3.0.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
