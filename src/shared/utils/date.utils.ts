@@ -1,5 +1,14 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import { DATE_FORMATS } from '@/shared/constants/date-formats.constants.ts';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+// Los horarios de los ferries son hora local de Galápagos (UTC-6, sin DST),
+// sin importar la zona horaria del navegador del usuario.
+const GALAPAGOS_TZ = 'Pacific/Galapagos';
 
 export const formatDate = (value: string | Date, format: string = DATE_FORMATS.DISPLAY) => {
   if (!value) return '';
@@ -10,7 +19,7 @@ export const formatDate = (value: string | Date, format: string = DATE_FORMATS.D
 
 export const formatTime = (value: string | Date, format = DATE_FORMATS.TIME) => {
   if (!value) return '';
-  const parsed = dayjs(value);
+  const parsed = dayjs(value).tz(GALAPAGOS_TZ);
   if (!parsed.isValid()) return '';
   return parsed.format(format);
 };
