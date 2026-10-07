@@ -17,9 +17,10 @@ export const paymentGuard: NavigationGuard = () => {
   }
   if (!readAppStorage(FERRY_STORAGE_KEYS.BOOKING_ID, StorageEnum.SESSION)) return toSearch();
 
-  const passengers = readAppStorage<{ contact: { firstName: string } }>(
+  // Persona natural guarda firstName; persona jurídica guarda legalName.
+  const passengers = readAppStorage<{ contact: { firstName?: string; legalName?: string } }>(
     FERRY_STORAGE_KEYS.PASSENGERS,
     StorageEnum.SESSION,
   );
-  if (!passengers?.contact?.firstName) return toSearch();
+  if (!passengers?.contact?.firstName && !passengers?.contact?.legalName) return toSearch();
 };
